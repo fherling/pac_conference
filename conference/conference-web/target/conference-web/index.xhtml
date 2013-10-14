@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/default.xhtml">
+	<ui:define name="content">
+		<h1>Welcome to the</h1>
+		<h1>PRODYNA Conference Application!</h1>
+		<h:form id="speakerAdministration">
+			<h2>Speaker Administration</h2>
+			<p>
+				<h:panelGrid columns="2">
+					<h:commandButton id="adminspeaker" action="#{speakerController.startAdmin}"
+						value="Speaker Administration" styleClass="start" />
+					<h:messages styleClass="messages" errorClass="invalid"
+						infoClass="valid" warnClass="warning" globalOnly="true" />
+				</h:panelGrid>
+			</p>
+			<p>
+                <h:panelGrid columns="2">
+                    <h:commandButton id="adminRoom" action="#{roomController.startAdmin}"
+                        value="Room Administration" styleClass="start" />
+                    <h:messages styleClass="messages" errorClass="invalid"
+                        infoClass="valid" warnClass="warning" globalOnly="true" />
+                </h:panelGrid>
+            </p>
+            <p>
+                <h:panelGrid columns="2">
+                    <h:commandButton id="adminTalk" action="#{talkController.startAdmin}"
+                        value="Talk Administration" styleClass="start" />
+                    <h:messages styleClass="messages" errorClass="invalid"
+                        infoClass="valid" warnClass="warning" globalOnly="true" />
+                </h:panelGrid>
+            </p>
+            <p>
+                <h:panelGrid columns="2">
+                    <h:commandButton id="adminConference" action="#{conferenceController.startAdmin}"
+                        value="Conference Administration" styleClass="start" />
+                    <h:messages styleClass="messages" errorClass="invalid"
+                        infoClass="valid" warnClass="warning" globalOnly="true" />
+                </h:panelGrid>
+            </p>
+			
+		</h:form>
+		
+	</ui:define>
+</ui:composition>
+

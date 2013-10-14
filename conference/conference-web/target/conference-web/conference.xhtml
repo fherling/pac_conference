@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	template="/WEB-INF/templates/default.xhtml">
+	<ui:define name="content">
+		<h1>Conference Administration</h1>
+
+
+		<h:form id="reg" reRender="reg2">
+			<h2>One Conference</h2>
+			<h:panelGrid columns="3" columnClasses="titleCell">
+				<h:outputLabel for="name" value="Name:" />
+				<h:inputText id="name" value="#{conferenceController.entry.name}" />
+				<h:message for="name" errorClass="invalid" />
+			</h:panelGrid>
+			<p>
+				<h:panelGrid columns="2">
+					<h:commandButton id="save"
+						action="#{conferenceController.saveEntry}" value="Save" styleClass="save" />
+					<h:commandButton id="new"
+						action="#{conferenceController.newEntry}" value="New"
+						styleClass="new" />
+					<h:messages styleClass="messages" errorClass="invalid"
+						infoClass="valid" warnClass="warning" globalOnly="true" />
+				</h:panelGrid>
+			</p>
+		</h:form>
+		<h:form id="reg2">
+			<h2>Conferences</h2>
+			<h:panelGroup rendered="#{conferenceController.model.rowCount le 0}">
+				<em>No registered conferences.</em>
+			</h:panelGroup>
+
+			<h:dataTable id="valueTable" var="_valueBean"
+				value="#{conferenceController.model}"
+				rendered="#{conferenceController.model.rowCount gt 0}"
+				styleClass="simpletablestyle">
+				<h:column>
+					<f:facet name="header"></f:facet>
+					<h:commandButton id="loadm#{_valueBean.id}"
+						action="#{conferenceController.loadEntry}" styleClass="change"
+						value="#{_valueBean}" image="./resources/gfx/bearbeiten.png" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Id</f:facet>
+                #{_valueBean.id}
+            </h:column>
+				<h:column>
+					<f:facet name="header">Name</f:facet>
+                #{_valueBean.name}
+            </h:column>
+				<h:column>
+					<f:facet name="header">Changed</f:facet>
+                #{_valueBean.updateTimeStamp}
+            </h:column>
+				<h:column>
+					<f:facet name="header">REST URL</f:facet>
+					<a href="#{request.contextPath}/rest/conferences/find/#{_valueBean.id}">/rest/conferences/#{_valueBean.id}</a>
+				</h:column>
+				<f:facet name="footer">
+            REST URL for all conferences: <a
+						href="#{request.contextPath}/rest/conferences">/rest/conferences</a>
+				</f:facet>
+			</h:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>

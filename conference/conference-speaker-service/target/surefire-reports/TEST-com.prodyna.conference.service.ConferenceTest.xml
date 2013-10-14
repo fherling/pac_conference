@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite failures="0" time="13.089" errors="0" skipped="1" tests="1" name="com.prodyna.conference.service.ConferenceTest">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="c:\Program Files\Java\jdk1.7.0_40\jre\bin"/>
+    <property name="java.vm.version" value="24.0-b56"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=";"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.script" value=""/>
+    <property name="user.country" value="DE"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value="Service Pack 1"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="g:\Workspaces\PAC_CONFERENCE\conference"/>
+    <property name="java.runtime.version" value="1.7.0_40-b43"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="c:\Program Files\Java\jdk1.7.0_40\jre\lib\endorsed"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.io.tmpdir" value="C:\Users\fherling\AppData\Local\Temp\"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows 7"/>
+    <property name="classworlds.conf" value="g:\Tools\MAVEN\maven-3.1.0\bin\..\bin\m2.conf"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="c:\Program Files\Java\jdk1.7.0_40\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files (x86)\Lenovo\Access Connections\;C:\Program Files\SlikSvn\bin\;C:\Program Files (x86)\CineForm\Tools;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Common Files\Acronis\SnapAPI\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;c:\Program Files\Java\jdk1.7.0_40\bin;g:\Tools\JAD\jadnt158;g:\Tools\ANT\ant-1.8.2\bin;C:\Program Files (x86)\OpenVPN\bin;g:\Tools\MAVEN\maven-3.1.0\bin;g:\Tools\mybatis-migrations-3.1.0\bin;;."/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="51.0"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="6.1"/>
+    <property name="user.home" value="C:\Users\fherling"/>
+    <property name="user.timezone" value="Europe/Berlin"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="java.specification.version" value="1.7"/>
+    <property name="file.encoding" value="Cp1252"/>
+    <property name="user.name" value="fherling"/>
+    <property name="java.class.path" value="g:\Tools\MAVEN\maven-3.1.0\bin\..\boot\plexus-classworlds-2.4.2.jar"/>
+    <property name="org.slf4j.simpleLogger.defaultLogLevel" value="info"/>
+    <property name="java.vm.specification.version" value="1.7"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.home" value="c:\Program Files\Java\jdk1.7.0_40\jre"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher clean install"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="de"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.7.0_40"/>
+    <property name="java.ext.dirs" value="c:\Program Files\Java\jdk1.7.0_40\jre\lib\ext;C:\Windows\Sun\Java\lib\ext"/>
+    <property name="sun.boot.class.path" value="c:\Program Files\Java\jdk1.7.0_40\jre\lib\resources.jar;c:\Program Files\Java\jdk1.7.0_40\jre\lib\rt.jar;c:\Program Files\Java\jdk1.7.0_40\jre\lib\sunrsasign.jar;c:\Program Files\Java\jdk1.7.0_40\jre\lib\jsse.jar;c:\Program Files\Java\jdk1.7.0_40\jre\lib\jce.jar;c:\Program Files\Java\jdk1.7.0_40\jre\lib\charsets.jar;c:\Program Files\Java\jdk1.7.0_40\jre\lib\jfr.jar;c:\Program Files\Java\jdk1.7.0_40\jre\classes"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="g:\Tools\MAVEN\maven-3.1.0\bin\.."/>
+    <property name="file.separator" value="\"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+  </properties>
+  <testcase time="13.089" classname="com.prodyna.conference.service.ConferenceTest" name="test">
+    <skipped/>
+    <system-out>16:29:56,461 Information [org.jboss.modules] JBoss Modules version 1.1.1.GA
+16:29:56,711 INFO  [org.jboss.msc] JBoss MSC version 1.0.2.GA
+16:29:56,773 INFO  [org.jboss.as] JBAS015899: JBoss AS 7.1.1.Final &quot;Brontes&quot; starting
+16:29:57,647 INFO  [org.xnio] XNIO Version 3.0.3.GA
+16:29:57,647 INFO  [org.jboss.as.server] JBAS015888: Creating http management service using socket-binding (management-http)
+16:29:57,663 INFO  [org.xnio.nio] XNIO NIO Implementation Version 3.0.3.GA
+16:29:57,663 INFO  [org.jboss.remoting] JBoss Remoting version 3.2.3.GA
+16:29:57,678 INFO  [org.jboss.as.logging] JBAS011502: Removing bootstrap log handlers
+16:29:57,694 INFO  [org.jboss.as.configadmin] (ServerService Thread Pool -- 32) JBAS016200: Activating ConfigAdmin Subsystem
+16:29:57,741 INFO  [org.jboss.as.naming] (ServerService Thread Pool -- 48) JBAS011800: Activating Naming Subsystem
+16:29:57,741 INFO  [org.jboss.as.connector.subsystems.datasources] (ServerService Thread Pool -- 33) JBAS010404: Deploying non-JDBC-compliant driver class com.mysql.jdbc.Driver (version 5.1)
+16:29:57,756 INFO  [org.jboss.as.connector.subsystems.datasources] (ServerService Thread Pool -- 33) JBAS010403: Deploying JDBC-compliant driver class org.h2.Driver (version 1.3)
+16:29:57,756 INFO  [org.jboss.as.osgi] (ServerService Thread Pool -- 49) JBAS011940: Activating OSGi Subsystem
+16:29:57,787 INFO  [org.jboss.as.jacorb] (ServerService Thread Pool -- 38) JBAS016300: Activating JacORB Subsystem
+16:29:57,787 INFO  [org.jboss.as.security] (ServerService Thread Pool -- 54) JBAS013101: Activating Security Subsystem
+16:29:57,787 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 37) JBAS010280: Activating Infinispan subsystem.
+16:29:57,803 INFO  [org.jboss.as.webservices] (ServerService Thread Pool -- 58) JBAS015537: Activating WebServices Extension
+16:29:57,819 INFO  [org.jboss.as.naming] (MSC service thread 1-6) JBAS011802: Starting Naming Service
+16:29:57,834 INFO  [org.jboss.jaxr] (MSC service thread 1-6) JBAS014000: Started JAXR subsystem, binding JAXR connection factory into JNDI as: java:jboss/jaxr/ConnectionFactory
+16:29:57,834 INFO  [org.jboss.as.security] (MSC service thread 1-2) JBAS013100: Current PicketBox version=4.0.7.Final
+16:29:57,850 INFO  [org.jboss.as.mail.extension] (MSC service thread 1-6) JBAS015400: Bound mail session [java:jboss/mail/Default]
+16:29:57,865 INFO  [org.jboss.as.connector] (MSC service thread 1-1) JBAS010408: Starting JCA Subsystem (JBoss IronJacamar 1.0.9.Final)
+16:29:58,193 INFO  [org.jboss.ws.common.management.AbstractServerConfig] (MSC service thread 1-1) JBoss Web Services - Stack CXF Server 4.0.2.GA
+16:29:58,443 INFO  [org.jboss.as.server.deployment.scanner] (MSC service thread 1-5) JBAS015012: Started FileSystemDeploymentService for directory g:\ARBEITSUMGEBUNG\SERVER\jboss-as-7.1.1.Final\standalone\deployments
+16:29:58,443 INFO  [org.jboss.as.server.deployment.scanner] (DeploymentScanner-threads - 1) JBAS015014: Re-attempting failed deployment conference-ear.ear
+16:29:58,458 INFO  [org.jboss.as.server.deployment.scanner] (DeploymentScanner-threads - 1) JBAS015003: Found conference-ear.ear in deployment directory. To trigger deployment create a file called conference-ear.ear.dodeploy
+16:29:58,600 WARN  [org.jboss.as.messaging] (MSC service thread 1-3) JBAS011600: AIO wasn&apos;t located on this platform, it will fall back to using pure Java NIO. If your platform is Linux, install LibAIO to enable the AIO journal
+16:29:58,615 INFO  [org.jboss.as.remoting] (MSC service thread 1-2) JBAS017100: Listening on /127.0.0.1:4447
+16:29:58,646 INFO  [org.apache.coyote.http11.Http11Protocol] (MSC service thread 1-5) Starting Coyote HTTP/1.1 on http-127.0.0.1-127.0.0.1-8080
+16:29:58,662 Information [org.hornetq.core.server.impl.HornetQServerImpl] (MSC service thread 1-3) live server is starting with configuration HornetQ Configuration (clustered=false,backup=false,sharedStore=true,journalDirectory=g:\ARBEITSUMGEBUNG\SERVER\jboss-as-7.1.1.Final\standalone\data\messagingjournal,bindingsDirectory=g:\ARBEITSUMGEBUNG\SERVER\jboss-as-7.1.1.Final\standalone\data\messagingbindings,largeMessagesDirectory=g:\ARBEITSUMGEBUNG\SERVER\jboss-as-7.1.1.Final\standalone\data\messaginglargemessages,pagingDirectory=g:\ARBEITSUMGEBUNG\SERVER\jboss-as-7.1.1.Final\standalone\data\messagingpaging)
+16:29:58,662 Information [org.hornetq.core.server.impl.HornetQServerImpl] (MSC service thread 1-3) Waiting to obtain live lock
+16:29:58,678 INFO  [org.jboss.as.remoting] (MSC service thread 1-4) JBAS017100: Listening on /127.0.0.1:9999
+16:29:58,693 INFO  [org.hornetq.core.persistence.impl.journal.JournalStorageManager] (MSC service thread 1-3) Using NIO Journal
+16:29:58,802 INFO  [org.hornetq.core.server.impl.FileLockNodeManager] (MSC service thread 1-3) Waiting to obtain live lock
+16:29:58,802 INFO  [org.hornetq.core.server.impl.FileLockNodeManager] (MSC service thread 1-3) Live Server Obtained live lock
+16:29:58,802 WARN  [jacorb.codeset] (MSC service thread 1-6) Warning - unknown codeset (Cp1252) - defaulting to ISO-8859-1
+16:29:58,818 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-8) JBAS010400: Bound data source [java:jboss/datasources/conferenceDS]
+16:29:58,818 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-2) JBAS010400: Bound data source [java:jboss/datasources/bookingDS]
+16:29:58,818 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-5) JBAS010400: Bound data source [java:jboss/datasources/ExampleDS]
+16:29:58,834 INFO  [org.jboss.as.jacorb] (MSC service thread 1-6) JBAS016330: CORBA ORB Service started
+16:29:58,927 INFO  [org.jboss.as.jacorb] (MSC service thread 1-6) JBAS016328: CORBA Naming Service started
+16:29:59,286 INFO  [org.hornetq.core.remoting.impl.netty.NettyAcceptor] (MSC service thread 1-3) Started Netty Acceptor version 3.2.5.Final-a96d88c 127.0.0.1:5455 for CORE protocol
+16:29:59,286 INFO  [org.hornetq.core.remoting.impl.netty.NettyAcceptor] (MSC service thread 1-3) Started Netty Acceptor version 3.2.5.Final-a96d88c 127.0.0.1:5445 for CORE protocol
+16:29:59,286 Information [org.hornetq.core.server.impl.HornetQServerImpl] (MSC service thread 1-3) Server is now live
+16:29:59,286 Information [org.hornetq.core.server.impl.HornetQServerImpl] (MSC service thread 1-3) HornetQ Server version 2.2.13.Final (HQ_2_2_13_FINAL_AS7, 122) [beb97785-fb4f-11e2-97e3-fc0020524153]) started
+16:29:59,302 Information [org.hornetq.core.server.impl.HornetQServerImpl] (MSC service thread 1-4) trying to deploy queue jms.queue.testQueue
+16:29:59,302 INFO  [org.jboss.as.messaging] (MSC service thread 1-4) JBAS011601: Bound messaging object to jndi name java:/queue/test
+16:29:59,302 INFO  [org.jboss.as.messaging] (MSC service thread 1-4) JBAS011601: Bound messaging object to jndi name java:jboss/exported/jms/queue/test
+16:29:59,302 Information [org.hornetq.core.server.impl.HornetQServerImpl] (MSC service thread 1-8) trying to deploy queue jms.topic.testTopic
+16:29:59,317 INFO  [org.jboss.as.messaging] (MSC service thread 1-8) JBAS011601: Bound messaging object to jndi name java:/topic/test
+16:29:59,317 INFO  [org.jboss.as.messaging] (MSC service thread 1-8) JBAS011601: Bound messaging object to jndi name java:jboss/exported/jms/topic/test
+16:29:59,333 INFO  [org.jboss.as.messaging] (MSC service thread 1-2) JBAS011601: Bound messaging object to jndi name java:/ConnectionFactory
+16:29:59,333 INFO  [org.jboss.as.messaging] (MSC service thread 1-4) JBAS011601: Bound messaging object to jndi name java:jboss/exported/jms/RemoteConnectionFactory
+16:29:59,333 INFO  [org.jboss.as.messaging] (MSC service thread 1-4) JBAS011601: Bound messaging object to jndi name java:/RemoteConnectionFactory
+16:29:59,348 INFO  [org.jboss.as.deployment.connector] (MSC service thread 1-1) JBAS010406: Registered connection factory java:/JmsXA
+16:29:59,348 INFO  [org.hornetq.ra.HornetQResourceAdapter] (MSC service thread 1-1) HornetQ resource adaptor started
+16:29:59,348 INFO  [org.jboss.as.connector.services.ResourceAdapterActivatorService$ResourceAdapterActivator] (MSC service thread 1-1) IJ020002: Deployed: file://RaActivatorhornetq-ra
+16:29:59,348 INFO  [org.jboss.as.deployment.connector] (MSC service thread 1-1) JBAS010401: Bound JCA ConnectionFactory [java:/JmsXA]
+16:29:59,411 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-4) JBAS015876: Starting deployment of &quot;conference-ear.ear&quot;
+16:29:59,832 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-3) JBAS015876: Starting deployment of &quot;conference-web.war&quot;
+16:29:59,832 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-1) JBAS015876: Starting deployment of &quot;conference-speaker-service.jar&quot;
+16:29:59,863 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-3) JBAS015893: Encountered invalid class name &apos;implClass=org.jboss.shrinkwrap.resolver.impl.maven.MavenBuilderImpl&apos; for service type &apos;org.jboss.shrinkwrap.resolver.api.maven.MavenDependencyResolver&apos;
+16:30:00,035 WARN  [org.jboss.weld.deployer] (MSC service thread 1-7) JBAS016003: Found beans.xml file in non-standard location: &quot;/g:/ARBEITSUMGEBUNG/SERVER/jboss-as-7.1.1.Final/standalone/deployments/conference-ear.ear/conference-web.war/WEB-INF/classes/META-INF/beans.xml&quot;, war deployments should place beans.xml files into WEB-INF/beans.xml
+16:30:00,128 INFO  [org.jboss.weld.deployer] (MSC service thread 1-8) JBAS016002: Processing weld deployment conference-ear.ear
+16:30:00,175 INFO  [org.jboss.weld.deployer] (MSC service thread 1-8) JBAS016002: Processing weld deployment conference-web.war
+16:30:00,175 INFO  [org.jboss.weld.deployer] (MSC service thread 1-2) JBAS016002: Processing weld deployment conference-speaker-service.jar
+16:30:00,191 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-2) JNDI bindings for session bean named TalkServiceImpl in deployment unit subdeployment &quot;conference-speaker-service.jar&quot; of deployment &quot;conference-ear.ear&quot; are as follows:
+
+	java:global/conference-ear/conference-speaker-service/TalkServiceImpl!com.prodyna.conference.service.TalkService
+	java:app/conference-speaker-service/TalkServiceImpl!com.prodyna.conference.service.TalkService
+	java:module/TalkServiceImpl!com.prodyna.conference.service.TalkService
+	java:global/conference-ear/conference-speaker-service/TalkServiceImpl
+	java:app/conference-speaker-service/TalkServiceImpl
+	java:module/TalkServiceImpl
+
+16:30:00,222 INFO  [org.jboss.weld.deployer] (MSC service thread 1-2) JBAS016005: Starting Services for CDI deployment: conference-ear.ear
+16:30:00,269 INFO  [org.jboss.weld.Version] (MSC service thread 1-2) WELD-000900 1.1.5 (AS71)
+16:30:00,284 INFO  [org.jboss.weld.deployer] (MSC service thread 1-1) JBAS016008: Starting weld service for deployment conference-ear.ear
+16:30:00,378 ERROR [org.jboss.msc.service.fail] (MSC service thread 1-5) MSC00001: Failed to start service jboss.deployment.subunit.&quot;conference-ear.ear&quot;.&quot;conference-speaker-service.jar&quot;.INSTALL: org.jboss.msc.service.StartException in service jboss.deployment.subunit.&quot;conference-ear.ear&quot;.&quot;conference-speaker-service.jar&quot;.INSTALL: Failed to process phase INSTALL of subdeployment &quot;conference-speaker-service.jar&quot; of deployment &quot;conference-ear.ear&quot;
+	at org.jboss.as.server.deployment.DeploymentUnitPhaseService.start(DeploymentUnitPhaseService.java:119) [jboss-as-server-7.1.1.Final.jar:7.1.1.Final]
+	at org.jboss.msc.service.ServiceControllerImpl$StartTask.startService(ServiceControllerImpl.java:1811) [jboss-msc-1.0.2.GA.jar:1.0.2.GA]
+	at org.jboss.msc.service.ServiceControllerImpl$StartTask.run(ServiceControllerImpl.java:1746) [jboss-msc-1.0.2.GA.jar:1.0.2.GA]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145) [rt.jar:1.7.0_40]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615) [rt.jar:1.7.0_40]
+	at java.lang.Thread.run(Thread.java:724) [rt.jar:1.7.0_40]
+Caused by: org.jboss.as.server.deployment.DeploymentUnitProcessingException: JBAS011058: Failed to install component TalkServiceImpl
+	at org.jboss.as.ee.component.deployers.ComponentInstallProcessor.deploy(ComponentInstallProcessor.java:100)
+	at org.jboss.as.server.deployment.DeploymentUnitPhaseService.start(DeploymentUnitPhaseService.java:113) [jboss-as-server-7.1.1.Final.jar:7.1.1.Final]
+	... 5 more
+Caused by: org.jboss.as.server.deployment.DeploymentUnitProcessingException: JBAS014544: No EJB found with interface of type &apos;com.prodyna.conference.service.SpeakerService&apos; for binding com.prodyna.conference.service.TalkServiceImpl/speakerService
+	at org.jboss.as.ejb3.deployment.processors.EjbInjectionSource.getResourceValue(EjbInjectionSource.java:88)
+	at org.jboss.as.ee.component.deployers.ComponentInstallProcessor.processBindings(ComponentInstallProcessor.java:245)
+	at org.jboss.as.ee.component.deployers.ComponentInstallProcessor.access$000(ComponentInstallProcessor.java:74)
+	at org.jboss.as.ee.component.deployers.ComponentInstallProcessor$1.handle(ComponentInstallProcessor.java:199)
+	at org.jboss.as.ee.component.ClassDescriptionTraversal.run(ClassDescriptionTraversal.java:54)
+	at org.jboss.as.ee.component.deployers.ComponentInstallProcessor.deployComponent(ComponentInstallProcessor.java:195)
+	at org.jboss.as.ee.component.deployers.ComponentInstallProcessor.deploy(ComponentInstallProcessor.java:93)
+	... 6 more
+
+16:30:00,799 INFO  [org.jboss.web] (MSC service thread 1-8) JBAS018210: Registering web context: /conference-web
+16:30:01,018 INFO  [org.jboss.as.server] (DeploymentScanner-threads - 2) JBAS015870: Deploy of deployment &quot;conference-ear.ear&quot; was rolled back with failure message {&quot;JBAS014671: Failed services&quot; =&gt; {&quot;jboss.deployment.subunit.\&quot;conference-ear.ear\&quot;.\&quot;conference-speaker-service.jar\&quot;.INSTALL&quot; =&gt; &quot;org.jboss.msc.service.StartException in service jboss.deployment.subunit.\&quot;conference-ear.ear\&quot;.\&quot;conference-speaker-service.jar\&quot;.INSTALL: Failed to process phase INSTALL of subdeployment \&quot;conference-speaker-service.jar\&quot; of deployment \&quot;conference-ear.ear\&quot;&quot;},&quot;JBAS014771: Services with missing/unavailable dependencies&quot; =&gt; [&quot;jboss.naming.context.java.comp.conference-ear.conference-speaker-service.TalkServiceImpl.ORBjboss.naming.context.java.comp.conference-ear.conference-speaker-service.TalkServiceImplMissing[jboss.naming.context.java.comp.conference-ear.conference-speaker-service.TalkServiceImpl.ORBjboss.naming.context.java.comp.conference-ear.conference-speaker-service.TalkServiceImpl]&quot;,&quot;jboss.naming.context.java.comp.conference-ear.conference-speaker-service.TalkServiceImpl.HandleDelegatejboss.naming.context.java.comp.conference-ear.conference-speaker-service.TalkServiceImplMissing[jboss.naming.context.java.comp.conference-ear.conference-speaker-service.TalkServiceImpl.HandleDelegatejboss.naming.context.java.comp.conference-ear.conference-speaker-service.TalkServiceImpl]&quot;,&quot;jboss.naming.context.java.comp.conference-ear.conference-speaker-service.TalkServiceImpl.Validatorjboss.naming.context.java.comp.conference-ear.conference-speaker-service.TalkServiceImplMissing[jboss.naming.context.java.comp.conference-ear.conference-speaker-service.TalkServiceImpl.Validatorjboss.naming.context.java.comp.conference-ear.conference-speaker-service.TalkServiceImpl]&quot;,&quot;jboss.naming.context.java.comp.conference-ear.conference-speaker-service.TalkServiceImpl.ValidatorFactoryjboss.naming.context.java.comp.conference-ear.conference-speaker-service.TalkServiceImplMissing[jboss.naming.context.java.comp.conference-ear.conference-speaker-service.TalkServiceImpl.ValidatorFactoryjboss.naming.context.java.comp.conference-ear.conference-speaker-service.TalkServiceImpl]&quot;]}
+16:30:01,033 INFO  [org.jboss.weld.deployer] (MSC service thread 1-5) JBAS016009: Stopping weld service for deployment conference-ear.ear
+16:30:01,064 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-5) JBAS015877: Stopped deployment conference-web.war in 44ms
+16:30:01,064 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-2) JBAS015877: Stopped deployment conference-speaker-service.jar in 44ms
+16:30:01,096 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-2) JBAS015877: Stopped deployment conference-ear.ear in 78ms
+16:30:01,096 INFO  [org.jboss.as.controller] (DeploymentScanner-threads - 2) JBAS014774: Service status report
+JBAS014775:    New missing/unsatisfied dependencies:
+      service jboss.naming.context.java.comp.conference-ear.conference-speaker-service.TalkServiceImpl (missing) dependents: [service jboss.naming.context.java.comp.conference-ear.conference-speaker-service.TalkServiceImpl.Validator, service jboss.naming.context.java.comp.conference-ear.conference-speaker-service.TalkServiceImpl.HandleDelegate, service jboss.naming.context.java.comp.conference-ear.conference-speaker-service.TalkServiceImpl.ORB, service jboss.naming.context.java.comp.conference-ear.conference-speaker-service.TalkServiceImpl.ValidatorFactory] 
+JBAS014777:   Services which failed to start:      service jboss.deployment.subunit.&quot;conference-ear.ear&quot;.&quot;conference-speaker-service.jar&quot;.INSTALL: org.jboss.msc.service.StartException in service jboss.deployment.subunit.&quot;conference-ear.ear&quot;.&quot;conference-speaker-service.jar&quot;.INSTALL: Failed to process phase INSTALL of subdeployment &quot;conference-speaker-service.jar&quot; of deployment &quot;conference-ear.ear&quot;
+
+16:30:01,096 ERROR [org.jboss.as.server.deployment.scanner] (DeploymentScanner-threads - 1) {&quot;JBAS014653: Composite operation failed and was rolled back. Steps that failed:&quot; =&gt; {&quot;Operation step-2&quot; =&gt; {&quot;JBAS014671: Failed services&quot; =&gt; {&quot;jboss.deployment.subunit.\&quot;conference-ear.ear\&quot;.\&quot;conference-speaker-service.jar\&quot;.INSTALL&quot; =&gt; &quot;org.jboss.msc.service.StartException in service jboss.deployment.subunit.\&quot;conference-ear.ear\&quot;.\&quot;conference-speaker-service.jar\&quot;.INSTALL: Failed to process phase INSTALL of subdeployment \&quot;conference-speaker-service.jar\&quot; of deployment \&quot;conference-ear.ear\&quot;&quot;},&quot;JBAS014771: Services with missing/unavailable dependencies&quot; =&gt; [&quot;jboss.naming.context.java.comp.conference-ear.conference-speaker-service.TalkServiceImpl.ORBjboss.naming.context.java.comp.conference-ear.conference-speaker-service.TalkServiceImplMissing[jboss.naming.context.java.comp.conference-ear.conference-speaker-service.TalkServiceImpl.ORBjboss.naming.context.java.comp.conference-ear.conference-speaker-service.TalkServiceImpl]&quot;,&quot;jboss.naming.context.java.comp.conference-ear.conference-speaker-service.TalkServiceImpl.HandleDelegatejboss.naming.context.java.comp.conference-ear.conference-speaker-service.TalkServiceImplMissing[jboss.naming.context.java.comp.conference-ear.conference-speaker-service.TalkServiceImpl.HandleDelegatejboss.naming.context.java.comp.conference-ear.conference-speaker-service.TalkServiceImpl]&quot;,&quot;jboss.naming.context.java.comp.conference-ear.conference-speaker-service.TalkServiceImpl.Validatorjboss.naming.context.java.comp.conference-ear.conference-speaker-service.TalkServiceImplMissing[jboss.naming.context.java.comp.conference-ear.conference-speaker-service.TalkServiceImpl.Validatorjboss.naming.context.java.comp.conference-ear.conference-speaker-service.TalkServiceImpl]&quot;,&quot;jboss.naming.context.java.comp.conference-ear.conference-speaker-service.TalkServiceImpl.ValidatorFactoryjboss.naming.context.java.comp.conference-ear.conference-speaker-service.TalkServiceImplMissing[jboss.naming.context.java.comp.conference-ear.conference-speaker-service.TalkServiceImpl.ValidatorFactoryjboss.naming.context.java.comp.conference-ear.conference-speaker-service.TalkServiceImpl]&quot;]}}}
+test.war:
+/WEB-INF/
+/WEB-INF/lib/
+/WEB-INF/lib/jboss-jms-api_1.1_spec-1.0.1.Final.jar
+/WEB-INF/lib/conference-core-SNAPSHOT.jar
+/WEB-INF/beans.xml
+/WEB-INF/classes/
+/WEB-INF/classes/com/
+/WEB-INF/classes/com/prodyna/
+/WEB-INF/classes/com/prodyna/conference/
+/WEB-INF/classes/com/prodyna/conference/service/
+/WEB-INF/classes/com/prodyna/conference/service/RoomServiceImpl.class
+/WEB-INF/classes/com/prodyna/conference/service/TalkService.class
+/WEB-INF/classes/com/prodyna/conference/service/ConferenceServiceImpl.class
+/WEB-INF/classes/com/prodyna/conference/service/ConferenceService.class
+/WEB-INF/classes/com/prodyna/conference/service/MappingHelper.class
+/WEB-INF/classes/com/prodyna/conference/service/SpeakerService.class
+/WEB-INF/classes/com/prodyna/conference/service/TalkServiceImpl.class
+/WEB-INF/classes/com/prodyna/conference/service/ConferenceTest.class
+/WEB-INF/classes/com/prodyna/conference/service/RoomTest.class
+/WEB-INF/classes/com/prodyna/conference/service/TalkTest.class
+/WEB-INF/classes/com/prodyna/conference/service/SpeakerTest.class
+/WEB-INF/classes/com/prodyna/conference/service/FindTalkBySpeakerTest.class
+/WEB-INF/classes/com/prodyna/conference/service/RoomService.class
+/WEB-INF/classes/com/prodyna/conference/service/SpeakerServiceImpl.class
+/WEB-INF/classes/com/prodyna/conference/service/model/
+/WEB-INF/classes/com/prodyna/conference/service/model/Room.class
+/WEB-INF/classes/com/prodyna/conference/service/model/validation/
+/WEB-INF/classes/com/prodyna/conference/service/model/validation/ValidTalk.class
+/WEB-INF/classes/com/prodyna/conference/service/model/validation/ValidTalk$List.class
+/WEB-INF/classes/com/prodyna/conference/service/model/validation/TalkValidator.class
+/WEB-INF/classes/com/prodyna/conference/service/model/Speaker.class
+/WEB-INF/classes/com/prodyna/conference/service/model/ConferenceDTO.class
+/WEB-INF/classes/com/prodyna/conference/service/model/Talk.class
+/WEB-INF/classes/com/prodyna/conference/service/model/Conference.class
+/WEB-INF/classes/com/prodyna/conference/service/model/SpeakerDTO.class
+/WEB-INF/classes/com/prodyna/conference/service/model/SpeakersForTalk.class
+/WEB-INF/classes/com/prodyna/conference/service/model/TalkDTO.class
+/WEB-INF/classes/com/prodyna/conference/service/model/RoomDTO.class
+/WEB-INF/classes/META-INF/
+/WEB-INF/classes/META-INF/persistence.xml
+16:30:04,902 INFO  [org.jboss.as.repository] (management-handler-thread - 2) JBAS014900: Content added at location g:\ARBEITSUMGEBUNG\SERVER\jboss-as-7.1.1.Final\standalone\data\content\04\fe11a81d5e5052ad71147b7135bf97fbdd3200\content
+16:30:04,918 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-7) JBAS015876: Starting deployment of &quot;test.war&quot;
+16:30:05,448 INFO  [org.jboss.as.jpa] (MSC service thread 1-2) JBAS011401: Read persistence.xml for primary
+16:30:05,495 INFO  [org.jboss.weld.deployer] (MSC service thread 1-8) JBAS016002: Processing weld deployment test.war
+16:30:05,495 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-8) JNDI bindings for session bean named ConferenceServiceImpl in deployment unit deployment &quot;test.war&quot; are as follows:
+
+	java:global/test/ConferenceServiceImpl!com.prodyna.conference.service.ConferenceService
+	java:app/test/ConferenceServiceImpl!com.prodyna.conference.service.ConferenceService
+	java:module/ConferenceServiceImpl!com.prodyna.conference.service.ConferenceService
+	java:global/test/ConferenceServiceImpl
+	java:app/test/ConferenceServiceImpl
+	java:module/ConferenceServiceImpl
+
+16:30:05,495 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-8) JNDI bindings for session bean named MonitoringStartupBean in deployment unit deployment &quot;test.war&quot; are as follows:
+
+	java:global/test/MonitoringStartupBean!com.prodyna.core.monitoring.MonitoringStartupBean
+	java:app/test/MonitoringStartupBean!com.prodyna.core.monitoring.MonitoringStartupBean
+	java:module/MonitoringStartupBean!com.prodyna.core.monitoring.MonitoringStartupBean
+	java:global/test/MonitoringStartupBean
+	java:app/test/MonitoringStartupBean
+	java:module/MonitoringStartupBean
+
+16:30:05,495 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-8) JNDI bindings for session bean named SpeakerServiceImpl in deployment unit deployment &quot;test.war&quot; are as follows:
+
+	java:global/test/SpeakerServiceImpl!com.prodyna.conference.service.SpeakerService
+	java:app/test/SpeakerServiceImpl!com.prodyna.conference.service.SpeakerService
+	java:module/SpeakerServiceImpl!com.prodyna.conference.service.SpeakerService
+	java:global/test/SpeakerServiceImpl
+	java:app/test/SpeakerServiceImpl
+	java:module/SpeakerServiceImpl
+
+16:30:05,495 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-8) JNDI bindings for session bean named RoomServiceImpl in deployment unit deployment &quot;test.war&quot; are as follows:
+
+	java:global/test/RoomServiceImpl!com.prodyna.conference.service.RoomService
+	java:app/test/RoomServiceImpl!com.prodyna.conference.service.RoomService
+	java:module/RoomServiceImpl!com.prodyna.conference.service.RoomService
+	java:global/test/RoomServiceImpl
+	java:app/test/RoomServiceImpl
+	java:module/RoomServiceImpl
+
+16:30:05,495 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-8) JNDI bindings for session bean named TalkServiceImpl in deployment unit deployment &quot;test.war&quot; are as follows:
+
+	java:global/test/TalkServiceImpl!com.prodyna.conference.service.TalkService
+	java:app/test/TalkServiceImpl!com.prodyna.conference.service.TalkService
+	java:module/TalkServiceImpl!com.prodyna.conference.service.TalkService
+	java:global/test/TalkServiceImpl
+	java:app/test/TalkServiceImpl
+	java:module/TalkServiceImpl
+
+16:30:05,573 INFO  [org.jboss.weld.deployer] (MSC service thread 1-7) JBAS016005: Starting Services for CDI deployment: test.war
+16:30:05,588 INFO  [org.jboss.as.jpa] (MSC service thread 1-8) JBAS011402: Starting Persistence Unit Service &apos;test.war#primary&apos;
+16:30:05,666 INFO  [org.hibernate.annotations.common.Version] (MSC service thread 1-8) HCANN000001: Hibernate Commons Annotations {4.0.1.Final}
+16:30:05,666 INFO  [org.hibernate.Version] (MSC service thread 1-8) HHH000412: Hibernate Core {4.0.1.Final}
+16:30:05,666 INFO  [org.hibernate.cfg.Environment] (MSC service thread 1-8) HHH000206: hibernate.properties not found
+16:30:05,666 INFO  [org.hibernate.cfg.Environment] (MSC service thread 1-8) HHH000021: Bytecode provider name : javassist
+16:30:05,682 INFO  [org.hibernate.ejb.Ejb3Configuration] (MSC service thread 1-8) HHH000204: Processing PersistenceUnitInfo [
+	name: primary
+	...]
+16:30:05,838 INFO  [org.hibernate.service.jdbc.connections.internal.ConnectionProviderInitiator] (MSC service thread 1-8) HHH000130: Instantiating explicit connection provider: org.hibernate.ejb.connection.InjectedDataSourceConnectionProvider
+16:30:06,025 INFO  [org.hibernate.dialect.Dialect] (MSC service thread 1-8) HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+16:30:06,041 INFO  [org.hibernate.engine.transaction.internal.TransactionFactoryInitiator] (MSC service thread 1-8) HHH000268: Transaction strategy: org.hibernate.engine.transaction.internal.jta.CMTTransactionFactory
+16:30:06,041 INFO  [org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory] (MSC service thread 1-8) HHH000397: Using ASTQueryTranslatorFactory
+16:30:06,072 INFO  [org.hibernate.validator.util.Version] (MSC service thread 1-8) Hibernate Validator 4.2.0.Final
+16:30:06,306 INFO  [org.hibernate.tool.hbm2ddl.SchemaExport] (MSC service thread 1-8) HHH000227: Running hbm2ddl schema export
+16:30:06,306 INFO  [stdout] (MSC service thread 1-8) Hibernate: alter table conference_talk drop foreign key FKB9C79EF864438C9
+16:30:06,306 ERROR [org.hibernate.tool.hbm2ddl.SchemaExport] (MSC service thread 1-8) HHH000389: Unsuccessful: alter table conference_talk drop foreign key FKB9C79EF864438C9
+16:30:06,306 ERROR [org.hibernate.tool.hbm2ddl.SchemaExport] (MSC service thread 1-8) Table &apos;conference.conference_talk&apos; doesn&apos;t exist
+16:30:06,306 INFO  [stdout] (MSC service thread 1-8) Hibernate: alter table conference_talk drop foreign key FKB9C79EFF40E9C4
+16:30:06,306 ERROR [org.hibernate.tool.hbm2ddl.SchemaExport] (MSC service thread 1-8) HHH000389: Unsuccessful: alter table conference_talk drop foreign key FKB9C79EFF40E9C4
+16:30:06,306 ERROR [org.hibernate.tool.hbm2ddl.SchemaExport] (MSC service thread 1-8) Table &apos;conference.conference_talk&apos; doesn&apos;t exist
+16:30:06,306 INFO  [stdout] (MSC service thread 1-8) Hibernate: alter table speakersfortalk_speaker drop foreign key FKA5E9A3E1A3A97F9B
+16:30:06,306 ERROR [org.hibernate.tool.hbm2ddl.SchemaExport] (MSC service thread 1-8) HHH000389: Unsuccessful: alter table speakersfortalk_speaker drop foreign key FKA5E9A3E1A3A97F9B
+16:30:06,306 ERROR [org.hibernate.tool.hbm2ddl.SchemaExport] (MSC service thread 1-8) Table &apos;conference.speakersfortalk_speaker&apos; doesn&apos;t exist
+16:30:06,306 INFO  [stdout] (MSC service thread 1-8) Hibernate: alter table speakersfortalk_speaker drop foreign key FKA5E9A3E11E59C6D0
+16:30:06,306 ERROR [org.hibernate.tool.hbm2ddl.SchemaExport] (MSC service thread 1-8) HHH000389: Unsuccessful: alter table speakersfortalk_speaker drop foreign key FKA5E9A3E11E59C6D0
+16:30:06,306 ERROR [org.hibernate.tool.hbm2ddl.SchemaExport] (MSC service thread 1-8) Table &apos;conference.speakersfortalk_speaker&apos; doesn&apos;t exist
+16:30:06,306 INFO  [stdout] (MSC service thread 1-8) Hibernate: alter table talk drop foreign key FK3634ACFCD94CE4
+16:30:06,306 ERROR [org.hibernate.tool.hbm2ddl.SchemaExport] (MSC service thread 1-8) HHH000389: Unsuccessful: alter table talk drop foreign key FK3634ACFCD94CE4
+16:30:06,306 ERROR [org.hibernate.tool.hbm2ddl.SchemaExport] (MSC service thread 1-8) Table &apos;conference.talk&apos; doesn&apos;t exist
+16:30:06,306 INFO  [stdout] (MSC service thread 1-8) Hibernate: drop table if exists conference
+16:30:06,322 INFO  [stdout] (MSC service thread 1-8) Hibernate: drop table if exists conference_talk
+16:30:06,322 INFO  [stdout] (MSC service thread 1-8) Hibernate: drop table if exists room
+16:30:06,322 INFO  [stdout] (MSC service thread 1-8) Hibernate: drop table if exists speaker
+16:30:06,322 INFO  [stdout] (MSC service thread 1-8) Hibernate: drop table if exists speakersfortalk
+16:30:06,322 INFO  [stdout] (MSC service thread 1-8) Hibernate: drop table if exists speakersfortalk_speaker
+16:30:06,322 INFO  [stdout] (MSC service thread 1-8) Hibernate: drop table if exists talk
+16:30:06,322 INFO  [stdout] (MSC service thread 1-8) Hibernate: drop table if exists hibernate_sequence
+16:30:06,322 INFO  [stdout] (MSC service thread 1-8) Hibernate: create table conference (id bigint not null, description varchar(255) not null, end date not null, name varchar(255) not null, start date not null, updateTimeStamp datetime, primary key (id))
+16:30:06,337 INFO  [stdout] (MSC service thread 1-8) Hibernate: create table conference_talk (conference_id bigint not null, talks_id bigint not null, primary key (conference_id, talks_id), unique (talks_id))
+16:30:06,353 INFO  [stdout] (MSC service thread 1-8) Hibernate: create table room (id bigint not null, capacity integer not null check (capacity&gt;=1), name varchar(255) not null, updateTimeStamp datetime, primary key (id))
+16:30:06,368 INFO  [stdout] (MSC service thread 1-8) Hibernate: create table speaker (id bigint not null, email varchar(255) not null, firstname varchar(255) not null, name varchar(255) not null, updateTimeStamp datetime, primary key (id), unique (email))
+16:30:06,384 INFO  [stdout] (MSC service thread 1-8) Hibernate: create table speakersfortalk (id bigint not null, primary key (id))
+16:30:06,400 INFO  [stdout] (MSC service thread 1-8) Hibernate: create table speakersfortalk_speaker (speakersfortalk_id bigint not null, speakers_id bigint not null, primary key (speakersfortalk_id, speakers_id))
+16:30:06,415 INFO  [stdout] (MSC service thread 1-8) Hibernate: create table talk (id bigint not null, description varchar(255) not null, durationInSeconds bigint not null check (durationInSeconds&gt;=1), end date not null, name varchar(255) not null, start date not null, updateTimeStamp datetime, room_id bigint not null, primary key (id))
+16:30:06,431 INFO  [stdout] (MSC service thread 1-8) Hibernate: alter table conference_talk add index FKB9C79EF864438C9 (talks_id), add constraint FKB9C79EF864438C9 foreign key (talks_id) references talk (id)
+16:30:06,446 INFO  [stdout] (MSC service thread 1-8) Hibernate: alter table conference_talk add index FKB9C79EFF40E9C4 (conference_id), add constraint FKB9C79EFF40E9C4 foreign key (conference_id) references conference (id)
+16:30:06,478 INFO  [stdout] (MSC service thread 1-8) Hibernate: alter table speakersfortalk_speaker add index FKA5E9A3E1A3A97F9B (speakers_id), add constraint FKA5E9A3E1A3A97F9B foreign key (speakers_id) references speaker (id)
+16:30:06,509 INFO  [stdout] (MSC service thread 1-8) Hibernate: alter table speakersfortalk_speaker add index FKA5E9A3E11E59C6D0 (speakersfortalk_id), add constraint FKA5E9A3E11E59C6D0 foreign key (speakersfortalk_id) references speakersfortalk (id)
+16:30:06,524 INFO  [stdout] (MSC service thread 1-8) Hibernate: alter table talk add index FK3634ACFCD94CE4 (room_id), add constraint FK3634ACFCD94CE4 foreign key (room_id) references room (id)
+16:30:06,556 INFO  [stdout] (MSC service thread 1-8) Hibernate: create table hibernate_sequence ( next_val bigint )
+16:30:06,571 INFO  [stdout] (MSC service thread 1-8) Hibernate: insert into hibernate_sequence values ( 100 )
+16:30:06,571 INFO  [org.hibernate.tool.hbm2ddl.SchemaExport] (MSC service thread 1-8) HHH000230: Schema export complete
+16:30:06,712 INFO  [org.jboss.weld.deployer] (MSC service thread 1-1) JBAS016008: Starting weld service for deployment test.war
+16:30:06,961 Information [com.prodyna.core.monitoring.MonitoringStartupBean] (MSC service thread 1-2) PerformanceMBean registered
+16:30:06,961 INFO  [org.jboss.web] (MSC service thread 1-7) JBAS018210: Registering web context: /test
+16:30:07,024 INFO  [org.jboss.as.server] (management-handler-thread - 2) JBAS018559: Deployed &quot;test.war&quot;
+16:30:07,024 INFO  [org.jboss.as.controller] (management-handler-thread - 2) JBAS014774: Service status report
+JBAS014776:    Newly corrected services:
+      service jboss.naming.context.java.comp.conference-ear.conference-speaker-service.TalkServiceImpl (new available)
+
+</system-out>
+    <system-err>log4j:WARN No appenders could be found for logger (org.jboss.logging).
+log4j:WARN Please initialize the log4j system properly.
+Sep 21, 2013 4:29:56 PM org.jboss.as.arquillian.container.managed.ManagedDeployableContainer startInternal
+Information: Starting container with: [&quot;c:\Program Files\Java\jdk1.7.0_40\bin\java&quot;, -Xmx512m, -XX:MaxPermSize=128m, -ea, -Djboss.home.dir=g:\ARBEITSUMGEBUNG\SERVER\jboss-as-7.1.1.Final, -Dorg.jboss.boot.log.file=g:\ARBEITSUMGEBUNG\SERVER\jboss-as-7.1.1.Final/standalone/log/boot.log, -Dlogging.configuration=file:g:\ARBEITSUMGEBUNG\SERVER\jboss-as-7.1.1.Final/standalone/configuration/logging.properties, -Djboss.bundles.dir=g:\ARBEITSUMGEBUNG\SERVER\jboss-as-7.1.1.Final\bundles, -jar, g:\ARBEITSUMGEBUNG\SERVER\jboss-as-7.1.1.Final\jboss-modules.jar, -mp, g:\ARBEITSUMGEBUNG\SERVER\jboss-as-7.1.1.Final\modules, -jaxpmodule, javax.xml.jaxp-provider, org.jboss.as.standalone, -server-config, standalone.xml]
+Sep 21, 2013 4:30:03 PM org.jboss.shrinkwrap.resolver.impl.maven.LogRepositoryListener metadataInvalid
+Warnung: Invalid metadata com.prodyna.conference:conference-core:SNAPSHOT/maven-metadata.xml
+Sep 21, 2013 4:30:03 PM org.jboss.shrinkwrap.resolver.impl.maven.LogRepositoryListener metadataInvalid
+Warnung: Invalid metadata com.prodyna.conference:conference-core:SNAPSHOT/maven-metadata.xml
+Sep 21, 2013 4:30:03 PM org.jboss.shrinkwrap.resolver.impl.maven.LogRepositoryListener metadataInvalid
+Warnung: Invalid metadata com.prodyna.conference:conference:SNAPSHOT/maven-metadata.xml
+Sep 21, 2013 4:30:04 PM org.jboss.shrinkwrap.resolver.impl.maven.LogRepositoryListener metadataInvalid
+Warnung: Invalid metadata com.prodyna.conference:conference-core:SNAPSHOT/maven-metadata.xml
+</system-err>
+  </testcase>
+</testsuite>

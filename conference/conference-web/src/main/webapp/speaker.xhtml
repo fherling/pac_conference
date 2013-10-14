@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	template="/WEB-INF/templates/default.xhtml">
+	<ui:define name="content">
+		<h1>Speaker Administration</h1>
+		<a href="#{request.contextPath}/">Back to start</a>
+
+
+		<h:form id="reg" reRender="reg2">
+			<h2>Administration</h2>
+			<h:panelGrid columns="3" columnClasses="titleCell">
+				<h:outputLabel for="name" value="Name:" styleClass="panelOutputLable"/>
+				<h:inputText id="name" value="#{speakerController.entry.name}" />
+				<h:message for="name" errorClass="invalid" />
+			</h:panelGrid>
+			<h:panelGrid columns="3" columnClasses="titleCell">
+				<h:outputLabel for="firstname" value="Firstname:" styleClass="panelOutputLable" />
+				<h:inputText id="firstname" value="#{speakerController.entry.firstname}" />
+				<h:message for="firstname" errorClass="invalid" />
+			</h:panelGrid>			
+			<h:panelGrid columns="3" columnClasses="titleCell">
+				<h:outputLabel for="email" value="Email:" styleClass="panelOutputLable" />
+				<h:inputText id="email" value="#{speakerController.entry.email}" />
+				<h:message for="email" errorClass="invalid" />
+			</h:panelGrid>			
+
+			<p>
+				<h:panelGrid columns="3">
+					<h:commandButton id="saveButton"
+						action="#{speakerController.saveEntry}" value="Save" styleClass="save" />
+					<h:commandButton id="newButton"
+						action="#{speakerController.newEntry}" value="New"
+						styleClass="new" />
+					<h:messages styleClass="messages" errorClass="invalid"
+						infoClass="valid" warnClass="warning" globalOnly="true" />
+				</h:panelGrid>
+			</p>
+		</h:form>
+		<h:form id="reg2">
+			<h2>Speakers</h2>
+			<h:panelGroup rendered="#{speakerController.model.rowCount le 0}">
+				<em>No registered speakers.</em>
+			</h:panelGroup>
+
+			<h:dataTable id="speakertable" var="_valueBean"
+				value="#{speakerController.model}"
+				rendered="#{speakerController.model.rowCount gt 0}"
+				styleClass="simpletablestyle">
+				<h:column>
+					<f:facet name="header"></f:facet>
+					<h:commandButton id="deletem#{_valueBean.id}"
+                        action="#{speakerController.deleteEntry}" styleClass="change"
+                        value="#{_valueBean}" image="./resources/gfx/loeschen.png" />
+					<h:commandButton id="load#{_valueBean.id}"
+						action="#{speakerController.loadEntry}" styleClass="change"
+						value="#{_valueBean}" image="./resources/gfx/bearbeiten.png" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Id</f:facet>
+                #{_valueBean.id}
+            </h:column>
+				<h:column>
+					<f:facet name="header">Name</f:facet>
+                #{_valueBean.name}
+            </h:column>
+				<h:column>
+					<f:facet name="header">Email</f:facet>
+                #{_valueBean.email}
+            </h:column>            
+				<h:column>
+					<f:facet name="header">Changed</f:facet>
+                #{_valueBean.updateTimeStamp}
+            </h:column>
+				<h:column>
+					<f:facet name="header">REST URL</f:facet>
+					<a href="#{request.contextPath}/rest/speakers/find/#{_valueBean.id}">/rest/speakers/#{_valueBean.id}</a>
+				</h:column>
+				<f:facet name="footer">
+            REST URL for all speakers: <a
+						href="#{request.contextPath}/rest/speakers">/rest/speakers</a>
+				</f:facet>
+			</h:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite failures="0" time="1.467" errors="0" skipped="1" tests="1" name="com.prodyna.conference.service.FindTalkBySpeakerTest">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="c:\Program Files\Java\jdk1.7.0_40\jre\bin"/>
+    <property name="java.vm.version" value="24.0-b56"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=";"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.script" value=""/>
+    <property name="user.country" value="DE"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value="Service Pack 1"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="g:\Workspaces\PAC_CONFERENCE\conference"/>
+    <property name="java.runtime.version" value="1.7.0_40-b43"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="c:\Program Files\Java\jdk1.7.0_40\jre\lib\endorsed"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.io.tmpdir" value="C:\Users\fherling\AppData\Local\Temp\"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows 7"/>
+    <property name="classworlds.conf" value="g:\Tools\MAVEN\maven-3.1.0\bin\..\bin\m2.conf"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="c:\Program Files\Java\jdk1.7.0_40\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files (x86)\Lenovo\Access Connections\;C:\Program Files\SlikSvn\bin\;C:\Program Files (x86)\CineForm\Tools;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Common Files\Acronis\SnapAPI\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;c:\Program Files\Java\jdk1.7.0_40\bin;g:\Tools\JAD\jadnt158;g:\Tools\ANT\ant-1.8.2\bin;C:\Program Files (x86)\OpenVPN\bin;g:\Tools\MAVEN\maven-3.1.0\bin;g:\Tools\mybatis-migrations-3.1.0\bin;;."/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="51.0"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="6.1"/>
+    <property name="user.home" value="C:\Users\fherling"/>
+    <property name="user.timezone" value="Europe/Berlin"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="java.specification.version" value="1.7"/>
+    <property name="file.encoding" value="Cp1252"/>
+    <property name="user.name" value="fherling"/>
+    <property name="java.class.path" value="g:\Tools\MAVEN\maven-3.1.0\bin\..\boot\plexus-classworlds-2.4.2.jar"/>
+    <property name="org.slf4j.simpleLogger.defaultLogLevel" value="info"/>
+    <property name="java.vm.specification.version" value="1.7"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.home" value="c:\Program Files\Java\jdk1.7.0_40\jre"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher clean install"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="de"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.7.0_40"/>
+    <property name="java.ext.dirs" value="c:\Program Files\Java\jdk1.7.0_40\jre\lib\ext;C:\Windows\Sun\Java\lib\ext"/>
+    <property name="sun.boot.class.path" value="c:\Program Files\Java\jdk1.7.0_40\jre\lib\resources.jar;c:\Program Files\Java\jdk1.7.0_40\jre\lib\rt.jar;c:\Program Files\Java\jdk1.7.0_40\jre\lib\sunrsasign.jar;c:\Program Files\Java\jdk1.7.0_40\jre\lib\jsse.jar;c:\Program Files\Java\jdk1.7.0_40\jre\lib\jce.jar;c:\Program Files\Java\jdk1.7.0_40\jre\lib\charsets.jar;c:\Program Files\Java\jdk1.7.0_40\jre\lib\jfr.jar;c:\Program Files\Java\jdk1.7.0_40\jre\classes"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="g:\Tools\MAVEN\maven-3.1.0\bin\.."/>
+    <property name="file.separator" value="\"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+  </properties>
+  <testcase time="1.467" classname="com.prodyna.conference.service.FindTalkBySpeakerTest" name="test">
+    <skipped/>
+    <system-out>16:30:07,523 INFO  [org.jboss.weld.deployer] (MSC service thread 1-8) JBAS016009: Stopping weld service for deployment test.war
+16:30:07,523 INFO  [org.jboss.as.jpa] (MSC service thread 1-8) JBAS011403: Stopping Persistence Unit Service &apos;test.war#primary&apos;
+16:30:07,523 INFO  [org.hibernate.tool.hbm2ddl.SchemaExport] (MSC service thread 1-8) HHH000227: Running hbm2ddl schema export
+16:30:07,523 INFO  [stdout] (MSC service thread 1-8) Hibernate: alter table conference_talk drop foreign key FKB9C79EF864438C9
+16:30:07,523 INFO  [stdout] (MSC service thread 1-8) Hibernate: alter table conference_talk drop foreign key FKB9C79EFF40E9C4
+16:30:07,538 INFO  [stdout] (MSC service thread 1-8) Hibernate: alter table speakersfortalk_speaker drop foreign key FKA5E9A3E1A3A97F9B
+16:30:07,538 INFO  [stdout] (MSC service thread 1-8) Hibernate: alter table speakersfortalk_speaker drop foreign key FKA5E9A3E11E59C6D0
+16:30:07,538 INFO  [stdout] (MSC service thread 1-8) Hibernate: alter table talk drop foreign key FK3634ACFCD94CE4
+16:30:07,554 INFO  [stdout] (MSC service thread 1-8) Hibernate: drop table if exists conference
+16:30:07,554 INFO  [stdout] (MSC service thread 1-8) Hibernate: drop table if exists conference_talk
+16:30:07,554 INFO  [stdout] (MSC service thread 1-8) Hibernate: drop table if exists room
+16:30:07,554 INFO  [stdout] (MSC service thread 1-8) Hibernate: drop table if exists speaker
+16:30:07,570 INFO  [stdout] (MSC service thread 1-8) Hibernate: drop table if exists speakersfortalk
+16:30:07,570 INFO  [stdout] (MSC service thread 1-8) Hibernate: drop table if exists speakersfortalk_speaker
+16:30:07,570 INFO  [stdout] (MSC service thread 1-8) Hibernate: drop table if exists talk
+16:30:07,570 INFO  [stdout] (MSC service thread 1-8) Hibernate: drop table if exists hibernate_sequence
+16:30:07,570 INFO  [org.hibernate.tool.hbm2ddl.SchemaExport] (MSC service thread 1-8) HHH000230: Schema export complete
+16:30:07,601 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-7) JBAS015877: Stopped deployment test.war in 90ms
+16:30:07,616 INFO  [org.jboss.as.repository] (management-handler-thread - 3) JBAS014901: Content removed from location g:\ARBEITSUMGEBUNG\SERVER\jboss-as-7.1.1.Final\standalone\data\content\04\fe11a81d5e5052ad71147b7135bf97fbdd3200\content
+16:30:07,616 INFO  [org.jboss.as.server] (management-handler-thread - 3) JBAS018558: Undeployed &quot;test.war&quot;
+test.war:
+/WEB-INF/
+/WEB-INF/lib/
+/WEB-INF/lib/jboss-jms-api_1.1_spec-1.0.1.Final.jar
+/WEB-INF/lib/conference-core-SNAPSHOT.jar
+/WEB-INF/beans.xml
+/WEB-INF/classes/
+/WEB-INF/classes/com/
+/WEB-INF/classes/com/prodyna/
+/WEB-INF/classes/com/prodyna/conference/
+/WEB-INF/classes/com/prodyna/conference/service/
+/WEB-INF/classes/com/prodyna/conference/service/RoomServiceImpl.class
+/WEB-INF/classes/com/prodyna/conference/service/TalkService.class
+/WEB-INF/classes/com/prodyna/conference/service/ConferenceServiceImpl.class
+/WEB-INF/classes/com/prodyna/conference/service/ConferenceService.class
+/WEB-INF/classes/com/prodyna/conference/service/MappingHelper.class
+/WEB-INF/classes/com/prodyna/conference/service/SpeakerService.class
+/WEB-INF/classes/com/prodyna/conference/service/TalkServiceImpl.class
+/WEB-INF/classes/com/prodyna/conference/service/ConferenceTest.class
+/WEB-INF/classes/com/prodyna/conference/service/RoomTest.class
+/WEB-INF/classes/com/prodyna/conference/service/TalkTest.class
+/WEB-INF/classes/com/prodyna/conference/service/SpeakerTest.class
+/WEB-INF/classes/com/prodyna/conference/service/FindTalkBySpeakerTest.class
+/WEB-INF/classes/com/prodyna/conference/service/RoomService.class
+/WEB-INF/classes/com/prodyna/conference/service/SpeakerServiceImpl.class
+/WEB-INF/classes/com/prodyna/conference/service/model/
+/WEB-INF/classes/com/prodyna/conference/service/model/Room.class
+/WEB-INF/classes/com/prodyna/conference/service/model/validation/
+/WEB-INF/classes/com/prodyna/conference/service/model/validation/ValidTalk.class
+/WEB-INF/classes/com/prodyna/conference/service/model/validation/ValidTalk$List.class
+/WEB-INF/classes/com/prodyna/conference/service/model/validation/TalkValidator.class
+/WEB-INF/classes/com/prodyna/conference/service/model/Speaker.class
+/WEB-INF/classes/com/prodyna/conference/service/model/ConferenceDTO.class
+/WEB-INF/classes/com/prodyna/conference/service/model/Talk.class
+/WEB-INF/classes/com/prodyna/conference/service/model/Conference.class
+/WEB-INF/classes/com/prodyna/conference/service/model/SpeakerDTO.class
+/WEB-INF/classes/com/prodyna/conference/service/model/SpeakersForTalk.class
+/WEB-INF/classes/com/prodyna/conference/service/model/TalkDTO.class
+/WEB-INF/classes/com/prodyna/conference/service/model/RoomDTO.class
+/WEB-INF/classes/META-INF/
+/WEB-INF/classes/META-INF/persistence.xml
+16:30:08,209 INFO  [org.jboss.as.repository] (management-handler-thread - 4) JBAS014900: Content added at location g:\ARBEITSUMGEBUNG\SERVER\jboss-as-7.1.1.Final\standalone\data\content\d5\8f2a950a397567a90230d1cb1645b0b4c8fa87\content
+16:30:08,209 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-7) JBAS015876: Starting deployment of &quot;test.war&quot;
+16:30:08,443 INFO  [org.jboss.as.jpa] (MSC service thread 1-5) JBAS011401: Read persistence.xml for primary
+16:30:08,474 INFO  [org.jboss.weld.deployer] (MSC service thread 1-5) JBAS016002: Processing weld deployment test.war
+16:30:08,474 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-5) JNDI bindings for session bean named ConferenceServiceImpl in deployment unit deployment &quot;test.war&quot; are as follows:
+
+	java:global/test/ConferenceServiceImpl!com.prodyna.conference.service.ConferenceService
+	java:app/test/ConferenceServiceImpl!com.prodyna.conference.service.ConferenceService
+	java:module/ConferenceServiceImpl!com.prodyna.conference.service.ConferenceService
+	java:global/test/ConferenceServiceImpl
+	java:app/test/ConferenceServiceImpl
+	java:module/ConferenceServiceImpl
+
+16:30:08,474 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-5) JNDI bindings for session bean named MonitoringStartupBean in deployment unit deployment &quot;test.war&quot; are as follows:
+
+	java:global/test/MonitoringStartupBean!com.prodyna.core.monitoring.MonitoringStartupBean
+	java:app/test/MonitoringStartupBean!com.prodyna.core.monitoring.MonitoringStartupBean
+	java:module/MonitoringStartupBean!com.prodyna.core.monitoring.MonitoringStartupBean
+	java:global/test/MonitoringStartupBean
+	java:app/test/MonitoringStartupBean
+	java:module/MonitoringStartupBean
+
+16:30:08,474 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-5) JNDI bindings for session bean named SpeakerServiceImpl in deployment unit deployment &quot;test.war&quot; are as follows:
+
+	java:global/test/SpeakerServiceImpl!com.prodyna.conference.service.SpeakerService
+	java:app/test/SpeakerServiceImpl!com.prodyna.conference.service.SpeakerService
+	java:module/SpeakerServiceImpl!com.prodyna.conference.service.SpeakerService
+	java:global/test/SpeakerServiceImpl
+	java:app/test/SpeakerServiceImpl
+	java:module/SpeakerServiceImpl
+
+16:30:08,474 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-5) JNDI bindings for session bean named RoomServiceImpl in deployment unit deployment &quot;test.war&quot; are as follows:
+
+	java:global/test/RoomServiceImpl!com.prodyna.conference.service.RoomService
+	java:app/test/RoomServiceImpl!com.prodyna.conference.service.RoomService
+	java:module/RoomServiceImpl!com.prodyna.conference.service.RoomService
+	java:global/test/RoomServiceImpl
+	java:app/test/RoomServiceImpl
+	java:module/RoomServiceImpl
+
+16:30:08,490 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-5) JNDI bindings for session bean named TalkServiceImpl in deployment unit deployment &quot;test.war&quot; are as follows:
+
+	java:global/test/TalkServiceImpl!com.prodyna.conference.service.TalkService
+	java:app/test/TalkServiceImpl!com.prodyna.conference.service.TalkService
+	java:module/TalkServiceImpl!com.prodyna.conference.service.TalkService
+	java:global/test/TalkServiceImpl
+	java:app/test/TalkServiceImpl
+	java:module/TalkServiceImpl
+
+16:30:08,537 INFO  [org.jboss.weld.deployer] (MSC service thread 1-3) JBAS016005: Starting Services for CDI deployment: test.war
+16:30:08,552 INFO  [org.jboss.as.jpa] (MSC service thread 1-8) JBAS011402: Starting Persistence Unit Service &apos;test.war#primary&apos;
+16:30:08,552 INFO  [org.hibernate.ejb.Ejb3Configuration] (MSC service thread 1-8) HHH000204: Processing PersistenceUnitInfo [
+	name: primary
+	...]
+16:30:08,584 INFO  [org.hibernate.service.jdbc.connections.internal.ConnectionProviderInitiator] (MSC service thread 1-8) HHH000130: Instantiating explicit connection provider: org.hibernate.ejb.connection.InjectedDataSourceConnectionProvider
+16:30:08,584 INFO  [org.hibernate.dialect.Dialect] (MSC service thread 1-8) HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+16:30:08,599 INFO  [org.hibernate.engine.transaction.internal.TransactionFactoryInitiator] (MSC service thread 1-8) HHH000268: Transaction strategy: org.hibernate.engine.transaction.internal.jta.CMTTransactionFactory
+16:30:08,599 INFO  [org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory] (MSC service thread 1-8) HHH000397: Using ASTQueryTranslatorFactory
+16:30:08,646 INFO  [org.hibernate.tool.hbm2ddl.SchemaExport] (MSC service thread 1-8) HHH000227: Running hbm2ddl schema export
+16:30:08,646 INFO  [stdout] (MSC service thread 1-8) Hibernate: alter table conference_talk drop foreign key FKB9C79EF864438C9
+16:30:08,646 ERROR [org.hibernate.tool.hbm2ddl.SchemaExport] (MSC service thread 1-8) HHH000389: Unsuccessful: alter table conference_talk drop foreign key FKB9C79EF864438C9
+16:30:08,646 ERROR [org.hibernate.tool.hbm2ddl.SchemaExport] (MSC service thread 1-8) Table &apos;conference.conference_talk&apos; doesn&apos;t exist
+16:30:08,646 INFO  [stdout] (MSC service thread 1-8) Hibernate: alter table conference_talk drop foreign key FKB9C79EFF40E9C4
+16:30:08,646 ERROR [org.hibernate.tool.hbm2ddl.SchemaExport] (MSC service thread 1-8) HHH000389: Unsuccessful: alter table conference_talk drop foreign key FKB9C79EFF40E9C4
+16:30:08,646 ERROR [org.hibernate.tool.hbm2ddl.SchemaExport] (MSC service thread 1-8) Table &apos;conference.conference_talk&apos; doesn&apos;t exist
+16:30:08,646 INFO  [stdout] (MSC service thread 1-8) Hibernate: alter table speakersfortalk_speaker drop foreign key FKA5E9A3E1A3A97F9B
+16:30:08,646 ERROR [org.hibernate.tool.hbm2ddl.SchemaExport] (MSC service thread 1-8) HHH000389: Unsuccessful: alter table speakersfortalk_speaker drop foreign key FKA5E9A3E1A3A97F9B
+16:30:08,646 ERROR [org.hibernate.tool.hbm2ddl.SchemaExport] (MSC service thread 1-8) Table &apos;conference.speakersfortalk_speaker&apos; doesn&apos;t exist
+16:30:08,646 INFO  [stdout] (MSC service thread 1-8) Hibernate: alter table speakersfortalk_speaker drop foreign key FKA5E9A3E11E59C6D0
+16:30:08,662 ERROR [org.hibernate.tool.hbm2ddl.SchemaExport] (MSC service thread 1-8) HHH000389: Unsuccessful: alter table speakersfortalk_speaker drop foreign key FKA5E9A3E11E59C6D0
+16:30:08,662 ERROR [org.hibernate.tool.hbm2ddl.SchemaExport] (MSC service thread 1-8) Table &apos;conference.speakersfortalk_speaker&apos; doesn&apos;t exist
+16:30:08,662 INFO  [stdout] (MSC service thread 1-8) Hibernate: alter table talk drop foreign key FK3634ACFCD94CE4
+16:30:08,662 ERROR [org.hibernate.tool.hbm2ddl.SchemaExport] (MSC service thread 1-8) HHH000389: Unsuccessful: alter table talk drop foreign key FK3634ACFCD94CE4
+16:30:08,662 ERROR [org.hibernate.tool.hbm2ddl.SchemaExport] (MSC service thread 1-8) Table &apos;conference.talk&apos; doesn&apos;t exist
+16:30:08,662 INFO  [stdout] (MSC service thread 1-8) Hibernate: drop table if exists conference
+16:30:08,662 INFO  [stdout] (MSC service thread 1-8) Hibernate: drop table if exists conference_talk
+16:30:08,662 INFO  [stdout] (MSC service thread 1-8) Hibernate: drop table if exists room
+16:30:08,662 INFO  [stdout] (MSC service thread 1-8) Hibernate: drop table if exists speaker
+16:30:08,662 INFO  [stdout] (MSC service thread 1-8) Hibernate: drop table if exists speakersfortalk
+16:30:08,662 INFO  [stdout] (MSC service thread 1-8) Hibernate: drop table if exists speakersfortalk_speaker
+16:30:08,662 INFO  [stdout] (MSC service thread 1-8) Hibernate: drop table if exists talk
+16:30:08,677 INFO  [stdout] (MSC service thread 1-8) Hibernate: drop table if exists hibernate_sequence
+16:30:08,677 INFO  [stdout] (MSC service thread 1-8) Hibernate: create table conference (id bigint not null, description varchar(255) not null, end date not null, name varchar(255) not null, start date not null, updateTimeStamp datetime, primary key (id))
+16:30:08,693 INFO  [stdout] (MSC service thread 1-8) Hibernate: create table conference_talk (conference_id bigint not null, talks_id bigint not null, primary key (conference_id, talks_id), unique (talks_id))
+16:30:08,708 INFO  [stdout] (MSC service thread 1-8) Hibernate: create table room (id bigint not null, capacity integer not null check (capacity&gt;=1), name varchar(255) not null, updateTimeStamp datetime, primary key (id))
+16:30:08,724 INFO  [stdout] (MSC service thread 1-8) Hibernate: create table speaker (id bigint not null, email varchar(255) not null, firstname varchar(255) not null, name varchar(255) not null, updateTimeStamp datetime, primary key (id), unique (email))
+16:30:08,740 INFO  [stdout] (MSC service thread 1-8) Hibernate: create table speakersfortalk (id bigint not null, primary key (id))
+16:30:08,740 INFO  [stdout] (MSC service thread 1-8) Hibernate: create table speakersfortalk_speaker (speakersfortalk_id bigint not null, speakers_id bigint not null, primary key (speakersfortalk_id, speakers_id))
+16:30:08,755 INFO  [stdout] (MSC service thread 1-8) Hibernate: create table talk (id bigint not null, description varchar(255) not null, durationInSeconds bigint not null check (durationInSeconds&gt;=1), end date not null, name varchar(255) not null, start date not null, updateTimeStamp datetime, room_id bigint not null, primary key (id))
+16:30:08,771 INFO  [stdout] (MSC service thread 1-8) Hibernate: alter table conference_talk add index FKB9C79EF864438C9 (talks_id), add constraint FKB9C79EF864438C9 foreign key (talks_id) references talk (id)
+16:30:08,802 INFO  [stdout] (MSC service thread 1-8) Hibernate: alter table conference_talk add index FKB9C79EFF40E9C4 (conference_id), add constraint FKB9C79EFF40E9C4 foreign key (conference_id) references conference (id)
+16:30:08,818 INFO  [stdout] (MSC service thread 1-8) Hibernate: alter table speakersfortalk_speaker add index FKA5E9A3E1A3A97F9B (speakers_id), add constraint FKA5E9A3E1A3A97F9B foreign key (speakers_id) references speaker (id)
+16:30:08,849 INFO  [stdout] (MSC service thread 1-8) Hibernate: alter table speakersfortalk_speaker add index FKA5E9A3E11E59C6D0 (speakersfortalk_id), add constraint FKA5E9A3E11E59C6D0 foreign key (speakersfortalk_id) references speakersfortalk (id)
+16:30:08,880 INFO  [stdout] (MSC service thread 1-8) Hibernate: alter table talk add index FK3634ACFCD94CE4 (room_id), add constraint FK3634ACFCD94CE4 foreign key (room_id) references room (id)
+16:30:08,896 INFO  [stdout] (MSC service thread 1-8) Hibernate: create table hibernate_sequence ( next_val bigint )
+16:30:08,911 INFO  [stdout] (MSC service thread 1-8) Hibernate: insert into hibernate_sequence values ( 100 )
+16:30:08,911 INFO  [org.hibernate.tool.hbm2ddl.SchemaExport] (MSC service thread 1-8) HHH000230: Schema export complete
+16:30:08,911 INFO  [org.jboss.weld.deployer] (MSC service thread 1-7) JBAS016008: Starting weld service for deployment test.war
+16:30:09,098 Information [com.prodyna.core.monitoring.MonitoringStartupBean] (MSC service thread 1-1) PerformanceMBean registered
+16:30:09,114 INFO  [org.jboss.web] (MSC service thread 1-5) JBAS018210: Registering web context: /test
+16:30:09,130 INFO  [org.jboss.as.server] (management-handler-thread - 4) JBAS018559: Deployed &quot;test.war&quot;
+</system-out>
+    <system-err>Sep 21, 2013 4:30:07 PM org.jboss.shrinkwrap.resolver.impl.maven.LogRepositoryListener metadataInvalid
+Warnung: Invalid metadata com.prodyna.conference:conference-core:SNAPSHOT/maven-metadata.xml
+Sep 21, 2013 4:30:07 PM org.jboss.shrinkwrap.resolver.impl.maven.LogRepositoryListener metadataInvalid
+Warnung: Invalid metadata com.prodyna.conference:conference-core:SNAPSHOT/maven-metadata.xml
+Sep 21, 2013 4:30:07 PM org.jboss.shrinkwrap.resolver.impl.maven.LogRepositoryListener metadataInvalid
+Warnung: Invalid metadata com.prodyna.conference:conference:SNAPSHOT/maven-metadata.xml
+Sep 21, 2013 4:30:07 PM org.jboss.shrinkwrap.resolver.impl.maven.LogRepositoryListener metadataInvalid
+Warnung: Invalid metadata com.prodyna.conference:conference-core:SNAPSHOT/maven-metadata.xml
+</system-err>
+  </testcase>
+</testsuite>
