@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="1.342" errors="0" skipped="1" tests="1" name="com.prodyna.conference.service.TalkTest">
+<testsuite failures="0" time="1.625" errors="1" skipped="0" tests="1" name="com.prodyna.conference.service.TalkTest">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="c:\Program Files\Java\jdk1.7.0_40\jre\bin"/>
@@ -61,29 +61,149 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase time="1.342" classname="com.prodyna.conference.service.TalkTest" name="test">
-    <skipped/>
-    <system-out>16:30:12,109 INFO  [org.jboss.weld.deployer] (MSC service thread 1-7) JBAS016009: Stopping weld service for deployment test.war
-16:30:12,109 INFO  [org.jboss.as.jpa] (MSC service thread 1-5) JBAS011403: Stopping Persistence Unit Service &apos;test.war#primary&apos;
-16:30:12,109 INFO  [org.hibernate.tool.hbm2ddl.SchemaExport] (MSC service thread 1-5) HHH000227: Running hbm2ddl schema export
-16:30:12,109 INFO  [stdout] (MSC service thread 1-5) Hibernate: alter table conference_talk drop foreign key FKB9C79EF864438C9
-16:30:12,125 INFO  [stdout] (MSC service thread 1-5) Hibernate: alter table conference_talk drop foreign key FKB9C79EFF40E9C4
-16:30:12,125 INFO  [stdout] (MSC service thread 1-5) Hibernate: alter table speakersfortalk_speaker drop foreign key FKA5E9A3E1A3A97F9B
-16:30:12,140 INFO  [stdout] (MSC service thread 1-5) Hibernate: alter table speakersfortalk_speaker drop foreign key FKA5E9A3E11E59C6D0
-16:30:12,140 INFO  [stdout] (MSC service thread 1-5) Hibernate: alter table talk drop foreign key FK3634ACFCD94CE4
-16:30:12,156 INFO  [stdout] (MSC service thread 1-5) Hibernate: drop table if exists conference
-16:30:12,156 INFO  [stdout] (MSC service thread 1-5) Hibernate: drop table if exists conference_talk
-16:30:12,156 INFO  [stdout] (MSC service thread 1-5) Hibernate: drop table if exists room
-16:30:12,156 INFO  [stdout] (MSC service thread 1-5) Hibernate: drop table if exists speaker
-16:30:12,156 INFO  [stdout] (MSC service thread 1-5) Hibernate: drop table if exists speakersfortalk
-16:30:12,172 INFO  [stdout] (MSC service thread 1-5) Hibernate: drop table if exists speakersfortalk_speaker
-16:30:12,172 INFO  [stdout] (MSC service thread 1-5) Hibernate: drop table if exists talk
-16:30:12,172 INFO  [stdout] (MSC service thread 1-5) Hibernate: drop table if exists hibernate_sequence
-16:30:12,172 INFO  [org.hibernate.tool.hbm2ddl.SchemaExport] (MSC service thread 1-5) HHH000230: Schema export complete
-16:30:12,203 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-3) JBAS015877: Stopped deployment test.war in 107ms
-16:30:12,218 INFO  [org.jboss.as.repository] (management-handler-thread - 4) JBAS014901: Content removed from location g:\ARBEITSUMGEBUNG\SERVER\jboss-as-7.1.1.Final\standalone\data\content\e6\49720a4cf21a016ef38edf08d6cbe141e45ce7\content
-16:30:12,218 INFO  [org.jboss.as.server] (management-handler-thread - 4) JBAS018558: Undeployed &quot;test.war&quot;
-test.war:
+  <testcase time="1.625" classname="com.prodyna.conference.service.TalkTest" name="com.prodyna.conference.service.TalkTest">
+    <error message="Cannot deploy: test.war" type="org.jboss.arquillian.container.spi.client.container.DeploymentException">org.jboss.arquillian.container.spi.client.container.DeploymentException: Cannot deploy: test.war
+	at org.jboss.as.arquillian.container.ArchiveDeployer.deployInternal(ArchiveDeployer.java:83)
+	at org.jboss.as.arquillian.container.ArchiveDeployer.deployInternal(ArchiveDeployer.java:64)
+	at org.jboss.as.arquillian.container.ArchiveDeployer.deploy(ArchiveDeployer.java:46)
+	at org.jboss.as.arquillian.container.CommonDeployableContainer.deploy(CommonDeployableContainer.java:145)
+	at org.jboss.arquillian.container.impl.client.container.ContainerDeployController$3.call(ContainerDeployController.java:161)
+	at org.jboss.arquillian.container.impl.client.container.ContainerDeployController$3.call(ContainerDeployController.java:128)
+	at org.jboss.arquillian.container.impl.client.container.ContainerDeployController.executeOperation(ContainerDeployController.java:271)
+	at org.jboss.arquillian.container.impl.client.container.ContainerDeployController.deploy(ContainerDeployController.java:127)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:99)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:81)
+	at org.jboss.arquillian.container.impl.client.container.DeploymentExceptionHandler.verifyExpectedExceptionDuringDeploy(DeploymentExceptionHandler.java:50)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:88)
+	at org.jboss.arquillian.container.impl.client.ContainerDeploymentContextHandler.createDeploymentContext(ContainerDeploymentContextHandler.java:78)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:88)
+	at org.jboss.arquillian.container.impl.client.ContainerDeploymentContextHandler.createContainerContext(ContainerDeploymentContextHandler.java:57)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:88)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:135)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:115)
+	at org.jboss.arquillian.core.impl.EventImpl.fire(EventImpl.java:67)
+	at org.jboss.arquillian.container.impl.client.container.ContainerDeployController$1.perform(ContainerDeployController.java:95)
+	at org.jboss.arquillian.container.impl.client.container.ContainerDeployController$1.perform(ContainerDeployController.java:80)
+	at org.jboss.arquillian.container.impl.client.container.ContainerDeployController.forEachDeployment(ContainerDeployController.java:263)
+	at org.jboss.arquillian.container.impl.client.container.ContainerDeployController.forEachManagedDeployment(ContainerDeployController.java:239)
+	at org.jboss.arquillian.container.impl.client.container.ContainerDeployController.deployManaged(ContainerDeployController.java:79)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:99)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:81)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:135)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:115)
+	at org.jboss.arquillian.core.impl.EventImpl.fire(EventImpl.java:67)
+	at org.jboss.arquillian.container.test.impl.client.ContainerEventController.execute(ContainerEventController.java:101)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:99)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:81)
+	at org.jboss.arquillian.test.impl.TestContextHandler.createClassContext(TestContextHandler.java:75)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:88)
+	at org.jboss.arquillian.test.impl.TestContextHandler.createSuiteContext(TestContextHandler.java:60)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:94)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:88)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:135)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:115)
+	at org.jboss.arquillian.test.impl.EventTestRunnerAdaptor.beforeClass(EventTestRunnerAdaptor.java:80)
+	at org.jboss.arquillian.junit.Arquillian$2.evaluate(Arquillian.java:182)
+	at org.jboss.arquillian.junit.Arquillian.multiExecute(Arquillian.java:314)
+	at org.jboss.arquillian.junit.Arquillian.access$100(Arquillian.java:46)
+	at org.jboss.arquillian.junit.Arquillian$3.evaluate(Arquillian.java:199)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:300)
+	at org.jboss.arquillian.junit.Arquillian.run(Arquillian.java:147)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:252)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:141)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:112)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:189)
+	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:165)
+	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
+Caused by: java.lang.Exception: {
+    &quot;JBAS014671: Fehlgeschlagene Dienste&quot; =&gt; {&quot;jboss.deployment.unit.\&quot;test.war\&quot;.WeldService&quot; =&gt; &quot;org.jboss.msc.service.StartException in service jboss.deployment.unit.\&quot;test.war\&quot;.WeldService: org.jboss.weld.exceptions.DeploymentException: WELD-001409 Ambiguous dependencies for type [PerformanceMXBean] with qualifiers [@Default] at injection point [[field] @Inject private com.prodyna.conference.core.event.PerformanceObserver.performanceMgmtBean]. Possible dependencies [[Managed Bean [class com.prodyna.core.monitoring.Performance] with qualifiers [@Any @Default], Producer Method [PerformanceMXBean] with qualifiers [@Any @Default] declared as [[method] @Produces public com.prodyna.conference.core.util.MBeanProducer.producePerformanceMgmtBean()]]]
+    Caused by: org.jboss.weld.exceptions.DeploymentException: WELD-001409 Ambiguous dependencies for type [PerformanceMXBean] with qualifiers [@Default] at injection point [[field] @Inject private com.prodyna.conference.core.event.PerformanceObserver.performanceMgmtBean]. Possible dependencies [[Managed Bean [class com.prodyna.core.monitoring.Performance] with qualifiers [@Any @Default], Producer Method [PerformanceMXBean] with qualifiers [@Any @Default] declared as [[method] @Produces public com.prodyna.conference.core.util.MBeanProducer.producePerformanceMgmtBean()]]]&quot;},
+    &quot;JBAS014771: Dienste mit fehlenden/unverfügbaren Abhängigkeiten &quot; =&gt; [
+        &quot;jboss.deployment.unit.\&quot;test.war\&quot;.component.MonitoringStartupBean.WeldInstantiator [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,
+        &quot;jboss.web.deployment.default-host./test [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,
+        &quot;jboss.deployment.unit.\&quot;test.war\&quot;.beanmanager [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,
+        &quot;jboss.deployment.unit.\&quot;test.war\&quot;.component.RoomServiceImpl.WeldInstantiator [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,
+        &quot;jboss.deployment.unit.\&quot;test.war\&quot;.component.SpeakerServiceImpl.START [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,
+        &quot;jboss.deployment.unit.\&quot;test.war\&quot;.component.RoomServiceImpl.START [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,
+        &quot;jboss.deployment.unit.\&quot;test.war\&quot;.component.ConferenceServiceImpl.START [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,
+        &quot;jboss.deployment.unit.\&quot;test.war\&quot;.component.\&quot;javax.servlet.jsp.jstl.tlv.PermittedTaglibsTLV\&quot;.START [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,
+        &quot;jboss.deployment.unit.\&quot;test.war\&quot;.component.\&quot;javax.servlet.jsp.jstl.tlv.PermittedTaglibsTLV\&quot;.WeldInstantiator [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,
+        &quot;jboss.deployment.unit.\&quot;test.war\&quot;.component.\&quot;org.apache.catalina.servlets.DefaultServlet\&quot;.START [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,
+        &quot;jboss.deployment.unit.\&quot;test.war\&quot;.component.\&quot;org.apache.jasper.servlet.JspServlet\&quot;.START [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,
+        &quot;jboss.deployment.unit.\&quot;test.war\&quot;.component.SpeakerServiceImpl.WeldInstantiator [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,
+        &quot;jboss.deployment.unit.\&quot;test.war\&quot;.component.\&quot;com.sun.faces.config.ConfigureListener\&quot;.START [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,
+        &quot;jboss.deployment.unit.\&quot;test.war\&quot;.jboss.security.jacc [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,
+        &quot;jboss.deployment.unit.\&quot;test.war\&quot;.component.\&quot;org.jboss.as.weld.webtier.jsp.JspInitializationListener\&quot;.START [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,
+        &quot;jboss.deployment.unit.\&quot;test.war\&quot;.component.TalkServiceImpl.START [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,
+        &quot;jboss.deployment.unit.\&quot;test.war\&quot;.component.\&quot;javax.faces.webapp.FacetTag\&quot;.START [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,
+        &quot;jboss.deployment.unit.\&quot;test.war\&quot;.component.\&quot;org.apache.jasper.servlet.JspServlet\&quot;.WeldInstantiator [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,
+        &quot;jboss.deployment.unit.\&quot;test.war\&quot;.component.\&quot;org.apache.catalina.servlets.DefaultServlet\&quot;.WeldInstantiator [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,
+        &quot;jboss.deployment.unit.\&quot;test.war\&quot;.component.\&quot;javax.servlet.jsp.jstl.tlv.ScriptFreeTLV\&quot;.WeldInstantiator [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,
+        &quot;jboss.deployment.unit.\&quot;test.war\&quot;.component.ConferenceServiceImpl.WeldInstantiator [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,
+        &quot;jboss.deployment.unit.\&quot;test.war\&quot;.component.\&quot;org.jboss.as.weld.webtier.jsp.JspInitializationListener\&quot;.WeldInstantiator [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,
+        &quot;jboss.deployment.unit.\&quot;test.war\&quot;.component.\&quot;javax.faces.webapp.FacetTag\&quot;.WeldInstantiator [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,
+        &quot;jboss.deployment.unit.\&quot;test.war\&quot;.component.\&quot;org.jboss.arquillian.protocol.servlet.runner.ServletTestRunner\&quot;.WeldInstantiator [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,
+        &quot;jboss.deployment.unit.\&quot;test.war\&quot;.component.TalkServiceImpl.WeldInstantiator [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,
+        &quot;jboss.deployment.unit.\&quot;test.war\&quot;.component.\&quot;javax.servlet.jsp.jstl.tlv.ScriptFreeTLV\&quot;.START [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,
+        &quot;jboss.deployment.unit.\&quot;test.war\&quot;.component.\&quot;com.sun.faces.config.ConfigureListener\&quot;.WeldInstantiator [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,
+        &quot;jboss.deployment.unit.\&quot;test.war\&quot;.component.\&quot;org.jboss.arquillian.protocol.servlet.runner.ServletTestRunner\&quot;.START [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,
+        &quot;jboss.deployment.unit.\&quot;test.war\&quot;.component.MonitoringStartupBean.START [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;
+    ]
+}
+	at org.jboss.as.controller.client.helpers.standalone.impl.ServerDeploymentPlanResultFuture.getActionResult(ServerDeploymentPlanResultFuture.java:134)
+	at org.jboss.as.controller.client.helpers.standalone.impl.ServerDeploymentPlanResultFuture.getResultFromNode(ServerDeploymentPlanResultFuture.java:123)
+	at org.jboss.as.controller.client.helpers.standalone.impl.ServerDeploymentPlanResultFuture.get(ServerDeploymentPlanResultFuture.java:85)
+	at org.jboss.as.controller.client.helpers.standalone.impl.ServerDeploymentPlanResultFuture.get(ServerDeploymentPlanResultFuture.java:42)
+	at org.jboss.as.controller.client.helpers.standalone.ServerDeploymentHelper.deploy(ServerDeploymentHelper.java:52)
+	at org.jboss.as.arquillian.container.ArchiveDeployer.deployInternal(ArchiveDeployer.java:77)
+	... 96 more
+</error>
+    <system-out>test.war:
 /WEB-INF/
 /WEB-INF/lib/
 /WEB-INF/lib/jboss-jms-api_1.1_spec-1.0.1.Final.jar
@@ -98,7 +218,6 @@ test.war:
 /WEB-INF/classes/com/prodyna/conference/service/TalkService.class
 /WEB-INF/classes/com/prodyna/conference/service/ConferenceServiceImpl.class
 /WEB-INF/classes/com/prodyna/conference/service/ConferenceService.class
-/WEB-INF/classes/com/prodyna/conference/service/MappingHelper.class
 /WEB-INF/classes/com/prodyna/conference/service/SpeakerService.class
 /WEB-INF/classes/com/prodyna/conference/service/TalkServiceImpl.class
 /WEB-INF/classes/com/prodyna/conference/service/ConferenceTest.class
@@ -118,17 +237,15 @@ test.war:
 /WEB-INF/classes/com/prodyna/conference/service/model/ConferenceDTO.class
 /WEB-INF/classes/com/prodyna/conference/service/model/Talk.class
 /WEB-INF/classes/com/prodyna/conference/service/model/Conference.class
-/WEB-INF/classes/com/prodyna/conference/service/model/SpeakerDTO.class
 /WEB-INF/classes/com/prodyna/conference/service/model/SpeakersForTalk.class
 /WEB-INF/classes/com/prodyna/conference/service/model/TalkDTO.class
-/WEB-INF/classes/com/prodyna/conference/service/model/RoomDTO.class
 /WEB-INF/classes/META-INF/
 /WEB-INF/classes/META-INF/persistence.xml
-16:30:12,749 INFO  [org.jboss.as.repository] (management-handler-thread - 1) JBAS014900: Content added at location g:\ARBEITSUMGEBUNG\SERVER\jboss-as-7.1.1.Final\standalone\data\content\de\f52d713ff153e58a1dccece6be79f6646f12e5\content
-16:30:12,749 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-6) JBAS015876: Starting deployment of &quot;test.war&quot;
-16:30:12,967 INFO  [org.jboss.as.jpa] (MSC service thread 1-5) JBAS011401: Read persistence.xml for primary
-16:30:12,998 INFO  [org.jboss.weld.deployer] (MSC service thread 1-6) JBAS016002: Processing weld deployment test.war
-16:30:12,998 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-6) JNDI bindings for session bean named ConferenceServiceImpl in deployment unit deployment &quot;test.war&quot; are as follows:
+20:05:29,815 INFO  [org.jboss.as.repository] (management-handler-thread - 2) JBAS014900: Content an Speicherort g:\ARBEITSUMGEBUNG\SERVER\jboss-as-7.1.3.Final\standalone\data\content\6b\274a6f38aed3878d0358da58cf608789b1aff2\content hinzugefügt
+20:05:29,818 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-7) JBAS015876: Starte Deployment von &quot;test.war&quot;
+20:05:30,033 INFO  [org.jboss.as.jpa] (MSC service thread 1-3) JBAS011401: Lese persistence.xml für primary
+20:05:30,057 INFO  [org.jboss.weld.deployer] (MSC service thread 1-4) JBAS016002: Bearbeite Weld-Deployment test.war
+20:05:30,058 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-4) JNDI bindings for session bean named ConferenceServiceImpl in deployment unit deployment &quot;test.war&quot; are as follows:
 
 	java:global/test/ConferenceServiceImpl!com.prodyna.conference.service.ConferenceService
 	java:app/test/ConferenceServiceImpl!com.prodyna.conference.service.ConferenceService
@@ -137,7 +254,7 @@ test.war:
 	java:app/test/ConferenceServiceImpl
 	java:module/ConferenceServiceImpl
 
-16:30:12,998 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-6) JNDI bindings for session bean named MonitoringStartupBean in deployment unit deployment &quot;test.war&quot; are as follows:
+20:05:30,059 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-4) JNDI bindings for session bean named MonitoringStartupBean in deployment unit deployment &quot;test.war&quot; are as follows:
 
 	java:global/test/MonitoringStartupBean!com.prodyna.core.monitoring.MonitoringStartupBean
 	java:app/test/MonitoringStartupBean!com.prodyna.core.monitoring.MonitoringStartupBean
@@ -146,7 +263,7 @@ test.war:
 	java:app/test/MonitoringStartupBean
 	java:module/MonitoringStartupBean
 
-16:30:12,998 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-6) JNDI bindings for session bean named SpeakerServiceImpl in deployment unit deployment &quot;test.war&quot; are as follows:
+20:05:30,059 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-4) JNDI bindings for session bean named SpeakerServiceImpl in deployment unit deployment &quot;test.war&quot; are as follows:
 
 	java:global/test/SpeakerServiceImpl!com.prodyna.conference.service.SpeakerService
 	java:app/test/SpeakerServiceImpl!com.prodyna.conference.service.SpeakerService
@@ -155,7 +272,7 @@ test.war:
 	java:app/test/SpeakerServiceImpl
 	java:module/SpeakerServiceImpl
 
-16:30:12,998 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-6) JNDI bindings for session bean named RoomServiceImpl in deployment unit deployment &quot;test.war&quot; are as follows:
+20:05:30,059 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-4) JNDI bindings for session bean named RoomServiceImpl in deployment unit deployment &quot;test.war&quot; are as follows:
 
 	java:global/test/RoomServiceImpl!com.prodyna.conference.service.RoomService
 	java:app/test/RoomServiceImpl!com.prodyna.conference.service.RoomService
@@ -164,7 +281,7 @@ test.war:
 	java:app/test/RoomServiceImpl
 	java:module/RoomServiceImpl
 
-16:30:12,998 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-6) JNDI bindings for session bean named TalkServiceImpl in deployment unit deployment &quot;test.war&quot; are as follows:
+20:05:30,059 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-4) JNDI bindings for session bean named TalkServiceImpl in deployment unit deployment &quot;test.war&quot; are as follows:
 
 	java:global/test/TalkServiceImpl!com.prodyna.conference.service.TalkService
 	java:app/test/TalkServiceImpl!com.prodyna.conference.service.TalkService
@@ -173,66 +290,270 @@ test.war:
 	java:app/test/TalkServiceImpl
 	java:module/TalkServiceImpl
 
-16:30:13,045 INFO  [org.jboss.weld.deployer] (MSC service thread 1-7) JBAS016005: Starting Services for CDI deployment: test.war
-16:30:13,045 INFO  [org.jboss.as.jpa] (MSC service thread 1-1) JBAS011402: Starting Persistence Unit Service &apos;test.war#primary&apos;
-16:30:13,045 INFO  [org.hibernate.ejb.Ejb3Configuration] (MSC service thread 1-1) HHH000204: Processing PersistenceUnitInfo [
+20:05:30,109 INFO  [org.jboss.weld.deployer] (MSC service thread 1-7) JBAS016005: Starte Dienste für CDI-Deployment: test.war
+20:05:30,114 INFO  [org.jboss.as.osgi] (MSC service thread 1-3) JBAS011907: Registrierung von Modul: Module &quot;deployment.test.war:main&quot; from Service Module Loader
+20:05:30,115 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 27) JBAS011402: Starte Persistence Unit Dienst &apos;test.war#primary&apos;
+20:05:30,117 INFO  [org.hibernate.ejb.Ejb3Configuration] (ServerService Thread Pool -- 27) HHH000204: Processing PersistenceUnitInfo [
 	name: primary
 	...]
-16:30:13,076 INFO  [org.hibernate.service.jdbc.connections.internal.ConnectionProviderInitiator] (MSC service thread 1-1) HHH000130: Instantiating explicit connection provider: org.hibernate.ejb.connection.InjectedDataSourceConnectionProvider
-16:30:13,092 INFO  [org.hibernate.dialect.Dialect] (MSC service thread 1-1) HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
-16:30:13,092 INFO  [org.hibernate.engine.transaction.internal.TransactionFactoryInitiator] (MSC service thread 1-1) HHH000268: Transaction strategy: org.hibernate.engine.transaction.internal.jta.CMTTransactionFactory
-16:30:13,092 INFO  [org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory] (MSC service thread 1-1) HHH000397: Using ASTQueryTranslatorFactory
-16:30:13,123 INFO  [org.hibernate.tool.hbm2ddl.SchemaExport] (MSC service thread 1-1) HHH000227: Running hbm2ddl schema export
-16:30:13,123 INFO  [stdout] (MSC service thread 1-1) Hibernate: alter table conference_talk drop foreign key FKB9C79EF864438C9
-16:30:13,123 ERROR [org.hibernate.tool.hbm2ddl.SchemaExport] (MSC service thread 1-1) HHH000389: Unsuccessful: alter table conference_talk drop foreign key FKB9C79EF864438C9
-16:30:13,123 ERROR [org.hibernate.tool.hbm2ddl.SchemaExport] (MSC service thread 1-1) Table &apos;conference.conference_talk&apos; doesn&apos;t exist
-16:30:13,139 INFO  [stdout] (MSC service thread 1-1) Hibernate: alter table conference_talk drop foreign key FKB9C79EFF40E9C4
-16:30:13,139 ERROR [org.hibernate.tool.hbm2ddl.SchemaExport] (MSC service thread 1-1) HHH000389: Unsuccessful: alter table conference_talk drop foreign key FKB9C79EFF40E9C4
-16:30:13,139 ERROR [org.hibernate.tool.hbm2ddl.SchemaExport] (MSC service thread 1-1) Table &apos;conference.conference_talk&apos; doesn&apos;t exist
-16:30:13,139 INFO  [stdout] (MSC service thread 1-1) Hibernate: alter table speakersfortalk_speaker drop foreign key FKA5E9A3E1A3A97F9B
-16:30:13,139 ERROR [org.hibernate.tool.hbm2ddl.SchemaExport] (MSC service thread 1-1) HHH000389: Unsuccessful: alter table speakersfortalk_speaker drop foreign key FKA5E9A3E1A3A97F9B
-16:30:13,139 ERROR [org.hibernate.tool.hbm2ddl.SchemaExport] (MSC service thread 1-1) Table &apos;conference.speakersfortalk_speaker&apos; doesn&apos;t exist
-16:30:13,139 INFO  [stdout] (MSC service thread 1-1) Hibernate: alter table speakersfortalk_speaker drop foreign key FKA5E9A3E11E59C6D0
-16:30:13,139 ERROR [org.hibernate.tool.hbm2ddl.SchemaExport] (MSC service thread 1-1) HHH000389: Unsuccessful: alter table speakersfortalk_speaker drop foreign key FKA5E9A3E11E59C6D0
-16:30:13,139 ERROR [org.hibernate.tool.hbm2ddl.SchemaExport] (MSC service thread 1-1) Table &apos;conference.speakersfortalk_speaker&apos; doesn&apos;t exist
-16:30:13,139 INFO  [stdout] (MSC service thread 1-1) Hibernate: alter table talk drop foreign key FK3634ACFCD94CE4
-16:30:13,139 ERROR [org.hibernate.tool.hbm2ddl.SchemaExport] (MSC service thread 1-1) HHH000389: Unsuccessful: alter table talk drop foreign key FK3634ACFCD94CE4
-16:30:13,139 ERROR [org.hibernate.tool.hbm2ddl.SchemaExport] (MSC service thread 1-1) Table &apos;conference.talk&apos; doesn&apos;t exist
-16:30:13,139 INFO  [stdout] (MSC service thread 1-1) Hibernate: drop table if exists conference
-16:30:13,139 INFO  [stdout] (MSC service thread 1-1) Hibernate: drop table if exists conference_talk
-16:30:13,139 INFO  [stdout] (MSC service thread 1-1) Hibernate: drop table if exists room
-16:30:13,139 INFO  [stdout] (MSC service thread 1-1) Hibernate: drop table if exists speaker
-16:30:13,139 INFO  [stdout] (MSC service thread 1-1) Hibernate: drop table if exists speakersfortalk
-16:30:13,154 INFO  [stdout] (MSC service thread 1-1) Hibernate: drop table if exists speakersfortalk_speaker
-16:30:13,154 INFO  [stdout] (MSC service thread 1-1) Hibernate: drop table if exists talk
-16:30:13,154 INFO  [stdout] (MSC service thread 1-1) Hibernate: drop table if exists hibernate_sequence
-16:30:13,154 INFO  [stdout] (MSC service thread 1-1) Hibernate: create table conference (id bigint not null, description varchar(255) not null, end date not null, name varchar(255) not null, start date not null, updateTimeStamp datetime, primary key (id))
-16:30:13,170 INFO  [stdout] (MSC service thread 1-1) Hibernate: create table conference_talk (conference_id bigint not null, talks_id bigint not null, primary key (conference_id, talks_id), unique (talks_id))
-16:30:13,186 INFO  [stdout] (MSC service thread 1-1) Hibernate: create table room (id bigint not null, capacity integer not null check (capacity&gt;=1), name varchar(255) not null, updateTimeStamp datetime, primary key (id))
-16:30:13,201 INFO  [stdout] (MSC service thread 1-1) Hibernate: create table speaker (id bigint not null, email varchar(255) not null, firstname varchar(255) not null, name varchar(255) not null, updateTimeStamp datetime, primary key (id), unique (email))
-16:30:13,217 INFO  [stdout] (MSC service thread 1-1) Hibernate: create table speakersfortalk (id bigint not null, primary key (id))
-16:30:13,217 INFO  [stdout] (MSC service thread 1-1) Hibernate: create table speakersfortalk_speaker (speakersfortalk_id bigint not null, speakers_id bigint not null, primary key (speakersfortalk_id, speakers_id))
-16:30:13,232 INFO  [stdout] (MSC service thread 1-1) Hibernate: create table talk (id bigint not null, description varchar(255) not null, durationInSeconds bigint not null check (durationInSeconds&gt;=1), end date not null, name varchar(255) not null, start date not null, updateTimeStamp datetime, room_id bigint not null, primary key (id))
-16:30:13,248 INFO  [stdout] (MSC service thread 1-1) Hibernate: alter table conference_talk add index FKB9C79EF864438C9 (talks_id), add constraint FKB9C79EF864438C9 foreign key (talks_id) references talk (id)
-16:30:13,279 INFO  [stdout] (MSC service thread 1-1) Hibernate: alter table conference_talk add index FKB9C79EFF40E9C4 (conference_id), add constraint FKB9C79EFF40E9C4 foreign key (conference_id) references conference (id)
-16:30:13,310 INFO  [stdout] (MSC service thread 1-1) Hibernate: alter table speakersfortalk_speaker add index FKA5E9A3E1A3A97F9B (speakers_id), add constraint FKA5E9A3E1A3A97F9B foreign key (speakers_id) references speaker (id)
-16:30:13,326 INFO  [stdout] (MSC service thread 1-1) Hibernate: alter table speakersfortalk_speaker add index FKA5E9A3E11E59C6D0 (speakersfortalk_id), add constraint FKA5E9A3E11E59C6D0 foreign key (speakersfortalk_id) references speakersfortalk (id)
-16:30:13,357 INFO  [stdout] (MSC service thread 1-1) Hibernate: alter table talk add index FK3634ACFCD94CE4 (room_id), add constraint FK3634ACFCD94CE4 foreign key (room_id) references room (id)
-16:30:13,373 INFO  [stdout] (MSC service thread 1-1) Hibernate: create table hibernate_sequence ( next_val bigint )
-16:30:13,388 INFO  [stdout] (MSC service thread 1-1) Hibernate: insert into hibernate_sequence values ( 100 )
-16:30:13,388 INFO  [org.hibernate.tool.hbm2ddl.SchemaExport] (MSC service thread 1-1) HHH000230: Schema export complete
-16:30:13,404 INFO  [org.jboss.weld.deployer] (MSC service thread 1-3) JBAS016008: Starting weld service for deployment test.war
-16:30:13,544 Information [com.prodyna.core.monitoring.MonitoringStartupBean] (MSC service thread 1-4) PerformanceMBean registered
-16:30:13,560 INFO  [org.jboss.web] (MSC service thread 1-4) JBAS018210: Registering web context: /test
-16:30:13,576 INFO  [org.jboss.as.server] (management-handler-thread - 1) JBAS018559: Deployed &quot;test.war&quot;
+20:05:30,144 INFO  [org.hibernate.service.jdbc.connections.internal.ConnectionProviderInitiator] (ServerService Thread Pool -- 27) HHH000130: Instantiating explicit connection provider: org.hibernate.ejb.connection.InjectedDataSourceConnectionProvider
+20:05:30,152 INFO  [org.hibernate.dialect.Dialect] (ServerService Thread Pool -- 27) HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+20:05:30,153 INFO  [org.hibernate.engine.transaction.internal.TransactionFactoryInitiator] (ServerService Thread Pool -- 27) HHH000268: Transaction strategy: org.hibernate.engine.transaction.internal.jta.CMTTransactionFactory
+20:05:30,153 INFO  [org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory] (ServerService Thread Pool -- 27) HHH000397: Using ASTQueryTranslatorFactory
+20:05:30,191 INFO  [org.hibernate.tool.hbm2ddl.SchemaExport] (ServerService Thread Pool -- 27) HHH000227: Running hbm2ddl schema export
+20:05:30,192 INFO  [stdout] (ServerService Thread Pool -- 27) Hibernate: 
+20:05:30,192 INFO  [stdout] (ServerService Thread Pool -- 27)     alter table conference_talk 
+20:05:30,193 INFO  [stdout] (ServerService Thread Pool -- 27)         drop 
+20:05:30,193 INFO  [stdout] (ServerService Thread Pool -- 27)         foreign key FKB9C79EF864438C9
+20:05:30,193 ERROR [org.hibernate.tool.hbm2ddl.SchemaExport] (ServerService Thread Pool -- 27) HHH000389: Unsuccessful: alter table conference_talk drop foreign key FKB9C79EF864438C9
+20:05:30,194 ERROR [org.hibernate.tool.hbm2ddl.SchemaExport] (ServerService Thread Pool -- 27) Table &apos;conference.conference_talk&apos; doesn&apos;t exist
+20:05:30,194 INFO  [stdout] (ServerService Thread Pool -- 27) Hibernate: 
+20:05:30,194 INFO  [stdout] (ServerService Thread Pool -- 27)     alter table conference_talk 
+20:05:30,194 INFO  [stdout] (ServerService Thread Pool -- 27)         drop 
+20:05:30,194 INFO  [stdout] (ServerService Thread Pool -- 27)         foreign key FKB9C79EFF40E9C4
+20:05:30,195 ERROR [org.hibernate.tool.hbm2ddl.SchemaExport] (ServerService Thread Pool -- 27) HHH000389: Unsuccessful: alter table conference_talk drop foreign key FKB9C79EFF40E9C4
+20:05:30,195 ERROR [org.hibernate.tool.hbm2ddl.SchemaExport] (ServerService Thread Pool -- 27) Table &apos;conference.conference_talk&apos; doesn&apos;t exist
+20:05:30,195 INFO  [stdout] (ServerService Thread Pool -- 27) Hibernate: 
+20:05:30,195 INFO  [stdout] (ServerService Thread Pool -- 27)     alter table speaker_talk 
+20:05:30,196 INFO  [stdout] (ServerService Thread Pool -- 27)         drop 
+20:05:30,196 INFO  [stdout] (ServerService Thread Pool -- 27)         foreign key FK39AFB4EC864438C9
+20:05:30,196 ERROR [org.hibernate.tool.hbm2ddl.SchemaExport] (ServerService Thread Pool -- 27) HHH000389: Unsuccessful: alter table speaker_talk drop foreign key FK39AFB4EC864438C9
+20:05:30,196 ERROR [org.hibernate.tool.hbm2ddl.SchemaExport] (ServerService Thread Pool -- 27) Table &apos;conference.speaker_talk&apos; doesn&apos;t exist
+20:05:30,197 INFO  [stdout] (ServerService Thread Pool -- 27) Hibernate: 
+20:05:30,197 INFO  [stdout] (ServerService Thread Pool -- 27)     alter table speaker_talk 
+20:05:30,197 INFO  [stdout] (ServerService Thread Pool -- 27)         drop 
+20:05:30,197 INFO  [stdout] (ServerService Thread Pool -- 27)         foreign key FK39AFB4EC94C61C10
+20:05:30,198 ERROR [org.hibernate.tool.hbm2ddl.SchemaExport] (ServerService Thread Pool -- 27) HHH000389: Unsuccessful: alter table speaker_talk drop foreign key FK39AFB4EC94C61C10
+20:05:30,198 ERROR [org.hibernate.tool.hbm2ddl.SchemaExport] (ServerService Thread Pool -- 27) Table &apos;conference.speaker_talk&apos; doesn&apos;t exist
+20:05:30,198 INFO  [stdout] (ServerService Thread Pool -- 27) Hibernate: 
+20:05:30,198 INFO  [stdout] (ServerService Thread Pool -- 27)     alter table speakersfortalk_speaker 
+20:05:30,198 INFO  [stdout] (ServerService Thread Pool -- 27)         drop 
+20:05:30,199 INFO  [stdout] (ServerService Thread Pool -- 27)         foreign key FKA5E9A3E1A3A97F9B
+20:05:30,199 ERROR [org.hibernate.tool.hbm2ddl.SchemaExport] (ServerService Thread Pool -- 27) HHH000389: Unsuccessful: alter table speakersfortalk_speaker drop foreign key FKA5E9A3E1A3A97F9B
+20:05:30,200 ERROR [org.hibernate.tool.hbm2ddl.SchemaExport] (ServerService Thread Pool -- 27) Table &apos;conference.speakersfortalk_speaker&apos; doesn&apos;t exist
+20:05:30,200 INFO  [stdout] (ServerService Thread Pool -- 27) Hibernate: 
+20:05:30,200 INFO  [stdout] (ServerService Thread Pool -- 27)     alter table speakersfortalk_speaker 
+20:05:30,200 INFO  [stdout] (ServerService Thread Pool -- 27)         drop 
+20:05:30,200 INFO  [stdout] (ServerService Thread Pool -- 27)         foreign key FKA5E9A3E11E59C6D0
+20:05:30,201 ERROR [org.hibernate.tool.hbm2ddl.SchemaExport] (ServerService Thread Pool -- 27) HHH000389: Unsuccessful: alter table speakersfortalk_speaker drop foreign key FKA5E9A3E11E59C6D0
+20:05:30,202 ERROR [org.hibernate.tool.hbm2ddl.SchemaExport] (ServerService Thread Pool -- 27) Table &apos;conference.speakersfortalk_speaker&apos; doesn&apos;t exist
+20:05:30,202 INFO  [stdout] (ServerService Thread Pool -- 27) Hibernate: 
+20:05:30,202 INFO  [stdout] (ServerService Thread Pool -- 27)     alter table talk 
+20:05:30,202 INFO  [stdout] (ServerService Thread Pool -- 27)         drop 
+20:05:30,202 INFO  [stdout] (ServerService Thread Pool -- 27)         foreign key FK3634ACFCD94CE4
+20:05:30,203 ERROR [org.hibernate.tool.hbm2ddl.SchemaExport] (ServerService Thread Pool -- 27) HHH000389: Unsuccessful: alter table talk drop foreign key FK3634ACFCD94CE4
+20:05:30,203 ERROR [org.hibernate.tool.hbm2ddl.SchemaExport] (ServerService Thread Pool -- 27) Table &apos;conference.talk&apos; doesn&apos;t exist
+20:05:30,203 INFO  [stdout] (ServerService Thread Pool -- 27) Hibernate: 
+20:05:30,203 INFO  [stdout] (ServerService Thread Pool -- 27)     drop table if exists conference
+20:05:30,205 INFO  [stdout] (ServerService Thread Pool -- 27) Hibernate: 
+20:05:30,205 INFO  [stdout] (ServerService Thread Pool -- 27)     drop table if exists conference_talk
+20:05:30,206 INFO  [stdout] (ServerService Thread Pool -- 27) Hibernate: 
+20:05:30,206 INFO  [stdout] (ServerService Thread Pool -- 27)     drop table if exists room
+20:05:30,207 INFO  [stdout] (ServerService Thread Pool -- 27) Hibernate: 
+20:05:30,207 INFO  [stdout] (ServerService Thread Pool -- 27)     drop table if exists speaker
+20:05:30,208 INFO  [stdout] (ServerService Thread Pool -- 27) Hibernate: 
+20:05:30,209 INFO  [stdout] (ServerService Thread Pool -- 27)     drop table if exists speaker_talk
+20:05:30,210 INFO  [stdout] (ServerService Thread Pool -- 27) Hibernate: 
+20:05:30,210 INFO  [stdout] (ServerService Thread Pool -- 27)     drop table if exists speakersfortalk
+20:05:30,211 INFO  [stdout] (ServerService Thread Pool -- 27) Hibernate: 
+20:05:30,212 INFO  [stdout] (ServerService Thread Pool -- 27)     drop table if exists speakersfortalk_speaker
+20:05:30,213 INFO  [stdout] (ServerService Thread Pool -- 27) Hibernate: 
+20:05:30,213 INFO  [stdout] (ServerService Thread Pool -- 27)     drop table if exists talk
+20:05:30,214 INFO  [stdout] (ServerService Thread Pool -- 27) Hibernate: 
+20:05:30,214 INFO  [stdout] (ServerService Thread Pool -- 27)     drop table if exists hibernate_sequence
+20:05:30,215 INFO  [stdout] (ServerService Thread Pool -- 27) Hibernate: 
+20:05:30,215 INFO  [stdout] (ServerService Thread Pool -- 27)     create table conference (
+20:05:30,215 INFO  [stdout] (ServerService Thread Pool -- 27)         id bigint not null,
+20:05:30,215 INFO  [stdout] (ServerService Thread Pool -- 27)         description varchar(255) not null,
+20:05:30,215 INFO  [stdout] (ServerService Thread Pool -- 27)         end date not null,
+20:05:30,215 INFO  [stdout] (ServerService Thread Pool -- 27)         name varchar(255) not null,
+20:05:30,215 INFO  [stdout] (ServerService Thread Pool -- 27)         start date not null,
+20:05:30,216 INFO  [stdout] (ServerService Thread Pool -- 27)         updateTimeStamp datetime,
+20:05:30,216 INFO  [stdout] (ServerService Thread Pool -- 27)         primary key (id)
+20:05:30,216 INFO  [stdout] (ServerService Thread Pool -- 27)     )
+20:05:30,230 INFO  [stdout] (ServerService Thread Pool -- 27) Hibernate: 
+20:05:30,230 INFO  [stdout] (ServerService Thread Pool -- 27)     create table conference_talk (
+20:05:30,230 INFO  [stdout] (ServerService Thread Pool -- 27)         conference_id bigint not null,
+20:05:30,230 INFO  [stdout] (ServerService Thread Pool -- 27)         talks_id bigint not null,
+20:05:30,230 INFO  [stdout] (ServerService Thread Pool -- 27)         primary key (conference_id, talks_id),
+20:05:30,231 INFO  [stdout] (ServerService Thread Pool -- 27)         unique (talks_id)
+20:05:30,231 INFO  [stdout] (ServerService Thread Pool -- 27)     )
+20:05:30,245 INFO  [stdout] (ServerService Thread Pool -- 27) Hibernate: 
+20:05:30,245 INFO  [stdout] (ServerService Thread Pool -- 27)     create table room (
+20:05:30,245 INFO  [stdout] (ServerService Thread Pool -- 27)         id bigint not null,
+20:05:30,245 INFO  [stdout] (ServerService Thread Pool -- 27)         capacity integer not null check (capacity&gt;=1),
+20:05:30,245 INFO  [stdout] (ServerService Thread Pool -- 27)         name varchar(255) not null,
+20:05:30,246 INFO  [stdout] (ServerService Thread Pool -- 27)         updateTimeStamp datetime,
+20:05:30,246 INFO  [stdout] (ServerService Thread Pool -- 27)         primary key (id)
+20:05:30,246 INFO  [stdout] (ServerService Thread Pool -- 27)     )
+20:05:30,258 INFO  [stdout] (ServerService Thread Pool -- 27) Hibernate: 
+20:05:30,258 INFO  [stdout] (ServerService Thread Pool -- 27)     create table speaker (
+20:05:30,258 INFO  [stdout] (ServerService Thread Pool -- 27)         id bigint not null,
+20:05:30,259 INFO  [stdout] (ServerService Thread Pool -- 27)         email varchar(255) not null,
+20:05:30,259 INFO  [stdout] (ServerService Thread Pool -- 27)         firstname varchar(255) not null,
+20:05:30,259 INFO  [stdout] (ServerService Thread Pool -- 27)         name varchar(255) not null,
+20:05:30,259 INFO  [stdout] (ServerService Thread Pool -- 27)         updateTimeStamp datetime,
+20:05:30,259 INFO  [stdout] (ServerService Thread Pool -- 27)         primary key (id),
+20:05:30,259 INFO  [stdout] (ServerService Thread Pool -- 27)         unique (email)
+20:05:30,259 INFO  [stdout] (ServerService Thread Pool -- 27)     )
+20:05:30,274 INFO  [stdout] (ServerService Thread Pool -- 27) Hibernate: 
+20:05:30,274 INFO  [stdout] (ServerService Thread Pool -- 27)     create table speaker_talk (
+20:05:30,274 INFO  [stdout] (ServerService Thread Pool -- 27)         speaker_id bigint not null,
+20:05:30,274 INFO  [stdout] (ServerService Thread Pool -- 27)         talks_id bigint not null
+20:05:30,275 INFO  [stdout] (ServerService Thread Pool -- 27)     )
+20:05:30,287 INFO  [stdout] (ServerService Thread Pool -- 27) Hibernate: 
+20:05:30,287 INFO  [stdout] (ServerService Thread Pool -- 27)     create table speakersfortalk (
+20:05:30,288 INFO  [stdout] (ServerService Thread Pool -- 27)         id bigint not null,
+20:05:30,288 INFO  [stdout] (ServerService Thread Pool -- 27)         primary key (id)
+20:05:30,288 INFO  [stdout] (ServerService Thread Pool -- 27)     )
+20:05:30,303 INFO  [stdout] (ServerService Thread Pool -- 27) Hibernate: 
+20:05:30,303 INFO  [stdout] (ServerService Thread Pool -- 27)     create table speakersfortalk_speaker (
+20:05:30,303 INFO  [stdout] (ServerService Thread Pool -- 27)         speakersfortalk_id bigint not null,
+20:05:30,303 INFO  [stdout] (ServerService Thread Pool -- 27)         speakers_id bigint not null,
+20:05:30,304 INFO  [stdout] (ServerService Thread Pool -- 27)         primary key (speakersfortalk_id, speakers_id)
+20:05:30,304 INFO  [stdout] (ServerService Thread Pool -- 27)     )
+20:05:30,317 INFO  [stdout] (ServerService Thread Pool -- 27) Hibernate: 
+20:05:30,318 INFO  [stdout] (ServerService Thread Pool -- 27)     create table talk (
+20:05:30,318 INFO  [stdout] (ServerService Thread Pool -- 27)         id bigint not null,
+20:05:30,318 INFO  [stdout] (ServerService Thread Pool -- 27)         description varchar(255) not null,
+20:05:30,318 INFO  [stdout] (ServerService Thread Pool -- 27)         durationInMinutes bigint not null check (durationInMinutes&gt;=1),
+20:05:30,318 INFO  [stdout] (ServerService Thread Pool -- 27)         end time not null,
+20:05:30,318 INFO  [stdout] (ServerService Thread Pool -- 27)         name varchar(255) not null,
+20:05:30,318 INFO  [stdout] (ServerService Thread Pool -- 27)         start time not null,
+20:05:30,318 INFO  [stdout] (ServerService Thread Pool -- 27)         updateTimeStamp datetime,
+20:05:30,318 INFO  [stdout] (ServerService Thread Pool -- 27)         room_id bigint not null,
+20:05:30,318 INFO  [stdout] (ServerService Thread Pool -- 27)         primary key (id)
+20:05:30,318 INFO  [stdout] (ServerService Thread Pool -- 27)     )
+20:05:30,330 INFO  [stdout] (ServerService Thread Pool -- 27) Hibernate: 
+20:05:30,330 INFO  [stdout] (ServerService Thread Pool -- 27)     alter table conference_talk 
+20:05:30,331 INFO  [stdout] (ServerService Thread Pool -- 27)         add index FKB9C79EF864438C9 (talks_id), 
+20:05:30,331 INFO  [stdout] (ServerService Thread Pool -- 27)         add constraint FKB9C79EF864438C9 
+20:05:30,331 INFO  [stdout] (ServerService Thread Pool -- 27)         foreign key (talks_id) 
+20:05:30,331 INFO  [stdout] (ServerService Thread Pool -- 27)         references talk (id)
+20:05:30,356 INFO  [stdout] (ServerService Thread Pool -- 27) Hibernate: 
+20:05:30,356 INFO  [stdout] (ServerService Thread Pool -- 27)     alter table conference_talk 
+20:05:30,356 INFO  [stdout] (ServerService Thread Pool -- 27)         add index FKB9C79EFF40E9C4 (conference_id), 
+20:05:30,356 INFO  [stdout] (ServerService Thread Pool -- 27)         add constraint FKB9C79EFF40E9C4 
+20:05:30,357 INFO  [stdout] (ServerService Thread Pool -- 27)         foreign key (conference_id) 
+20:05:30,357 INFO  [stdout] (ServerService Thread Pool -- 27)         references conference (id)
+20:05:30,384 INFO  [stdout] (ServerService Thread Pool -- 27) Hibernate: 
+20:05:30,384 INFO  [stdout] (ServerService Thread Pool -- 27)     alter table speaker_talk 
+20:05:30,384 INFO  [stdout] (ServerService Thread Pool -- 27)         add index FK39AFB4EC864438C9 (talks_id), 
+20:05:30,384 INFO  [stdout] (ServerService Thread Pool -- 27)         add constraint FK39AFB4EC864438C9 
+20:05:30,384 INFO  [stdout] (ServerService Thread Pool -- 27)         foreign key (talks_id) 
+20:05:30,384 INFO  [stdout] (ServerService Thread Pool -- 27)         references talk (id)
+20:05:30,404 INFO  [stdout] (ServerService Thread Pool -- 27) Hibernate: 
+20:05:30,404 INFO  [stdout] (ServerService Thread Pool -- 27)     alter table speaker_talk 
+20:05:30,404 INFO  [stdout] (ServerService Thread Pool -- 27)         add index FK39AFB4EC94C61C10 (speaker_id), 
+20:05:30,404 INFO  [stdout] (ServerService Thread Pool -- 27)         add constraint FK39AFB4EC94C61C10 
+20:05:30,404 INFO  [stdout] (ServerService Thread Pool -- 27)         foreign key (speaker_id) 
+20:05:30,405 INFO  [stdout] (ServerService Thread Pool -- 27)         references speaker (id)
+20:05:30,431 INFO  [stdout] (ServerService Thread Pool -- 27) Hibernate: 
+20:05:30,431 INFO  [stdout] (ServerService Thread Pool -- 27)     alter table speakersfortalk_speaker 
+20:05:30,431 INFO  [stdout] (ServerService Thread Pool -- 27)         add index FKA5E9A3E1A3A97F9B (speakers_id), 
+20:05:30,431 INFO  [stdout] (ServerService Thread Pool -- 27)         add constraint FKA5E9A3E1A3A97F9B 
+20:05:30,431 INFO  [stdout] (ServerService Thread Pool -- 27)         foreign key (speakers_id) 
+20:05:30,431 INFO  [stdout] (ServerService Thread Pool -- 27)         references speaker (id)
+20:05:30,454 INFO  [stdout] (ServerService Thread Pool -- 27) Hibernate: 
+20:05:30,454 INFO  [stdout] (ServerService Thread Pool -- 27)     alter table speakersfortalk_speaker 
+20:05:30,454 INFO  [stdout] (ServerService Thread Pool -- 27)         add index FKA5E9A3E11E59C6D0 (speakersfortalk_id), 
+20:05:30,454 INFO  [stdout] (ServerService Thread Pool -- 27)         add constraint FKA5E9A3E11E59C6D0 
+20:05:30,454 INFO  [stdout] (ServerService Thread Pool -- 27)         foreign key (speakersfortalk_id) 
+20:05:30,454 INFO  [stdout] (ServerService Thread Pool -- 27)         references speakersfortalk (id)
+20:05:30,480 INFO  [stdout] (ServerService Thread Pool -- 27) Hibernate: 
+20:05:30,480 INFO  [stdout] (ServerService Thread Pool -- 27)     alter table talk 
+20:05:30,480 INFO  [stdout] (ServerService Thread Pool -- 27)         add index FK3634ACFCD94CE4 (room_id), 
+20:05:30,480 INFO  [stdout] (ServerService Thread Pool -- 27)         add constraint FK3634ACFCD94CE4 
+20:05:30,480 INFO  [stdout] (ServerService Thread Pool -- 27)         foreign key (room_id) 
+20:05:30,480 INFO  [stdout] (ServerService Thread Pool -- 27)         references room (id)
+20:05:30,502 INFO  [stdout] (ServerService Thread Pool -- 27) Hibernate: 
+20:05:30,502 INFO  [stdout] (ServerService Thread Pool -- 27)     create table hibernate_sequence (
+20:05:30,503 INFO  [stdout] (ServerService Thread Pool -- 27)          next_val bigint 
+20:05:30,504 INFO  [stdout] (ServerService Thread Pool -- 27)     )
+20:05:30,517 INFO  [stdout] (ServerService Thread Pool -- 27) Hibernate: 
+20:05:30,518 INFO  [stdout] (ServerService Thread Pool -- 27)     insert into hibernate_sequence values ( 100 )
+20:05:30,519 INFO  [org.hibernate.tool.hbm2ddl.SchemaExport] (ServerService Thread Pool -- 27) HHH000230: Schema export complete
+20:05:30,524 INFO  [org.jboss.weld.deployer] (MSC service thread 1-7) JBAS016008: Starte Weld-Dienst für Deployment test.war
+20:05:30,648 ERROR [org.jboss.msc.service.fail] (MSC service thread 1-7) MSC00001: Failed to start service jboss.deployment.unit.&quot;test.war&quot;.WeldService: org.jboss.msc.service.StartException in service jboss.deployment.unit.&quot;test.war&quot;.WeldService: org.jboss.weld.exceptions.DeploymentException: WELD-001409 Ambiguous dependencies for type [PerformanceMXBean] with qualifiers [@Default] at injection point [[field] @Inject private com.prodyna.conference.core.event.PerformanceObserver.performanceMgmtBean]. Possible dependencies [[Managed Bean [class com.prodyna.core.monitoring.Performance] with qualifiers [@Any @Default], Producer Method [PerformanceMXBean] with qualifiers [@Any @Default] declared as [[method] @Produces public com.prodyna.conference.core.util.MBeanProducer.producePerformanceMgmtBean()]]]
+	at org.jboss.as.weld.services.WeldService.start(WeldService.java:83)
+	at org.jboss.msc.service.ServiceControllerImpl$StartTask.startService(ServiceControllerImpl.java:1811) [jboss-msc-1.0.2.GA.jar:1.0.2.GA]
+	at org.jboss.msc.service.ServiceControllerImpl$StartTask.run(ServiceControllerImpl.java:1746) [jboss-msc-1.0.2.GA.jar:1.0.2.GA]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145) [rt.jar:1.7.0_40]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615) [rt.jar:1.7.0_40]
+	at java.lang.Thread.run(Thread.java:724) [rt.jar:1.7.0_40]
+Caused by: org.jboss.weld.exceptions.DeploymentException: WELD-001409 Ambiguous dependencies for type [PerformanceMXBean] with qualifiers [@Default] at injection point [[field] @Inject private com.prodyna.conference.core.event.PerformanceObserver.performanceMgmtBean]. Possible dependencies [[Managed Bean [class com.prodyna.core.monitoring.Performance] with qualifiers [@Any @Default], Producer Method [PerformanceMXBean] with qualifiers [@Any @Default] declared as [[method] @Produces public com.prodyna.conference.core.util.MBeanProducer.producePerformanceMgmtBean()]]]
+	at org.jboss.weld.bootstrap.Validator.validateInjectionPoint(Validator.java:314)
+	at org.jboss.weld.bootstrap.Validator.validateInjectionPoint(Validator.java:280)
+	at org.jboss.weld.bootstrap.Validator.validateBean(Validator.java:143)
+	at org.jboss.weld.bootstrap.Validator.validateRIBean(Validator.java:163)
+	at org.jboss.weld.bootstrap.Validator.validateBeans(Validator.java:382)
+	at org.jboss.weld.bootstrap.Validator.validateDeployment(Validator.java:367)
+	at org.jboss.weld.bootstrap.WeldBootstrap.validateBeans(WeldBootstrap.java:380)
+	at org.jboss.as.weld.WeldContainer.start(WeldContainer.java:83)
+	at org.jboss.as.weld.services.WeldService.start(WeldService.java:76)
+	... 5 more
+
+20:05:30,852 INFO  [org.jboss.as.server] (management-handler-thread - 2) JBAS015870: Deploy von Deployment &quot;test.war&quot; wurde mit Fehlermeldung {&quot;JBAS014671: Fehlgeschlagene Dienste&quot; =&gt; {&quot;jboss.deployment.unit.\&quot;test.war\&quot;.WeldService&quot; =&gt; &quot;org.jboss.msc.service.StartException in service jboss.deployment.unit.\&quot;test.war\&quot;.WeldService: org.jboss.weld.exceptions.DeploymentException: WELD-001409 Ambiguous dependencies for type [PerformanceMXBean] with qualifiers [@Default] at injection point [[field] @Inject private com.prodyna.conference.core.event.PerformanceObserver.performanceMgmtBean]. Possible dependencies [[Managed Bean [class com.prodyna.core.monitoring.Performance] with qualifiers [@Any @Default], Producer Method [PerformanceMXBean] with qualifiers [@Any @Default] declared as [[method] @Produces public com.prodyna.conference.core.util.MBeanProducer.producePerformanceMgmtBean()]]]
+    Caused by: org.jboss.weld.exceptions.DeploymentException: WELD-001409 Ambiguous dependencies for type [PerformanceMXBean] with qualifiers [@Default] at injection point [[field] @Inject private com.prodyna.conference.core.event.PerformanceObserver.performanceMgmtBean]. Possible dependencies [[Managed Bean [class com.prodyna.core.monitoring.Performance] with qualifiers [@Any @Default], Producer Method [PerformanceMXBean] with qualifiers [@Any @Default] declared as [[method] @Produces public com.prodyna.conference.core.util.MBeanProducer.producePerformanceMgmtBean()]]]&quot;},&quot;JBAS014771: Dienste mit fehlenden/unverfügbaren Abhängigkeiten &quot; =&gt; [&quot;jboss.deployment.unit.\&quot;test.war\&quot;.component.MonitoringStartupBean.WeldInstantiator [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,&quot;jboss.web.deployment.default-host./test [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,&quot;jboss.deployment.unit.\&quot;test.war\&quot;.beanmanager [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,&quot;jboss.deployment.unit.\&quot;test.war\&quot;.component.RoomServiceImpl.WeldInstantiator [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,&quot;jboss.deployment.unit.\&quot;test.war\&quot;.component.SpeakerServiceImpl.START [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,&quot;jboss.deployment.unit.\&quot;test.war\&quot;.component.RoomServiceImpl.START [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,&quot;jboss.deployment.unit.\&quot;test.war\&quot;.component.ConferenceServiceImpl.START [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,&quot;jboss.deployment.unit.\&quot;test.war\&quot;.component.\&quot;javax.servlet.jsp.jstl.tlv.PermittedTaglibsTLV\&quot;.START [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,&quot;jboss.deployment.unit.\&quot;test.war\&quot;.component.\&quot;javax.servlet.jsp.jstl.tlv.PermittedTaglibsTLV\&quot;.WeldInstantiator [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,&quot;jboss.deployment.unit.\&quot;test.war\&quot;.component.\&quot;org.apache.catalina.servlets.DefaultServlet\&quot;.START [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,&quot;jboss.deployment.unit.\&quot;test.war\&quot;.component.\&quot;org.apache.jasper.servlet.JspServlet\&quot;.START [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,&quot;jboss.deployment.unit.\&quot;test.war\&quot;.component.SpeakerServiceImpl.WeldInstantiator [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,&quot;jboss.deployment.unit.\&quot;test.war\&quot;.component.\&quot;com.sun.faces.config.ConfigureListener\&quot;.START [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,&quot;jboss.deployment.unit.\&quot;test.war\&quot;.jboss.security.jacc [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,&quot;jboss.deployment.unit.\&quot;test.war\&quot;.component.\&quot;org.jboss.as.weld.webtier.jsp.JspInitializationListener\&quot;.START [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,&quot;jboss.deployment.unit.\&quot;test.war\&quot;.component.TalkServiceImpl.START [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,&quot;jboss.deployment.unit.\&quot;test.war\&quot;.component.\&quot;javax.faces.webapp.FacetTag\&quot;.START [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,&quot;jboss.deployment.unit.\&quot;test.war\&quot;.component.\&quot;org.apache.jasper.servlet.JspServlet\&quot;.WeldInstantiator [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,&quot;jboss.deployment.unit.\&quot;test.war\&quot;.component.\&quot;org.apache.catalina.servlets.DefaultServlet\&quot;.WeldInstantiator [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,&quot;jboss.deployment.unit.\&quot;test.war\&quot;.component.\&quot;javax.servlet.jsp.jstl.tlv.ScriptFreeTLV\&quot;.WeldInstantiator [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,&quot;jboss.deployment.unit.\&quot;test.war\&quot;.component.ConferenceServiceImpl.WeldInstantiator [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,&quot;jboss.deployment.unit.\&quot;test.war\&quot;.component.\&quot;org.jboss.as.weld.webtier.jsp.JspInitializationListener\&quot;.WeldInstantiator [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,&quot;jboss.deployment.unit.\&quot;test.war\&quot;.component.\&quot;javax.faces.webapp.FacetTag\&quot;.WeldInstantiator [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,&quot;jboss.deployment.unit.\&quot;test.war\&quot;.component.\&quot;org.jboss.arquillian.protocol.servlet.runner.ServletTestRunner\&quot;.WeldInstantiator [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,&quot;jboss.deployment.unit.\&quot;test.war\&quot;.component.TalkServiceImpl.WeldInstantiator [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,&quot;jboss.deployment.unit.\&quot;test.war\&quot;.component.\&quot;javax.servlet.jsp.jstl.tlv.ScriptFreeTLV\&quot;.START [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,&quot;jboss.deployment.unit.\&quot;test.war\&quot;.component.\&quot;com.sun.faces.config.ConfigureListener\&quot;.WeldInstantiator [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,&quot;jboss.deployment.unit.\&quot;test.war\&quot;.component.\&quot;org.jboss.arquillian.protocol.servlet.runner.ServletTestRunner\&quot;.START [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;,&quot;jboss.deployment.unit.\&quot;test.war\&quot;.component.MonitoringStartupBean.START [JBAS014861: &lt;one or more transitive dependencies&gt;] fehlt&quot;]} zurückgesetzt
+20:05:30,857 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 27) JBAS011403: Stoppe Persistence Unit Dienst &apos;test.war#primary&apos;
+20:05:30,858 INFO  [org.hibernate.tool.hbm2ddl.SchemaExport] (ServerService Thread Pool -- 27) HHH000227: Running hbm2ddl schema export
+20:05:30,859 INFO  [stdout] (ServerService Thread Pool -- 27) Hibernate: 
+20:05:30,859 INFO  [stdout] (ServerService Thread Pool -- 27)     alter table conference_talk 
+20:05:30,859 INFO  [stdout] (ServerService Thread Pool -- 27)         drop 
+20:05:30,859 INFO  [stdout] (ServerService Thread Pool -- 27)         foreign key FKB9C79EF864438C9
+20:05:30,860 INFO  [org.jboss.as.osgi] (MSC service thread 1-1) JBAS011908: Deregistrierung von Modul: Module &quot;deployment.test.war:main&quot; from Service Module Loader
+20:05:30,871 INFO  [stdout] (ServerService Thread Pool -- 27) Hibernate: 
+20:05:30,871 INFO  [stdout] (ServerService Thread Pool -- 27)     alter table conference_talk 
+20:05:30,871 INFO  [stdout] (ServerService Thread Pool -- 27)         drop 
+20:05:30,871 INFO  [stdout] (ServerService Thread Pool -- 27)         foreign key FKB9C79EFF40E9C4
+20:05:30,878 INFO  [stdout] (ServerService Thread Pool -- 27) Hibernate: 
+20:05:30,878 INFO  [stdout] (ServerService Thread Pool -- 27)     alter table speaker_talk 
+20:05:30,878 INFO  [stdout] (ServerService Thread Pool -- 27)         drop 
+20:05:30,878 INFO  [stdout] (ServerService Thread Pool -- 27)         foreign key FK39AFB4EC864438C9
+20:05:30,888 INFO  [stdout] (ServerService Thread Pool -- 27) Hibernate: 
+20:05:30,888 INFO  [stdout] (ServerService Thread Pool -- 27)     alter table speaker_talk 
+20:05:30,888 INFO  [stdout] (ServerService Thread Pool -- 27)         drop 
+20:05:30,888 INFO  [stdout] (ServerService Thread Pool -- 27)         foreign key FK39AFB4EC94C61C10
+20:05:30,894 INFO  [stdout] (ServerService Thread Pool -- 27) Hibernate: 
+20:05:30,894 INFO  [stdout] (ServerService Thread Pool -- 27)     alter table speakersfortalk_speaker 
+20:05:30,894 INFO  [stdout] (ServerService Thread Pool -- 27)         drop 
+20:05:30,894 INFO  [stdout] (ServerService Thread Pool -- 27)         foreign key FKA5E9A3E1A3A97F9B
+20:05:30,905 INFO  [stdout] (ServerService Thread Pool -- 27) Hibernate: 
+20:05:30,905 INFO  [stdout] (ServerService Thread Pool -- 27)     alter table speakersfortalk_speaker 
+20:05:30,905 INFO  [stdout] (ServerService Thread Pool -- 27)         drop 
+20:05:30,905 INFO  [stdout] (ServerService Thread Pool -- 27)         foreign key FKA5E9A3E11E59C6D0
+20:05:30,912 INFO  [stdout] (ServerService Thread Pool -- 27) Hibernate: 
+20:05:30,912 INFO  [stdout] (ServerService Thread Pool -- 27)     alter table talk 
+20:05:30,912 INFO  [stdout] (ServerService Thread Pool -- 27)         drop 
+20:05:30,913 INFO  [stdout] (ServerService Thread Pool -- 27)         foreign key FK3634ACFCD94CE4
+20:05:30,920 INFO  [stdout] (ServerService Thread Pool -- 27) Hibernate: 
+20:05:30,920 INFO  [stdout] (ServerService Thread Pool -- 27)     drop table if exists conference
+20:05:30,929 INFO  [stdout] (ServerService Thread Pool -- 27) Hibernate: 
+20:05:30,929 INFO  [stdout] (ServerService Thread Pool -- 27)     drop table if exists conference_talk
+20:05:30,934 INFO  [stdout] (ServerService Thread Pool -- 27) Hibernate: 
+20:05:30,934 INFO  [stdout] (ServerService Thread Pool -- 27)     drop table if exists room
+20:05:30,938 INFO  [stdout] (ServerService Thread Pool -- 27) Hibernate: 
+20:05:30,938 INFO  [stdout] (ServerService Thread Pool -- 27)     drop table if exists speaker
+20:05:30,942 INFO  [stdout] (ServerService Thread Pool -- 27) Hibernate: 
+20:05:30,942 INFO  [stdout] (ServerService Thread Pool -- 27)     drop table if exists speaker_talk
+20:05:30,945 INFO  [stdout] (ServerService Thread Pool -- 27) Hibernate: 
+20:05:30,946 INFO  [stdout] (ServerService Thread Pool -- 27)     drop table if exists speakersfortalk
+20:05:30,949 INFO  [stdout] (ServerService Thread Pool -- 27) Hibernate: 
+20:05:30,949 INFO  [stdout] (ServerService Thread Pool -- 27)     drop table if exists speakersfortalk_speaker
+20:05:30,951 INFO  [stdout] (ServerService Thread Pool -- 27) Hibernate: 
+20:05:30,952 INFO  [stdout] (ServerService Thread Pool -- 27)     drop table if exists talk
+20:05:30,954 INFO  [stdout] (ServerService Thread Pool -- 27) Hibernate: 
+20:05:30,954 INFO  [stdout] (ServerService Thread Pool -- 27)     drop table if exists hibernate_sequence
+20:05:30,957 INFO  [org.hibernate.tool.hbm2ddl.SchemaExport] (ServerService Thread Pool -- 27) HHH000230: Schema export complete
+20:05:30,979 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-7) JBAS015877: Deployment von test.war in 126ms gestoppt
 </system-out>
-    <system-err>Sep 21, 2013 4:30:12 PM org.jboss.shrinkwrap.resolver.impl.maven.LogRepositoryListener metadataInvalid
+    <system-err>Okt 14, 2013 8:05:29 PM org.jboss.shrinkwrap.resolver.impl.maven.LogRepositoryListener metadataInvalid
 Warnung: Invalid metadata com.prodyna.conference:conference-core:SNAPSHOT/maven-metadata.xml
-Sep 21, 2013 4:30:12 PM org.jboss.shrinkwrap.resolver.impl.maven.LogRepositoryListener metadataInvalid
+Okt 14, 2013 8:05:29 PM org.jboss.shrinkwrap.resolver.impl.maven.LogRepositoryListener metadataInvalid
 Warnung: Invalid metadata com.prodyna.conference:conference-core:SNAPSHOT/maven-metadata.xml
-Sep 21, 2013 4:30:12 PM org.jboss.shrinkwrap.resolver.impl.maven.LogRepositoryListener metadataInvalid
+Okt 14, 2013 8:05:29 PM org.jboss.shrinkwrap.resolver.impl.maven.LogRepositoryListener metadataInvalid
 Warnung: Invalid metadata com.prodyna.conference:conference:SNAPSHOT/maven-metadata.xml
-Sep 21, 2013 4:30:12 PM org.jboss.shrinkwrap.resolver.impl.maven.LogRepositoryListener metadataInvalid
+Okt 14, 2013 8:05:29 PM org.jboss.shrinkwrap.resolver.impl.maven.LogRepositoryListener metadataInvalid
 Warnung: Invalid metadata com.prodyna.conference:conference-core:SNAPSHOT/maven-metadata.xml
 </system-err>
   </testcase>

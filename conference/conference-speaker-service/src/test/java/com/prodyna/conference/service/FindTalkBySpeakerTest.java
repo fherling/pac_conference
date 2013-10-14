@@ -92,7 +92,7 @@ public class FindTalkBySpeakerTest {
 		
 		Talk talk = new Talk();
 		talk.setDescription("Ein TAlk");
-		talk.setDurationInSeconds(20000);
+		talk.setDurationInMinutes(20000);
 		talk.setName("DER TALK");
 		
 		Calendar cal = new GregorianCalendar();

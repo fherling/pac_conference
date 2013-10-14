@@ -25,6 +25,7 @@
 		<class>com.prodyna.conference.service.model.Conference</class>
 		<class>com.prodyna.conference.service.model.Room</class>
 		<class>com.prodyna.conference.service.model.SpeakersForTalk</class>
+		<class>com.prodyna.conference.service.model.TalksForConference</class>
 
 		<properties>
 			<!-- Properties for Hibernate -->

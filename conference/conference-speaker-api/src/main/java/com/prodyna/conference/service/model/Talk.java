@@ -47,7 +47,7 @@ public class Talk implements Serializable{
 	private String description;
 
 	@Min(value=1)
-	private long durationInSeconds;
+	private long durationInMinutes;
 	
 	@NotNull
 	@Temporal(TemporalType.TIME)
@@ -126,7 +126,7 @@ public class Talk implements Serializable{
 		result = prime * result
 				+ ((description == null) ? 0 : description.hashCode());
 		result = prime * result
-				+ (int) (durationInSeconds ^ (durationInSeconds >>> 32));
+				+ (int) (durationInMinutes ^ (durationInMinutes >>> 32));
 		result = prime * result + ((end == null) ? 0 : end.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
@@ -151,7 +151,7 @@ public class Talk implements Serializable{
 				return false;
 		} else if (!description.equals(other.description))
 			return false;
-		if (durationInSeconds != other.durationInSeconds)
+		if (durationInMinutes != other.durationInMinutes)
 			return false;
 		if (end == null) {
 			if (other.end != null)
@@ -189,17 +189,17 @@ public class Talk implements Serializable{
 	@Override
 	public String toString() {
 		return "Talk [id=" + id + ", room=" + room + ", name=" + name
-				+ ", description=" + description + ", durationInSeconds="
-				+ durationInSeconds + ", start=" + start + ", end=" + end
+				+ ", description=" + description + ", durationInMinutes="
+				+ durationInMinutes + ", start=" + start + ", end=" + end
 				+ ", updateTimeStamp=" + updateTimeStamp + "]";
 	}
 
-	public long getDurationInSeconds() {
-		return durationInSeconds;
+	public long getDurationInMinutes() {
+		return durationInMinutes;
 	}
 
-	public void setDurationInSeconds(long duration) {
-		this.durationInSeconds = duration;
+	public void setDurationInMinutes(long duration) {
+		this.durationInMinutes = duration;
 	}
 
 	

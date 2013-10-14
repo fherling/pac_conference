@@ -29,7 +29,7 @@
 			<h:panelGrid columns="3" columnClasses="titleCell">
 				<h:outputLabel for="duration" value="Duration(sec):" styleClass="panelOutputLable"/>
 				<h:inputText id="duration"
-					value="#{talkController.entry.durationInSeconds}" />
+					value="#{talkController.entry.durationInMinutes}" />
 				<h:message for="duration" errorClass="invalid" />
 			</h:panelGrid>
 
@@ -132,6 +132,11 @@
 					<f:facet name="header">End</f:facet>
                 #{_valueBean.end}
             </h:column>
+            <h:column>
+                    <f:facet name="header">Duration in min</f:facet>
+                #{_valueBean.durationInMinutes}
+            </h:column>
+            
 				<h:column>
 					<f:facet name="header">Changed</f:facet>
                 #{_valueBean.updateTimeStamp}

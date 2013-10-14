@@ -31,6 +31,7 @@ import javax.ws.rs.core.Response;
 
 import com.prodyna.conference.service.ConferenceService;
 import com.prodyna.conference.service.model.Conference;
+import com.prodyna.conference.service.model.ConferenceDTO;
 
 /**
  * JAX-RS Example
@@ -50,15 +51,15 @@ public class ConferenceRESTService implements Serializable {
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Conference> listAllConferences() {
+	public List<ConferenceDTO> listAllConferences() {
 		return service.listAll();
 	}
 
 	@GET
 	@Path("/find/{id:[0-9][0-9]*}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Conference lookupRoomById(@PathParam("id") long id) {
-		Conference conference = service.findById(id);
+	public ConferenceDTO lookupRoomById(@PathParam("id") long id) {
+		ConferenceDTO conference = service.findById(id);
 		if (conference == null) {
 			throw new WebApplicationException(Response.Status.NOT_FOUND);
 		}

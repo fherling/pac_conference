@@ -23,10 +23,7 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.Validator;
 
 import com.prodyna.conference.core.interceptor.PerfomanceMeasuring;
-import com.prodyna.conference.service.SpeakerService;
 import com.prodyna.conference.service.model.Speaker;
-import com.prodyna.conference.service.model.SpeakerDTO;
-import com.prodyna.conference.service.model.Talk;
 
 /**
  * @author fherling

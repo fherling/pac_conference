@@ -19,6 +19,37 @@
 				<h:inputText id="name" value="#{conferenceAdminController.entry.name}" />
 				<h:message for="name" errorClass="invalid" />
 			</h:panelGrid>
+            <h:panelGrid columns="3" columnClasses="titleCell">
+                <h:outputLabel for="description" value="Description:" styleClass="panelOutputLable" />
+                <h:inputText id="description" value="#{conferenceAdminController.entry.description}" />
+                <h:message for="description" errorClass="invalid" />
+            </h:panelGrid>
+            <h:panelGrid columns="3" columnClasses="titleCell">
+                <h:outputLabel for="start" value="Start" styleClass="panelOutputLable" />
+                <h:inputText id="start" value="#{conferenceAdminController.entry.start}" >
+                    <f:convertDateTime type="date" dateStyle="short" />
+                </h:inputText>
+                <h:message for="start" errorClass="invalid" />
+            </h:panelGrid>  
+            <h:panelGrid columns="3" columnClasses="titleCell">
+                <h:outputLabel for="end" value="End" styleClass="panelOutputLable" />
+                <h:inputText id="end" value="#{conferenceAdminController.entry.end}" >
+                    <f:convertDateTime type="date" dateStyle="short" />
+                </h:inputText>
+                <h:message for="end" errorClass="invalid" />
+            </h:panelGrid>  
+            
+            <h:panelGrid columns="3" columnClasses="titleCell">
+                <h:outputLabel for="talks" value="Talks:" styleClass="panelOutputLable"/>
+                <h:selectManyListbox id="talks" converter="#{talkConverter}"
+                    value="#{conferenceAdminController.entry.talks}">
+                    <f:selectItems value="#{talkController.model}" var="_talk"
+                        itemValue="#{_talk}"
+                        itemLabel="#{_talk.name} : #{_talk.description}" />
+                </h:selectManyListbox>
+                <h:message for="talks" errorClass="invalid" />
+            </h:panelGrid>
+            
 			<p>
 				<h:panelGrid columns="3">
 					<h:commandButton id="save"

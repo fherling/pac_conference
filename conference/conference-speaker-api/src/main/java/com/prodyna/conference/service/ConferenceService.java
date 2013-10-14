@@ -6,19 +6,20 @@ package com.prodyna.conference.service;
 import java.util.List;
 
 import com.prodyna.conference.service.model.Conference;
+import com.prodyna.conference.service.model.ConferenceDTO;
 
 /**
  * @author fherling
  *
  */
 public interface ConferenceService {
-	Conference findById(long id);
+	ConferenceDTO findById(long id);
 
-	List<Conference> listAll();
+	List<ConferenceDTO> listAll();
 
-	Conference save(Conference conference);
+	ConferenceDTO save(ConferenceDTO conference);
 
 	void delete(Long id);
 
-	void delete(Conference conference);
+	void delete(ConferenceDTO conference);
 }

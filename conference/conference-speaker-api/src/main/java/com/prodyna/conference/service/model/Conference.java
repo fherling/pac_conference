@@ -48,11 +48,6 @@ public class Conference implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date end;
 	
-	
-	@NotNull(message="No talk available for conference")
-	@OneToMany(fetch=FetchType.EAGER)
-	private Set<Talk> talks;
-	
 	@Version
 	private Timestamp updateTimeStamp;
 
@@ -65,14 +60,7 @@ public class Conference implements Serializable {
 		this.id = id;
 	}
 
-	public Set<Talk> getTalks() {
-		return talks;
-	}
-
-	public void setTalks(Set<Talk> talks) {
-		this.talks = talks;
-	}
-
+	
 	public String getName() {
 		return name;
 	}

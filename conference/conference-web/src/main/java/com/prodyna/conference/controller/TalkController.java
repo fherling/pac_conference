@@ -27,6 +27,7 @@ import javax.inject.Named;
 
 import com.prodyna.conference.core.interceptor.PerfomanceMeasuring;
 import com.prodyna.conference.service.TalkService;
+import com.prodyna.conference.service.model.Talk;
 import com.prodyna.conference.service.model.TalkDTO;
 
 @SessionScoped
@@ -59,7 +60,7 @@ public class TalkController extends AbstractViewController  {
     }
     
     public void newEntry(){
-    	entry = new TalkDTO();
+    	entry = new TalkDTO(new Talk());
     }
 
     public void loadEntry(){
@@ -71,7 +72,7 @@ public class TalkController extends AbstractViewController  {
         try {
         	log.info("save " + entry);
         	entry = service.save(entry);
-        	entry = new TalkDTO();
+        	entry = new TalkDTO(new Talk());
         	
         	
         	talks.clear();
@@ -89,7 +90,7 @@ public class TalkController extends AbstractViewController  {
 
     @PostConstruct
     public void initView() {
-        entry = new TalkDTO();
+    	entry = new TalkDTO(new Talk());
         talks = service.listAll();
         
         model = new ListDataModel<TalkDTO>(talks);

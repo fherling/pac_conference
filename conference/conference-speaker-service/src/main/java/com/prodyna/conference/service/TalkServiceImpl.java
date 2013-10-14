@@ -5,7 +5,6 @@ package com.prodyna.conference.service;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.logging.Level;
@@ -26,7 +25,6 @@ import javax.validation.Validator;
 
 import com.prodyna.conference.core.interceptor.PerfomanceMeasuring;
 import com.prodyna.conference.service.model.Speaker;
-import com.prodyna.conference.service.model.SpeakerDTO;
 import com.prodyna.conference.service.model.SpeakersForTalk;
 import com.prodyna.conference.service.model.Talk;
 import com.prodyna.conference.service.model.TalkDTO;
@@ -65,7 +63,7 @@ public class TalkServiceImpl implements TalkService {
 			return null;
 		}
 
-		TalkDTO dto = MappingHelper.mapFrom(result);
+		TalkDTO dto = new TalkDTO(result);
 
 		dto.getSpeakers().addAll(loadSpeakersForTalk(dto.getId()));
 
@@ -85,7 +83,7 @@ public class TalkServiceImpl implements TalkService {
 		List<TalkDTO> talks = new ArrayList<TalkDTO>();
 
 		for (Talk talk : result) {
-			TalkDTO dto = MappingHelper.mapFrom(talk);
+			TalkDTO dto = new TalkDTO(talk);
 			dto.getSpeakers().addAll(loadSpeakersForTalk(dto.getId()));
 			talks.add(dto);
 		}
@@ -114,6 +112,12 @@ public class TalkServiceImpl implements TalkService {
 		}
 
 		em.remove(talk);
+		
+		SpeakersForTalk s = em.find(SpeakersForTalk.class, talk.getId());
+		
+		if( null != s){
+			em.remove(s);
+		}
 
 		em.flush();
 		em.clear();
@@ -126,8 +130,8 @@ public class TalkServiceImpl implements TalkService {
 
 		log.info(talk.toString());
 
-		Talk entity = MappingHelper.mapFrom(talk);
-
+		Talk entity = talk.getTalk();
+		
 		validate(entity);
 
 		if (null != entity.getId()) {
@@ -146,9 +150,6 @@ public class TalkServiceImpl implements TalkService {
 		
 		SpeakersForTalk sft = saveSpeakerRelation(talk);
 		
-		talk = MappingHelper.mapFrom(entity);
-		
-
 		talk.getSpeakers().clear();
 		talk.getSpeakers().addAll(sft.getSpeakers());
 
@@ -189,8 +190,12 @@ public class TalkServiceImpl implements TalkService {
 		List<Talk> result = query.getResultList();
 		List<TalkDTO> talks = new ArrayList<TalkDTO>();
 
+		TalkDTO dto;
+		
 		for (Talk talk : result) {
-			talks.add(MappingHelper.mapFrom(talk));
+			dto = new TalkDTO(talk);
+			dto.getSpeakers().addAll(loadSpeakersForTalk(dto.getId()));
+			talks.add(dto);
 		}
 
 		log.info("Found " + talks.size() + " talks");
@@ -219,17 +224,13 @@ public class TalkServiceImpl implements TalkService {
 	private List<Speaker> loadSpeakersForTalk(Long id) {
 
 		SpeakersForTalk talk2speaker = em.find(SpeakersForTalk.class, id);
-		List<SpeakerDTO> speakers = new ArrayList<>();
+		List<Speaker> speakers = new ArrayList<>();
 
 		if( null == talk2speaker){
 			throw new RuntimeException("No speaker for talk found");
 		}
-		
-		for (Speaker speaker : talk2speaker.getSpeakers()) {
-			speakers.add(MappingHelper.mapFrom(speaker));
-		}
-		return new ArrayList<Speaker>(talk2speaker.getSpeakers());
-
+		speakers.addAll(talk2speaker.getSpeakers());
+		return speakers;
 	}
 
 }

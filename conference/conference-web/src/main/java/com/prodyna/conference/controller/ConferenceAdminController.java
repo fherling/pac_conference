@@ -28,6 +28,7 @@ import javax.inject.Named;
 import com.prodyna.conference.core.interceptor.PerfomanceMeasuring;
 import com.prodyna.conference.service.ConferenceService;
 import com.prodyna.conference.service.model.Conference;
+import com.prodyna.conference.service.model.ConferenceDTO;
 
 // The @Model stereotype is a convenience mechanism to make this a request-scoped bean that has an
 // EL name
@@ -38,11 +39,11 @@ import com.prodyna.conference.service.model.Conference;
 @PerfomanceMeasuring
 public class ConferenceAdminController extends AbstractViewController{
 	
-    private Conference entry;
+    private ConferenceDTO entry;
     
-    private java.util.List<Conference> entries;
+    private java.util.List<ConferenceDTO> entries;
     
-    private DataModel<Conference> model;
+    private DataModel<ConferenceDTO> model;
     
     @Inject
     private ConferenceService service;
@@ -50,7 +51,7 @@ public class ConferenceAdminController extends AbstractViewController{
 
 //    @Produces
     @Named
-    public Conference getEntry() {
+    public ConferenceDTO getEntry() {
         return entry;
     }
     
@@ -60,7 +61,7 @@ public class ConferenceAdminController extends AbstractViewController{
     }
     
     public void newEntry(){
-    	entry = new Conference();
+    	entry = new ConferenceDTO(new Conference(), null);
     }
 
     public void loadEntry(){
@@ -76,7 +77,7 @@ public class ConferenceAdminController extends AbstractViewController{
         	entries.clear();
         	entries.addAll(service.listAll());
         	
-        	entry = new Conference();
+        	entry = new ConferenceDTO(new Conference(), null);
         	
             facesContext.addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Saved!", "Successfully saved!"));
@@ -89,13 +90,13 @@ public class ConferenceAdminController extends AbstractViewController{
 
     @PostConstruct
     public void initView() {
-        entry = new Conference();
+    	entry = new ConferenceDTO(new Conference(), null);
         entries = service.listAll();
         
-        model = new ListDataModel<Conference>(entries);
+        model = new ListDataModel<ConferenceDTO>(entries);
     }
     
-    public DataModel<Conference> getModel() {
+    public DataModel<ConferenceDTO> getModel() {
         return model;
     }
 

@@ -1,9 +1,7 @@
 package com.prodyna.conference.service;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -24,8 +22,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.prodyna.conference.service.model.Conference;
+import com.prodyna.conference.service.model.ConferenceDTO;
 import com.prodyna.conference.service.model.Room;
 import com.prodyna.conference.service.model.Speaker;
+import com.prodyna.conference.service.model.Talk;
 import com.prodyna.conference.service.model.TalkDTO;
 
 @RunWith(Arquillian.class)
@@ -96,14 +96,13 @@ public class ConferenceTest {
 
 		speaker = speakerService.save(speaker);
 
-		TalkDTO talk = new TalkDTO();
+		TalkDTO talk = new TalkDTO(new Talk());
 		talk.setDescription("Ein TAlk");
-		talk.setDurationInSeconds(20000);
+		talk.setDurationInMinutes(20000);
 		talk.setName("DER TALK");
 		talk.setStart(new Date());
 		talk.setEnd(new Date());
-		talk.setDurationInSeconds(1000);
-		talk.setSpeakers(new HashSet<Speaker>());
+		talk.setDurationInMinutes(1000);
 		talk.getSpeakers().add(speaker);
 
 //		talk.setRoom(room);
@@ -123,7 +122,7 @@ public class ConferenceTest {
 	@Ignore
 	public void test() {
 
-		List<Conference> conference = conferenceService.listAll();
+		List<ConferenceDTO> conference = conferenceService.listAll();
 
 		Assert.assertNotNull(conference);
 		Assert.assertTrue("No conferences found", conference.size() == 1);
