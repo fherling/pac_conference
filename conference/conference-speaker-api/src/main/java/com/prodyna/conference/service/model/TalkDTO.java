@@ -29,6 +29,10 @@ public class TalkDTO implements Serializable{
 		this.talk = pTalk;
 	}
 	
+	public void setTalk(Talk pTalk){
+		this.talk = pTalk;
+	}
+	
 	public Talk getTalk(){
 		return this.talk;
 	}

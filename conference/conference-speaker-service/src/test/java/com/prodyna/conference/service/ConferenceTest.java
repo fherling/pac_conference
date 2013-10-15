@@ -36,7 +36,7 @@ public class ConferenceTest {
 
 		File[] libs = DependencyResolvers.use(MavenDependencyResolver.class)
 				.artifact("com.prodyna.conference:conference-core:SNAPSHOT")
-				// .artifact("com.prodyna.conference:conference-speaker-api:SNAPSHOT")
+				.artifact("com.prodyna.conference:conference-speaker-api:SNAPSHOT")
 				.resolveAsFiles();
 
 		WebArchive archive = ShrinkWrap

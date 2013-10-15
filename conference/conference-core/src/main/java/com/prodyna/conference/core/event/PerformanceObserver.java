@@ -24,8 +24,6 @@ public class PerformanceObserver {
 		
 		log.log(Level.INFO, "Handle performance event for : " +  event.getKey());
 		
-		log.info(performanceMgmtBean.toString());
-		
 		performanceMgmtBean.report(event.getService(), event.getMethod(), event.getTime());
 		
 	}

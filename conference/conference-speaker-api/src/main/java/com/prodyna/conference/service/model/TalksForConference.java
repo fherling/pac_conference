@@ -20,7 +20,7 @@ public class TalksForConference implements Serializable{
 	@Id
 	private Long id;
 	
-	@ManyToMany(fetch=FetchType.EAGER,targetEntity=Speaker.class)
+	@ManyToMany(fetch=FetchType.EAGER,targetEntity=Talk.class)
 	@NotNull
 	private Set<Talk> talks;
 

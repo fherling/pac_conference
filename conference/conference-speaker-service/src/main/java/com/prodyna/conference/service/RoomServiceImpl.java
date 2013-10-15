@@ -22,6 +22,7 @@ import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import javax.validation.Validator;
 
+import com.prodyna.conference.core.event.ObjectSavedEvent;
 import com.prodyna.conference.core.interceptor.PerfomanceMeasuring;
 import com.prodyna.conference.service.model.Room;
 
@@ -44,7 +45,7 @@ public class RoomServiceImpl implements RoomService {
 	private Validator validator;
 	
 	@Inject
-	private Event<Room> eventSource;
+	private Event<ObjectSavedEvent> eventSource;
 	
 	@Override
 	@TransactionAttribute(TransactionAttributeType.SUPPORTS)
@@ -113,7 +114,10 @@ public class RoomServiceImpl implements RoomService {
 		em.flush();
 		em.clear();
 
-		eventSource.fire(room);
+		ObjectSavedEvent event = new ObjectSavedEvent();
+		event.setSavedObject(room);
+		eventSource.fire(event);
+
 		
 		log.info("Speaker successfully persited");
 

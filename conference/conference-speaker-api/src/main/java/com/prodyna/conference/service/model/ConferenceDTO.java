@@ -33,6 +33,10 @@ public class ConferenceDTO implements Serializable {
 			
 	}
 	
+	public void setConference(Conference pConference){
+		this.conference = pConference;
+	}
+	
 	public Conference getConference(){
 		return conference;
 	}

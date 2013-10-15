@@ -16,7 +16,7 @@ import javax.management.ObjectInstance;
 import javax.management.ObjectName;
 
 import com.prodyna.conference.core.event.PerformanceEvent;
-import com.prodyna.conference.core.jms.HelloService;
+import com.prodyna.conference.core.jms.NotificationService;
 
 @PerfomanceMeasuring
 @Interceptor
@@ -28,20 +28,18 @@ public class PerformanceMeasuringInterceptor {
 
 	@Inject
 	private Logger log;
-	
-	@Inject
-	private MBeanServer mbs;
 
 	@Inject
 	private Event<PerformanceEvent> perfEvent;
-	
+
 	@Inject
-	private HelloService helloService;
+	private NotificationService notificationService;
+
 	/**
 	 * 
 	 */
 	public PerformanceMeasuringInterceptor() {
-		
+
 	}
 
 	/**
@@ -52,34 +50,52 @@ public class PerformanceMeasuringInterceptor {
 	@AroundInvoke
 	public Object aroundInvoke(InvocationContext ic) throws Exception {
 
-		String key = ic.getTarget().getClass() + "." +   ic.getMethod().getName();
-		helloService.hello(key);
-		
+		String key = ic.getTarget().getClass() + "." + ic.getMethod().getName();
+		notificationService.notify(key);
+
+		StringBuffer params = new StringBuffer();
+
+		Object[] p = ic.getParameters();
+		if (null != p && p.length > 0) {
+			boolean first = true;
+			for (int i = 0; i < p.length; i++) {
+				if( !first){
+					params.append(";");
+					first = false;
+				}
+				params.append("p").append(i).append(":").append(p[i]);
+			}
+		}else{
+			params.append("NO PARAMS");
+		}
+
 		long start = System.currentTimeMillis();
 		Object result = null;
 		try {
 			result = ic.proceed();
 		} finally {
 			long end = System.currentTimeMillis();
-			log.log(Level.INFO, "PERFORMANCEMEASURING - "  + key + " call duration: " + (end - start) + " ms");
-			firePerformanceEvent(ic.getTarget().getClass().getName(), ic.getMethod().getName(), (end -  start));	
-			
-			
+			long duration = end - start;
+			log.log(Level.INFO, "PERFORMANCEMEASURING - " + key
+					+ " was called with " + params.toString() + " (Duration: " + duration + " ms)");
+			firePerformanceEvent(ic.getTarget().getClass().getName(), ic
+					.getMethod().getName(), duration);
+
 		}
 		return result;
 	}
-	
-	private void firePerformanceEvent(String service, String method, long time){
-		
+
+	private void firePerformanceEvent(String service, String method, long time) {
+
 		PerformanceEvent event = new PerformanceEvent();
-		
+
 		event.setKey(service + ":" + method + ":" + time);
 		event.setService(service);
 		event.setMethod(method);
 		event.setTime(time);
-		
+
 		perfEvent.fire(event);
-		
+
 	}
 
 }

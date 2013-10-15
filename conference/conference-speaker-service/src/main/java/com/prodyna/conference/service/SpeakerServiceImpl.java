@@ -22,6 +22,7 @@ import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import javax.validation.Validator;
 
+import com.prodyna.conference.core.event.ObjectSavedEvent;
 import com.prodyna.conference.core.interceptor.PerfomanceMeasuring;
 import com.prodyna.conference.service.model.Speaker;
 
@@ -44,7 +45,7 @@ public class SpeakerServiceImpl implements SpeakerService {
 	private Validator validator;
 	
 	@Inject
-	private Event<Speaker> speakerEventSrc;
+	private Event<ObjectSavedEvent> eventSource;
 
 	@Override
 	@TransactionAttribute(TransactionAttributeType.SUPPORTS)
@@ -108,7 +109,10 @@ public class SpeakerServiceImpl implements SpeakerService {
 		em.flush();
 		em.clear();
 
-		speakerEventSrc.fire(speaker);
+		ObjectSavedEvent event = new ObjectSavedEvent();
+		event.setSavedObject(speaker);
+		eventSource.fire(event);
+
 		
 		log.info("Speaker successfully persited");
 

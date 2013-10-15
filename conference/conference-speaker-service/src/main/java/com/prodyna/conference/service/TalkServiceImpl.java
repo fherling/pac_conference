@@ -23,6 +23,7 @@ import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import javax.validation.Validator;
 
+import com.prodyna.conference.core.event.ObjectSavedEvent;
 import com.prodyna.conference.core.interceptor.PerfomanceMeasuring;
 import com.prodyna.conference.service.model.Speaker;
 import com.prodyna.conference.service.model.SpeakersForTalk;
@@ -48,7 +49,7 @@ public class TalkServiceImpl implements TalkService {
 	private Validator validator;
 
 	@Inject
-	private Event<TalkDTO> eventSource;
+	private Event<ObjectSavedEvent> eventSource;
 
 	@EJB
 	private SpeakerService speakerService;
@@ -146,14 +147,17 @@ public class TalkServiceImpl implements TalkService {
 		em.flush();
 		em.clear();
 
-		talk.setId(entity.getId());
+		talk.setTalk(entity);
 		
 		SpeakersForTalk sft = saveSpeakerRelation(talk);
 		
 		talk.getSpeakers().clear();
 		talk.getSpeakers().addAll(sft.getSpeakers());
 
-		eventSource.fire(talk);
+		ObjectSavedEvent event = new ObjectSavedEvent();
+		event.setSavedObject(talk);
+		eventSource.fire(event);
+
 
 		log.info("Talk successfully persited");
 

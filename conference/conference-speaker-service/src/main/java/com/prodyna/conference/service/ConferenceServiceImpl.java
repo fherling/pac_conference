@@ -22,10 +22,10 @@ import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import javax.validation.Validator;
 
+import com.prodyna.conference.core.event.ObjectSavedEvent;
 import com.prodyna.conference.core.interceptor.PerfomanceMeasuring;
 import com.prodyna.conference.service.model.Conference;
 import com.prodyna.conference.service.model.ConferenceDTO;
-import com.prodyna.conference.service.model.SpeakersForTalk;
 import com.prodyna.conference.service.model.Talk;
 import com.prodyna.conference.service.model.TalkDTO;
 import com.prodyna.conference.service.model.TalksForConference;
@@ -49,7 +49,7 @@ public class ConferenceServiceImpl implements ConferenceService {
 	private Validator validator;
 	
 	@Inject
-	private Event<Conference> eventSource;
+	private Event<ObjectSavedEvent> eventSource;
 	
 	@Override
 	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
@@ -59,7 +59,9 @@ public class ConferenceServiceImpl implements ConferenceService {
 
 		Set<TalkDTO> pTalks = loadTalksForConference(id);
 		
-		return new ConferenceDTO(result, pTalks);
+		ConferenceDTO dto = new ConferenceDTO(result, pTalks); 
+		
+		return dto;
 
 	}
 	
@@ -136,10 +138,13 @@ public class ConferenceServiceImpl implements ConferenceService {
 		//PERSIST TALK TO CONFERENCE
 		em.flush();
 		
+		conference.setConference(entity);
+		
 		saveTalksForConference(conference);
 		
-
-		eventSource.fire(entity);
+		ObjectSavedEvent event = new ObjectSavedEvent();
+		event.setSavedObject(conference);
+		eventSource.fire(event);
 		
 		log.info("Conference successfully persited");
 

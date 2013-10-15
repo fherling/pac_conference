@@ -26,7 +26,7 @@ public abstract class AbstractViewController {
 
 	protected String getRootErrorMessage(Exception e) {
 	    // Default to general error message that registration failed.
-	    String errorMessage = "Registration failed. See server log for more information";
+	    String errorMessage = "Service call failed. See server log for more information";
 	    if (e == null) {
 	        // This shouldn't happen, but return the default messages
 	        return errorMessage;
@@ -41,7 +41,7 @@ public abstract class AbstractViewController {
 	    }
 	    // This is the root cause message
 	    if( null == errorMessage){
-	    	errorMessage = "Registration failed. See server log for more information";
+	    	errorMessage = "Service call failed. See server log for more information";
 	    }
 	    return errorMessage;
 	}
