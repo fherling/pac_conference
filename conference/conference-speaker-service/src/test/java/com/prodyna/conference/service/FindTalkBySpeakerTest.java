@@ -28,10 +28,10 @@ import com.prodyna.conference.service.model.Speaker;
 import com.prodyna.conference.service.model.Talk;
 
 
-@RunWith(Arquillian.class)
+//@RunWith(Arquillian.class)
 public class FindTalkBySpeakerTest {
 
-	@Deployment
+//	@Deployment
     public static Archive<?> createTestArchive() {
 		
 		 File[] libs =  DependencyResolvers.use(MavenDependencyResolver.class)

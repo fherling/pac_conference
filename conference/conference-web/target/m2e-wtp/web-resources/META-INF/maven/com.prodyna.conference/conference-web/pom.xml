@@ -16,7 +16,7 @@
 	<parent>
 		<artifactId>conference</artifactId>
 		<groupId>com.prodyna.conference</groupId>
-		<version>1-SNAPSHOT</version>
+		<version>SNAPSHOT</version>
 	</parent>
 
 	<artifactId>conference-web</artifactId>
@@ -39,14 +39,14 @@
 		<dependency>
 			<groupId>com.prodyna.conference</groupId>
 			<artifactId>conference-speaker-api</artifactId>
-			<version>1-SNAPSHOT</version>
+			<version>SNAPSHOT</version>
 			<type>jar</type>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.prodyna.conference</groupId>
 			<artifactId>conference-core</artifactId>
-			<version>1-SNAPSHOT</version>
+			<version>SNAPSHOT</version>
 			<type>jar</type>
 			<scope>provided</scope>
 		</dependency>		

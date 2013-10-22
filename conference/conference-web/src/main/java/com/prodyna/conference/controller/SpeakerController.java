@@ -62,6 +62,7 @@ public class SpeakerController extends AbstractViewController{
 
     public void loadEntry(){
     	entry = model.getRowData();
+    	log.info("load " + entry);
     }
     
     public void saveEntry() throws Exception {
@@ -99,6 +100,9 @@ public class SpeakerController extends AbstractViewController{
     @Override
 	public void deleteEntry() throws Exception {
 		service.delete(model.getRowData());
+		entry = new Speaker();
+		entries.clear();
+        entries.addAll(service.listAll());
 	}
 }
 

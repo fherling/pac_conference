@@ -10,9 +10,9 @@
 	<ui:define name="content">
 		<h1>Conference Administration</h1>
     	<a href="#{request.contextPath}/">Back to start</a>
+    
 
-
-		<h:form id="reg" reRender="reg2">
+		<h:form id="reg" >
 			<h2>One Conference</h2>
 			<h:panelGrid columns="3" columnClasses="titleCell">
 				<h:outputLabel for="name" value="Name:" styleClass="panelOutputLable" />
@@ -53,7 +53,9 @@
 			<p>
 				<h:panelGrid columns="3">
 					<h:commandButton id="save"
-						action="#{conferenceAdminController.saveEntry}" value="Save" styleClass="save" />
+						action="#{conferenceAdminController.saveEntry}" value="Save" styleClass="save" >
+						 
+						</h:commandButton>
 					<h:commandButton id="new"
 						action="#{conferenceAdminController.newEntry}" value="New"
 						styleClass="new" />
@@ -61,8 +63,7 @@
 						infoClass="valid" warnClass="warning" globalOnly="true" />
 				</h:panelGrid>
 			</p>
-		</h:form>
-		<h:form id="reg2">
+			<div></div>
 			<h2>Conferences</h2>
 			<h:panelGroup rendered="#{conferenceAdminController.model.rowCount le 0}">
 				<em>No registered conferences.</em>
@@ -75,7 +76,7 @@
 				<h:column>
 					<f:facet name="header"></f:facet>
 					<h:commandButton id="deletem#{_valueBean.id}"
-                        action="#{conferenceAdminController.deleteEntry}" styleClass="change"
+                        action="#{conferenceAdminController.deleteEntry}" styleClass="delete"
                         value="#{_valueBean}" image="./resources/gfx/loeschen.png" />
 					<h:commandButton id="loadm#{_valueBean.id}"
 						action="#{conferenceAdminController.loadEntry}" styleClass="change"

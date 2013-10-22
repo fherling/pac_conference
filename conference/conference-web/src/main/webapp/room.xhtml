@@ -9,9 +9,9 @@
 	template="/WEB-INF/templates/default.xhtml">
 	<ui:define name="content">
 		<h1>Room Administration</h1>
-        <a href="#{request.contextPath}/">Back to start</a>
+            <a href="#{request.contextPath}/">Back to start</a>
 
-		<h:form id="reg" reRender="reg2">
+		<h:form id="reg">
 			<h2>Administration</h2>
 			<h:panelGrid columns="3" columnClasses="titleCell">
 				<h:outputLabel for="name" value="Name:" styleClass="panelOutputLable"/>
@@ -34,8 +34,7 @@
 						infoClass="valid" warnClass="warning" globalOnly="true" />
 				</h:panelGrid>
 			</p>
-		</h:form>
-		<h:form id="reg2">
+			<div></div>
 			<h2>rooms</h2>
 			<h:panelGroup rendered="#{roomController.model.rowCount le 0}">
 				<em>No registered rooms.</em>
@@ -48,11 +47,11 @@
 				<h:column>
 					<f:facet name="header"></f:facet>
 					<h:commandButton id="deletem#{_valueBean.id}"
-                        action="#{roomController.deleteEntry}" styleClass="change"
-                        value="#{_valueBean}" image="./resources/gfx/loeschen.png" />
+                        action="#{roomController.deleteEntry()}" styleClass="delete"
+                        image="resources/gfx/loeschen.png" />
 					<h:commandButton id="load#{_valueBean.id}"
-						action="#{roomController.loadEntry}" styleClass="change"
-						value="#{_valueBean}" image="./resources/gfx/bearbeiten.png" />
+						action="#{roomController.loadEntry()}" styleClass="change"
+						image="resources/gfx/bearbeiten.png" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">Id</f:facet>

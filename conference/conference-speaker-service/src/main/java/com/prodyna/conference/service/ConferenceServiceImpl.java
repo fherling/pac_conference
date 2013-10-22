@@ -10,6 +10,7 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
@@ -32,25 +33,28 @@ import com.prodyna.conference.service.model.TalksForConference;
 
 /**
  * @author fherling
- *
+ * 
  */
 @Stateless
 @PerfomanceMeasuring
 @Default
 public class ConferenceServiceImpl implements ConferenceService {
 
-	@Inject 
+	@Inject
 	private Logger log;
-	
+
 	@Inject
 	private EntityManager em;
 
+	@EJB
+	private CombinedService combinedServiceImpl;
+
 	@Inject
 	private Validator validator;
-	
+
 	@Inject
 	private Event<ObjectSavedEvent> eventSource;
-	
+
 	@Override
 	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 	public ConferenceDTO findById(long id) {
@@ -58,13 +62,13 @@ public class ConferenceServiceImpl implements ConferenceService {
 		Conference result = em.find(Conference.class, id);
 
 		Set<TalkDTO> pTalks = loadTalksForConference(id);
-		
-		ConferenceDTO dto = new ConferenceDTO(result, pTalks); 
-		
+
+		ConferenceDTO dto = new ConferenceDTO(result, pTalks);
+
 		return dto;
 
 	}
-	
+
 	@Override
 	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 	public List<ConferenceDTO> listAll() {
@@ -73,19 +77,18 @@ public class ConferenceServiceImpl implements ConferenceService {
 				.createQuery("select b from com.prodyna.conference.service.model.Conference b");
 
 		List<ConferenceDTO> dtoResult = new ArrayList<ConferenceDTO>();
-		
+
 		ConferenceDTO dto;
 		Set<TalkDTO> talks = null;
-		
+
 		List<Conference> result = query.getResultList();
-		
+
 		for (Conference conference : result) {
 			talks = null;
 			dto = new ConferenceDTO(conference, talks);
 			dto.getTalks().addAll(loadTalksForConference(conference.getId()));
 			dtoResult.add(dto);
 		}
-		
 
 		log.info("Found " + dtoResult.size() + " conferences");
 
@@ -107,14 +110,14 @@ public class ConferenceServiceImpl implements ConferenceService {
 		ConferenceDTO conference = findById(id);
 
 		em.remove(conference.getConference());
-		
-		
-		TalksForConference s = em.find(TalksForConference.class, conference.getId());
-		
-		if( null != s){
+
+		TalksForConference s = em.find(TalksForConference.class,
+				conference.getId());
+
+		if (null != s) {
 			em.remove(s);
 		}
-		
+
 		em.flush();
 
 	}
@@ -126,7 +129,7 @@ public class ConferenceServiceImpl implements ConferenceService {
 		log.info(conference.toString());
 
 		Conference entity = conference.getConference();
-		
+
 		validate(conference);
 
 		if (null != entity.getId()) {
@@ -134,18 +137,18 @@ public class ConferenceServiceImpl implements ConferenceService {
 		} else {
 			em.persist(entity);
 		}
-		
-		//PERSIST TALK TO CONFERENCE
+
+		// PERSIST TALK TO CONFERENCE
 		em.flush();
-		
+
 		conference.setConference(entity);
-		
+
 		saveTalksForConference(conference);
-		
+
 		ObjectSavedEvent event = new ObjectSavedEvent();
 		event.setSavedObject(conference);
 		eventSource.fire(event);
-		
+
 		log.info("Conference successfully persited");
 
 		return conference;
@@ -158,26 +161,25 @@ public class ConferenceServiceImpl implements ConferenceService {
 
 		if (!violations.isEmpty()) {
 
-			
 			for (ConstraintViolation<Conference> constraintViolation : violations) {
-				log.log(Level.WARNING,   constraintViolation.getPropertyPath().toString() + " : " +  constraintViolation.getMessage());
+				log.log(Level.WARNING, constraintViolation.getPropertyPath()
+						.toString() + " : " + constraintViolation.getMessage());
 			}
 
 			throw new ConstraintViolationException(
 					new HashSet<ConstraintViolation<?>>(violations));
 		}
 
-		
-		
 	}
 
 	private Set<TalkDTO> loadTalksForConference(Long id) {
-	
-		TalksForConference talksToConference = em.find(TalksForConference.class, id);
+
+		TalksForConference talksToConference = em.find(
+				TalksForConference.class, id);
 		Set<TalkDTO> talks = new HashSet<TalkDTO>();
-	
-		if( null == talksToConference){
-			//throw new RuntimeException("No talks found for conference");
+
+		if (null == talksToConference) {
+			// throw new RuntimeException("No talks found for conference");
 			return talks;
 		}
 		TalkDTO dto;
@@ -185,34 +187,14 @@ public class ConferenceServiceImpl implements ConferenceService {
 			dto = new TalkDTO(talk);
 			talks.add(dto);
 		}
-		
+
 		return talks;
 	}
 
-	private TalksForConference saveTalksForConference(ConferenceDTO conference) {
-	
-		TalksForConference s = em.find(TalksForConference.class, conference.getId());
-		HashSet<Talk> talks = new HashSet<Talk>();
-		
-		for (TalkDTO talk : conference.getTalks()) {
-			talks.add(talk.getTalk());
-		}
-		
-		
-		if (null != s) {
-			s.getTalks().clear();
-			s.getTalks().addAll(talks);
-			s = em.merge(s);
-		} else {
-			s = new TalksForConference();
-			s.setId(conference.getId());
-			s.setTalks(talks);
-			em.persist(s);
-		}
-	
-		return s;
-	
+	private void saveTalksForConference(ConferenceDTO conference) {
+
+		conference = combinedServiceImpl.saveTalksForConference(conference);
+
 	}
 
-	
 }

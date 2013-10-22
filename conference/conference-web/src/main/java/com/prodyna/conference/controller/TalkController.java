@@ -104,6 +104,11 @@ public class TalkController extends AbstractViewController  {
     @Override
 	public void deleteEntry() throws Exception {
 		service.delete(model.getRowData());
+		entry = new TalkDTO(new Talk());
+    	
+    	
+    	talks.clear();
+    	talks.addAll(service.listAll());
 	}
     
     

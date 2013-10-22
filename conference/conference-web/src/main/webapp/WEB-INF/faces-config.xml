@@ -25,15 +25,15 @@
 		<converter-id>roomConverter</converter-id>
 		<converter-class>com.prodyna.conference.converter.RoomConverter</converter-class>
 	</converter>
-	
+
 	<converter>
-        <converter-id>talkConverter</converter-id>
-        <converter-class>com.prodyna.conference.converter.TalkConverter</converter-class>
-    </converter>
-	
-	   <converter>
-        <converter-id>speakerConverter</converter-id>
-        <converter-class>com.prodyna.conference.converter.SpeakerConverter</converter-class>
-    </converter>
+		<converter-id>talkConverter</converter-id>
+		<converter-class>com.prodyna.conference.converter.TalkConverter</converter-class>
+	</converter>
+
+	<converter>
+		<converter-id>speakerConverter</converter-id>
+		<converter-class>com.prodyna.conference.converter.SpeakerConverter</converter-class>
+	</converter>
 
 </faces-config>

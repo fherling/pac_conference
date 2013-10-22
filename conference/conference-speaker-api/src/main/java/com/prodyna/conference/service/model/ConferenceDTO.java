@@ -2,8 +2,10 @@ package com.prodyna.conference.service.model;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.validation.constraints.NotNull;
@@ -18,7 +20,7 @@ public class ConferenceDTO implements Serializable {
 	
 //	@NotNull(message="No talk available for conference")
 	
-	private Set<TalkDTO> talks = new HashSet<TalkDTO>();
+	private List<TalkDTO> talks = new ArrayList<TalkDTO>();
 	
 	
 	public ConferenceDTO(Conference pConference, Set<TalkDTO> pTalks){
@@ -41,11 +43,11 @@ public class ConferenceDTO implements Serializable {
 		return conference;
 	}
 
-	public Set<TalkDTO> getTalks() {
+	public List<TalkDTO> getTalks() {
 		return talks;
 	}
 
-	public void setTalks(Set<TalkDTO> talks) {
+	public void setTalks(List<TalkDTO> talks) {
 		this.talks = talks;
 	}
 

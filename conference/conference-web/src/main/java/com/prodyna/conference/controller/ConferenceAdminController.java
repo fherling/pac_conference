@@ -103,6 +103,9 @@ public class ConferenceAdminController extends AbstractViewController{
 	@Override
 	public void deleteEntry() throws Exception {
 		service.delete(model.getRowData());
+    	entry = new ConferenceDTO(new Conference(), null);
+		entries.clear();
+    	entries.addAll(service.listAll());
 	}
 }
 

@@ -16,7 +16,7 @@
 	<parent>
 		<artifactId>conference</artifactId>
 		<groupId>com.prodyna.conference</groupId>
-		<version>1-SNAPSHOT</version>
+		<version>SNAPSHOT</version>
 	</parent>
 
 	<artifactId>conference-speaker-api</artifactId>
