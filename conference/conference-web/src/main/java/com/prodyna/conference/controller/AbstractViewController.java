@@ -14,16 +14,7 @@ public abstract class AbstractViewController {
     protected FacesContext facesContext;
 	
 	
-	public AbstractViewController() {
-		super();
-	}
 	
-	public abstract String startView();
-	
-	public abstract void deleteEntry() throws Exception;
-	
-	public abstract void saveEntry() throws Exception;
-
 	protected String getRootErrorMessage(Exception e) {
 	    // Default to general error message that registration failed.
 	    String errorMessage = "Service call failed. See server log for more information";

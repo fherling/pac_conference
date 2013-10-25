@@ -27,6 +27,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.prodyna.conference.core.interceptor.PerfomanceMeasuring;
+import com.prodyna.conference.service.MainEntityService;
 import com.prodyna.conference.service.RoomService;
 import com.prodyna.conference.service.model.Room;
 
@@ -47,7 +48,7 @@ public class RoomController extends AbstractViewController{
     private DataModel<Room> model;
     
     @Inject
-    private RoomService service;
+    private MainEntityService service;
 
 
 //    @Produces
@@ -76,7 +77,7 @@ public class RoomController extends AbstractViewController{
         	
         	
         	entries.clear();
-        	entries.addAll(service.listAll());
+        	entries.addAll(service.loadRooms());
         	
         	entry = new Room();
         	
@@ -92,7 +93,7 @@ public class RoomController extends AbstractViewController{
     @PostConstruct
     public void initView() {
         entry = new Room();
-        entries = service.listAll();
+        entries = service.loadRooms();
         
         model = new ListDataModel<Room>(entries);
     }
@@ -100,11 +101,6 @@ public class RoomController extends AbstractViewController{
     public DataModel<Room> getModel() {
         return model;
     }
-    
-    @Override
-	public void deleteEntry() throws Exception {
-		service.delete(model.getRowData());
-	}
 }
 
 

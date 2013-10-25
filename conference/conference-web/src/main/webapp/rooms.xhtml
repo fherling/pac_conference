@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	template="/WEB-INF/templates/default.xhtml">
+	<ui:define name="content">
+		<h1>Rooms Administration</h1>
+		<a href="#{request.contextPath}/">Back to start</a>
+
+		<h:form id="reg">
+			<h2>rooms</h2>
+			<h:panelGroup rendered="#{roomController.model.rowCount le 0}">
+				<em>No rooms available.</em>
+			</h:panelGroup>
+
+			<h:dataTable id="valueTable" var="_valueBean"
+				value="#{roomController.model}"
+				rendered="#{roomController.model.rowCount gt 0}"
+				styleClass="simpletablestyle">
+				<h:column>
+					<f:facet name="header"></f:facet>
+					<h:commandButton id="deletem#{_valueBean.id}"
+						action="#{roomController.deleteEntry()}" styleClass="delete"
+						image="resources/gfx/loeschen.png" />
+					<h:commandButton id="load#{_valueBean.id}"
+						action="#{roomController.loadEntry()}" styleClass="change"
+						image="resources/gfx/bearbeiten.png" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Id</f:facet>
+
+					<h:outputText value="#{_valueBean.id" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Name</f:facet>
+
+					<h:outputText value="#{_valueBean.name" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Capacity</f:facet>
+					<h:outputText value="#{_valueBean.capacity}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Changed</f:facet>
+					<h:outputText value="#{_valueBean.updateTimeStamp" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">REST URL</f:facet>
+					<a href="#{request.contextPath}/rest/rooms/find/#{_valueBean.id}">/rest/rooms/#{_valueBean.id}</a>
+				</h:column>
+				<f:facet name="footer">
+            REST URL for all rooms: <a
+						href="#{request.contextPath}/rest/rooms">/rest/rooms</a>
+				</f:facet>
+			</h:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>

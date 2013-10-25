@@ -11,19 +11,11 @@ import javax.inject.Inject;
 import javax.interceptor.AroundInvoke;
 import javax.interceptor.Interceptor;
 import javax.interceptor.InvocationContext;
-import javax.management.MBeanServer;
-import javax.management.ObjectInstance;
-import javax.management.ObjectName;
 
 import com.prodyna.conference.core.event.PerformanceEvent;
-import com.prodyna.conference.core.jms.NotificationService;
 
 @PerfomanceMeasuring
 @Interceptor
-/**
- * @author fherling
- *
- */
 public class PerformanceMeasuringInterceptor {
 
 	@Inject
@@ -31,9 +23,6 @@ public class PerformanceMeasuringInterceptor {
 
 	@Inject
 	private Event<PerformanceEvent> perfEvent;
-
-	@Inject
-	private NotificationService notificationService;
 
 	/**
 	 * 
@@ -51,7 +40,6 @@ public class PerformanceMeasuringInterceptor {
 	public Object aroundInvoke(InvocationContext ic) throws Exception {
 
 		String key = ic.getTarget().getClass() + "." + ic.getMethod().getName();
-		notificationService.notify(key);
 
 		StringBuffer params = new StringBuffer();
 
@@ -71,12 +59,14 @@ public class PerformanceMeasuringInterceptor {
 
 		long start = System.currentTimeMillis();
 		Object result = null;
+		boolean success = false;
 		try {
 			result = ic.proceed();
+			success = true;
 		} finally {
 			long end = System.currentTimeMillis();
 			long duration = end - start;
-			log.log(Level.INFO, "PERFORMANCEMEASURING - " + key
+			log.log(Level.INFO, "PERFORMANCEMEASURING - " + (success ? "SUCCESS -" : "FAILED -") + key
 					+ " was called with " + params.toString() + " (Duration: " + duration + " ms)");
 			firePerformanceEvent(ic.getTarget().getClass().getName(), ic
 					.getMethod().getName(), duration);

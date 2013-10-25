@@ -1,64 +1,46 @@
-/**
- * 
- */
 package com.prodyna.conference.service.model;
-
-import java.io.Serializable;
-import java.sql.Timestamp;
-import java.util.HashSet;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
-import javax.persistence.Version;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * @author fherling
- *
+ * 
  */
 @Entity
-@Table(name="speaker", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
-@SequenceGenerator(name="speaker_seq", initialValue=100, allocationSize=10)
-@NamedQuery(name="getAllSpeakers", query="select b from  com.prodyna.conference.service.model.Speaker b")
-public class Speaker implements Serializable{
+@SequenceGenerator(name = "speaker_seq", initialValue = 100, allocationSize = 10)
+@Table(uniqueConstraints = {
+		@UniqueConstraint(columnNames = { "name", "firstname" }),
+		@UniqueConstraint(columnNames = { "email" }) })
+@NamedQuery(name = BusinessQueries.GET_ALL_SPEAKERS, query = "select a from com.prodyna.conference.service.model.Speaker a")
+public class Speaker extends BaseEntity {
+	private static final long serialVersionUID = -4223667756806417808L;
 
-	private static final long serialVersionUID = 8410059024390735589L;
-
-	@ManyToMany
-	private List<Talk> talks;
-	
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="speaker_seq")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "speaker_seq")
 	private Long id;
-	
+
 	@NotNull
-	@NotEmpty
 	private String name;
-	
+
 	@NotNull
-	@NotEmpty
-	private String firstname;
-	
+	private String firstName;
+
+	@NotNull
+	private String description;
+
 	@Email
-	@NotNull
-	@NotEmpty
 	private String email;
 
-	@Version
-	private Timestamp updateTimeStamp;
-
-	
 	public Long getId() {
 		return id;
 	}
@@ -66,7 +48,7 @@ public class Speaker implements Serializable{
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
@@ -75,41 +57,33 @@ public class Speaker implements Serializable{
 		this.name = name;
 	}
 
-	public Timestamp getUpdateTimeStamp() {
-		return updateTimeStamp;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setUpdateTimeStamp(Timestamp updateTimeStamp) {
-		this.updateTimeStamp = updateTimeStamp;
-	}
-	
-	public String getEmail() {
-		return email;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public String getDescription() {
+		return description;
 	}
 
-	public String getFirstname() {
-		return firstname;
-	}
-
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
+	public void setDescription(String desription) {
+		this.description = desription;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
-		int result = 1;
+		int result = super.hashCode();
+		result = prime * result
+				+ ((description == null) ? 0 : description.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result
-				+ ((firstname == null) ? 0 : firstname.hashCode());
+				+ ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result
-				+ ((updateTimeStamp == null) ? 0 : updateTimeStamp.hashCode());
 		return result;
 	}
 
@@ -117,20 +91,25 @@ public class Speaker implements Serializable{
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
+		if (!super.equals(obj))
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
 		Speaker other = (Speaker) obj;
+		if (description == null) {
+			if (other.description != null)
+				return false;
+		} else if (!description.equals(other.description))
+			return false;
 		if (email == null) {
 			if (other.email != null)
 				return false;
 		} else if (!email.equals(other.email))
 			return false;
-		if (firstname == null) {
-			if (other.firstname != null)
+		if (firstName == null) {
+			if (other.firstName != null)
 				return false;
-		} else if (!firstname.equals(other.firstname))
+		} else if (!firstName.equals(other.firstName))
 			return false;
 		if (id == null) {
 			if (other.id != null)
@@ -142,22 +121,22 @@ public class Speaker implements Serializable{
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
-		if (updateTimeStamp == null) {
-			if (other.updateTimeStamp != null)
-				return false;
-		} else if (!updateTimeStamp.equals(other.updateTimeStamp))
-			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Speaker [id=" + id + ", name=" + name + ", firstname="
-				+ firstname + ", email=" + email + ", updateTimeStamp="
-				+ updateTimeStamp + "]";
+		return "Speaker [id=" + id + ", name=" + name + ", firstName="
+				+ firstName + ", description=" + description + ", email=" + email
+				+ "]";
 	}
-	
-	
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
 }

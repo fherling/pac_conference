@@ -16,13 +16,13 @@
 	<parent>
 		<artifactId>conference</artifactId>
 		<groupId>com.prodyna.conference</groupId>
-		<version>SNAPSHOT</version>
+		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>conference-speaker-api</artifactId>
 	<packaging>jar</packaging>
 
-	<name>SPEAKER API</name>
+	<name>conference-speaker-api</name>
 
 	<url>http://jboss.org/jbossas</url>
 	<licenses>

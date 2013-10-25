@@ -16,13 +16,13 @@
 	<parent>
 		<artifactId>conference</artifactId>
 		<groupId>com.prodyna.conference</groupId>
-		<version>SNAPSHOT</version>
+		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>conference-web</artifactId>
 	<packaging>war</packaging>
 
-	<name>conference: WAR Module</name>
+	<name>conference-web</name>
 
 	<url>http://jboss.org/jbossas</url>
 	<licenses>
@@ -39,14 +39,14 @@
 		<dependency>
 			<groupId>com.prodyna.conference</groupId>
 			<artifactId>conference-speaker-api</artifactId>
-			<version>SNAPSHOT</version>
+			<version>0.0.1-SNAPSHOT</version>
 			<type>jar</type>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.prodyna.conference</groupId>
 			<artifactId>conference-core</artifactId>
-			<version>SNAPSHOT</version>
+			<version>0.0.1-SNAPSHOT</version>
 			<type>jar</type>
 			<scope>provided</scope>
 		</dependency>		

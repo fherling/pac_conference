@@ -1,56 +1,49 @@
 package com.prodyna.conference.service.model;
 
-import java.io.Serializable;
-import java.sql.Timestamp;
 import java.util.Date;
-import java.util.Set;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Version;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "conference")
-@SequenceGenerator(name="conference_seq", initialValue=100, allocationSize=10)
-public class Conference implements Serializable {
+@SequenceGenerator(name = "conference_seq", initialValue = 100, allocationSize = 10)
+@NamedQueries(value = { @NamedQuery(name = BusinessQueries.GET_ALL_CONFERENCES, query = "select a from com.prodyna.conference.service.model.Conference a") })
+public class Conference extends BaseEntity {
 
-	private static final long serialVersionUID = -6398412509636027295L;
 	
+	private static final long serialVersionUID = 765599209894844703L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="conference_seq")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "conference_seq")
 	private Long id;
-	
+
 	@NotNull
 	@NotEmpty
 	private String name;
-	
+
 	@NotNull
 	@NotEmpty
 	private String description;
-	
+
 	@NotNull
 	@Temporal(TemporalType.DATE)
 	private Date start;
-	
+
 	@NotNull
 	@Temporal(TemporalType.DATE)
 	private Date end;
-	
-	@Version
-	private Timestamp updateTimeStamp;
-
 
 	public Long getId() {
 		return id;
@@ -60,7 +53,6 @@ public class Conference implements Serializable {
 		this.id = id;
 	}
 
-	
 	public String getName() {
 		return name;
 	}
@@ -73,37 +65,32 @@ public class Conference implements Serializable {
 		return description;
 	}
 
-	public void setDescription(String desc) {
-		this.description = desc;
+	public Date getStart() {
+		return start;
 	}
 
-	public Timestamp getUpdateTimeStamp() {
-		return updateTimeStamp;
+	public void setStart(Date start) {
+		this.start = start;
 	}
 
-	public void setUpdateTimeStamp(Timestamp updateTimeStamp) {
-		this.updateTimeStamp = updateTimeStamp;
+	public Date getEnd() {
+		return end;
 	}
 
-	@Override
-	public String toString() {
-		return "Conference [id=" + id + ", name=" + name + ", description="
-				+ description + ", start=" + start + ", end=" + end
-				+ ", updateTimeStamp=" + updateTimeStamp + "]";
+	public void setEnd(Date end) {
+		this.end = end;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
-		int result = 1;
+		int result = super.hashCode();
 		result = prime * result
 				+ ((description == null) ? 0 : description.hashCode());
 		result = prime * result + ((end == null) ? 0 : end.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((start == null) ? 0 : start.hashCode());
-		result = prime * result
-				+ ((updateTimeStamp == null) ? 0 : updateTimeStamp.hashCode());
 		return result;
 	}
 
@@ -111,7 +98,7 @@ public class Conference implements Serializable {
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
+		if (!super.equals(obj))
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
@@ -141,27 +128,16 @@ public class Conference implements Serializable {
 				return false;
 		} else if (!start.equals(other.start))
 			return false;
-		if (updateTimeStamp == null) {
-			if (other.updateTimeStamp != null)
-				return false;
-		} else if (!updateTimeStamp.equals(other.updateTimeStamp))
-			return false;
 		return true;
 	}
 
-	public Date getStart() {
-		return start;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
-	public void setStart(Date start) {
-		this.start = start;
-	}
-
-	public Date getEnd() {
-		return end;
-	}
-
-	public void setEnd(Date end) {
-		this.end = end;
+	@Override
+	public String toString() {
+		return "Conference [id=" + id + ", name=" + name + ", description="
+				+ description + ", start=" + start + ", end=" + end + "]";
 	}
 }

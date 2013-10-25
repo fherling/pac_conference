@@ -11,15 +11,9 @@
 		<h:form id="startform">
 			<p>
 				<h:panelGrid columns="2">
-					<h:commandButton id="adminConferenceData" action="#{adminController.startView}"
+					<h:commandButton id="adminConferenceData" action="conference"
 						value="Conference Administration" styleClass="start" />
-					<h:messages styleClass="messages" errorClass="invalid"
-						infoClass="valid" warnClass="warning" globalOnly="true" />
-				</h:panelGrid>
-			</p>
-			<p>
-                <h:panelGrid columns="2">
-                    <h:commandButton id="viewConferenceData" action="#{viewController.startView}"
+                    <h:commandButton id="viewConferenceData" action="overview"
                         value="View conference information" styleClass="start" />
                     <h:messages styleClass="messages" errorClass="invalid"
                         infoClass="valid" warnClass="warning" globalOnly="true" />

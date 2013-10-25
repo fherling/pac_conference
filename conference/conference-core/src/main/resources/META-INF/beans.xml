@@ -4,11 +4,14 @@
         http://java.sun.com/xml/ns/javaee 
         http://java.sun.com/xml/ns/javaee/beans_1_0.xsd">
  	<alternatives>
+ 	    <!-- 
  		<class>com.prodyna.conference.core.util.MBeanProducer</class>
-<!-- 		<class>com.prodyna.conference.core.util.Resources</class> -->
+		<class>com.prodyna.conference.core.util.Resources</class> -->
  	</alternatives> 
 	<decorators />
 	<interceptors>
+	    <!-- 
 		<class>com.prodyna.conference.core.interceptor.PerformanceMeasuringInterceptor</class>
+		-->
 	</interceptors>
 </beans>

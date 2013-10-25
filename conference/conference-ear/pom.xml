@@ -21,13 +21,13 @@
     <parent>
         <artifactId>conference</artifactId>
         <groupId>com.prodyna.conference</groupId>
-        <version>SNAPSHOT</version>
+        <version>0.0.1-SNAPSHOT</version>
     </parent>
 
     <artifactId>conference-ear</artifactId>
     <packaging>ear</packaging>
 
-    <name>conference: EAR Module</name>
+    <name>conference-ear</name>
 
     <url>http://jboss.org/jbossas</url>
     <licenses>
@@ -44,25 +44,25 @@
         <dependency>
             <groupId>com.prodyna.conference</groupId>
             <artifactId>conference-web</artifactId>
-            <version>SNAPSHOT</version>
+            <version>0.0.1-SNAPSHOT</version>
             <type>war</type>
         </dependency>
         <dependency>
             <groupId>com.prodyna.conference</groupId>
             <artifactId>conference-core</artifactId>
-            <version>SNAPSHOT</version>
+            <version>0.0.1-SNAPSHOT</version>
             <type>jar</type>
         </dependency>        
         <dependency>
             <groupId>com.prodyna.conference</groupId>
             <artifactId>conference-speaker-api</artifactId>
-            <version>SNAPSHOT</version>
+            <version>0.0.1-SNAPSHOT</version>
             <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.prodyna.conference</groupId>
             <artifactId>conference-speaker-service</artifactId>
-            <version>SNAPSHOT</version>
+            <version>0.0.1-SNAPSHOT</version>
             <type>ejb</type>
         </dependency>     
         

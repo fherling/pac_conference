@@ -16,13 +16,13 @@
 	<parent>
 		<artifactId>conference</artifactId>
 		<groupId>com.prodyna.conference</groupId>
-		<version>SNAPSHOT</version>
+		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>conference-speaker-service</artifactId>
 	<packaging>ejb</packaging>
 
-	<name>SPEAKER SERVICE</name>
+	<name>conference-speaker-service</name>
 
 	<url>http://jboss.org/jbossas</url>
 	<licenses>
@@ -38,14 +38,14 @@
         <dependency>
              <groupId>com.prodyna.conference</groupId>
              <artifactId>conference-speaker-api</artifactId>
-             <version>SNAPSHOT</version>
+             <version>0.0.1-SNAPSHOT</version>
              <scope>provided</scope>
         </dependency>
         
     	<dependency>
              <groupId>com.prodyna.conference</groupId>
              <artifactId>conference-core</artifactId>
-             <version>SNAPSHOT</version>
+             <version>0.0.1-SNAPSHOT</version>
              <scope>provided</scope>
         </dependency>
     
@@ -156,7 +156,7 @@
 						<artifactId>maven-surefire-plugin</artifactId>
 						<version>${version.surefire.plugin}</version>
 						<configuration>
-							<skip>true</skip>
+							<skip>false</skip>
 						</configuration>
 					</plugin>
 				</plugins>

@@ -9,75 +9,33 @@
 	template="/WEB-INF/templates/default.xhtml">
 	<ui:define name="content">
 		<h1>Room Administration</h1>
-            <a href="#{request.contextPath}/">Back to start</a>
+		<a href="#{request.contextPath}/">Back to start</a>
 
 		<h:form id="reg">
-			<h2>Administration</h2>
 			<h:panelGrid columns="3" columnClasses="titleCell">
-				<h:outputLabel for="name" value="Name:" styleClass="panelOutputLable"/>
+				<h:outputLabel for="name" value="Name:"
+					styleClass="panelOutputLable" />
 				<h:inputText id="name" value="#{roomController.entry.name}" />
 				<h:message for="name" errorClass="invalid" />
 			</h:panelGrid>
 			<h:panelGrid columns="3" columnClasses="titleCell">
-				<h:outputLabel for="capacity" value="Capacity:" styleClass="panelOutputLable" />
+				<h:outputLabel for="capacity" value="Capacity:"
+					styleClass="panelOutputLable" />
 				<h:inputText id="capacity" value="#{roomController.entry.capacity}" />
 				<h:message for="capacity" errorClass="invalid" />
-			</h:panelGrid>			
+			</h:panelGrid>
 			<p>
 				<h:panelGrid columns="3">
-					<h:commandButton id="save"
-						action="#{roomController.saveEntry}" value="Save" styleClass="save" />
-					<h:commandButton id="new"
-						action="#{roomController.newEntry}" value="New"
-						styleClass="new" />
+					<h:commandButton id="save" action="#{roomController.saveEntry}"
+						value="Save" styleClass="save" />
+					<h:commandButton id="new" action="#{roomController.newEntry}"
+						value="New" styleClass="new" />
 					<h:messages styleClass="messages" errorClass="invalid"
 						infoClass="valid" warnClass="warning" globalOnly="true" />
 				</h:panelGrid>
 			</p>
-			<div></div>
-			<h2>rooms</h2>
-			<h:panelGroup rendered="#{roomController.model.rowCount le 0}">
-				<em>No registered rooms.</em>
-			</h:panelGroup>
-
-			<h:dataTable id="valueTable" var="_valueBean"
-				value="#{roomController.model}"
-				rendered="#{roomController.model.rowCount gt 0}"
-				styleClass="simpletablestyle">
-				<h:column>
-					<f:facet name="header"></f:facet>
-					<h:commandButton id="deletem#{_valueBean.id}"
-                        action="#{roomController.deleteEntry()}" styleClass="delete"
-                        image="resources/gfx/loeschen.png" />
-					<h:commandButton id="load#{_valueBean.id}"
-						action="#{roomController.loadEntry()}" styleClass="change"
-						image="resources/gfx/bearbeiten.png" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">Id</f:facet>
-                #{_valueBean.id}
-            </h:column>
-				<h:column>
-					<f:facet name="header">Name</f:facet>
-                #{_valueBean.name}
-            </h:column>
-				<h:column>
-					<f:facet name="header">Capacity</f:facet>
-                #{_valueBean.capacity}
-            </h:column>            
-				<h:column>
-					<f:facet name="header">Changed</f:facet>
-                #{_valueBean.updateTimeStamp}
-            </h:column>
-				<h:column>
-					<f:facet name="header">REST URL</f:facet>
-					<a href="#{request.contextPath}/rest/rooms/find/#{_valueBean.id}">/rest/rooms/#{_valueBean.id}</a>
-				</h:column>
-				<f:facet name="footer">
-            REST URL for all rooms: <a
-						href="#{request.contextPath}/rest/rooms">/rest/rooms</a>
-				</f:facet>
-			</h:dataTable>
+            <div></div>
+			<a href="#{request.contextPath}/rest/rooms/find/#{_valueBean.id}">/rest/rooms/#{_valueBean.id}</a>
 		</h:form>
 	</ui:define>
 </ui:composition>

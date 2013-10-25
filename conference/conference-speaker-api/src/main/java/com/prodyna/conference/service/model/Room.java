@@ -1,41 +1,34 @@
 package com.prodyna.conference.service.model;
 
-import java.io.Serializable;
-import java.sql.Timestamp;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.Version;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@Table(name="room")
-@SequenceGenerator(name="room_seq", initialValue=100, allocationSize=10)
-public class Room implements Serializable{
+@SequenceGenerator(name = "room_seq", initialValue = 100, allocationSize = 10)
+@NamedQueries(value = { @NamedQuery(name = BusinessQueries.GET_ALL_ROOMS, query = "select a from com.prodyna.conference.service.model.Room a") })
+public class Room extends BaseEntity {
 	private static final long serialVersionUID = 7389968794081034046L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="room_seq")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "room_seq")
 	private Long id;
-	
+
 	@NotNull
 	@NotEmpty
 	private String name;
-	
-	@Min(value=1)
-	private int capacity;
-	
-	@Version
-	private Timestamp updateTimeStamp;
 
-	
+	@Min(value = 1)
+	private int capacity;
 
 	public Long getId() {
 		return id;
@@ -61,23 +54,13 @@ public class Room implements Serializable{
 		this.capacity = capacity;
 	}
 
-	public Timestamp getUpdateTimeStamp() {
-		return updateTimeStamp;
-	}
-
-	public void setUpdateTimeStamp(Timestamp updateTimeStamp) {
-		this.updateTimeStamp = updateTimeStamp;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
-		int result = 1;
+		int result = super.hashCode();
 		result = prime * result + capacity;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result
-				+ ((updateTimeStamp == null) ? 0 : updateTimeStamp.hashCode());
 		return result;
 	}
 
@@ -85,7 +68,7 @@ public class Room implements Serializable{
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
+		if (!super.equals(obj))
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
@@ -102,18 +85,13 @@ public class Room implements Serializable{
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
-		if (updateTimeStamp == null) {
-			if (other.updateTimeStamp != null)
-				return false;
-		} else if (!updateTimeStamp.equals(other.updateTimeStamp))
-			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
 		return "Room [id=" + id + ", name=" + name + ", capacity=" + capacity
-				+ ", updateTimeStamp=" + updateTimeStamp + "]";
+				+ "]";
 	}
 
 }

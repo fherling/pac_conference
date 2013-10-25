@@ -20,12 +20,14 @@
 		<!-- The datasource is deployed as <EAR>/META-INF/conference-ds.xml, you 
 			can find it in the source at ear/src/main/application/META-INF/conference-ds.xml -->
 		<jta-data-source>java:jboss/datasources/conferenceDS</jta-data-source>
-		<class>com.prodyna.conference.service.model.Speaker</class>
-		<class>com.prodyna.conference.service.model.Talk</class>
-		<class>com.prodyna.conference.service.model.Conference</class>
+ 		<mapping-file>META-INF/orm.xml</mapping-file>
 		<class>com.prodyna.conference.service.model.Room</class>
-		<class>com.prodyna.conference.service.model.SpeakersForTalk</class>
-		<class>com.prodyna.conference.service.model.TalksForConference</class>
+		<class>com.prodyna.conference.service.model.Conference</class>
+		<class>com.prodyna.conference.service.model.ConferenceTalk</class>
+		<class>com.prodyna.conference.service.model.Talk</class>
+		<class>com.prodyna.conference.service.model.TalkSpeaker</class>
+		<class>com.prodyna.conference.service.model.Speaker</class>
+		<class>com.prodyna.conference.service.model.TalkRoom</class>
 
 		<properties>
 			<!-- Properties for Hibernate -->

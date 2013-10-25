@@ -29,7 +29,7 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import com.prodyna.conference.service.RoomService;
+import com.prodyna.conference.service.MainEntityService;
 import com.prodyna.conference.service.model.Room;
 
 /**
@@ -46,19 +46,19 @@ public class RoomRESTService implements Serializable {
 	private static final long serialVersionUID = 7416499113848037298L;
 
 	@Inject
-	private RoomService service;
+	private MainEntityService service;
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Room> listAllRooms() {
-		return service.listAll();
+		return service.loadRooms();
 	}
 
 	@GET
 	@Path("/find/{id:[0-9][0-9]*}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Room lookupRoomById(@PathParam("id") long id) {
-		Room room = service.findById(id);
+		Room room = service.findRoomById(id);
 		if (room == null) {
 			throw new WebApplicationException(Response.Status.NOT_FOUND);
 		}

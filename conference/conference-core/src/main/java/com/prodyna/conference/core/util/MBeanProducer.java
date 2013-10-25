@@ -4,7 +4,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.enterprise.inject.Alternative;
-import javax.enterprise.inject.Default;
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 import javax.management.InstanceAlreadyExistsException;
@@ -15,8 +14,8 @@ import javax.management.MalformedObjectNameException;
 import javax.management.NotCompliantMBeanException;
 import javax.management.ObjectName;
 
-import com.prodyna.core.monitoring.Performance;
-import com.prodyna.core.monitoring.PerformanceMXBean;
+import com.prodyna.conference.core.monitoring.Performance;
+import com.prodyna.conference.core.monitoring.PerformanceMXBean;
 
 @Alternative
 public class MBeanProducer {

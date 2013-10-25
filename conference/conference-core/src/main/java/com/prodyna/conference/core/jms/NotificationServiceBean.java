@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.jms.Connection;
+import javax.jms.JMSException;
 import javax.jms.MessageProducer;
 import javax.jms.Queue;
 import javax.jms.QueueConnectionFactory;
@@ -34,11 +35,12 @@ public class NotificationServiceBean implements NotificationService {
 	 * @see com.prodyna.booking.jms.HelloService#hello(java.lang.String)
 	 */
 	@Override
-	public void notify(String name) {
+	public void notify(String msg) {
 
+		Connection con = null;
 		try {
 			log.info("Send message via NotificationService");
-			Connection con = connFactory.createConnection();
+			con = connFactory.createConnection();
 
 			con.start();
 
@@ -46,7 +48,7 @@ public class NotificationServiceBean implements NotificationService {
 
 			MessageProducer p = s.createProducer(testQueue);
 			TextMessage tm = s.createTextMessage();
-			tm.setText("Helloservice called with : " + name);
+			tm.setText( msg);
 
 			p.send(tm);
 
@@ -58,6 +60,14 @@ public class NotificationServiceBean implements NotificationService {
 
 		} catch (Exception e) {
 			log.log(Level.SEVERE, "NotificationService call failed",  e);
+		}finally{
+			if( null != con){
+				try {
+					con.close();
+				} catch (JMSException e) {
+					log.log(Level.SEVERE, "Cannot close connection", e);
+				}
+			}
 		}
 
 	}
