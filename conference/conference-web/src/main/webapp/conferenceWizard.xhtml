@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/default.xhtml">
+	<ui:define name="content">
+        <h:panelGroup rendered="#{wizard.step == 'ALL_CONFERENCES'}">
+            <ui:include src="/WEB-INF/wizard/conferences.xhtml" />
+        </h:panelGroup>
+
+		<h:panelGroup rendered="#{wizard.step == 'SHOW_CONFERENCE'}">
+			<ui:include src="/WEB-INF/wizard/conference.xhtml" />
+		</h:panelGroup>
+        <h:panelGroup rendered="#{wizard.step == 'EDIT_CONFERENCE'}">
+            <ui:include src="/WEB-INF/wizard/conference.xhtml" />
+        </h:panelGroup>		
+		<h:panelGroup rendered="#{wizard.step == 'SHOW_TALK'}">
+			<ui:include src="/WEB-INF/wizard/talk.xhtml" />
+		</h:panelGroup>
+		<h:panelGroup rendered="#{wizard.step == 'ALL_SPEAKERS'}">
+			<ui:include src="/WEB-INF/wizard/speaker.xhtml" />
+		</h:panelGroup>
+        <h:panelGroup rendered="#{wizard.step == 'SHOW_TALK'}">
+            <ui:include src="/WEB-INF/wizard/talk.xhtml" />
+        </h:panelGroup>
+
+
+
+
+		
+
+	</ui:define>
+</ui:composition>
+

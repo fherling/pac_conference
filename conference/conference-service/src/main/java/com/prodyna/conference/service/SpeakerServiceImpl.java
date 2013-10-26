@@ -3,6 +3,7 @@
  */
 package com.prodyna.conference.service;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -94,7 +95,11 @@ public class SpeakerServiceImpl extends EntityService implements SpeakerService 
 	@Override
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public Speaker save(Speaker speaker) {
+		
+		validate(speaker);
+		
 		if (speaker.getId() == null) {
+			speaker.setInsertTimestamp(new Timestamp(System.currentTimeMillis()));
 			em.persist(speaker);
 		} else {
 			speaker = em.merge(speaker);

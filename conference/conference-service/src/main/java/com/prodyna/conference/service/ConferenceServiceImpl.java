@@ -3,7 +3,9 @@
  */
 package com.prodyna.conference.service;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -101,6 +103,7 @@ public class ConferenceServiceImpl extends EntityService implements ConferenceSe
 	public Conference save(Conference conference) {
 
 		if (conference.getId() == null) {
+			conference.setInsertTimestamp(new Timestamp(System.currentTimeMillis()));
 			em.persist(conference);
 		} else {
 			conference = em.merge(conference);

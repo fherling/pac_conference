@@ -3,6 +3,7 @@
  */
 package com.prodyna.conference.service;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -76,7 +77,10 @@ public class RoomServiceImpl extends EntityService implements RoomService {
 	@Override
 	public Room save(Room room) {
 
+		validate(room);
+		
 		if (room.getId() == null) {
+			room.setInsertTimestamp(new Timestamp(System.currentTimeMillis()));
 			em.persist(room);
 		} else {
 			room = em.merge(room);
@@ -87,49 +91,14 @@ public class RoomServiceImpl extends EntityService implements RoomService {
 		return room;
 	}
 
-	private void validate(Talk talk) {
+	private void validate(Room room) {
 		// Create a bean validator and check for issues.
-		Set<ConstraintViolation<Talk>> violations = validator.validate(talk);
+		Set<ConstraintViolation<Room>> violations = validator
+				.validate(room);
 
 		if (!violations.isEmpty()) {
 
-			for (ConstraintViolation<Talk> constraintViolation : violations) {
-				log.log(Level.WARNING, constraintViolation.getPropertyPath()
-						.toString() + " : " + constraintViolation.getMessage());
-			}
-
-			throw new ConstraintViolationException(
-					new HashSet<ConstraintViolation<?>>(violations));
-		}
-
-	}
-
-	private void validate(Speaker speaker) {
-		// Create a bean validator and check for issues.
-		Set<ConstraintViolation<Speaker>> violations = validator
-				.validate(speaker);
-
-		if (!violations.isEmpty()) {
-
-			for (ConstraintViolation<Speaker> constraintViolation : violations) {
-				log.log(Level.WARNING, constraintViolation.getPropertyPath()
-						.toString() + " : " + constraintViolation.getMessage());
-			}
-
-			throw new ConstraintViolationException(
-					new HashSet<ConstraintViolation<?>>(violations));
-		}
-
-	}
-	
-	private void validate(Conference conference) {
-		// Create a bean validator and check for issues.
-		Set<ConstraintViolation<Conference>> violations = validator
-				.validate(conference);
-
-		if (!violations.isEmpty()) {
-
-			for (ConstraintViolation<Conference> constraintViolation : violations) {
+			for (ConstraintViolation<Room> constraintViolation : violations) {
 				log.log(Level.WARNING, constraintViolation.getPropertyPath()
 						.toString() + " : " + constraintViolation.getMessage());
 			}

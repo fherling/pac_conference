@@ -18,9 +18,13 @@ package com.prodyna.conference.rest;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -46,19 +50,22 @@ import com.prodyna.conference.service.model.Talk;
 public class ConferenceRESTService implements Serializable {
 
 	private static final long serialVersionUID = 7416499113848037298L;
+	
+	@Inject
+	private Logger log;
 
 	@Inject
 	private ConferenceService service;
 
-	@GET
-	@Path("/delete/{id:[0-9][0-9]*}")
+	@DELETE
+	@Path("/{id:[0-9][0-9]*}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public void delete(@PathParam("id") long id) {
-	
+
 		Conference entity = find(id);
-	
+
 		service.delete(entity);
-	
+
 	}
 
 	private Conference find(long id) {
@@ -70,7 +77,7 @@ public class ConferenceRESTService implements Serializable {
 	}
 
 	@GET
-	@Path("/find/{id:[0-9][0-9]*}")
+	@Path("/{id:[0-9][0-9]*}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Conference findById(@PathParam("id") long id) {
 		Conference entity = find(id);
@@ -82,21 +89,26 @@ public class ConferenceRESTService implements Serializable {
 	public List<Conference> listAll() {
 		return service.loadConferences();
 	}
-	
+
 	@GET
-	@Path("/find/{id:[0-9][0-9]*}/talk")
+	@Path("/{id:[0-9][0-9]*}/talk")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Talk> loadTalksFor(@PathParam("id") long id) {
 		Conference conference = find(id);
 		return service.loadTalksFor(conference);
 	}
-	
+
 	@POST
-	@Path("/save")
+	@Path("/")
 	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
 	public Conference save(Conference conference) {
-		return service.save(conference);
+		try {
+			return service.save(conference);
+		} catch (Exception e) {
+			log.log(Level.SEVERE, "Cannot save conference", e);
+			throw new WebApplicationException(Response.Status.NOT_ACCEPTABLE);
+		}
 	}
-	
-	
+
 }

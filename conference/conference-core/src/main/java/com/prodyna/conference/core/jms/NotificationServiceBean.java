@@ -16,7 +16,11 @@ import javax.jms.QueueConnectionFactory;
 import javax.jms.Session;
 import javax.jms.TextMessage;
 
+import com.google.gson.Gson;
+
 /**
+ * The NotificationServiceBean will 
+ * send a JSON based message to a QUEUE.
  * @author fherling
  *
  */
@@ -35,7 +39,7 @@ public class NotificationServiceBean implements NotificationService {
 	 * @see com.prodyna.booking.jms.HelloService#hello(java.lang.String)
 	 */
 	@Override
-	public void notify(String msg) {
+	public void notify(Object msg) {
 
 		Connection con = null;
 		try {
@@ -48,7 +52,14 @@ public class NotificationServiceBean implements NotificationService {
 
 			MessageProducer p = s.createProducer(testQueue);
 			TextMessage tm = s.createTextMessage();
-			tm.setText( msg);
+			
+			Gson gson = new Gson();
+			String queueMsg = gson.toJson(msg);
+			
+			log.info("Send : " + queueMsg);
+			
+			tm.setText( queueMsg);
+			tm.setStringProperty("jsonClass", msg.getClass().getName());
 
 			p.send(tm);
 

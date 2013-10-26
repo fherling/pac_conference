@@ -18,9 +18,13 @@ package com.prodyna.conference.rest;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -31,7 +35,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.prodyna.conference.service.SpeakerService;
-import com.prodyna.conference.service.model.Room;
 import com.prodyna.conference.service.model.Speaker;
 
 /**
@@ -49,28 +52,32 @@ public class SpeakerRESTService implements Serializable {
 
 	@Inject
 	private SpeakerService service;
+	
+	@Inject
+	private Logger log;
 
-	@GET
-	@Path("/delete/{id:[0-9][0-9]*}")
+
+	@DELETE
+	@Path("/{id:[0-9][0-9]*}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public void delete(@PathParam("id") long id) {
-	
+
 		Speaker entity = find(id);
-	
+
 		service.delete(entity);
-	
+
 	}
 
 	private Speaker find(long id) {
 		Speaker entity = service.findById(id);
 		if (entity == null) {
-			throw new WebApplicationException(Response.Status.NOT_FOUND);
+			throw new WebApplicationException(Response.Status.NOT_ACCEPTABLE);
 		}
 		return entity;
 	}
 
 	@GET
-	@Path("/find/{id:[0-9][0-9]*}")
+	@Path("/{id:[0-9][0-9]*}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Speaker findById(@PathParam("id") long id) {
 		Speaker entity = find(id);
@@ -84,10 +91,16 @@ public class SpeakerRESTService implements Serializable {
 	}
 
 	@POST
-	@Path("/save")
+	@Path("/")
 	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
 	public Speaker save(Speaker speaker) {
-		return service.save(speaker);
+		try {
+			return service.save(speaker);
+		} catch (Exception e) {
+			log.log(Level.SEVERE, "Cannot save speaker", e);
+			throw new WebApplicationException(Response.Status.BAD_REQUEST);
+		}
 	}
-	
+
 }

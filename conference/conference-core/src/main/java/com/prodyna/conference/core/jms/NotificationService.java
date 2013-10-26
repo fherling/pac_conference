@@ -10,7 +10,7 @@ package com.prodyna.conference.core.jms;
 public interface NotificationService {
 
 	
-	public void notify(String name);
+	public void notify(Object msg);
 	
 	
 }

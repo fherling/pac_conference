@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+	<ui:param name="title" value="All conferences"/>
+	<h:form>
+		<h:commandButton id="deletem#{_valueBean.id}"
+			action="#{wizard.newConference}" styleClass="create" value="+" />
+		<h:panelGroup
+			rendered="#{conferencecontroller.conferenceModel.rowCount le 0}">
+			<em>No conferences available.</em>
+		</h:panelGroup>
+
+		<h:dataTable id="valueTable" var="_valueBean"
+			value="#{conferencecontroller.conferenceModel}"
+			rendered="#{conferencecontroller.conferenceModel.rowCount gt 0}"
+			styleClass="simpletablestyle">
+			<h:column>
+				<f:facet name="header"></f:facet>
+				<h:commandButton id="deletem#{_valueBean.id}"
+					action="#{conferencecontroller.deleteEntry()}" styleClass="delete"
+					image="../resources/gfx/loeschen.png" />
+				<h:commandButton id="load#{_valueBean.id}"
+					action="#{conferencecontroller.loadEntry()}" styleClass="change"
+					image="../resources/gfx/bearbeiten.png" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Id</f:facet>
+				<h:outputText value="#{_valueBean.id}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Name</f:facet>
+				<h:outputText value="#{_valueBean.name}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Description</f:facet>
+				<h:outputText value="#{_valueBean.description}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Start</f:facet>
+				<h:outputText value="#{_valueBean.start}">
+					<f:convertDateTime type="date" pattern="dd-MM-yyyy" />
+				</h:outputText>
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">End</f:facet>
+				<h:outputText value="#{_valueBean.end}">
+					<f:convertDateTime type="date" pattern="dd-MM-yyyy" />
+				</h:outputText>
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Changed</f:facet>
+				<h:outputText value="#{_valueBean.lastUpdateTimestamp}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Created</f:facet>
+				<h:outputText value="#{_valueBean.insertTimestamp}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">REST URL</f:facet>
+				<a
+					href="#{request.contextPath}-rest/rest/conference/#{_valueBean.id}">/rest/conference/#{_valueBean.id}</a>
+			</h:column>
+			<f:facet name="footer">
+            REST URL for all conferences: <a
+					href="#{request.contextPath}-rest/rest/conference">/rest/conference</a>
+			</f:facet>
+		</h:dataTable>
+
+
+
+	</h:form>
+
+
+
+
+
+</ui:composition>

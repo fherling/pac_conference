@@ -22,7 +22,7 @@ public class ObjectSavedObserver {
 		
 		log.log(Level.INFO, "Object " + event.getSavedObject().getClass().getName() + " was saved with values: " +  event.getSavedObject());
 
-		notificationService.notify(event.getSavedObject().toString());
+		notificationService.notify(event.getSavedObject());
 
 	}
 

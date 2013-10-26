@@ -18,9 +18,13 @@ package com.prodyna.conference.rest;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -48,16 +52,20 @@ public class RoomRESTService implements Serializable {
 
 	@Inject
 	private RoomService service;
+	
+	@Inject
+	private Logger log;
 
-	@GET
-	@Path("/delete/{id:[0-9][0-9]*}")
+
+	@DELETE
+	@Path("/{id:[0-9][0-9]*}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public void delete(@PathParam("id") long id) {
-	
+
 		Room entity = find(id);
-	
+
 		service.delete(entity);
-	
+
 	}
 
 	private Room find(long id) {
@@ -69,7 +77,7 @@ public class RoomRESTService implements Serializable {
 	}
 
 	@GET
-	@Path("/find/{id:[0-9][0-9]*}")
+	@Path("/{id:[0-9][0-9]*}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Room findById(@PathParam("id") long id) {
 		Room entity = find(id);
@@ -81,11 +89,19 @@ public class RoomRESTService implements Serializable {
 	public List<Room> listAll() {
 		return service.loadRooms();
 	}
-	
+
 	@POST
-	@Path("/save")
+	@Path("/")
 	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
 	public Room save(Room room) {
-		return service.save(room);
+		try {
+			Room savedRoom = service.save(room);
+			return savedRoom;
+		} catch (Exception e) {
+			log.log(Level.SEVERE, "Cannot save room", e);
+			throw new WebApplicationException(Response.Status.NOT_ACCEPTABLE);
+		}
+		
 	}
 }

@@ -6,7 +6,9 @@
    xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
-	<title>${rootArtifactId}</title>
+	<title>
+         <h:outputText value="#{title}"/>
+      </title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<h:outputStylesheet name="css/screen.css" />
 </h:head>

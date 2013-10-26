@@ -1,5 +1,5 @@
-package com.prodyna.conference.core.jms;
 
+package com.prodyna.conference.core.jms;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -10,6 +10,8 @@ import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;
 import javax.jms.TextMessage;
+
+import com.google.gson.Gson;
 
 /**
  * Message-Driven Bean implementation class for: NotificationServiceMsgBean
@@ -33,8 +35,10 @@ public class NotificationServiceMsgBean implements MessageListener {
 
     	TextMessage msg = (TextMessage)message;
     	
+    	
     	try {
-			log.log(Level.INFO, "MESSAGE RECEIVED: " + msg.getText());
+    		String jsonClass = msg.getStringProperty("jsonClass");
+			log.log(Level.INFO, "NOTIFICATION RECEIVED: " + jsonClass + " : "  + msg.getText());
 		} catch (JMSException e) {
 			log.log(Level.SEVERE, e.getMessage());
 		}

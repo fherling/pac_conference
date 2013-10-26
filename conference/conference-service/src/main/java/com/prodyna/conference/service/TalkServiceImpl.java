@@ -3,6 +3,7 @@
  */
 package com.prodyna.conference.service;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -114,6 +115,7 @@ public class TalkServiceImpl extends EntityService implements TalkService {
 		validate(talk);
 
 		if (talk.getId() == null) {
+			talk.setInsertTimestamp(new Timestamp(System.currentTimeMillis()));
 			em.persist(talk);
 		} else {
 			talk = em.merge(talk);

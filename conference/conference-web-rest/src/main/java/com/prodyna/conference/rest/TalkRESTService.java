@@ -18,9 +18,13 @@ package com.prodyna.conference.rest;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -50,23 +54,13 @@ public class TalkRESTService implements Serializable {
 
 	@Inject
 	private TalkService service;
+	
+	@Inject
+	private Logger log;
 
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	public List<Talk> listAll() {
-		return service.loadTalks();
-	}
 
-	@GET
-	@Path("/find/{id:[0-9][0-9]*}")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Talk findById(@PathParam("id") long id) {
-		Talk entity = find(id);
-		return entity;
-	}
-
-	@GET
-	@Path("/delete/{id:[0-9][0-9]*}")
+	@DELETE
+	@Path("/{id:[0-9][0-9]*}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public void delete(@PathParam("id") long id) {
 
@@ -76,8 +70,30 @@ public class TalkRESTService implements Serializable {
 
 	}
 
+	private Talk find(long id) {
+		Talk entity = service.findById(id);
+		if (entity == null) {
+			throw new WebApplicationException(Response.Status.NOT_FOUND);
+		}
+		return entity;
+	}
+
 	@GET
-	@Path("/find/{id:[0-9][0-9]*}/room")
+	@Path("/{id:[0-9][0-9]*}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Talk findById(@PathParam("id") long id) {
+		Talk entity = find(id);
+		return entity;
+	}
+
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Talk> listAll() {
+		return service.loadTalks();
+	}
+
+	@GET
+	@Path("/{id:[0-9][0-9]*}/room")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Room loadRoomFor(@PathParam("id") long id) {
 		Talk entity = find(id);
@@ -89,26 +105,23 @@ public class TalkRESTService implements Serializable {
 	}
 
 	@GET
-	@Path("/find/{id:[0-9][0-9]*}/speakers")
+	@Path("/{id:[0-9][0-9]*}/speakers")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Speaker> loadSpeakersFor(@PathParam("id") long id) {
 		Talk entity = find(id);
 		return service.loadSpeakersFor(entity);
 	}
 
-	private Talk find(long id) {
-		Talk entity = service.findById(id);
-		if (entity == null) {
-			throw new WebApplicationException(Response.Status.NOT_FOUND);
-		}
-		return entity;
-	}
-
-	
 	@POST
-	@Path("/save")
+	@Path("/")
 	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
 	public Talk save(Talk talk) {
-		return service.save(talk);
+		try {
+			return service.save(talk);
+		} catch (Exception e) {
+			log.log(Level.SEVERE, "Cannot save talk", e);
+			throw new WebApplicationException(Response.Status.NOT_ACCEPTABLE);
+		}
 	}
 }
