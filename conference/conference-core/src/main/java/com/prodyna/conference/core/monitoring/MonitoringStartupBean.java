@@ -28,10 +28,6 @@ public class MonitoringStartupBean {
 	@Inject
 	private MBeanServer server;
 
-	public MonitoringStartupBean() {
-
-	}
-
 	@PostConstruct
 	public void addStartup() {
 		ObjectName oname;
@@ -41,13 +37,13 @@ public class MonitoringStartupBean {
 			server.registerMBean(new Performance(), oname);
 			log.log(Level.INFO, "PerformanceMBean registered");
 		} catch (MalformedObjectNameException e) {
-			e.printStackTrace();
+			log.log(Level.SEVERE, "Startup failed", e);
 		} catch (InstanceAlreadyExistsException e) {
-			e.printStackTrace();
+			log.log(Level.SEVERE, "Startup failed", e);
 		} catch (MBeanRegistrationException e) {
-			e.printStackTrace();
+			log.log(Level.SEVERE, "Startup failed", e);
 		} catch (NotCompliantMBeanException e) {
-			e.printStackTrace();
+			log.log(Level.SEVERE, "Startup failed", e);
 		}
 	}
 
@@ -60,14 +56,13 @@ public class MonitoringStartupBean {
 					MBeanProducer.PERFORMANCE_MBEAN_ONAME);
 			server.unregisterMBean(oname);
 		} catch (MalformedObjectNameException e) {
-			e.printStackTrace();
+			log.log(Level.SEVERE, "Shutdown failed", e);
 
 		} catch (MBeanRegistrationException e) {
-			e.printStackTrace();
+			log.log(Level.SEVERE, "Shutdown failed", e);
 
 		} catch (InstanceNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log.log(Level.SEVERE, "Shutdown failed", e);
 		}
 	}
 

@@ -27,7 +27,6 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.prodyna.conference.core.interceptor.PerfomanceMeasuring;
-import com.prodyna.conference.service.MainEntityService;
 import com.prodyna.conference.service.RoomService;
 import com.prodyna.conference.service.model.Room;
 
@@ -48,7 +47,7 @@ public class RoomController extends AbstractViewController{
     private DataModel<Room> model;
     
     @Inject
-    private MainEntityService service;
+    private RoomService service;
 
 
 //    @Produces
