@@ -26,6 +26,7 @@ import javax.validation.Validator;
 import com.prodyna.conference.core.interceptor.PerfomanceMeasuring;
 import com.prodyna.conference.service.model.BusinessQueries;
 import com.prodyna.conference.service.model.Conference;
+import com.prodyna.conference.service.model.ConferenceTalk;
 import com.prodyna.conference.service.model.Talk;
 
 /**
@@ -66,10 +67,12 @@ public class ConferenceServiceImpl extends EntityService implements ConferenceSe
 				.createNamedQuery(BusinessQueries.GET_ALL_TALKS_FOR_CONFERENCE);
 		query.setParameter("conferenceId", conference.getId());
 
-		List<Talk> queryResult = query.getResultList();
+		List<ConferenceTalk> queryResult = query.getResultList();
 
-		result.addAll(queryResult);
-
+		for (ConferenceTalk conferenceTalk : queryResult) {
+			result.add(conferenceTalk.getTalk());
+			
+		}
 		return result;	}
 
 	/*

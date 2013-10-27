@@ -20,10 +20,27 @@
 
 	<!-- Write your navigation rules here. You are encouraged to use CDI for 
 		creating @Named managed beans. -->
+		
+    <application>
+        <locale-config>
+            <default-locale>en</default-locale>
+            <supported-locale>de</supported-locale>
+        </locale-config>
+        <resource-bundle>
+            <base-name>com.prodyna.conference.messages</base-name>
+            <var>msg</var>
+        </resource-bundle>
+        
+    </application>
 
 	<converter>
 		<converter-id>roomConverter</converter-id>
 		<converter-class>com.prodyna.conference.converter.RoomConverter</converter-class>
 	</converter>
+	
+	<converter>
+        <converter-id>speakerConverter</converter-id>
+        <converter-class>com.prodyna.conference.converter.SpeakerConverter</converter-class>
+    </converter>
 
 </faces-config>

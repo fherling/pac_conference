@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:a4j="http://richfaces.org/a4j"
+    xmlns:rich="http://richfaces.org/rich">
+
+
+
+    <h:form id="talkForRoom">
+
+        <h:panelGroup
+            rendered="#{wizard.talksForRoom.rowCount le 0}">
+            <em>No talks available.</em>
+        </h:panelGroup>
+
+        <h:dataTable id="valueTable" var="_valueBean"
+            value="#{wizard.talksForRoom}"
+            rendered="#{wizard.talksForRoom.rowCount gt 0}"
+            styleClass="simpletablestyle">
+            <h:column>
+                <f:facet name="header">Id</f:facet>
+                <h:outputText value="#{_valueBean.id}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Name</f:facet>
+                <h:outputText value="#{_valueBean.name}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Start</f:facet>
+                <h:outputText value="#{_valueBean.start}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Duration</f:facet>
+                <h:outputText value="#{_valueBean.duration}" />
+            </h:column>
+
+        </h:dataTable>
+
+
+
+    </h:form>
+
+</ui:composition>
+
+

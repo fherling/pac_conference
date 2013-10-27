@@ -25,6 +25,7 @@ import com.prodyna.conference.core.interceptor.PerfomanceMeasuring;
 import com.prodyna.conference.service.exception.AlreadyAssignedException;
 import com.prodyna.conference.service.model.BusinessQueries;
 import com.prodyna.conference.service.model.Conference;
+import com.prodyna.conference.service.model.Room;
 import com.prodyna.conference.service.model.Speaker;
 import com.prodyna.conference.service.model.Talk;
 import com.prodyna.conference.service.model.TimeRange;
@@ -146,6 +147,18 @@ public class SpeakerServiceImpl extends EntityService implements SpeakerService 
 			throw new AlreadyAssignedException(talks.toString());
 		}
 
+	}
+
+	@Override
+	public Speaker findByName(String name, String firstname) {
+		
+		Query query = em.createNamedQuery(BusinessQueries.FIND_SPEAKER_BY_NAME_AND_FIRSTNAME);
+		query.setParameter("name", name);
+		query.setParameter("firstname", firstname);
+		
+		Speaker speaker = (Speaker)query.getSingleResult();
+		
+		return speaker;
 	}
 
 }

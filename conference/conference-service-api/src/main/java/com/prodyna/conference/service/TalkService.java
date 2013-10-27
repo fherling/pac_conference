@@ -27,4 +27,8 @@ public interface TalkService {
 
 	Talk save(Talk talk);
 
+	List<Talk> loadTalksForSpeaker(Speaker speaker);
+
+	List<Talk> loadTalksForRoom(Room room);
+
 }

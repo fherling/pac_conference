@@ -63,7 +63,7 @@ public class ServiceTestDelete extends AbstractServiceTest {
 	public void testDeleteTalk() {
 		Talk talk = new Talk();
 		talk.setName("Ein Talk" + System.nanoTime());
-		talk.setDesription("Ein Talk");
+		talk.setDescription("Ein Talk");
 		talk.setDuration(120);
 		talk.setStart(new Date());
 		talk = talkService.save(talk);
@@ -83,7 +83,7 @@ public class ServiceTestDelete extends AbstractServiceTest {
 	public void testDeleteTalkComplete() {
 		Talk talk = new Talk();
 		talk.setName("Ein Talk" + System.nanoTime());
-		talk.setDesription("Ein Talk");
+		talk.setDescription("Ein Talk");
 		talk.setDuration(120);
 		talk.setStart(new Date());
 
@@ -155,7 +155,7 @@ public class ServiceTestDelete extends AbstractServiceTest {
 	public void testDeleteAlreadyAssignedSpeaker() {
 		Talk talk = new Talk();
 		talk.setName("Ein Talk" + System.nanoTime());
-		talk.setDesription("Ein Talk");
+		talk.setDescription("Ein Talk");
 		talk.setDuration(120);
 		talk.setStart(new Date());
 

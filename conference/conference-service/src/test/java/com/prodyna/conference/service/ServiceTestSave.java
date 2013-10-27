@@ -57,7 +57,7 @@ public class ServiceTestSave extends AbstractServiceTest {
 	public void testSaveTalk() {
 		Talk talk = new Talk();
 		talk.setName("Ein Talk" + System.nanoTime());
-		talk.setDesription("Ein Talk");
+		talk.setDescription("Ein Talk");
 		talk.setDuration(120);
 		talk.setStart(new Date());
 		talk = talkService.save(talk);
@@ -71,7 +71,7 @@ public class ServiceTestSave extends AbstractServiceTest {
 	public void testSaveTalkComplete() {
 		Talk talk = new Talk();
 		talk.setName("Ein Talk" + System.nanoTime());
-		talk.setDesription("Ein Talk");
+		talk.setDescription("Ein Talk");
 		talk.setDuration(120);
 		talk.setStart(new Date());
 		

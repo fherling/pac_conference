@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+
+	<h:form id="roomEditForm">
+		<h:panelGrid columns="3" columnClasses="titleCell">
+			<h:outputLabel for="name" value="Name:" styleClass="panelOutputLable" />
+			<h:inputText id="name" value="#{wizard.valueContainer.room.name}" />
+			<h:message for="name" errorClass="invalid" />
+		</h:panelGrid>
+
+		<h:panelGrid columns="3" columnClasses="titleCell">
+			<h:outputLabel for="capacity" value="Capacity:"
+				styleClass="panelOutputLable" />
+			<h:inputText id="capacity"
+				value="#{wizard.valueContainer.room.capacity}" />
+			<h:message for="capacity" errorClass="invalid" />
+		</h:panelGrid>
+
+		<h:panelGroup>
+			<h:panelGrid columns="1">
+				<h:outputFormat value="#{msg.selectedtalks}"></h:outputFormat>
+			</h:panelGrid>
+			<ui:include src="/WEB-INF/wizard/talks-for-room.xhtml" />
+		</h:panelGroup>
+
+	</h:form>
+
+
+</ui:composition>

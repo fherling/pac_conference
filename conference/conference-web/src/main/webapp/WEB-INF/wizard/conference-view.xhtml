@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+
+	<h:form id="conferenceViewForm">
+		<h:panelGrid columns="3" columnClasses="titleCell">
+			<h:outputLabel for="name" value="Name:" styleClass="panelOutputLable" />
+			<h:inputText id="name"
+				value="#{wizard.valueContainer.conference.name}" />
+			<h:message for="name" errorClass="invalid" />
+		</h:panelGrid>
+
+		<h:panelGrid columns="3" columnClasses="titleCell">
+			<h:outputLabel for="description" value="Description:"
+				styleClass="panelOutputLable" />
+			<h:inputText id="description"
+				value="#{wizard.valueContainer.conference.description}" />
+			<h:message for="description" errorClass="invalid" />
+		</h:panelGrid>
+
+		<h:panelGrid columns="3" columnClasses="titleCell">
+			<h:outputLabel for="startConference" value="Start:"
+				styleClass="panelOutputLable" />
+			<h:inputText id="startConference"
+				value="#{wizard.valueContainer.conference.start}">
+				<f:convertDateTime type="date" pattern="dd-MM-yyyy" />
+			</h:inputText>
+			<h:message for="startConference" errorClass="invalid" />
+		</h:panelGrid>
+
+		<h:panelGrid columns="3" columnClasses="titleCell">
+			<h:outputLabel for="endConference" value="End:"
+				styleClass="panelOutputLable" />
+			<h:inputText id="endConference"
+				value="#{wizard.valueContainer.conference.end}">
+				<f:convertDateTime type="date" pattern="dd-MM-yyyy" />
+			</h:inputText>
+			<h:message for="endConference" errorClass="invalid" />
+		</h:panelGrid>
+	</h:form>
+	<h:panelGroup>
+		<h:panelGrid columns="1">
+			<h:outputFormat value="#{msg.selectedtalks}"></h:outputFormat>
+			<h:commandButton id="createTalk" render="contentPanelId"
+				actionListener="#{wizard.createTalk}" styleClass="create"
+				value="#{msg.add}" />
+		</h:panelGrid>
+		<ui:include src="/WEB-INF/wizard/talk-overview.xhtml" />
+	</h:panelGroup>
+
+</ui:composition>

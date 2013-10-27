@@ -39,7 +39,7 @@ public class Talk extends BaseEntity {
 	private String name;
 
 	@NotNull
-	private String desription;
+	private String description;
 
 	@NotNull
 	private Date start;
@@ -63,12 +63,12 @@ public class Talk extends BaseEntity {
 		this.name = name;
 	}
 
-	public String getDesription() {
-		return desription;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDesription(String desription) {
-		this.desription = desription;
+	public void setDescription(String desription) {
+		this.description = desription;
 	}
 
 	public Date getStart() {
@@ -95,8 +95,8 @@ public class Talk extends BaseEntity {
 
 	@Override
 	public String toString() {
-		return "Talk [id=" + id + ", name=" + name + ", desription="
-				+ desription + ", start=" + start + ", duration=" + duration
+		return "Talk [id=" + id + ", name=" + name + ", description="
+				+ description + ", start=" + start + ", duration=" + duration
 				+ "]";
 	}
 
@@ -105,7 +105,7 @@ public class Talk extends BaseEntity {
 		final int prime = 31;
 		int result = super.hashCode();
 		result = prime * result
-				+ ((desription == null) ? 0 : desription.hashCode());
+				+ ((description == null) ? 0 : description.hashCode());
 		result = prime * result + (int) (duration ^ (duration >>> 32));
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
@@ -122,10 +122,10 @@ public class Talk extends BaseEntity {
 		if (getClass() != obj.getClass())
 			return false;
 		Talk other = (Talk) obj;
-		if (desription == null) {
-			if (other.desription != null)
+		if (description == null) {
+			if (other.description != null)
 				return false;
-		} else if (!desription.equals(other.desription))
+		} else if (!description.equals(other.description))
 			return false;
 		if (duration != other.duration)
 			return false;

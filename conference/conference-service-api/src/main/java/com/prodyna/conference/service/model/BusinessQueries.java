@@ -17,9 +17,13 @@ public interface BusinessQueries {
 	public static final String IS_TALK_ASSIGNED_TO_CONFERENCE = "istalkassignedtoconference";
 	public static final String IS_SPEAKER_ASSIGNED_TO_TALK = "isspeakerassignedtotalk";
 	public static final String IS_ROOM_ASSIGNED_TO_TALK = "isroomassignedtotalk";
-	
+	public static final String FIND_ROOM_BY_NAME = "findRoomByName";
+	public static final String FIND_SPEAKER_BY_NAME_AND_FIRSTNAME = "findSpeakerByNameAndFirstname";
+	public static final String FIND_ALL_TALKS_FOR_SPEAKER = "findalltalksforspeaker";
+	public static final String FIND_ALL_TALKS_FOR_ROOM = "findalltalksforroom";	
 	
 	
 	
 }
+
 

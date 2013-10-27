@@ -137,6 +137,20 @@ public class RoomServiceImpl extends EntityService implements RoomService {
 		return em.find(Room.class, id);
 	}
 
+	@Override
+	public Room findByName(String name) {
+
+		Query query = em.createNamedQuery(BusinessQueries.FIND_ROOM_BY_NAME);
+
+		query.setParameter("name", name);
+		
+		Room room = (Room)query.getSingleResult();
+
+		
+		
+		return room;
+	}
+
 	
 
 }

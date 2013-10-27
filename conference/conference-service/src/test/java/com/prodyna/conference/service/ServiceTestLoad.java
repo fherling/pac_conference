@@ -119,7 +119,7 @@ public class ServiceTestLoad extends AbstractServiceTest{
 		
 		Talk talk = new Talk();
 		talk.setName("JEE" + System.nanoTime());
-		talk.setDesription("JEE Einführung");
+		talk.setDescription("JEE Einführung");
 		talk.setDuration(120);
 		Calendar cal = Calendar.getInstance();
 		cal.set(Calendar.HOUR, 9);
@@ -160,7 +160,7 @@ public class ServiceTestLoad extends AbstractServiceTest{
 		
 		Talk talk = new Talk();
 		talk.setName("Ein Talk" + System.nanoTime());
-		talk.setDesription("Ein Talk");
+		talk.setDescription("Ein Talk");
 		talk.setDuration(120);
 		talk.setStart(new Date());
 		talk = talkService.save(talk);

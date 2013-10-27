@@ -44,7 +44,7 @@ public class ServiceTestAssign extends AbstractServiceTest {
 	public void testIsSpeakerAvailable() {
 		Talk talk = new Talk();
 		talk.setName("Ein Talk" + System.nanoTime());
-		talk.setDesription("Ein Talk");
+		talk.setDescription("Ein Talk");
 		talk.setDuration(120);
 		talk.setStart(new Date());
 	

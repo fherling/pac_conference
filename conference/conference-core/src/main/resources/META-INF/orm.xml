@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd"
-	version="1.0">
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd"
+	version="2.0">
 
 	<named-query name="getAllSpeakersForTalk">
 		<query>
@@ -70,6 +70,37 @@
         </query>
     </named-query>
     
+	<named-query name="findRoomByName">
+        <query>
+            <![CDATA[
+                select a from com.prodyna.conference.service.model.Room a where a.name = :name
+            ]]>
+        </query>
+    </named-query>
+    
+	<named-query name="findSpeakerByNameAndFirstname">
+        <query>
+            <![CDATA[
+                select a from com.prodyna.conference.service.model.Speaker a where a.name = :name and a.firstName = :firstname
+            ]]>
+        </query>
+    </named-query>
+    
+	<named-query name="findalltalksforspeaker">
+        <query>
+            <![CDATA[
+                select a from com.prodyna.conference.service.model.TalkSpeaker a where a.speaker.id = :speakerId
+            ]]>
+        </query>
+    </named-query>
+    
+    <named-query name="findalltalksforroom">
+        <query>
+            <![CDATA[
+                select a from com.prodyna.conference.service.model.TalkRoom a where a.room.id = :roomId
+            ]]>
+        </query>
+    </named-query>
 	
 
 

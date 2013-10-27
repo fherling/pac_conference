@@ -3,6 +3,8 @@
  */
 package com.prodyna.conference.converter;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 
 import javax.ejb.EJB;
@@ -10,6 +12,7 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -43,9 +46,7 @@ public class RoomConverter implements Converter {
 			String value) {
 
 		if (null != value) {
-
-			Room room = service.findById(Long.valueOf(value));
-
+			Room room = service.findByName(value);
 			return room;
 		} else {
 			return null;
@@ -67,10 +68,25 @@ public class RoomConverter implements Converter {
 
 			Room room = (Room) value;
 
-			return room.getId().toString();
+			return room.getName();
 		}
 
 		return null;
+	}
+
+	
+	public static List<SelectItem> toSelectItem(List<Room> rooms) {
+
+		List<SelectItem> items = new ArrayList<SelectItem>();
+		SelectItem item;
+		for (Room room : rooms) {
+			item = new SelectItem(room, room.getName());
+			items.add(item);
+
+		}
+
+		return items;
+
 	}
 
 }

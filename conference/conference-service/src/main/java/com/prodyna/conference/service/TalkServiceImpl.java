@@ -93,10 +93,8 @@ public class TalkServiceImpl extends EntityService implements TalkService {
 		List<TalkSpeaker> queryResult = query.getResultList();
 
 		for (TalkSpeaker talkSpeaker : queryResult) {
-			result.add(talkSpeaker.getSpeaker());	
+			result.add(talkSpeaker.getSpeaker());
 		}
-		
-		
 
 		return result;
 	}
@@ -157,9 +155,9 @@ public class TalkServiceImpl extends EntityService implements TalkService {
 		Talk entity = em.find(Talk.class, talk.getId());
 
 		if (null != entity) {
-			
+
 			checkAssignment(talk);
-			
+
 			Room room = loadRoomFor(talk);
 			if (null != room) {
 				assignService.unassign(talk, room);
@@ -182,10 +180,10 @@ public class TalkServiceImpl extends EntityService implements TalkService {
 		return em.find(Talk.class, id);
 	}
 
-	private void checkAssignment(Talk talk){
-		
+	private void checkAssignment(Talk talk) {
+
 		Conference conference = assignService.isAssignedTo(talk);
-		if( null != conference){
+		if (null != conference) {
 			throw new AlreadyAssignedException(conference.toString());
 		}
 
@@ -203,5 +201,41 @@ public class TalkServiceImpl extends EntityService implements TalkService {
 
 		return result;
 	}
-	
+
+	@Override
+	public List<Talk> loadTalksForSpeaker(Speaker speaker) {
+
+		List<Talk> result = new ArrayList<Talk>();
+		if (null != speaker && null != speaker.getId()) {
+			Query query = em
+					.createNamedQuery(BusinessQueries.FIND_ALL_TALKS_FOR_SPEAKER);
+			query.setParameter("speakerId", speaker.getId());
+
+			List<TalkSpeaker> queryResult = query.getResultList();
+
+			for (TalkSpeaker talkSpeaker : queryResult) {
+				result.add(talkSpeaker.getTalk());
+			}
+		}
+		return result;
+
+	}
+
+	@Override
+	public List<Talk> loadTalksForRoom(Room room) {
+		List<Talk> result = new ArrayList<Talk>();
+		if (null != room && null != room.getId()) {
+			Query query = em
+					.createNamedQuery(BusinessQueries.FIND_ALL_TALKS_FOR_ROOM);
+			query.setParameter("roomId", room.getId());
+
+			List<TalkRoom> queryResult = query.getResultList();
+
+			for (TalkRoom talkRoom : queryResult) {
+				result.add(talkRoom.getTalk());
+			}
+		}
+		return result;
+
+	}
 }

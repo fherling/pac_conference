@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+
+
+
+	<h:form id="roomoverview">
+
+		<h:panelGroup
+			rendered="#{wizard.valueContainer.roomDataModel.rowCount le 0}">
+			<em>No rooms available.</em>
+		</h:panelGroup>
+
+		<h:dataTable id="valueTable" var="_valueBean"
+			value="#{wizard.valueContainer.roomDataModel}"
+			rendered="#{wizard.valueContainer.roomDataModel.rowCount gt 0}"
+			styleClass="simpletablestyle">
+			<h:column>
+				<f:facet name="header"></f:facet>
+				<h:commandButton id="deletem#{_valueBean.id}"
+					actionListener="#{wizard.delete}" styleClass="delete"
+					rendered="#{wizard.deleteRendered}"
+					image="../../resources/gfx/loeschen.png" />
+				<h:commandButton id="load#{_valueBean.id}"
+					actionListener="#{wizard.edit}" styleClass="change"
+					image="../../resources/gfx/bearbeiten.png" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Id</f:facet>
+				<h:outputText value="#{_valueBean.id}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Name</f:facet>
+				<h:outputText value="#{_valueBean.name}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Capacity</f:facet>
+				<h:outputText value="#{_valueBean.capacity}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Changed</f:facet>
+				<h:outputText value="#{_valueBean.lastUpdateTimestamp}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Created</f:facet>
+				<h:outputText value="#{_valueBean.insertTimestamp}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">REST URL</f:facet>
+				<a
+					href="#{request.contextPath}-rest/rest/room/#{_valueBean.id}">/rest/room/#{_valueBean.id}</a>
+			</h:column>
+			<f:facet name="footer">
+            REST URL for all rooms: <a
+					href="#{request.contextPath}-rest/rest/room">/rest/room</a>
+			</f:facet>
+		</h:dataTable>
+
+
+
+	</h:form>
+
+</ui:composition>

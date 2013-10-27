@@ -21,4 +21,6 @@ public interface SpeakerService {
 
 	Speaker save(Speaker speaker);
 
+	Speaker findByName(String name, String firstname);
+
 }

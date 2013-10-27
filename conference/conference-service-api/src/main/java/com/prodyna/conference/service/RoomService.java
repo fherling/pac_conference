@@ -9,6 +9,8 @@ public interface RoomService {
 	void delete(Room room);
 
 	Room findById(long id);
+	
+	Room findByName(String name);
 
 	List<Room> loadRooms();
 
