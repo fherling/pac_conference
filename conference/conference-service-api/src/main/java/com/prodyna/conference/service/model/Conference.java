@@ -16,10 +16,13 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import com.prodyna.conference.service.model.validation.ValidConferenceDate;
+
 @Entity
 @Table(name = "conference")
 @SequenceGenerator(name = "conference_seq", initialValue = 100, allocationSize = 10)
 @NamedQueries(value = { @NamedQuery(name = BusinessQueries.GET_ALL_CONFERENCES, query = "select a from com.prodyna.conference.service.model.Conference a") })
+@ValidConferenceDate
 public class Conference extends BaseEntity {
 
 	
@@ -140,4 +143,11 @@ public class Conference extends BaseEntity {
 		return "Conference [id=" + id + ", name=" + name + ", description="
 				+ description + ", start=" + start + ", end=" + end + "]";
 	}
+	
+	public TimeRange calcTimeRange(){
+		TimeRange range = new TimeRange(getStart(), getEnd());
+		
+		return range;
+	}
 }
+

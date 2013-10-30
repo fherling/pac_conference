@@ -21,13 +21,8 @@
 			styleClass="simpletablestyle">
 			<h:column>
 				<f:facet name="header"></f:facet>
-				<h:commandButton id="deletem#{_valueBean.id}"
-					actionListener="#{wizard.delete}" styleClass="delete"
-					rendered="#{wizard.deleteRendered}"
-					image="../../resources/gfx/loeschen.png" />
 				<h:commandButton id="load#{_valueBean.id}"
-					actionListener="#{wizard.edit}" styleClass="change"
-					image="../../resources/gfx/bearbeiten.png" />
+					actionListener="#{wizard.edit}" styleClass="change" />
 			</h:column>
 			<h:column>
 				<f:facet name="header">Id</f:facet>
@@ -53,8 +48,7 @@
 
 			<h:column>
 				<f:facet name="header">REST URL</f:facet>
-				<a
-					href="#{request.contextPath}-rest/rest/room/#{_valueBean.id}">/rest/room/#{_valueBean.id}</a>
+				<a href="#{request.contextPath}-rest/rest/room/#{_valueBean.id}">/rest/room/#{_valueBean.id}</a>
 			</h:column>
 			<f:facet name="footer">
             REST URL for all rooms: <a

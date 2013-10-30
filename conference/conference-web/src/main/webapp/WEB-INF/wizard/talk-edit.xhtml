@@ -23,14 +23,14 @@
 		</h:panelGrid>
 
 		<h:panelGrid columns="3" columnClasses="titleCell">
-			<h:outputLabel for="startConference" value="#{msg.start}:"
-				styleClass="panelOutputLable" />
-			<h:inputText id="startConference"
-				value="#{wizard.valueContainer.talk.start}">
-				<f:convertDateTime type="date" pattern="dd-MM-yyyy" />
-			</h:inputText>
-			<h:message for="startConference" errorClass="invalid" />
-		</h:panelGrid>
+            <h:outputLabel for="startTimeTalk" value="#{msg.start}:"
+                styleClass="panelOutputLable" />
+            <h:inputText id="startTimeTalk"
+                value="#{wizard.valueContainer.talk.start}">
+                <f:convertDateTime type="both" pattern="dd-MM-yyyy HH:mm" />
+            </h:inputText>
+            <h:message for="startTimeTalk" errorClass="invalid" />
+        </h:panelGrid>
 
 		<h:panelGrid columns="3" columnClasses="titleCell">
 			<h:outputLabel for="duration" value="#{msg.duration}:"

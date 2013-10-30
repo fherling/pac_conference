@@ -47,9 +47,6 @@ public class SpeakerServiceImpl extends EntityService implements SpeakerService 
 	@Inject
 	private Logger log;
 
-	@Inject
-	private AssignService assignService;
-
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -105,6 +102,12 @@ public class SpeakerServiceImpl extends EntityService implements SpeakerService 
 		} else {
 			speaker = em.merge(speaker);
 		}
+		
+		em.flush();
+		em.clear();
+		
+		speaker = findById(speaker.getId());
+		
 
 		fireSaveEvent(speaker);
 
@@ -124,8 +127,6 @@ public class SpeakerServiceImpl extends EntityService implements SpeakerService 
 		Speaker entity = em.find(Speaker.class, speaker.getId());
 
 		if (null != entity) {
-			checkAssignment(speaker);
-
 			em.remove(entity);
 			em.flush();
 			em.clear();
@@ -138,15 +139,6 @@ public class SpeakerServiceImpl extends EntityService implements SpeakerService 
 	@Override
 	public Speaker findById(long id) {
 		return em.find(Speaker.class, id);
-	}
-
-	private void checkAssignment(Speaker speaker) {
-
-		List<Talk> talks = assignService.isAssignedTo(speaker);
-		if (null != talks && !talks.isEmpty()) {
-			throw new AlreadyAssignedException(talks.toString());
-		}
-
 	}
 
 	@Override

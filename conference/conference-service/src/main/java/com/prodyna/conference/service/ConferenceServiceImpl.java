@@ -5,19 +5,19 @@ package com.prodyna.conference.service;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
@@ -28,6 +28,7 @@ import com.prodyna.conference.service.model.BusinessQueries;
 import com.prodyna.conference.service.model.Conference;
 import com.prodyna.conference.service.model.ConferenceTalk;
 import com.prodyna.conference.service.model.Talk;
+import com.prodyna.conference.service.util.TalkComparator;
 
 /**
  * @author fherling
@@ -45,11 +46,6 @@ public class ConferenceServiceImpl extends EntityService implements ConferenceSe
 
 	@Inject
 	private Logger log;
-	
-	@Inject
-	private AssignService assignService;
-	
-
 	
 
 	/*
@@ -73,6 +69,7 @@ public class ConferenceServiceImpl extends EntityService implements ConferenceSe
 			result.add(conferenceTalk.getTalk());
 			
 		}
+		Collections.sort(result, new TalkComparator());
 		return result;	}
 
 	/*
@@ -105,6 +102,8 @@ public class ConferenceServiceImpl extends EntityService implements ConferenceSe
 	@Override
 	public Conference save(Conference conference) {
 
+		validate(conference);
+		
 		if (conference.getId() == null) {
 			conference.setInsertTimestamp(new Timestamp(System.currentTimeMillis()));
 			em.persist(conference);
@@ -113,6 +112,10 @@ public class ConferenceServiceImpl extends EntityService implements ConferenceSe
 		}
 
 		em.flush();
+		em.clear();
+		
+		conference = findById(conference.getId());
+		
 		fireSaveEvent(conference);
 
 		return conference;
@@ -166,7 +169,7 @@ public class ConferenceServiceImpl extends EntityService implements ConferenceSe
 		if (null != entity) {
 			List<Talk> talks = loadTalksFor(conference);
 			for (Talk talk : talks) {
-				assignService.unassign(conference, talk);
+				unassign(conference, talk);
 			}
 
 			em.remove(entity);
@@ -181,6 +184,93 @@ public class ConferenceServiceImpl extends EntityService implements ConferenceSe
 		return em.find(Conference.class, id);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.prodyna.conference.service.MainEntityService#save(com.prodyna.conference
+	 * .service.model.Conference, com.prodyna.conference.service.model.Talk)
+	 */
+	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public void assign(Conference conference, Talk talk) {
 	
+		if (null == conference) {
+			throw new NullPointerException("Parameter conference is NULL");
+		}
+		if (null == talk) {
+			throw new NullPointerException("Parameter talk is NULL");
+		}
+	
+		Query query = em.createNamedQuery("findConferenceTalk");
+		query.setParameter("talkId", talk.getId());
+		query.setParameter("conferenceId", conference.getId());
+	
+		ConferenceTalk ct;
+		try {
+			ct = (ConferenceTalk) query.getSingleResult();
+	
+		} catch (NoResultException e) {
+			//No entity found, so save this one;
+			ct = new ConferenceTalk();
+			ct.setTalk(talk);
+			ct.setConference(conference);
+	
+			em.persist(ct);
+	
+		}
+	
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.prodyna.conference.service.MainEntityService#remove(com.prodyna.
+	 * conference.service.model.Conference,
+	 * com.prodyna.conference.service.model.Talk)
+	 */
+	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public void unassign(Conference conference, Talk talk) {
+	
+		if (null == conference) {
+			throw new NullPointerException("Parameter conference is NULL");
+		}
+		if (null == talk) {
+			throw new NullPointerException("Parameter talk is NULL");
+		}
+	
+		Query delete = em
+				.createNamedQuery(BusinessQueries.UNASSIGN_TALK_FROM_CONFERENCE);
+		delete.setParameter("conferenceId", conference.getId());
+		delete.setParameter("talkId", talk.getId());
+	
+		int result = delete.executeUpdate();
+		log.info(result + " elements deleted");
+	
+		em.flush();
+	
+	}
+
+	@Override
+	public Conference isAssignedTo(Talk talk) {
+	
+		Query query = em
+				.createNamedQuery(BusinessQueries.IS_TALK_ASSIGNED_TO_CONFERENCE);
+	
+		query.setParameter("talkId", talk.getId());
+	
+		Conference conference = null;
+		try {
+			ConferenceTalk conferenceTalk = (ConferenceTalk) query
+					.getSingleResult();
+	
+			conference = conferenceTalk.getConference();
+		} catch (NoResultException e) {
+			log.info(talk + " is not assigned!");
+		}
+		return conference;
+	
+	}	
 
 }

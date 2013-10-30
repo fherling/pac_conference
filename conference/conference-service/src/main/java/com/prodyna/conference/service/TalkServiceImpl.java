@@ -5,6 +5,7 @@ package com.prodyna.conference.service;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -23,14 +24,13 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.Validator;
 
 import com.prodyna.conference.core.interceptor.PerfomanceMeasuring;
-import com.prodyna.conference.service.exception.AlreadyAssignedException;
 import com.prodyna.conference.service.model.BusinessQueries;
-import com.prodyna.conference.service.model.Conference;
 import com.prodyna.conference.service.model.Room;
 import com.prodyna.conference.service.model.Speaker;
 import com.prodyna.conference.service.model.Talk;
 import com.prodyna.conference.service.model.TalkRoom;
 import com.prodyna.conference.service.model.TalkSpeaker;
+import com.prodyna.conference.service.util.TalkComparator;
 
 /**
  * @author fherling
@@ -48,9 +48,6 @@ public class TalkServiceImpl extends EntityService implements TalkService {
 
 	@Inject
 	private Logger log;
-
-	@Inject
-	private AssignService assignService;
 
 	/*
 	 * (non-Javadoc)
@@ -120,6 +117,9 @@ public class TalkServiceImpl extends EntityService implements TalkService {
 		}
 
 		em.flush();
+		em.clear();
+
+		talk = findById(talk.getId());
 
 		fireSaveEvent(talk);
 
@@ -156,16 +156,14 @@ public class TalkServiceImpl extends EntityService implements TalkService {
 
 		if (null != entity) {
 
-			checkAssignment(talk);
-
 			Room room = loadRoomFor(talk);
 			if (null != room) {
-				assignService.unassign(talk, room);
+				unassign(talk, room);
 			}
 
 			List<Speaker> speakers = loadSpeakersFor(talk);
 			if (null != speakers && !speakers.isEmpty()) {
-				assignService.unassign(talk, speakers);
+				unassign(talk, speakers);
 			}
 
 			em.remove(entity);
@@ -180,14 +178,6 @@ public class TalkServiceImpl extends EntityService implements TalkService {
 		return em.find(Talk.class, id);
 	}
 
-	private void checkAssignment(Talk talk) {
-
-		Conference conference = assignService.isAssignedTo(talk);
-		if (null != conference) {
-			throw new AlreadyAssignedException(conference.toString());
-		}
-
-	}
 
 	@Override
 	public List<Talk> loadTalks() {
@@ -198,6 +188,8 @@ public class TalkServiceImpl extends EntityService implements TalkService {
 		List<Talk> queryResult = query.getResultList();
 
 		result.addAll(queryResult);
+		
+		Collections.sort(queryResult, new TalkComparator());
 
 		return result;
 	}
@@ -237,5 +229,220 @@ public class TalkServiceImpl extends EntityService implements TalkService {
 		}
 		return result;
 
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.prodyna.conference.service.MainEntityService#save(com.prodyna.conference
+	 * .service.model.Talk, java.util.List)
+	 */
+	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public void assign(Talk talk, List<Speaker> speakers) {
+	
+		if (null == talk) {
+			throw new NullPointerException("Parameter talk is NULL");
+		}
+		if (null == speakers) {
+			throw new NullPointerException("Parameter speakers is NULL");
+		}
+	
+		for (Speaker speaker : speakers) {
+			assign(talk, speaker);
+		}
+	
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.prodyna.conference.service.MainEntityService#save(com.prodyna.conference
+	 * .service.model.Talk, com.prodyna.conference.service.model.Room)
+	 */
+	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public void assign(Talk talk, Room room) {
+	
+		if (null == talk) {
+			throw new NullPointerException("Parameter talk is NULL");
+		}
+		if (null == room) {
+			throw new NullPointerException("Parameter room is NULL");
+		}
+	
+		Query query = em.createNamedQuery("findTalkRoom");
+		query.setParameter("talkId", talk.getId());
+		query.setParameter("roomId", room.getId());
+	
+		TalkRoom talkRoom;
+		try {
+			talkRoom = (TalkRoom) query.getSingleResult();
+	
+		} catch (NoResultException e) {
+			//No entity found, so save this one;
+			talkRoom = new TalkRoom();
+			talkRoom.setTalk(talk);
+			talkRoom.setRoom(room);
+	
+			em.persist(talkRoom);
+	
+		}
+	
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.prodyna.conference.service.MainEntityService#save(com.prodyna.conference
+	 * .service.model.Talk, com.prodyna.conference.service.model.Speaker)
+	 */
+	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public void assign(Talk talk, Speaker speaker) {
+	
+		if (null == talk) {
+			throw new NullPointerException("Parameter talk is NULL");
+		}
+		if (null == speaker) {
+			throw new NullPointerException("Parameter speaker is NULL");
+		}
+	
+		Query query = em.createNamedQuery("findTalkSpeaker");
+		query.setParameter("talkId", talk.getId());
+		query.setParameter("speakerId", speaker.getId());
+		
+		
+		TalkSpeaker talkSpeaker;
+		try {
+			talkSpeaker = (TalkSpeaker) query.getSingleResult();
+	
+		} catch (NoResultException e) {
+			//No entity found, so save this one;
+			talkSpeaker = new TalkSpeaker();
+			talkSpeaker.setTalk(talk);
+			talkSpeaker.setSpeaker(speaker);
+	
+			em.persist(talkSpeaker);
+	
+		}
+	
+	}
+
+	@Override
+	public List<Talk> isAssignedTo(Room room) {
+	
+		Query query = em
+				.createNamedQuery(BusinessQueries.IS_ROOM_ASSIGNED_TO_TALK);
+	
+		query.setParameter("roomId", room.getId());
+	
+		List<Talk> talk = new ArrayList<Talk>();
+		List<TalkRoom> result = query.getResultList();
+		for (TalkRoom talkRoom : result) {
+			talk.add(talkRoom.getTalk());
+		}
+		if (talk.isEmpty()) {
+			log.info(room + " is not assigned!");
+		}
+		return talk;
+	
+	}
+
+	@Override
+	public List<Talk> isAssignedTo(Speaker speaker) {
+	
+		Query query = em
+				.createNamedQuery(BusinessQueries.IS_SPEAKER_ASSIGNED_TO_TALK);
+	
+		query.setParameter("speakerId", speaker.getId());
+	
+		List<Talk> talk = new ArrayList<Talk>();
+		List<TalkSpeaker> result = query.getResultList();
+		for (TalkSpeaker talkSpeaker : result) {
+			talk.add(talkSpeaker.getTalk());
+		}
+		if (talk.isEmpty()) {
+			log.info(speaker + " is not assigned!");
+		}
+		return talk;
+	
+	}
+
+	
+
+	@Override
+	public void unassign(Talk talk, List<Speaker> speakers) {
+	
+		if (null == talk) {
+			throw new NullPointerException("Parameter talk is NULL");
+		}
+		if (null == speakers) {
+			throw new NullPointerException("Parameter speakers is NULL");
+		}
+	
+		for (Speaker speaker : speakers) {
+			unassign(talk, speaker);
+		}
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.prodyna.conference.service.MainEntityService#remove(com.prodyna.
+	 * conference.service.model.Talk, com.prodyna.conference.service.model.Room)
+	 */
+	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public void unassign(Talk talk, Room room) {
+	
+		if (null == talk) {
+			throw new NullPointerException("Parameter talk is NULL");
+		}
+		if (null == room) {
+			throw new NullPointerException("Parameter room is NULL");
+		}
+	
+		Query delete = em
+				.createNamedQuery(BusinessQueries.UNASSIGN_ROOM_FROM_TALK);
+		delete.setParameter("roomId", room.getId());
+		delete.setParameter("talkId", talk.getId());
+	
+		int result = delete.executeUpdate();
+		log.info(result + " elements deleted");
+		em.flush();
+	
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.prodyna.conference.service.MainEntityService#remove(com.prodyna.
+	 * conference.service.model.Talk,
+	 * com.prodyna.conference.service.model.Speaker)
+	 */
+	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public void unassign(Talk talk, Speaker speaker) {
+	
+		if (null == talk) {
+			throw new NullPointerException("Parameter talk is NULL");
+		}
+		if (null == speaker) {
+			throw new NullPointerException("Parameter speaker is NULL");
+		}
+	
+		Query delete = em
+				.createNamedQuery(BusinessQueries.UNASSIGN_SPEAKER_FROM_TALK);
+		delete.setParameter("speakerId", speaker.getId());
+		delete.setParameter("talkId", talk.getId());
+	
+		int result = delete.executeUpdate();
+	
+		em.flush();
+	
 	}
 }

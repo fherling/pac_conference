@@ -46,8 +46,6 @@ public class RoomServiceImpl extends EntityService implements RoomService {
 	@Inject
 	private Logger log;
 	
-	@Inject
-	private AssignService assignService;
 
 	/*
 	 * (non-Javadoc)
@@ -75,6 +73,7 @@ public class RoomServiceImpl extends EntityService implements RoomService {
 	 * .service.model.Room)
 	 */
 	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public Room save(Room room) {
 
 		validate(room);
@@ -86,6 +85,11 @@ public class RoomServiceImpl extends EntityService implements RoomService {
 			room = em.merge(room);
 		}
 
+		em.flush();
+		em.clear();
+		
+		room = findById(room.getId());
+		
 		fireSaveEvent(room);
 
 		return room;

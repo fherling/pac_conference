@@ -32,8 +32,6 @@ public class ServiceTestLoad extends AbstractServiceTest{
 	private ConferenceService conferenceService;
 	@Inject
 	private SpeakerService speakerService;
-	@Inject
-	private AssignService assignService;
 	
 	
 	@Before
@@ -134,7 +132,7 @@ public class ServiceTestLoad extends AbstractServiceTest{
 		Assert.assertNotNull("talk.id is null", talk.getId());
 
 		
-		assignService.assign(talk, speaker);
+		talkService.assign(talk, speaker);
 		
 		
 		List<Speaker> result =  talkService.loadSpeakersFor(talk);
@@ -168,7 +166,7 @@ public class ServiceTestLoad extends AbstractServiceTest{
 		Assert.assertNotNull("talk is NULL", talk);
 		Assert.assertNotNull("talk.id is NULL", talk.getId());
 		
-		assignService.assign(conference, talk);
+		conferenceService.assign(conference, talk);
 		
 		List<Talk> talks = conferenceService.loadTalksFor(conference);
 		

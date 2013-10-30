@@ -53,7 +53,7 @@
 				</h:panelGroup>
 
 				<h:panelGroup
-					rendered="#{wizard.step == 'NEW_SPEAKER' or wizard.step == 'EDIT_SPEAKER'}">
+					rendered="#{wizard.step == 'NEW_SPEAKER' or wizard.step == 'EDIT_SPEAKER' or wizard.step == 'SHOW_SPEAKER'}">
 					<ui:include src="/WEB-INF/wizard/speaker-edit.xhtml" />
 				</h:panelGroup>
 
@@ -63,7 +63,7 @@
 					<ui:include src="/WEB-INF/wizard/room-overview.xhtml" />
 				</h:panelGroup>
 				<h:panelGroup
-					rendered="#{wizard.step == 'NEW_ROOM' or wizard.step == 'EDIT_ROOM' or wizard.step == 'SHOW_TALK'}">
+					rendered="#{wizard.step == 'NEW_ROOM' or wizard.step == 'EDIT_ROOM' or wizard.step == 'SHOW_ROOM'}">
 					<ui:include src="/WEB-INF/wizard/room-edit.xhtml" />
 				</h:panelGroup>
 

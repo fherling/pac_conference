@@ -21,15 +21,10 @@
 			styleClass="simpletablestyle">
 			<h:column>
 				<f:facet name="header"></f:facet>
-				<h:commandButton id="delete#{_valueBean.id}" render="valueTable"
-					actionListener="#{wizard.deleteTalk}" styleClass="delete"
-					rendered="#{wizard.deleteRendered}"
-					image="../../resources/gfx/loeschen.png" />
 				<h:commandButton id="load#{_valueBean.id}"
-					actionListener="#{wizard.editTalk}" styleClass="change"
-					image="../../resources/gfx/bearbeiten.png" />
+					actionListener="#{wizard.editTalk}" styleClass="change" />
 			</h:column>
-			<h:column>
+			<h:column rendered="#{wizard.admin}">
 				<f:facet name="header">Id</f:facet>
 				<h:outputText value="#{_valueBean.id}" />
 			</h:column>
@@ -44,31 +39,30 @@
 			<h:column>
 				<f:facet name="header">Start</f:facet>
 				<h:outputText value="#{_valueBean.start}">
-					<f:convertDateTime type="date" pattern="dd-MM-yyyy" />
+					<f:convertDateTime type="date" pattern="dd-MM-yyyy HH:mm" />
 				</h:outputText>
 			</h:column>
 
 			<h:column>
 				<f:facet name="header">Duration</f:facet>
 				<h:outputText value="#{_valueBean.duration}">
-					
+
 				</h:outputText>
 			</h:column>
 
-			<h:column>
+			<h:column rendered="#{wizard.admin}">
 				<f:facet name="header">Changed</f:facet>
 				<h:outputText value="#{_valueBean.lastUpdateTimestamp}" />
 			</h:column>
 
-			<h:column>
+			<h:column rendered="#{wizard.admin}">
 				<f:facet name="header">Created</f:facet>
 				<h:outputText value="#{_valueBean.insertTimestamp}" />
 			</h:column>
 
 			<h:column>
 				<f:facet name="header">REST URL</f:facet>
-				<a
-					href="#{request.contextPath}-rest/rest/talk/#{_valueBean.id}">/rest/talk/#{_valueBean.id}</a>
+				<a href="#{request.contextPath}-rest/rest/talk/#{_valueBean.id}">/rest/talk/#{_valueBean.id}</a>
 			</h:column>
 			<f:facet name="footer">
             REST URL for all talks for this conference: <a

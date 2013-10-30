@@ -46,7 +46,8 @@ public class RoomConverter implements Converter {
 			String value) {
 
 		if (null != value) {
-			Room room = service.findByName(value);
+//			Room room = service.findByName(value);
+			Room room = service.findById(Long.parseLong(value));
 			return room;
 		} else {
 			return null;
@@ -68,7 +69,7 @@ public class RoomConverter implements Converter {
 
 			Room room = (Room) value;
 
-			return room.getName();
+			return room.getId().toString();
 		}
 
 		return null;

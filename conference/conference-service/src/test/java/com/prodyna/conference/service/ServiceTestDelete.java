@@ -11,6 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.prodyna.conference.business.service.BusinessService;
 import com.prodyna.conference.service.exception.AlreadyAssignedException;
 import com.prodyna.conference.service.model.Conference;
 import com.prodyna.conference.service.model.Room;
@@ -29,8 +30,9 @@ public class ServiceTestDelete extends AbstractServiceTest {
 	private ConferenceService conferenceService;
 	@Inject
 	private SpeakerService speakerService;
+
 	@Inject
-	private AssignService assignService;
+	private BusinessService businessService;
 
 	@Before
 	public void testSetup() {
@@ -102,7 +104,7 @@ public class ServiceTestDelete extends AbstractServiceTest {
 		Assert.assertNotNull("speaker is NULL", speaker);
 		Assert.assertNotNull("speaker.id is NULL", speaker.getId());
 
-		assignService.assign(talk, speaker);
+		talkService.assign(talk, speaker);
 
 		talkService.delete(talk);
 
@@ -174,10 +176,10 @@ public class ServiceTestDelete extends AbstractServiceTest {
 		Assert.assertNotNull("speaker is NULL", speaker);
 		Assert.assertNotNull("speaker.id is NULL", speaker.getId());
 
-		assignService.assign(talk, speaker);
+		talkService.assign(talk, speaker);
 
 		try {
-			speakerService.delete(speaker);
+			businessService.delete(speaker);
 
 			Assert.fail("Should fail with an AlreadyAssignedException");
 

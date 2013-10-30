@@ -12,7 +12,7 @@
 
 		<h:panelGroup
 			rendered="#{wizard.valueContainer.conferenceDataModel.rowCount le 0}">
-			<em>No conferences available.</em>
+			<em>#{msg.no_conferences}</em>
 		</h:panelGroup>
 
 		<h:dataTable id="valueTable" var="_valueBean"
@@ -21,47 +21,42 @@
 			styleClass="simpletablestyle">
 			<h:column>
 				<f:facet name="header"></f:facet>
-				<h:commandButton id="deletem#{_valueBean.id}"
-					actionListener="#{wizard.delete}" styleClass="delete"
-					rendered="#{wizard.deleteRendered}"
-					image="../../resources/gfx/loeschen.png" />
 				<h:commandButton id="load#{_valueBean.id}"
-					actionListener="#{wizard.edit}" styleClass="change"
-					image="../../resources/gfx/bearbeiten.png" />
+					actionListener="#{wizard.edit}" styleClass="change" />
 			</h:column>
 			<h:column>
-				<f:facet name="header">Id</f:facet>
+				<f:facet name="header">#{msg.id}</f:facet>
 				<h:outputText value="#{_valueBean.id}" />
 			</h:column>
 			<h:column>
-				<f:facet name="header">Name</f:facet>
+				<f:facet name="header">#{msg.name}</f:facet>
 				<h:outputText value="#{_valueBean.name}" />
 			</h:column>
 			<h:column>
-				<f:facet name="header">Description</f:facet>
+				<f:facet name="header">#{msg.description}</f:facet>
 				<h:outputText value="#{_valueBean.description}" />
 			</h:column>
 			<h:column>
-				<f:facet name="header">Start</f:facet>
+				<f:facet name="header">#{msg.start}</f:facet>
 				<h:outputText value="#{_valueBean.start}">
 					<f:convertDateTime type="date" pattern="dd-MM-yyyy" />
 				</h:outputText>
 			</h:column>
 
 			<h:column>
-				<f:facet name="header">End</f:facet>
+				<f:facet name="header">#{msg.end}</f:facet>
 				<h:outputText value="#{_valueBean.end}">
 					<f:convertDateTime type="date" pattern="dd-MM-yyyy" />
 				</h:outputText>
 			</h:column>
 
 			<h:column>
-				<f:facet name="header">Changed</f:facet>
+				<f:facet name="header">#{msg.changed}</f:facet>
 				<h:outputText value="#{_valueBean.lastUpdateTimestamp}" />
 			</h:column>
 
 			<h:column>
-				<f:facet name="header">Created</f:facet>
+				<f:facet name="header">#{msg.created}</f:facet>
 				<h:outputText value="#{_valueBean.insertTimestamp}" />
 			</h:column>
 

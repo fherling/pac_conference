@@ -31,4 +31,21 @@ public interface TalkService {
 
 	List<Talk> loadTalksForRoom(Room room);
 
+	void assign(Talk talk, Speaker speaker);
+
+	void unassign(Talk talk, Room room);
+
+	void unassign(Talk talk, Speaker speaker);
+
+	void unassign(Talk talk, List<Speaker> speakers);
+
+	List<Talk> isAssignedTo(Speaker speaker);
+
+	List<Talk> isAssignedTo(Room room);
+
+	void assign(Talk talk, Room room);
+
+	void assign(Talk talk, List<Speaker> speakers);
+
+
 }

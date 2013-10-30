@@ -28,8 +28,6 @@ public class ServiceTestSave extends AbstractServiceTest {
 	private ConferenceService conferenceService;
 	@Inject
 	private SpeakerService speakerService;
-	@Inject
-	private AssignService assignService;
 
 
 	@Before
@@ -90,7 +88,7 @@ public class ServiceTestSave extends AbstractServiceTest {
 		Assert.assertNotNull("speaker is NULL", speaker);
 		Assert.assertNotNull("speaker.id is NULL", speaker.getId());
 
-		assignService.assign(talk, speaker);
+		talkService.assign(talk, speaker);
 	}
 
 	@Test
@@ -106,6 +104,24 @@ public class ServiceTestSave extends AbstractServiceTest {
 		Assert.assertNotNull("speaker is NULL", speaker);
 		Assert.assertNotNull("speaker.id is NULL", speaker.getId());
 	}
+	
+	@Test
+	public void testSaveSpeaker2() {
+
+		Speaker speaker = new Speaker();
+		speaker.setName("Herling" + System.nanoTime());
+		speaker.setFirstName("Frank");
+		speaker.setDescription("Ein Mensch");
+
+		speaker = speakerService.save(speaker);
+		Assert.assertNotNull("speaker is NULL", speaker);
+		Assert.assertNotNull("speaker.id is NULL", speaker.getId());
+		
+		speaker.setEmail("fherling@web.de");
+		speaker = speakerService.save(speaker);
+		Assert.assertEquals("fherling@web.de", speaker.getEmail());
+
+	}
 
 	@Test
 	public void testSaveRoom() {
@@ -118,5 +134,26 @@ public class ServiceTestSave extends AbstractServiceTest {
 
 		Assert.assertNotNull("room is NULL", room);
 		Assert.assertNotNull("room.id is NULL", room.getId());
+		
+
+	}
+	
+	@Test
+	public void testSaveRoom2() {
+
+		Room room = new Room();
+		room.setCapacity(10);
+		room.setName("Ein Raum" + System.nanoTime());
+
+		room = roomService.save(room);
+		
+		Assert.assertNotNull("room is NULL", room);
+		Assert.assertNotNull("room.id is NULL", room.getId());
+		
+		room.setCapacity(100);
+		room = roomService.save(room);
+
+		Assert.assertEquals(100, room.getCapacity());
+
 	}
 }

@@ -11,14 +11,14 @@
             ]]>
         </query>
 	</named-query>
-	
+
 	<named-query name="getAllTalksForConference">
-        <query>
+		<query>
             <![CDATA[
                 select a from com.prodyna.conference.service.model.ConferenceTalk a where a.conference.id = :conferenceId
             ]]>
         </query>
-    </named-query>
+	</named-query>
 
 
 	<named-query name="unassignTalkFromConference">
@@ -45,65 +45,88 @@
             ]]>
         </query>
 	</named-query>
-	
+
 	<named-query name="istalkassignedtoconference">
-        <query>
+		<query>
             <![CDATA[
                 select a from com.prodyna.conference.service.model.ConferenceTalk a where a.talk.id = :talkId
             ]]>
         </query>
-    </named-query>
-    
+	</named-query>
+
 	<named-query name="isspeakerassignedtotalk">
-        <query>
+		<query>
             <![CDATA[
                 select a from com.prodyna.conference.service.model.TalkSpeaker a where a.speaker.id = :speakerId
             ]]>
         </query>
-    </named-query>
-    
+	</named-query>
+
 	<named-query name="isroomassignedtotalk">
-        <query>
+		<query>
             <![CDATA[
                 select a from com.prodyna.conference.service.model.TalkRoom a where a.room.id = :roomId
             ]]>
         </query>
-    </named-query>
-    
+	</named-query>
+
 	<named-query name="findRoomByName">
-        <query>
+		<query>
             <![CDATA[
                 select a from com.prodyna.conference.service.model.Room a where a.name = :name
             ]]>
         </query>
-    </named-query>
-    
+	</named-query>
+
 	<named-query name="findSpeakerByNameAndFirstname">
-        <query>
+		<query>
             <![CDATA[
                 select a from com.prodyna.conference.service.model.Speaker a where a.name = :name and a.firstName = :firstname
             ]]>
         </query>
-    </named-query>
-    
+	</named-query>
+
 	<named-query name="findalltalksforspeaker">
-        <query>
+		<query>
             <![CDATA[
                 select a from com.prodyna.conference.service.model.TalkSpeaker a where a.speaker.id = :speakerId
             ]]>
         </query>
-    </named-query>
-    
-    <named-query name="findalltalksforroom">
-        <query>
+	</named-query>
+
+	<named-query name="findalltalksforroom">
+		<query>
             <![CDATA[
                 select a from com.prodyna.conference.service.model.TalkRoom a where a.room.id = :roomId
             ]]>
         </query>
-    </named-query>
-	
+	</named-query>
 
+	<named-query name="findTalkRoom">
+		<query>
+            <![CDATA[
+                select a from com.prodyna.conference.service.model.TalkRoom a where a.room.id = :roomId and a.talk.id = :talkId
+            ]]>
+        </query>
+	</named-query>
+
+    <named-query name="findTalkSpeaker">
+        <query>
+            <![CDATA[
+                select a from com.prodyna.conference.service.model.TalkSpeaker a where a.speaker.id = :speakerId and a.talk.id = :talkId
+            ]]>
+        </query>
+    </named-query>
+        <named-query name="findConferenceTalk">
+        <query>
+            <![CDATA[
+                select a from com.prodyna.conference.service.model.ConferenceTalk a where a.conference.id = :conferenceId and a.talk.id = :talkId
+            ]]>
+        </query>
+    </named-query>
 
 
 </entity-mappings>
+
+
 

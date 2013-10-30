@@ -152,6 +152,8 @@ public class ValueContainer {
 		speaker = null;
 		room = null;
 		speakersSelected.clear();
+		talks.clear();
+		rooms.clear();
 	}
 
 	public void editSpeaker() {
@@ -160,12 +162,10 @@ public class ValueContainer {
 	}
 
 	public void editRoom() {
-
 		room = getRoomDataModel().getRowData();
 	}
 
 	public void editTalk() {
-
 		talk = getTalkDataModel().getRowData();
 	}
 
@@ -182,6 +182,7 @@ public class ValueContainer {
 		speakersSelected.clear();
 		room = null;
 		talk = null;
+		speaker = null;
 		talks.clear();
 
 	}
@@ -192,7 +193,7 @@ public class ValueContainer {
 		conferences.addAll(result);
 
 	}
-	
+
 	public void loadTalks(List<Talk> result) {
 
 		talks.clear();
@@ -238,7 +239,6 @@ public class ValueContainer {
 		this.speakerDataModel = speakerDataModel;
 	}
 
-
 	public List<Speaker> getSpeakersSelected() {
 		return speakersSelected;
 	}
@@ -269,10 +269,11 @@ public class ValueContainer {
 			speaker = getSpeakerDataModel().getRowData();
 		}
 		getSpeakers().remove(speaker);
+		speaker = null;
 
 	}
-	
-	public List<SelectItem> getRoomsAsSelectItems(){
+
+	public List<SelectItem> getRoomsAsSelectItems() {
 		return RoomConverter.toSelectItem(getRooms());
 	}
 }

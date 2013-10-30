@@ -6,28 +6,28 @@
    xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
-	<title>
+    <title>
          <h:outputText value="#{title}"/>
       </title>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<h:outputStylesheet name="css/screen.css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <h:outputStylesheet name="css/screen.css" />
 </h:head>
 <h:body>
-	<div id="container">
-		<div class="dualbrand">
-			<img src="resources/gfx/grau-gruen-transparent.png" />
-		</div>
-		<div id="content">
-			<ui:insert name="content">
+    <div id="container">
+        <div class="dualbrand">
+            <img src="resources/gfx/grau-gruen-transparent.png" />
+        </div>
+        <div id="content">
+            <ui:insert name="content">
                     [Template content will be inserted here]
          </ui:insert>
-		</div>
+        </div>
 
-		<div id="footer">
-			<p>
-			<a href="#{request.contextPath}/">PRODYNA PAC CONFERENCE APPLICATION</a>
-			</p>
-		</div>
-	</div>
+        <div id="footer">
+            <p>
+            <a href="#{request.contextPath}/">PRODYNA PAC CONFERENCE APPLICATION</a>
+            </p>
+        </div>
+    </div>
 </h:body>
 </html>

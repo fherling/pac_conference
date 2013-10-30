@@ -26,4 +26,10 @@ public interface ConferenceService {
 
 	Conference save(Conference conference);
 
+	void assign(Conference conference, Talk talk);
+
+	void unassign(Conference conference, Talk talk);
+
+	Conference isAssignedTo(Talk talk);
+
 }

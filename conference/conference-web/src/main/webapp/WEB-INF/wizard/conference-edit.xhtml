@@ -45,12 +45,12 @@
 		<div></div>
 
 		<h:panelGroup>
-		<h:panelGrid columns="1">
-		<h:outputFormat value="#{msg.selectedtalks}"></h:outputFormat>
-		<h:commandButton id="createTalk" render="contentPanelId"
-                    actionListener="#{wizard.createTalk}" styleClass="create" 
-                    value="#{msg.add}" />
-		</h:panelGrid>
+			<h:panelGrid columns="1">
+				<h:outputFormat value="#{msg.selectedtalks}"></h:outputFormat>
+				<h:commandButton id="createTalk" render="contentPanelId"
+					actionListener="#{wizard.createTalk}" styleClass="create"
+					value="#{msg.add}" />
+			</h:panelGrid>
 			<ui:include src="/WEB-INF/wizard/talk-overview.xhtml" />
 		</h:panelGroup>
 

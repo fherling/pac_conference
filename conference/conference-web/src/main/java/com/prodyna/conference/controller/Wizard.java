@@ -3,8 +3,10 @@ package com.prodyna.conference.controller;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -13,7 +15,6 @@ import javax.faces.model.ListDataModel;
 import javax.inject.Inject;
 
 import com.prodyna.conference.business.service.BusinessService;
-import com.prodyna.conference.service.AssignService;
 import com.prodyna.conference.service.ConferenceService;
 import com.prodyna.conference.service.RoomService;
 import com.prodyna.conference.service.SpeakerService;
@@ -38,9 +39,6 @@ public class Wizard extends AbstractViewController implements Serializable {
 	private BusinessService businessService;
 
 	@Inject
-	private AssignService assignService;
-
-	@Inject
 	private ConferenceService conferenceService;
 
 	@Inject
@@ -50,6 +48,18 @@ public class Wizard extends AbstractViewController implements Serializable {
 	private SpeakerService speakerService;
 	@Inject
 	private TalkService talkService;
+
+	public Wizard() {
+
+	}
+
+	@PostConstruct
+	public void init() {
+		Locale loc = facesContext.getViewRoot().getLocale();
+
+		facesContext.getViewRoot().setLocale(Locale.GERMANY);
+
+	}
 
 	public void create(ActionEvent event) {
 
@@ -93,11 +103,10 @@ public class Wizard extends AbstractViewController implements Serializable {
 		step = WizardSteps.NEW_TALK;
 		List<Room> rooms = roomService.loadRooms();
 		List<Speaker> speakers = speakerService.loadSpeakers();
-		
-		valueContainer.getSpeakers().clear();
-		valueContainer.getSpeakers().addAll(speakers);
-		valueContainer.getRooms().clear();
-		valueContainer.getRooms().addAll(rooms);
+		valueContainer.loadSpeakers(speakers);
+		valueContainer.loadRooms(rooms);
+		valueContainer.getSpeakersSelected().clear();
+		valueContainer.setRoom(null);
 	}
 
 	public void editTalk(ActionEvent event) {
@@ -115,7 +124,7 @@ public class Wizard extends AbstractViewController implements Serializable {
 			Room room = talkService.loadRoomFor(valueContainer.getTalk());
 			List<Speaker> talkSpaker = talkService
 					.loadSpeakersFor(valueContainer.getTalk());
-			
+
 			valueContainer.setRoom(room);
 			valueContainer.getSpeakersSelected().clear();
 			valueContainer.getSpeakersSelected().addAll(talkSpaker);
@@ -123,12 +132,10 @@ public class Wizard extends AbstractViewController implements Serializable {
 
 		List<Room> rooms = roomService.loadRooms();
 		List<Speaker> speakers = speakerService.loadSpeakers();
-		
-		valueContainer.getSpeakers().clear();
-		valueContainer.getSpeakers().addAll(speakers);
-		valueContainer.getRooms().clear();
-		valueContainer.getRooms().addAll(rooms);
-		
+
+		valueContainer.loadSpeakers(speakers);
+		valueContainer.loadRooms(rooms);
+
 	}
 
 	public void edit(ActionEvent event) {
@@ -199,82 +206,60 @@ public class Wizard extends AbstractViewController implements Serializable {
 				valueContainer.editConference();
 				conferenceService.delete(valueContainer.getConference());
 				valueContainer.deleteConference();
-				step = WizardSteps.ALL_CONFERENCES;
+				valueContainer.loadConferences(conferenceService.loadConferences());
 				break;
 			case EDIT_CONFERENCE:
 				valueContainer.editConference();
 				conferenceService.delete(valueContainer.getConference());
 				valueContainer.deleteConference();
+				valueContainer.loadConferences(conferenceService.loadConferences());
 				step = WizardSteps.ALL_CONFERENCES;
 				break;
 			case ALL_ROOMS:
 				valueContainer.editRoom();
-				roomService.delete(valueContainer.getRoom());
-				valueContainer.deleteRoom();
-				break;
 			case EDIT_ROOM:
-				valueContainer.editRoom();
-				roomService.delete(valueContainer.getRoom());
+				businessService.delete(valueContainer.getRoom());
 				valueContainer.deleteRoom();
-				if (valueContainer.getConference() != null) {
-					step = WizardSteps.SHOW_CONFERENCE;
-				} else {
-					step = WizardSteps.ALL_SPEAKERS;
-				}
+				valueContainer.loadRooms(roomService.loadRooms());
+				step = WizardSteps.ALL_ROOMS;
 				break;
 			case ALL_SPEAKERS:
 				valueContainer.editSpeaker();
-				speakerService.delete(valueContainer.getSpeaker());
-				valueContainer.deleteSpeaker();
-				break;
 			case EDIT_SPEAKER:
-				valueContainer.editSpeaker();
-				speakerService.delete(valueContainer.getSpeaker());
-				valueContainer.deleteSpeaker();
-				if (valueContainer.getConference() != null) {
-					step = WizardSteps.SHOW_CONFERENCE;
-				} else {
-					step = WizardSteps.ALL_SPEAKERS;
-				}
+				businessService.delete(valueContainer.getSpeaker());
+				valueContainer.loadSpeakers(speakerService.loadSpeakers());
+				step = WizardSteps.ALL_SPEAKERS;
 				break;
+			case ALL_TALKS:
+				valueContainer.editTalk();
+			case NEW_TALK:
+			case EDIT_TALK:
+			case SHOW_TALK:
+				conferenceService.unassign(valueContainer.getConference(),
+						valueContainer.getTalk());
+				talkService.delete(valueContainer.getTalk());
+				valueContainer.deleteTalk();
+				if (getStep() == WizardSteps.SHOW_TALK
+						|| getStep() == WizardSteps.EDIT_TALK
+						|| getStep() == WizardSteps.NEW_TALK) {
+					step = WizardSteps.SHOW_CONFERENCE;
+				}
+				break;				
 			default:
-				log.info("WRONG STEP FOR CALLING SAVE");
-				String errorMessage = "Delete is not allowed";
-				FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR,
-						errorMessage, "Could not save data");
-				facesContext.addMessage(null, m);
+				handleMessage("data_not_saved", null);
 				break;
 
 			}
 
 		} catch (Exception e) {
-			String errorMessage = getRootErrorMessage(e);
-			FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR,
-					errorMessage, "Could not save data");
-			facesContext.addMessage(null, m);
+			handleMessage("data_not_saved", e);
 		}
 
-	}
-
-	public void deleteTalk(ActionEvent event) {
-		valueContainer.editTalk();
-		assignService.unassign(valueContainer.getConference(),
-				valueContainer.getTalk());
-		talkService.delete(valueContainer.getTalk());
-		valueContainer.deleteTalk();
-		if (getStep() == WizardSteps.SHOW_TALK
-				|| getStep() == WizardSteps.EDIT_TALK) {
-			step = WizardSteps.SHOW_CONFERENCE;
-		}
 	}
 
 	private boolean isDeleteAllowed() {
 		if (!isAdmin()) {
-			log.info("NOT IN ADMINMODUS");
-			String errorMessage = getMessageText("DELETE_NOT_POSSIBLE");
-			FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR,
-					errorMessage, errorMessage);
-			facesContext.addMessage(null, m);
+			handleMessage("DELETE_NOT_POSSIBLE", null);
 			return false;
 		}
 		return true;
@@ -311,33 +296,25 @@ public class Wizard extends AbstractViewController implements Serializable {
 	public void save(ActionEvent event) {
 
 		try {
+
 			Conference conference = null;
 			Room room = null;
 			Speaker speaker = null;
 			Talk talk = null;
 			switch (getStep()) {
 			case EDIT_CONFERENCE:
-				conference = conferenceService.save(valueContainer
-						.getConference());
-				valueContainer.setConference(conference);
-				break;
 			case NEW_CONFERENCE:
 				conference = conferenceService.save(valueContainer
 						.getConference());
 				valueContainer.setConference(conference);
 				break;
 			case EDIT_ROOM:
-				room = roomService.save(valueContainer.getRoom());
-				valueContainer.setRoom(room);
-				break;
 			case NEW_ROOM:
 				room = roomService.save(valueContainer.getRoom());
+				room = roomService.findById(room.getId());
 				valueContainer.setRoom(room);
 				break;
 			case EDIT_SPEAKER:
-				speaker = speakerService.save(valueContainer.getSpeaker());
-				valueContainer.setSpeaker(speaker);
-				break;
 			case NEW_SPEAKER:
 				speaker = speakerService.save(valueContainer.getSpeaker());
 				valueContainer.setSpeaker(speaker);
@@ -346,29 +323,27 @@ public class Wizard extends AbstractViewController implements Serializable {
 				talk = businessService.saveAndAssignTalk(
 						valueContainer.getTalk(),
 						valueContainer.getConference(),
-						valueContainer.getSpeakersSelected(), 
+						valueContainer.getSpeakersSelected(),
 						valueContainer.getRoom());
 				valueContainer.setTalk(talk);
 				valueContainer.getTalks().add(talk);
 				break;
 			case EDIT_TALK:
-				talk = talkService.save(valueContainer.getTalk());
+				talk = businessService.saveAndAssignTalk(
+						valueContainer.getTalk(),
+						valueContainer.getConference(),
+						valueContainer.getSpeakersSelected(),
+						valueContainer.getRoom());
+				valueContainer.setTalk(talk);
 				valueContainer.setTalk(talk);
 				break;
 			default:
 				break;
 			}
-			String errorMessage = getMessageText("data_saved");
-			FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_INFO,
-					errorMessage, errorMessage);
-			facesContext.addMessage(null, m);
+			handleMessage("data_saved", null);
 
 		} catch (Exception e) {
-			String summary = getMessageText("data_not_saved");
-			String detail = getRootErrorMessage(e);
-			FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR,
-					summary, detail);
-			facesContext.addMessage(null, m);
+			handleMessage("data_not_saved", null);
 		}
 	}
 
@@ -402,18 +377,23 @@ public class Wizard extends AbstractViewController implements Serializable {
 		}
 
 		if (getStep() == WizardSteps.EDIT_CONFERENCE
-				// || getStep() == WizardSteps.EDIT_TALK
-				// || getStep() == WizardSteps.EDIT_SPEAKER
-				// || getStep() == WizardSteps.EDIT_ROOM
-				|| getStep() == WizardSteps.ALL_ROOMS
-				|| getStep() == WizardSteps.ALL_SPEAKERS
-				|| getStep() == WizardSteps.ALL_CONFERENCES) {
+				|| getStep() == WizardSteps.EDIT_TALK
+				|| getStep() == WizardSteps.EDIT_SPEAKER
+				|| getStep() == WizardSteps.EDIT_ROOM
+		// || getStep() == WizardSteps.ALL_ROOMS
+		// || getStep() == WizardSteps.ALL_SPEAKERS
+		// || getStep() == WizardSteps.ALL_CONFERENCES
+		) {
 			return true;
 		}
 		return false;
 	}
 
 	public boolean isNewRendered() {
+		if (!isAdmin()) {
+			return false;
+		}
+
 		return true;
 	}
 
@@ -443,6 +423,8 @@ public class Wizard extends AbstractViewController implements Serializable {
 		List<Conference> result = conferenceService.loadConferences();
 		valueContainer.loadConferences(result);
 		valueContainer.getTalks().clear();
+		valueContainer.setRoom(null);
+		valueContainer.getSpeakersSelected().clear();
 		valueContainer.setConference(null);
 		return "conference-wizard";
 	}
@@ -500,14 +482,24 @@ public class Wizard extends AbstractViewController implements Serializable {
 		return value;
 	}
 
-	
-	public ListDataModel<Talk> getTalksForRoom(){
-		List<Talk> talks = talkService.loadTalksForRoom(valueContainer.getRoom());
+	public ListDataModel<Talk> getTalksForRoom() {
+		List<Talk> talks = talkService.loadTalksForRoom(valueContainer
+				.getRoom());
 		return new ListDataModel<Talk>(talks);
 	}
-	
-	public ListDataModel<Talk> getTalksForSpeaker(){
-		List<Talk> talks = talkService.loadTalksForSpeaker(valueContainer.getSpeaker());
+
+	public ListDataModel<Talk> getTalksForSpeaker() {
+		List<Talk> talks = talkService.loadTalksForSpeaker(valueContainer
+				.getSpeaker());
 		return new ListDataModel<Talk>(talks);
+	}
+
+	private void handleMessage(String key, Exception e) {
+		String summary = getMessageText(key);
+		String detail = getRootErrorMessage(e);
+		FacesMessage m = new FacesMessage(
+				null == e ? FacesMessage.SEVERITY_ERROR
+						: FacesMessage.SEVERITY_INFO, summary, detail);
+		facesContext.addMessage(null, m);
 	}
 }

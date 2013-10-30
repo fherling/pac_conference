@@ -6,19 +6,21 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	template="/WEB-INF/templates/default.xhtml">
 	<ui:define name="content">
-		<h2>Welcome to the</h2>
-		<h2>PRODYNA Conference Application!</h2>
+		<h2>#{msg.welcome}</h2>
 		<h:form id="startform">
 			<p>
 				<h:panelGrid columns="1">
-                    <h:commandButton id="showAllConferences"
-                        action="#{wizard.displayAllConferences}" value="Conference Administration"
-                        styleClass="start" />
-                    <h:commandButton id="showAllSpeakers"
-                        action="#{wizard.displayAllSpeakers}" value="Speakers Administration"
-                        styleClass="start" />
+					<h:commandButton id="showAllConferences"
+						action="#{wizard.displayAllConferences}"
+						value="#{wizard.admin ? msg.conference_admin : msg.conference_view}"
+						styleClass="start" />
+					<h:commandButton id="showAllSpeakers"
+						action="#{wizard.displayAllSpeakers}"
+						value="#{wizard.admin ? msg.speaker_admin : msg.speaker_view}"
+						styleClass="start" />
 					<h:commandButton id="showAllRooms"
-						action="#{wizard.displayAllRooms}" value="Room Administration"
+						action="#{wizard.displayAllRooms}"
+						value="#{wizard.admin ? msg.room_admin : msg.room_view}"
 						styleClass="start" />
 					<h:messages styleClass="messages" errorClass="invalid"
 						infoClass="valid" warnClass="warning" globalOnly="true" />
