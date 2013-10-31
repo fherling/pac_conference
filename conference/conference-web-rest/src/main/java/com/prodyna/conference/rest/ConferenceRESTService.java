@@ -34,7 +34,8 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import com.prodyna.conference.service.ConferenceService;
+import com.prodyna.conference.core.interceptor.PerfomanceMeasuring;
+import com.prodyna.conference.service.entity.ConferenceService;
 import com.prodyna.conference.service.model.Conference;
 import com.prodyna.conference.service.model.Talk;
 
@@ -47,6 +48,7 @@ import com.prodyna.conference.service.model.Talk;
 
 @Path("/conference")
 @RequestScoped
+@PerfomanceMeasuring
 public class ConferenceRESTService implements Serializable {
 
 	private static final long serialVersionUID = 7416499113848037298L;

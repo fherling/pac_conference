@@ -27,7 +27,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.prodyna.conference.core.interceptor.PerfomanceMeasuring;
-import com.prodyna.conference.service.RoomService;
+import com.prodyna.conference.service.entity.RoomService;
 import com.prodyna.conference.service.model.Room;
 
 // The @Model stereotype is a convenience mechanism to make this a request-scoped bean that has an

@@ -24,7 +24,7 @@
 
 	<name>conference-service</name>
 
-	<url>http://jboss.org/jbossas</url>
+	<url>http://www.prodyna.com</url>
 	<licenses>
 		<license>
 			<name>Apache License, Version 2.0</name>
@@ -36,20 +36,33 @@
 	<dependencies>
 
         <dependency>
-             <groupId>com.prodyna.conference</groupId>
-             <artifactId>conference-service-api</artifactId>
-             <version>0.0.1-SNAPSHOT</version>
-             <scope>provided</scope>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>1.7.1</version>
+            <scope>compile</scope>
         </dependency>
-        
-    	<dependency>
-             <groupId>com.prodyna.conference</groupId>
-             <artifactId>conference-core</artifactId>
-             <version>0.0.1-SNAPSHOT</version>
-             <scope>provided</scope>
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>2.1</version>
+            <scope>compile</scope>
         </dependency>
-    
-    
+
+		<dependency>
+			<groupId>com.prodyna.conference</groupId>
+			<artifactId>conference-service-api</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.prodyna.conference</groupId>
+			<artifactId>conference-core</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<scope>provided</scope>
+		</dependency>
+
+
 		<!-- Declare the APIs we depend on and need for compilation. All of them 
 			are provided by JBoss AS 7 -->
 
@@ -77,7 +90,7 @@
 			<scope>provided</scope>
 		</dependency>
 
-		
+
 
 		<!-- JSR-303 (Bean Validation) Implementation -->
 		<!-- Provides portable constraints such as @Email -->
@@ -97,14 +110,14 @@
 		</dependency>
 
 		<dependency>
-		    <groupId>org.jboss.shrinkwrap.resolver</groupId>
-		    <artifactId>shrinkwrap-resolver-depchain</artifactId>
-<!-- 		    <version>${version.shrinkwrap.resolvers}</version> -->
-		    <scope>test</scope>
-		    <type>pom</type>
-		  </dependency> 
-		
-		
+			<groupId>org.jboss.shrinkwrap.resolver</groupId>
+			<artifactId>shrinkwrap-resolver-depchain</artifactId>
+			<!-- <version>${version.shrinkwrap.resolvers}</version> -->
+			<scope>test</scope>
+			<type>pom</type>
+		</dependency>
+
+
 		<!-- Optional, but highly recommended -->
 		<!-- Arquillian allows you to test enterprise code such as EJBs and Transactional(JTA) 
 			JPA from JUnit/TestNG -->
@@ -156,7 +169,7 @@
 						<artifactId>maven-surefire-plugin</artifactId>
 						<version>${version.surefire.plugin}</version>
 						<configuration>
-							<skip>false</skip>
+							<skip>true</skip>
 						</configuration>
 					</plugin>
 				</plugins>

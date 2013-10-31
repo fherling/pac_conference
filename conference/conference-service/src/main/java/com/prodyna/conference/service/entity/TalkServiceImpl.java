@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.prodyna.conference.service;
+package com.prodyna.conference.service.entity;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -24,6 +24,7 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.Validator;
 
 import com.prodyna.conference.core.interceptor.PerfomanceMeasuring;
+import com.prodyna.conference.service.entity.TalkService;
 import com.prodyna.conference.service.model.BusinessQueries;
 import com.prodyna.conference.service.model.Room;
 import com.prodyna.conference.service.model.Speaker;
@@ -53,7 +54,7 @@ public class TalkServiceImpl extends EntityService implements TalkService {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.prodyna.conference.service.MainEntityService#loadRoomsFor(com.prodyna
+	 * com.prodyna.conference.service.entity.entity.MainEntityService#loadRoomsFor(com.prodyna
 	 * .conference.service.model.Talk)
 	 */
 	@Override
@@ -76,7 +77,7 @@ public class TalkServiceImpl extends EntityService implements TalkService {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.prodyna.conference.service.MainEntityService#loadSpeakersFor(com.
+	 * com.prodyna.conference.service.entity.entity.MainEntityService#loadSpeakersFor(com.
 	 * prodyna.conference.service.model.Talk)
 	 */
 	@Override
@@ -100,7 +101,7 @@ public class TalkServiceImpl extends EntityService implements TalkService {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.prodyna.conference.service.MainEntityService#save(com.prodyna.conference
+	 * com.prodyna.conference.service.entity.entity.MainEntityService#save(com.prodyna.conference
 	 * .service.model.Talk)
 	 */
 	@Override
@@ -146,7 +147,7 @@ public class TalkServiceImpl extends EntityService implements TalkService {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.prodyna.conference.service.MainEntityService#delete(com.prodyna.
+	 * @see com.prodyna.conference.service.entity.entity.MainEntityService#delete(com.prodyna.
 	 * conference.service.model.Talk)
 	 */
 	@Override
@@ -235,7 +236,7 @@ public class TalkServiceImpl extends EntityService implements TalkService {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.prodyna.conference.service.MainEntityService#save(com.prodyna.conference
+	 * com.prodyna.conference.service.entity.entity.MainEntityService#save(com.prodyna.conference
 	 * .service.model.Talk, java.util.List)
 	 */
 	@Override
@@ -259,8 +260,8 @@ public class TalkServiceImpl extends EntityService implements TalkService {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.prodyna.conference.service.MainEntityService#save(com.prodyna.conference
-	 * .service.model.Talk, com.prodyna.conference.service.model.Room)
+	 * com.prodyna.conference.service.entity.entity.MainEntityService#save(com.prodyna.conference
+	 * .service.model.Talk, com.prodyna.conference.service.entity.entity.model.Room)
 	 */
 	@Override
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
@@ -297,8 +298,8 @@ public class TalkServiceImpl extends EntityService implements TalkService {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.prodyna.conference.service.MainEntityService#save(com.prodyna.conference
-	 * .service.model.Talk, com.prodyna.conference.service.model.Speaker)
+	 * com.prodyna.conference.service.entity.entity.MainEntityService#save(com.prodyna.conference
+	 * .service.model.Talk, com.prodyna.conference.service.entity.entity.model.Speaker)
 	 */
 	@Override
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
@@ -392,8 +393,8 @@ public class TalkServiceImpl extends EntityService implements TalkService {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.prodyna.conference.service.MainEntityService#remove(com.prodyna.
-	 * conference.service.model.Talk, com.prodyna.conference.service.model.Room)
+	 * @see com.prodyna.conference.service.entity.entity.MainEntityService#remove(com.prodyna.
+	 * conference.service.model.Talk, com.prodyna.conference.service.entity.entity.model.Room)
 	 */
 	@Override
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
@@ -420,9 +421,9 @@ public class TalkServiceImpl extends EntityService implements TalkService {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.prodyna.conference.service.MainEntityService#remove(com.prodyna.
+	 * @see com.prodyna.conference.service.entity.entity.MainEntityService#remove(com.prodyna.
 	 * conference.service.model.Talk,
-	 * com.prodyna.conference.service.model.Speaker)
+	 * com.prodyna.conference.service.entity.entity.model.Speaker)
 	 */
 	@Override
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)

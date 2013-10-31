@@ -9,14 +9,14 @@
 	<h:form id="roomEditForm">
 		<h:panelGrid columns="3" columnClasses="titleCell">
 			<h:outputLabel for="name" value="Name:" styleClass="panelOutputLable" />
-			<h:inputText id="name" value="#{wizard.valueContainer.room.name}" />
+			<h:inputText id="name" value="#{wizard.valueContainer.room.name}" disabled="#{!wizard.admin}" />
 			<h:message for="name" errorClass="invalid" />
 		</h:panelGrid>
 
 		<h:panelGrid columns="3" columnClasses="titleCell">
 			<h:outputLabel for="capacity" value="Capacity:"
 				styleClass="panelOutputLable" />
-			<h:inputText id="capacity"
+			<h:inputText id="capacity" disabled="#{!wizard.admin}"
 				value="#{wizard.valueContainer.room.capacity}" />
 			<h:message for="capacity" errorClass="invalid" />
 		</h:panelGrid>

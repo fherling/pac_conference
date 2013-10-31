@@ -1,4 +1,4 @@
-package com.prodyna.conference.business.service;
+package com.prodyna.conference.service.business;
 
 import java.util.List;
 

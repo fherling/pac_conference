@@ -24,7 +24,7 @@
 				<h:commandButton id="load#{_valueBean.id}"
 					actionListener="#{wizard.edit}" styleClass="change" />
 			</h:column>
-			<h:column>
+			<h:column rendered="#{wizard.admin}">
 				<f:facet name="header">#{msg.id}</f:facet>
 				<h:outputText value="#{_valueBean.id}" />
 			</h:column>
@@ -50,12 +50,12 @@
 				</h:outputText>
 			</h:column>
 
-			<h:column>
+			<h:column rendered="#{wizard.admin}">
 				<f:facet name="header">#{msg.changed}</f:facet>
 				<h:outputText value="#{_valueBean.lastUpdateTimestamp}" />
 			</h:column>
 
-			<h:column>
+			<h:column rendered="#{wizard.admin}">
 				<f:facet name="header">#{msg.created}</f:facet>
 				<h:outputText value="#{_valueBean.insertTimestamp}" />
 			</h:column>

@@ -11,8 +11,6 @@ import javax.jms.Message;
 import javax.jms.MessageListener;
 import javax.jms.TextMessage;
 
-import com.google.gson.Gson;
-
 /**
  * Message-Driven Bean implementation class for: NotificationServiceMsgBean
  */

@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
@@ -21,7 +20,6 @@ import org.hibernate.validator.constraints.Email;
 @Table(uniqueConstraints = {
 		@UniqueConstraint(columnNames = { "name", "firstname" }),
 		@UniqueConstraint(columnNames = { "email" }) })
-@NamedQuery(name = BusinessQueries.GET_ALL_SPEAKERS, query = "select a from com.prodyna.conference.service.model.Speaker a")
 public class Speaker extends BaseEntity {
 	private static final long serialVersionUID = -4223667756806417808L;
 

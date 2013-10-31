@@ -17,8 +17,8 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.prodyna.conference.controller.RoomController;
-import com.prodyna.conference.service.RoomService;
-import com.prodyna.conference.service.SpeakerService;
+import com.prodyna.conference.service.entity.RoomService;
+import com.prodyna.conference.service.entity.SpeakerService;
 import com.prodyna.conference.service.model.Room;
 import com.prodyna.conference.service.model.Speaker;
 

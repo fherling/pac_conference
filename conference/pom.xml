@@ -157,6 +157,25 @@
 						<locales>en,de</locales>
 					</configuration>
 				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>2.4</version>
+					<configuration>
+						<archive>
+							<index>true</index>
+							<manifest>
+								<addClasspath>true</addClasspath>
+							</manifest>
+							<manifestEntries>
+								<mode>development</mode>
+								<url>${project.url}</url>
+								<Build-by>${user.name}</Build-by>
+								<Build-Jdk>${java.version}</Build-Jdk>
+							</manifestEntries>
+						</archive>
+					</configuration>
+				</plugin>
 			</plugins>
 
 		</pluginManagement>

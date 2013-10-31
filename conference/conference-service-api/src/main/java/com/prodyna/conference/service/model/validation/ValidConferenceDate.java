@@ -20,7 +20,7 @@ import javax.validation.Payload;
 @Constraint(validatedBy = ConferenceDateValidator.class)
 public @interface ValidConferenceDate {
  
-    String message() default "{com.prodyna.conference.service.model.validation.ValidConferenceDate.message}";
+    String message() default "{com.prodyna.conference.service.entity.model.validation.ValidConferenceDate.message}";
  
     Class<?>[] groups() default {};
  

@@ -6,8 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -21,7 +19,6 @@ import com.prodyna.conference.service.model.validation.ValidConferenceDate;
 @Entity
 @Table(name = "conference")
 @SequenceGenerator(name = "conference_seq", initialValue = 100, allocationSize = 10)
-@NamedQueries(value = { @NamedQuery(name = BusinessQueries.GET_ALL_CONFERENCES, query = "select a from com.prodyna.conference.service.model.Conference a") })
 @ValidConferenceDate
 public class Conference extends BaseEntity {
 
@@ -41,11 +38,11 @@ public class Conference extends BaseEntity {
 	private String description;
 
 	@NotNull
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date start;
 
 	@NotNull
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date end;
 
 	public Long getId() {

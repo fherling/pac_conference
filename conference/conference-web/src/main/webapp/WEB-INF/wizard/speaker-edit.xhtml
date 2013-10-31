@@ -8,27 +8,27 @@
 
     <h:form id="speakerEditForm">
         <h:panelGrid columns="3" columnClasses="titleCell">
-            <h:outputLabel for="name" value="Name:" styleClass="panelOutputLable" />
-            <h:inputText id="name" value="#{wizard.valueContainer.speaker.name}" />
+            <h:outputLabel for="name" value="#{msg.name}:" styleClass="panelOutputLable" />
+            <h:inputText id="name" value="#{wizard.valueContainer.speaker.name}" disabled="#{!wizard.admin}" />
             <h:message for="name" errorClass="invalid" />
         </h:panelGrid>
         
          <h:panelGrid columns="3" columnClasses="titleCell">
-            <h:outputLabel for="firstname" value="Firstame:" styleClass="panelOutputLable" />
-            <h:inputText id="firstname" value="#{wizard.valueContainer.speaker.firstName}" />
+            <h:outputLabel for="firstname" value="#{msg.firstname}:" styleClass="panelOutputLable" />
+            <h:inputText id="firstname" value="#{wizard.valueContainer.speaker.firstName}" disabled="#{!wizard.admin}" />
             <h:message for="firstname" errorClass="invalid" />
         </h:panelGrid>
         
          <h:panelGrid columns="3" columnClasses="titleCell">
-            <h:outputLabel for="email" value="Email:" styleClass="panelOutputLable" />
-            <h:inputText id="email" value="#{wizard.valueContainer.speaker.email}" />
+            <h:outputLabel for="email" value="#{msg.email}:" styleClass="panelOutputLable" />
+            <h:inputText id="email" value="#{wizard.valueContainer.speaker.email}" disabled="#{!wizard.admin}" />
             <h:message for="email" errorClass="invalid" />
         </h:panelGrid>
         
         <h:panelGrid columns="3" columnClasses="titleCell">
-            <h:outputLabel for="description" value="Description:"
+            <h:outputLabel for="description" value="#{msg.description}:"
                 styleClass="panelOutputLable" />
-            <h:inputText id="description" value="#{wizard.valueContainer.speaker.description}" />
+            <h:inputText id="description" value="#{wizard.valueContainer.speaker.description}" disabled="#{!wizard.admin}" />
             <h:message for="description" errorClass="invalid" />
         </h:panelGrid>
         

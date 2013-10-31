@@ -30,9 +30,6 @@ public class MBeanProducer {
 	
 	@Produces
 	public PerformanceMXBean producePerformanceMgmtBean() throws MalformedObjectNameException{
-		
-		log.log(Level.INFO, "produce PerformanceMgmtBean");
-
 		ObjectName oname = new ObjectName(PERFORMANCE_MBEAN_ONAME);
 		if( !server.isRegistered(oname)){
 			register();

@@ -12,7 +12,7 @@
 
 		<h:panelGroup
 			rendered="#{wizard.talksForSpeaker.rowCount le 0}">
-			<em>No talks available.</em>
+			<em>#{msg.no_talks}</em>
 		</h:panelGroup>
 
 		<h:dataTable id="valueTable" var="_valueBean"
@@ -20,19 +20,27 @@
 			rendered="#{wizard.talksForSpeaker.rowCount gt 0}"
 			styleClass="simpletablestyle">
 			<h:column>
-				<f:facet name="header">Id</f:facet>
+				<f:facet name="header">#{msg.id}</f:facet>
 				<h:outputText value="#{_valueBean.id}" />
 			</h:column>
 			<h:column>
-				<f:facet name="header">Name</f:facet>
+				<f:facet name="header">#{msg.name}</f:facet>
 				<h:outputText value="#{_valueBean.name}" />
 			</h:column>
 			<h:column>
-				<f:facet name="header">Start</f:facet>
-				<h:outputText value="#{_valueBean.start}" />
-			</h:column>
+                <f:facet name="header">#{msg.date}</f:facet>
+                <h:outputText value="#{_valueBean.start}">
+                    <f:convertDateTime type="date" pattern="dd-MM-yyyy" />
+                </h:outputText>
+            </h:column>
+            <h:column>
+                <f:facet name="header">#{msg.time}</f:facet>
+                <h:outputText value="#{_valueBean.start}">
+                    <f:convertDateTime type="date" pattern="HH:mm" />
+                </h:outputText>
+            </h:column>         
 			<h:column>
-				<f:facet name="header">Duration</f:facet>
+				<f:facet name="header">#{msg.duration}</f:facet>
 				<h:outputText value="#{_valueBean.duration}" />
 			</h:column>
 

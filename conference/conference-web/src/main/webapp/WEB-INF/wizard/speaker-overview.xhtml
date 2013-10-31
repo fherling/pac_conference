@@ -12,7 +12,7 @@
 
 		<h:panelGroup
 			rendered="#{wizard.valueContainer.speakerDataModel.rowCount le 0}">
-			<em>No speakers available.</em>
+			<em>#{msg.no_speakers}</em>
 		</h:panelGroup>
 
 		<h:dataTable id="valueTable" var="_valueBean"
@@ -24,34 +24,34 @@
 				<h:commandButton id="load#{_valueBean.id}"
 					actionListener="#{wizard.edit}" styleClass="change" />
 			</h:column>
-			<h:column>
-				<f:facet name="header">Id</f:facet>
+			<h:column rendered="#{wizard.admin}">
+				<f:facet name="header">#{msg.id}</f:facet>
 				<h:outputText value="#{_valueBean.id}" />
 			</h:column>
 			<h:column>
-				<f:facet name="header">Name</f:facet>
+				<f:facet name="header">#{msg.name}</f:facet>
 				<h:outputText value="#{_valueBean.name}" />
 			</h:column>
 			<h:column>
-				<f:facet name="header">Firstname</f:facet>
+				<f:facet name="header">#{msg.firstname}</f:facet>
 				<h:outputText value="#{_valueBean.firstName}" />
 			</h:column>
 			<h:column>
-				<f:facet name="header">Email</f:facet>
+				<f:facet name="header">#{msg.email}</f:facet>
 				<h:outputText value="#{_valueBean.email}" />
 			</h:column>
 			<h:column>
-				<f:facet name="header">Description</f:facet>
+				<f:facet name="header">#{msg.description}</f:facet>
 				<h:outputText value="#{_valueBean.description}" />
 			</h:column>
 
-			<h:column>
-				<f:facet name="header">Changed</f:facet>
+			<h:column rendered="#{wizard.admin}">
+				<f:facet name="header">#{msg.changed}</f:facet>
 				<h:outputText value="#{_valueBean.lastUpdateTimestamp}" />
 			</h:column>
 
-			<h:column>
-				<f:facet name="header">Created</f:facet>
+			<h:column rendered="#{wizard.admin}">
+				<f:facet name="header">#{msg.created}</f:facet>
 				<h:outputText value="#{_valueBean.insertTimestamp}" />
 			</h:column>
 

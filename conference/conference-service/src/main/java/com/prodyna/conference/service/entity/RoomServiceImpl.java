@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.prodyna.conference.service;
+package com.prodyna.conference.service.entity;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -22,6 +22,7 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.Validator;
 
 import com.prodyna.conference.core.interceptor.PerfomanceMeasuring;
+import com.prodyna.conference.service.entity.RoomService;
 import com.prodyna.conference.service.model.BusinessQueries;
 import com.prodyna.conference.service.model.Conference;
 import com.prodyna.conference.service.model.Room;
@@ -50,7 +51,7 @@ public class RoomServiceImpl extends EntityService implements RoomService {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.prodyna.conference.service.MainEntityService#loadRooms()
+	 * @see com.prodyna.conference.service.entity.entity.MainEntityService#loadRooms()
 	 */
 	@Override
 	public List<Room> loadRooms() {
@@ -69,7 +70,7 @@ public class RoomServiceImpl extends EntityService implements RoomService {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.prodyna.conference.service.MainEntityService#save(com.prodyna.conference
+	 * com.prodyna.conference.service.entity.entity.MainEntityService#save(com.prodyna.conference
 	 * .service.model.Room)
 	 */
 	@Override
@@ -116,7 +117,7 @@ public class RoomServiceImpl extends EntityService implements RoomService {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.prodyna.conference.service.MainEntityService#delete(com.prodyna.
+	 * @see com.prodyna.conference.service.entity.entity.MainEntityService#delete(com.prodyna.
 	 * conference.service.model.Room)
 	 */
 	@Override

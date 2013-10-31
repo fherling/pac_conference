@@ -9,7 +9,7 @@
     <h:form id="conferenceViewForm">
         <h:panelGrid columns="3" columnClasses="titleCell">
             <h:outputLabel for="name" value="Name:" styleClass="panelOutputLable" />
-            <h:inputText id="name"
+            <h:inputText id="name" disabled="true"
                 value="#{wizard.valueContainer.conference.name}" />
             <h:message for="name" errorClass="invalid" />
         </h:panelGrid>
@@ -17,7 +17,7 @@
         <h:panelGrid columns="3" columnClasses="titleCell">
             <h:outputLabel for="description" value="Description:"
                 styleClass="panelOutputLable" />
-            <h:inputText id="description"
+            <h:inputText id="description" disabled="true"
                 value="#{wizard.valueContainer.conference.description}" />
             <h:message for="description" errorClass="invalid" />
         </h:panelGrid>
@@ -25,7 +25,7 @@
         <h:panelGrid columns="3" columnClasses="titleCell">
             <h:outputLabel for="startConference" value="Start:"
                 styleClass="panelOutputLable" />
-            <h:inputText id="startConference"
+            <h:inputText id="startConference" disabled="true"
                 value="#{wizard.valueContainer.conference.start}">
                 <f:convertDateTime type="date" pattern="dd-MM-yyyy" />
             </h:inputText>
@@ -35,7 +35,7 @@
         <h:panelGrid columns="3" columnClasses="titleCell">
             <h:outputLabel for="endConference" value="End:"
                 styleClass="panelOutputLable" />
-            <h:inputText id="endConference"
+            <h:inputText id="endConference" disabled="true"
                 value="#{wizard.valueContainer.conference.end}">
                 <f:convertDateTime type="date" pattern="dd-MM-yyyy" />
             </h:inputText>

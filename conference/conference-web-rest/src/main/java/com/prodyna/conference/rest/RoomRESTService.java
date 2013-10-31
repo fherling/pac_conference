@@ -34,7 +34,8 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import com.prodyna.conference.service.RoomService;
+import com.prodyna.conference.core.interceptor.PerfomanceMeasuring;
+import com.prodyna.conference.service.entity.RoomService;
 import com.prodyna.conference.service.model.Room;
 
 /**
@@ -46,6 +47,7 @@ import com.prodyna.conference.service.model.Room;
 
 @Path("/room")
 @RequestScoped
+@PerfomanceMeasuring
 public class RoomRESTService implements Serializable {
 
 	private static final long serialVersionUID = 7416499113848037298L;

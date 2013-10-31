@@ -20,7 +20,7 @@ import javax.validation.Payload;
 @Constraint(validatedBy = TalkValidator.class)
 public @interface ValidTalk {
  
-    String message() default "{com.prodyna.conference.service.model.validation.ValidTalk.message}";
+    String message() default "{com.prodyna.conference.service.entity.model.validation.ValidTalk.message}";
  
     Class<?>[] groups() default {};
  

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.prodyna.conference.business.service;
+package com.prodyna.conference.service.business;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,10 +14,11 @@ import javax.inject.Inject;
 import javax.persistence.Query;
 
 import com.prodyna.conference.core.interceptor.PerfomanceMeasuring;
-import com.prodyna.conference.service.ConferenceService;
-import com.prodyna.conference.service.RoomService;
-import com.prodyna.conference.service.SpeakerService;
-import com.prodyna.conference.service.TalkService;
+import com.prodyna.conference.service.business.BusinessService;
+import com.prodyna.conference.service.entity.ConferenceService;
+import com.prodyna.conference.service.entity.RoomService;
+import com.prodyna.conference.service.entity.SpeakerService;
+import com.prodyna.conference.service.entity.TalkService;
 import com.prodyna.conference.service.exception.AlreadyAssignedException;
 import com.prodyna.conference.service.model.BusinessQueries;
 import com.prodyna.conference.service.model.Conference;
@@ -118,9 +119,9 @@ public class BusinessServiceImpl implements BusinessService {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.prodyna.conference.service.MainEntityService#isRoomAvailable(com.
+	 * com.prodyna.conference.service.entity.entity.MainEntityService#isRoomAvailable(com.
 	 * prodyna.conference.service.model.Room,
-	 * com.prodyna.conference.service.model.TimeRange)
+	 * com.prodyna.conference.service.entity.entity.model.TimeRange)
 	 */
 	@Override
 	public boolean isRoomAvailable(Room room, TimeRange range,
@@ -152,9 +153,9 @@ public class BusinessServiceImpl implements BusinessService {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.prodyna.conference.service.MainEntityService#isSpeakerAvailable(com
+	 * com.prodyna.conference.service.entity.entity.MainEntityService#isSpeakerAvailable(com
 	 * .prodyna.conference.service.model.Speaker,
-	 * com.prodyna.conference.service.model.TimeRange)
+	 * com.prodyna.conference.service.entity.entity.model.TimeRange)
 	 */
 	@Override
 	public boolean isSpeakerAvailable(Speaker speaker, TimeRange range,

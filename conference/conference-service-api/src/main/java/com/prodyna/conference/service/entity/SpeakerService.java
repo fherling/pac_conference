@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.prodyna.conference.service;
+package com.prodyna.conference.service.entity;
 
 import java.util.List;
 

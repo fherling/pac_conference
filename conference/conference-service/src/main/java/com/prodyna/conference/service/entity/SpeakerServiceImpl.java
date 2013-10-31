@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.prodyna.conference.service;
+package com.prodyna.conference.service.entity;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -22,6 +22,7 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.Validator;
 
 import com.prodyna.conference.core.interceptor.PerfomanceMeasuring;
+import com.prodyna.conference.service.entity.SpeakerService;
 import com.prodyna.conference.service.exception.AlreadyAssignedException;
 import com.prodyna.conference.service.model.BusinessQueries;
 import com.prodyna.conference.service.model.Conference;
@@ -50,7 +51,7 @@ public class SpeakerServiceImpl extends EntityService implements SpeakerService 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.prodyna.conference.service.MainEntityService#loadSpeakers()
+	 * @see com.prodyna.conference.service.entity.entity.MainEntityService#loadSpeakers()
 	 */
 	@Override
 	public List<Speaker> loadSpeakers() {
@@ -87,7 +88,7 @@ public class SpeakerServiceImpl extends EntityService implements SpeakerService 
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.prodyna.conference.service.MainEntityService#save(com.prodyna.conference
+	 * com.prodyna.conference.service.entity.entity.MainEntityService#save(com.prodyna.conference
 	 * .service.model.Speaker)
 	 */
 	@Override
@@ -117,7 +118,7 @@ public class SpeakerServiceImpl extends EntityService implements SpeakerService 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.prodyna.conference.service.MainEntityService#delete(com.prodyna.
+	 * @see com.prodyna.conference.service.entity.entity.MainEntityService#delete(com.prodyna.
 	 * conference.service.model.Speaker)
 	 */
 	@Override

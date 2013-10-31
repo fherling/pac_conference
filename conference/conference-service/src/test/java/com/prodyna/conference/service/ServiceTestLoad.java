@@ -13,6 +13,10 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.prodyna.conference.service.entity.ConferenceService;
+import com.prodyna.conference.service.entity.RoomService;
+import com.prodyna.conference.service.entity.SpeakerService;
+import com.prodyna.conference.service.entity.TalkService;
 import com.prodyna.conference.service.model.Conference;
 import com.prodyna.conference.service.model.Room;
 import com.prodyna.conference.service.model.Speaker;

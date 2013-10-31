@@ -1,4 +1,4 @@
-package com.prodyna.conference.service;
+package com.prodyna.conference.service.entity;
 
 import javax.enterprise.event.Event;
 import javax.inject.Inject;

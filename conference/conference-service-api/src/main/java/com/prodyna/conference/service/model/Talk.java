@@ -10,10 +10,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -26,7 +26,6 @@ import javax.validation.constraints.NotNull;
 @Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "name",
 		"start", "duration" }) })
 @SequenceGenerator(name = "talk_seq", initialValue = 100, allocationSize = 10)
-@NamedQueries(value = { @NamedQuery(name = BusinessQueries.GET_ALL_TALKS, query = "select a from com.prodyna.conference.service.model.Talk a") })
 public class Talk extends BaseEntity {
 	private static final long serialVersionUID = -841359591361952722L;
 
@@ -42,6 +41,7 @@ public class Talk extends BaseEntity {
 	private String description;
 
 	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date start;
 
 	@Min(value = 1)

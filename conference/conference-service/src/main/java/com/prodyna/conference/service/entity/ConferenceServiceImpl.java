@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.prodyna.conference.service;
+package com.prodyna.conference.service.entity;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -24,6 +24,7 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.Validator;
 
 import com.prodyna.conference.core.interceptor.PerfomanceMeasuring;
+import com.prodyna.conference.service.entity.ConferenceService;
 import com.prodyna.conference.service.model.BusinessQueries;
 import com.prodyna.conference.service.model.Conference;
 import com.prodyna.conference.service.model.ConferenceTalk;
@@ -52,7 +53,7 @@ public class ConferenceServiceImpl extends EntityService implements ConferenceSe
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.prodyna.conference.service.MainEntityService#loadTalksFor(com.prodyna
+	 * com.prodyna.conference.service.entity.entity.MainEntityService#loadTalksFor(com.prodyna
 	 * .conference.service.model.Conference)
 	 */
 	@Override
@@ -75,7 +76,7 @@ public class ConferenceServiceImpl extends EntityService implements ConferenceSe
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.prodyna.conference.service.MainEntityService#loadConferences()
+	 * @see com.prodyna.conference.service.entity.entity.MainEntityService#loadConferences()
 	 */
 	@Override
 	@TransactionAttribute(TransactionAttributeType.NEVER)
@@ -96,7 +97,7 @@ public class ConferenceServiceImpl extends EntityService implements ConferenceSe
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.prodyna.conference.service.MainEntityService#save(com.prodyna.conference
+	 * com.prodyna.conference.service.entity.entity.MainEntityService#save(com.prodyna.conference
 	 * .service.model.Conference)
 	 */
 	@Override
@@ -143,7 +144,7 @@ public class ConferenceServiceImpl extends EntityService implements ConferenceSe
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.prodyna.conference.service.MainEntityService#activate(com.prodyna
+	 * com.prodyna.conference.service.entity.entity.MainEntityService#activate(com.prodyna
 	 * .conference.service.model.Conference)
 	 */
 	@Override
@@ -157,7 +158,7 @@ public class ConferenceServiceImpl extends EntityService implements ConferenceSe
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.prodyna.conference.service.MainEntityService#delete(com.prodyna.
+	 * @see com.prodyna.conference.service.entity.entity.MainEntityService#delete(com.prodyna.
 	 * conference.service.model.Conference)
 	 */
 	@Override
@@ -188,8 +189,8 @@ public class ConferenceServiceImpl extends EntityService implements ConferenceSe
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.prodyna.conference.service.MainEntityService#save(com.prodyna.conference
-	 * .service.model.Conference, com.prodyna.conference.service.model.Talk)
+	 * com.prodyna.conference.service.entity.entity.MainEntityService#save(com.prodyna.conference
+	 * .service.model.Conference, com.prodyna.conference.service.entity.entity.model.Talk)
 	 */
 	@Override
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
@@ -225,9 +226,9 @@ public class ConferenceServiceImpl extends EntityService implements ConferenceSe
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.prodyna.conference.service.MainEntityService#remove(com.prodyna.
+	 * @see com.prodyna.conference.service.entity.entity.MainEntityService#remove(com.prodyna.
 	 * conference.service.model.Conference,
-	 * com.prodyna.conference.service.model.Talk)
+	 * com.prodyna.conference.service.entity.entity.model.Talk)
 	 */
 	@Override
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)

@@ -14,11 +14,11 @@ import javax.faces.event.ActionEvent;
 import javax.faces.model.ListDataModel;
 import javax.inject.Inject;
 
-import com.prodyna.conference.business.service.BusinessService;
-import com.prodyna.conference.service.ConferenceService;
-import com.prodyna.conference.service.RoomService;
-import com.prodyna.conference.service.SpeakerService;
-import com.prodyna.conference.service.TalkService;
+import com.prodyna.conference.service.business.BusinessService;
+import com.prodyna.conference.service.entity.ConferenceService;
+import com.prodyna.conference.service.entity.RoomService;
+import com.prodyna.conference.service.entity.SpeakerService;
+import com.prodyna.conference.service.entity.TalkService;
 import com.prodyna.conference.service.model.Conference;
 import com.prodyna.conference.service.model.Room;
 import com.prodyna.conference.service.model.Speaker;
@@ -55,10 +55,7 @@ public class Wizard extends AbstractViewController implements Serializable {
 
 	@PostConstruct
 	public void init() {
-		Locale loc = facesContext.getViewRoot().getLocale();
-
-		facesContext.getViewRoot().setLocale(Locale.GERMANY);
-
+//		facesContext.getViewRoot().setLocale(Locale.ENGLISH);
 	}
 
 	public void create(ActionEvent event) {

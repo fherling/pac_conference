@@ -12,7 +12,7 @@
 
 		<h:panelGroup
 			rendered="#{wizard.valueContainer.roomDataModel.rowCount le 0}">
-			<em>No rooms available.</em>
+			<em>#{msg.no_rooms}</em>
 		</h:panelGroup>
 
 		<h:dataTable id="valueTable" var="_valueBean"

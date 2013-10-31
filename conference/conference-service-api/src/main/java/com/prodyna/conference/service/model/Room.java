@@ -4,8 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
@@ -17,7 +15,6 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Entity
 @SequenceGenerator(name = "room_seq", initialValue = 100, allocationSize = 10)
 @Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "name" }) })
-@NamedQueries(value = { @NamedQuery(name = BusinessQueries.GET_ALL_ROOMS, query = "select a from com.prodyna.conference.service.model.Room a") })
 public class Room extends BaseEntity {
 	private static final long serialVersionUID = 7389968794081034046L;
 

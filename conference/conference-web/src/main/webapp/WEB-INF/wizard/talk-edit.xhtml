@@ -10,14 +10,14 @@
 		<h:panelGrid columns="3" columnClasses="titleCell">
 			<h:outputLabel for="name" value="#{msg.name}:"
 				styleClass="panelOutputLable" />
-			<h:inputText id="name" value="#{wizard.valueContainer.talk.name}" />
+			<h:inputText id="name" value="#{wizard.valueContainer.talk.name}" disabled="#{!wizard.admin}"/>
 			<h:message for="name" errorClass="invalid" />
 		</h:panelGrid>
 
 		<h:panelGrid columns="3" columnClasses="titleCell">
 			<h:outputLabel for="description" value="#{msg.description}:"
 				styleClass="panelOutputLable" />
-			<h:inputText id="description"
+			<h:inputText id="description" disabled="#{!wizard.admin}"
 				value="#{wizard.valueContainer.talk.description}" />
 			<h:message for="description" errorClass="invalid" />
 		</h:panelGrid>
@@ -25,7 +25,7 @@
 		<h:panelGrid columns="3" columnClasses="titleCell">
             <h:outputLabel for="startTimeTalk" value="#{msg.start}:"
                 styleClass="panelOutputLable" />
-            <h:inputText id="startTimeTalk"
+            <h:inputText id="startTimeTalk" disabled="#{!wizard.admin}"
                 value="#{wizard.valueContainer.talk.start}">
                 <f:convertDateTime type="both" pattern="dd-MM-yyyy HH:mm" />
             </h:inputText>
@@ -35,7 +35,7 @@
 		<h:panelGrid columns="3" columnClasses="titleCell">
 			<h:outputLabel for="duration" value="#{msg.duration}:"
 				styleClass="panelOutputLable" />
-			<h:inputText id="duration"
+			<h:inputText id="duration" disabled="#{!wizard.admin}"
 				value="#{wizard.valueContainer.talk.duration}">
 			</h:inputText>
 			<h:message for="duration" errorClass="invalid" />
@@ -44,7 +44,7 @@
 		<h:panelGrid columns="3" columnClasses="titleCell">
 			<h:outputLabel for="room" value="#{msg.room}:"
 				styleClass="panelOutputLable" />
-			<h:selectOneMenu id="room" value="#{wizard.valueContainer.room}"
+			<h:selectOneMenu id="room" value="#{wizard.valueContainer.room}" disabled="#{!wizard.admin}"
 				required="true" converter="#{roomConverter}">
 				<f:selectItems value="#{wizard.valueContainer.roomsAsSelectItems}"
 					var="us" itemLabel="#{us.label}"
@@ -57,7 +57,7 @@
 			<h:outputLabel for="speaker" value="#{msg.speaker}:"
 				styleClass="panelOutputLable" />
 			<h:selectManyListbox id="speaker" required="true" converter="#{speakerConverter}"
-				value="#{wizard.valueContainer.speakersSelected}">
+				value="#{wizard.valueContainer.speakersSelected}" disabled="#{!wizard.admin}">
 				<f:selectItems value="#{wizard.valueContainer.speakers}" var="r"
 					itemLabel="#{r.name} , #{r.firstName}" itemValue="#{r}" />
 			</h:selectManyListbox>
