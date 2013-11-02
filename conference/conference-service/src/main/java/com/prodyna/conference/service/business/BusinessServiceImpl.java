@@ -108,11 +108,13 @@ public class BusinessServiceImpl implements BusinessService {
 	@Override
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void deleteCompleteConference(Conference conference) {
+		
 		List<Talk> talks = conferenceService.loadTalksFor(conference);
-		conferenceService.delete(conference);
+		conferenceService.unassignAllTalks(conference);
 		for (Talk talk : talks) {
 			talkService.delete(talk);
 		}
+		conferenceService.delete(conference);
 	}
 
 	/*

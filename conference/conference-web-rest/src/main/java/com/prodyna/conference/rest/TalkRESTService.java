@@ -49,7 +49,6 @@ import com.prodyna.conference.service.model.Talk;
 
 @Path("/talk")
 @RequestScoped
-@PerfomanceMeasuring
 public class TalkRESTService implements Serializable {
 
 	private static final long serialVersionUID = 7416499113848037298L;

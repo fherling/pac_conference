@@ -132,31 +132,37 @@
             ]]>
         </query>
 	</named-query>
-	
-	   <named-query name="getAllConferences">
-        <query>
+
+	<named-query name="getAllConferences">
+		<query>
             <![CDATA[
                 select a from com.prodyna.conference.service.model.Conference a
             ]]>
         </query>
-    </named-query>
-       <named-query name="getAllRooms">
-        <query>
+	</named-query>
+	<named-query name="getAllRooms">
+		<query>
             <![CDATA[
                 select a from com.prodyna.conference.service.model.Room a
             ]]>
         </query>
-    </named-query>
-    
-           <named-query name="getAllSpeakers">
-        <query>
+	</named-query>
+
+	<named-query name="getAllSpeakers">
+		<query>
             <![CDATA[
                 select a from com.prodyna.conference.service.model.Speaker a
             ]]>
         </query>
-    </named-query>
+	</named-query>
 
-
+	<named-query name="getRoomForTalk">
+		<query>
+            <![CDATA[
+                select a from com.prodyna.conference.service.model.TalkRoom a where a.talk.id = :talkId
+            ]]>
+        </query>
+	</named-query>
 
 
 </entity-mappings>

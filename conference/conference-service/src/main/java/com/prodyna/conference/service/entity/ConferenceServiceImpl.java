@@ -252,6 +252,21 @@ public class ConferenceServiceImpl extends EntityService implements ConferenceSe
 		em.flush();
 	
 	}
+	
+	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public void unassignAllTalks(Conference conference) {
+	
+		if (null == conference) {
+			throw new NullPointerException("Parameter conference is NULL");
+		}
+		
+		List<Talk> talks = loadTalksFor(conference);
+		
+		for (Talk talk : talks) {
+			unassign(conference, talk);
+		}
+	}
 
 	@Override
 	public Conference isAssignedTo(Talk talk) {

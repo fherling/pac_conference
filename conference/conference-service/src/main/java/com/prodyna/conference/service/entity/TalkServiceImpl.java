@@ -60,12 +60,12 @@ public class TalkServiceImpl extends EntityService implements TalkService {
 	@Override
 	public Room loadRoomFor(Talk talk) {
 		Query query = em
-				.createNamedQuery(BusinessQueries.GET_ALL_TALKS_FOR_CONFERENCE);
-		query.setParameter("conferenceId", talk.getId());
+				.createNamedQuery(BusinessQueries.GET_ALL_ROOM_FOR_TALK);
+		query.setParameter("talkId", talk.getId());
 
 		try {
-			Room queryResult = (Room) query.getSingleResult();
-			return queryResult;
+			TalkRoom queryResult = (TalkRoom) query.getSingleResult();
+			return queryResult.getRoom();
 		} catch (NoResultException e) {
 			log.log(Level.INFO, "No room found for" + talk);
 		}

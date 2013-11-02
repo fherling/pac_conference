@@ -4,6 +4,7 @@
 package com.prodyna.conference.controller;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.faces.model.ListDataModel;
@@ -15,6 +16,8 @@ import com.prodyna.conference.service.model.Conference;
 import com.prodyna.conference.service.model.Room;
 import com.prodyna.conference.service.model.Speaker;
 import com.prodyna.conference.service.model.Talk;
+import com.prodyna.conference.service.util.ConferenceComparator;
+import com.prodyna.conference.service.util.TalkComparator;
 
 /**
  * @author fherling
@@ -191,6 +194,7 @@ public class ValueContainer {
 
 		conferences.clear();
 		conferences.addAll(result);
+		Collections.sort(conferences, new ConferenceComparator());
 
 	}
 
@@ -198,6 +202,7 @@ public class ValueContainer {
 
 		talks.clear();
 		talks.addAll(result);
+		Collections.sort(talks, new TalkComparator());
 
 	}
 

@@ -47,7 +47,6 @@ import com.prodyna.conference.service.model.Speaker;
 
 @Path("/speaker")
 @RequestScoped
-@PerfomanceMeasuring
 public class SpeakerRESTService implements Serializable {
 
 	private static final long serialVersionUID = 7416499113848037298L;

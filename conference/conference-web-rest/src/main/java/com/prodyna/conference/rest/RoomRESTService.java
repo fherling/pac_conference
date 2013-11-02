@@ -47,7 +47,6 @@ import com.prodyna.conference.service.model.Room;
 
 @Path("/room")
 @RequestScoped
-@PerfomanceMeasuring
 public class RoomRESTService implements Serializable {
 
 	private static final long serialVersionUID = 7416499113848037298L;

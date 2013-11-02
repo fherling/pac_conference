@@ -7,6 +7,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.annotation.Resource;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.jms.Connection;
 import javax.jms.JMSException;
@@ -24,6 +25,7 @@ import com.google.gson.Gson;
  * @author fherling
  *
  */
+@Stateless
 public class NotificationServiceBean implements NotificationService {
 
 	@Inject

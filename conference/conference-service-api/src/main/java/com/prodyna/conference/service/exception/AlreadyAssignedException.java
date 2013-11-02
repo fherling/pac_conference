@@ -3,6 +3,7 @@
  */
 package com.prodyna.conference.service.exception;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,7 +14,7 @@ public class AlreadyAssignedException extends RuntimeException {
 	private static final long serialVersionUID = 8437646372208110748L;
 
 	private Object ojbToAssign = null;
-	private List<Object> assignedTo = null;
+	private List<Object> assignedTo = new ArrayList<Object>();
 
 	public AlreadyAssignedException(String arg0) {
 		super(arg0);
@@ -21,6 +22,9 @@ public class AlreadyAssignedException extends RuntimeException {
 
 	public AlreadyAssignedException(Object ojbToAssign, List<Object> assignedTo) {
 
+		this.ojbToAssign = ojbToAssign;
+		this.assignedTo.addAll(assignedTo); 
+		
 	}
 
 	@Override

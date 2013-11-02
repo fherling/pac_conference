@@ -11,13 +11,10 @@ import javax.ejb.EJB;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
-import javax.faces.convert.FacesConverter;
 import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import com.prodyna.conference.controller.RoomController;
-import com.prodyna.conference.service.entity.RoomService;
 import com.prodyna.conference.service.entity.SpeakerService;
 import com.prodyna.conference.service.model.Room;
 import com.prodyna.conference.service.model.Speaker;

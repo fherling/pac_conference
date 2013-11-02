@@ -3,7 +3,6 @@ package com.prodyna.conference.controller;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 import java.util.ResourceBundle;
 
 import javax.annotation.PostConstruct;
@@ -136,11 +135,10 @@ public class Wizard extends AbstractViewController implements Serializable {
 	}
 
 	public void edit(ActionEvent event) {
-		log.info("edit");
-
 		switch (step) {
 		case ALL_CONFERENCES:
 		case SHOW_CONFERENCE:
+		case EDIT_CONFERENCE:
 			if (isAdmin()) {
 				step = WizardSteps.EDIT_CONFERENCE;
 			} else {
@@ -201,13 +199,13 @@ public class Wizard extends AbstractViewController implements Serializable {
 			switch (getStep()) {
 			case ALL_CONFERENCES:
 				valueContainer.editConference();
-				conferenceService.delete(valueContainer.getConference());
+				businessService.deleteCompleteConference(valueContainer.getConference());
 				valueContainer.deleteConference();
 				valueContainer.loadConferences(conferenceService.loadConferences());
 				break;
 			case EDIT_CONFERENCE:
 				valueContainer.editConference();
-				conferenceService.delete(valueContainer.getConference());
+				businessService.deleteCompleteConference(valueContainer.getConference());
 				valueContainer.deleteConference();
 				valueContainer.loadConferences(conferenceService.loadConferences());
 				step = WizardSteps.ALL_CONFERENCES;
@@ -323,7 +321,7 @@ public class Wizard extends AbstractViewController implements Serializable {
 						valueContainer.getSpeakersSelected(),
 						valueContainer.getRoom());
 				valueContainer.setTalk(talk);
-				valueContainer.getTalks().add(talk);
+				valueContainer.loadTalks(conferenceService.loadTalksFor(valueContainer.getConference()));
 				break;
 			case EDIT_TALK:
 				talk = businessService.saveAndAssignTalk(
@@ -332,7 +330,7 @@ public class Wizard extends AbstractViewController implements Serializable {
 						valueContainer.getSpeakersSelected(),
 						valueContainer.getRoom());
 				valueContainer.setTalk(talk);
-				valueContainer.setTalk(talk);
+				valueContainer.loadTalks(conferenceService.loadTalksFor(valueContainer.getConference()));
 				break;
 			default:
 				break;

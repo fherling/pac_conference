@@ -32,4 +32,6 @@ public interface ConferenceService {
 
 	Conference isAssignedTo(Talk talk);
 
+	void unassignAllTalks(Conference conference);
+
 }

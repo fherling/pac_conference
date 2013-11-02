@@ -8,6 +8,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.management.InstanceAlreadyExistsException;
 import javax.management.InstanceNotFoundException;
@@ -17,23 +18,26 @@ import javax.management.MalformedObjectNameException;
 import javax.management.NotCompliantMBeanException;
 import javax.management.ObjectName;
 
-import com.prodyna.conference.core.util.MBeanProducer;
+import com.prodyna.conference.core.event.PerformanceObserver;
 
 @Singleton
 @Startup
+@Stateless
 public class MonitoringStartupBean {
 	@Inject
 	private Logger log;
 
-	@Inject
-	private MBeanServer server;
 
 	@PostConstruct
 	public void addStartup() {
+		
+		log.info("Register MBEAN");
+		
 		ObjectName oname;
 		try {
 			oname = new ObjectName(
-					MBeanProducer.PERFORMANCE_MBEAN_ONAME);
+					PerformanceObserver.PERFORMANCE_MBEAN_ONAME);
+			MBeanServer server = ManagementFactory.getPlatformMBeanServer();
 			server.registerMBean(new Performance(), oname);
 			log.log(Level.INFO, "PerformanceMBean registered");
 		} catch (MalformedObjectNameException e) {
@@ -49,11 +53,14 @@ public class MonitoringStartupBean {
 
 	@PreDestroy
 	public void addShutdown() {
+		
+		log.info("Unegister MBEAN");
+		
 		MBeanServer server = ManagementFactory.getPlatformMBeanServer();
 		ObjectName oname;
 		try {
 			oname = new ObjectName(
-					MBeanProducer.PERFORMANCE_MBEAN_ONAME);
+					PerformanceObserver.PERFORMANCE_MBEAN_ONAME);
 			server.unregisterMBean(oname);
 		} catch (MalformedObjectNameException e) {
 			log.log(Level.SEVERE, "Shutdown failed", e);

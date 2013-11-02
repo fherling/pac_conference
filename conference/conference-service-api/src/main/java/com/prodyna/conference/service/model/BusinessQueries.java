@@ -4,7 +4,7 @@ public interface BusinessQueries {
 
 	public static final String GET_ALL_CONFERENCES = "getAllConferences";
 	public static final String GET_ALL_ROOMS = "getAllRooms";
-	public static final String GET_ALL_ROOMS_FOR = "getAllRoomsFor";
+	public static final String GET_ALL_ROOM_FOR_TALK = "getRoomForTalk";
 	public static final String GET_ALL_SPEAKERS = "getAllSpeakers";
 	public static final String GET_ALL_SPEAKERS_FOR_TALK = "getAllSpeakersForTalk";
 	public static final String GET_ALL_TALKS = "getAllTalks";

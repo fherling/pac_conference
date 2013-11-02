@@ -67,14 +67,15 @@
 					<ui:include src="/WEB-INF/wizard/room-edit.xhtml" />
 				</h:panelGroup>
 
-                <h:panelGroup
-                    rendered="#{wizard.step == 'NEW_TALK' or wizard.step == 'EDIT_TALK' or wizard.step == 'SHOW_TALK'}">
-                    <ui:include src="/WEB-INF/wizard/talk-edit.xhtml" />
-                </h:panelGroup>
+				<h:panelGroup
+					rendered="#{wizard.step == 'NEW_TALK' or wizard.step == 'EDIT_TALK' or wizard.step == 'SHOW_TALK'}">
+					<ui:include src="/WEB-INF/wizard/talk-edit.xhtml" />
+				</h:panelGroup>
 
 
-               <h:messages styleClass="messages" errorClass="invalid"
-                                                infoClass="valid" warnClass="warning" globalOnly="true" />
+				<h:messages styleClass="messages" errorClass="invalid"
+					showDetail="true" showSummary="true" infoClass="valid"
+					warnClass="warning" globalOnly="true"></h:messages>
 
 			</a4j:outputPanel>
 

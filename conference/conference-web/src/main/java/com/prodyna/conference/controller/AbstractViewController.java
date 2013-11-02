@@ -25,14 +25,16 @@ public abstract class AbstractViewController {
 
 		// Start with the exception and recurse to find the root cause
 		Throwable t = e;
+		Throwable rootCause = e;
 		while (t != null) {
 			// Get the message from the Throwable class instance
 			errorMessage = t.getLocalizedMessage();
+			rootCause = t;
 			t = t.getCause();
 		}
 
-		if (t instanceof AlreadyAssignedException) {
-			errorMessage = ((AlreadyAssignedException) t).getLocalizedMessage();
+		if (rootCause instanceof AlreadyAssignedException) {
+			errorMessage = ((AlreadyAssignedException) rootCause).getMessage();
 		} else {
 
 			// This is the root cause message
