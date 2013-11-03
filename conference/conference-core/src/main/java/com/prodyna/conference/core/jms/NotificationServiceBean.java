@@ -25,7 +25,6 @@ import com.google.gson.Gson;
  * @author fherling
  *
  */
-@Stateless
 public class NotificationServiceBean implements NotificationService {
 
 	@Inject

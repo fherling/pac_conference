@@ -1,4 +1,4 @@
-package com.prodyna.conference.core.monitoring;
+package com.prodyna.conference.service.monitoring;
 
 import java.lang.management.ManagementFactory;
 import java.util.logging.Level;
@@ -8,7 +8,6 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
-import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.management.InstanceAlreadyExistsException;
 import javax.management.InstanceNotFoundException;
@@ -19,10 +18,10 @@ import javax.management.NotCompliantMBeanException;
 import javax.management.ObjectName;
 
 import com.prodyna.conference.core.event.PerformanceObserver;
+import com.prodyna.conference.core.monitoring.Performance;
 
 @Singleton
 @Startup
-@Stateless
 public class MonitoringStartupBean {
 	@Inject
 	private Logger log;
