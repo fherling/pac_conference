@@ -21,8 +21,10 @@
 			styleClass="simpletablestyle">
 			<h:column>
 				<f:facet name="header"></f:facet>
-				<h:commandButton id="load#{_valueBean.id}"
-					actionListener="#{wizard.editTalk}" styleClass="change" />
+				<h:commandButton id="load#{_valueBean.id}" styleClass="change"
+					actionListener="#{wizard.editTalk}">
+
+				</h:commandButton>
 			</h:column>
 			<h:column rendered="#{wizard.admin}">
 				<f:facet name="header">#{msg.id}</f:facet>
@@ -42,12 +44,12 @@
 					<f:convertDateTime type="date" pattern="dd-MM-yyyy" />
 				</h:outputText>
 			</h:column>
-            <h:column>
-                <f:facet name="header">#{msg.time}</f:facet>
-                <h:outputText value="#{_valueBean.start}">
-                    <f:convertDateTime type="date" pattern="HH:mm" />
-                </h:outputText>
-            </h:column>			
+			<h:column>
+				<f:facet name="header">#{msg.time}</f:facet>
+				<h:outputText value="#{_valueBean.start}">
+					<f:convertDateTime type="date" pattern="HH:mm" />
+				</h:outputText>
+			</h:column>
 
 			<h:column>
 				<f:facet name="header">#{msg.duration}</f:facet>

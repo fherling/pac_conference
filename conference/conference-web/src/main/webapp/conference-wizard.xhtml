@@ -31,55 +31,55 @@
 					value="#{msg.back}" />
 			</h:panelGrid>
 
-
-
-			<a4j:outputPanel id="contentPanelId">
-
-
-				<h:panelGroup rendered="#{wizard.step == 'ALL_CONFERENCES'}">
-					<ui:include src="/WEB-INF/wizard/conference-overview.xhtml" />
-				</h:panelGroup>
-
-				<h:panelGroup rendered="#{wizard.step == 'SHOW_CONFERENCE'}">
-					<ui:include src="/WEB-INF/wizard/conference-view.xhtml" />
-				</h:panelGroup>
-				<h:panelGroup
-					rendered="#{wizard.step == 'NEW_CONFERENCE' or wizard.step == 'EDIT_CONFERENCE'}">
-					<ui:include src="/WEB-INF/wizard/conference-edit.xhtml" />
-				</h:panelGroup>
-
-				<h:panelGroup rendered="#{wizard.step == 'ALL_SPEAKERS'}">
-					<ui:include src="/WEB-INF/wizard/speaker-overview.xhtml" />
-				</h:panelGroup>
-
-				<h:panelGroup
-					rendered="#{wizard.step == 'NEW_SPEAKER' or wizard.step == 'EDIT_SPEAKER' or wizard.step == 'SHOW_SPEAKER'}">
-					<ui:include src="/WEB-INF/wizard/speaker-edit.xhtml" />
-				</h:panelGroup>
-
-
-
-				<h:panelGroup rendered="#{wizard.step == 'ALL_ROOMS'}">
-					<ui:include src="/WEB-INF/wizard/room-overview.xhtml" />
-				</h:panelGroup>
-				<h:panelGroup
-					rendered="#{wizard.step == 'NEW_ROOM' or wizard.step == 'EDIT_ROOM' or wizard.step == 'SHOW_ROOM'}">
-					<ui:include src="/WEB-INF/wizard/room-edit.xhtml" />
-				</h:panelGroup>
-
-				<h:panelGroup
-					rendered="#{wizard.step == 'NEW_TALK' or wizard.step == 'EDIT_TALK' or wizard.step == 'SHOW_TALK'}">
-					<ui:include src="/WEB-INF/wizard/talk-edit.xhtml" />
-				</h:panelGroup>
-
-
-				<h:messages styleClass="messages" errorClass="invalid"
-					showDetail="true" showSummary="true" infoClass="valid"
-					warnClass="warning" globalOnly="true"></h:messages>
-
-			</a4j:outputPanel>
-
 		</h:form>
+
+		<a4j:outputPanel id="contentPanelId">
+
+
+			<h:panelGroup rendered="#{wizard.step == 'ALL_CONFERENCES'}">
+				<ui:include src="/WEB-INF/wizard/conference-overview.xhtml" />
+			</h:panelGroup>
+
+			<h:panelGroup rendered="#{wizard.step == 'SHOW_CONFERENCE'}">
+				<ui:include src="/WEB-INF/wizard/conference-view.xhtml" />
+			</h:panelGroup>
+			<h:panelGroup
+				rendered="#{wizard.step == 'NEW_CONFERENCE' or wizard.step == 'EDIT_CONFERENCE'}">
+				<ui:include src="/WEB-INF/wizard/conference-edit.xhtml" />
+			</h:panelGroup>
+
+			<h:panelGroup rendered="#{wizard.step == 'ALL_SPEAKERS'}">
+				<ui:include src="/WEB-INF/wizard/speaker-overview.xhtml" />
+			</h:panelGroup>
+
+			<h:panelGroup
+				rendered="#{wizard.step == 'NEW_SPEAKER' or wizard.step == 'EDIT_SPEAKER' or wizard.step == 'SHOW_SPEAKER'}">
+				<ui:include src="/WEB-INF/wizard/speaker-edit.xhtml" />
+			</h:panelGroup>
+
+
+
+			<h:panelGroup rendered="#{wizard.step == 'ALL_ROOMS'}">
+				<ui:include src="/WEB-INF/wizard/room-overview.xhtml" />
+			</h:panelGroup>
+			<h:panelGroup
+				rendered="#{wizard.step == 'NEW_ROOM' or wizard.step == 'EDIT_ROOM' or wizard.step == 'SHOW_ROOM'}">
+				<ui:include src="/WEB-INF/wizard/room-edit.xhtml" />
+			</h:panelGroup>
+
+			<h:panelGroup
+				rendered="#{wizard.step == 'NEW_TALK' or wizard.step == 'EDIT_TALK' or wizard.step == 'SHOW_TALK'}">
+				<ui:include src="/WEB-INF/wizard/talk-edit.xhtml" />
+			</h:panelGroup>
+
+
+			<h:messages styleClass="messages" errorClass="invalid"
+				showDetail="true" showSummary="true" infoClass="valid"
+				warnClass="warning" globalOnly="true"></h:messages>
+
+		</a4j:outputPanel>
+
+
 
 
 

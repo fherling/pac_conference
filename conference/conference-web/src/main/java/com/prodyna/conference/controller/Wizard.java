@@ -494,7 +494,7 @@ public class Wizard extends AbstractViewController implements Serializable {
 		String detail = getRootErrorMessage(e);
 		FacesMessage m = new FacesMessage(
 				null == e ? FacesMessage.SEVERITY_ERROR
-						: FacesMessage.SEVERITY_INFO, summary, detail);
+						: FacesMessage.SEVERITY_INFO, summary, e != null ? detail : "");
 		facesContext.addMessage(null, m);
 	}
 }
