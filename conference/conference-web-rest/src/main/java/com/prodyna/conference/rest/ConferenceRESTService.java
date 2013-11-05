@@ -34,7 +34,7 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import com.prodyna.conference.core.interceptor.PerfomanceMeasuring;
+import com.prodyna.conference.service.business.BusinessService;
 import com.prodyna.conference.service.entity.ConferenceService;
 import com.prodyna.conference.service.model.Conference;
 import com.prodyna.conference.service.model.Talk;
@@ -57,16 +57,17 @@ public class ConferenceRESTService implements Serializable {
 
 	@Inject
 	private ConferenceService service;
+	
+	@Inject
+	private BusinessService businessService;
 
 	@DELETE
 	@Path("/{id:[0-9][0-9]*}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public void delete(@PathParam("id") long id) {
 
-		Conference entity = find(id);
-
-		service.delete(entity);
-
+		Conference conference = find(id);
+		businessService.deleteCompleteConference(conference);
 	}
 
 	private Conference find(long id) {

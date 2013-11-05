@@ -34,7 +34,7 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import com.prodyna.conference.core.interceptor.PerfomanceMeasuring;
+import com.prodyna.conference.service.business.BusinessService;
 import com.prodyna.conference.service.entity.RoomService;
 import com.prodyna.conference.service.model.Room;
 
@@ -55,6 +55,9 @@ public class RoomRESTService implements Serializable {
 	private RoomService service;
 	
 	@Inject
+	private BusinessService businessService;
+	
+	@Inject
 	private Logger log;
 
 
@@ -65,7 +68,7 @@ public class RoomRESTService implements Serializable {
 
 		Room entity = find(id);
 
-		service.delete(entity);
+		businessService.delete(entity);
 
 	}
 

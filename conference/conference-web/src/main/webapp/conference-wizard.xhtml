@@ -31,45 +31,65 @@
 					value="#{msg.back}" />
 			</h:panelGrid>
 
-		</h:form>
 
-		<a4j:outputPanel id="contentPanelId">
-
-
-			<h:panelGroup rendered="#{wizard.step == 'ALL_CONFERENCES'}">
-				<ui:include src="/WEB-INF/wizard/conference-overview.xhtml" />
+			<h:panelGroup rendered="#{wizard.step == 'ALL_CONFERENCES'}"
+				id="conferenceOverviewPG">
+				<ui:include src="/WEB-INF/wizard/conference-overview.xhtml">
+					<ui:param name="idext" value="confoverview" />
+				</ui:include>
 			</h:panelGroup>
 
-			<h:panelGroup rendered="#{wizard.step == 'SHOW_CONFERENCE'}">
-				<ui:include src="/WEB-INF/wizard/conference-view.xhtml" />
-			</h:panelGroup>
-			<h:panelGroup
-				rendered="#{wizard.step == 'NEW_CONFERENCE' or wizard.step == 'EDIT_CONFERENCE'}">
-				<ui:include src="/WEB-INF/wizard/conference-edit.xhtml" />
-			</h:panelGroup>
-
-			<h:panelGroup rendered="#{wizard.step == 'ALL_SPEAKERS'}">
-				<ui:include src="/WEB-INF/wizard/speaker-overview.xhtml" />
-			</h:panelGroup>
-
-			<h:panelGroup
-				rendered="#{wizard.step == 'NEW_SPEAKER' or wizard.step == 'EDIT_SPEAKER' or wizard.step == 'SHOW_SPEAKER'}">
-				<ui:include src="/WEB-INF/wizard/speaker-edit.xhtml" />
-			</h:panelGroup>
-
-
-
-			<h:panelGroup rendered="#{wizard.step == 'ALL_ROOMS'}">
-				<ui:include src="/WEB-INF/wizard/room-overview.xhtml" />
+			<h:panelGroup rendered="#{wizard.step == 'SHOW_CONFERENCE'}"
+				id="conferenceViewPG">
+				<ui:include src="/WEB-INF/wizard/conference-view.xhtml">
+					<ui:param name="idext" value="confview" />
+				</ui:include>
 			</h:panelGroup>
 			<h:panelGroup
-				rendered="#{wizard.step == 'NEW_ROOM' or wizard.step == 'EDIT_ROOM' or wizard.step == 'SHOW_ROOM'}">
-				<ui:include src="/WEB-INF/wizard/room-edit.xhtml" />
+				rendered="#{wizard.step == 'NEW_CONFERENCE' or wizard.step == 'EDIT_CONFERENCE'}"
+				id="conferenceEditPG">
+				<ui:include src="/WEB-INF/wizard/conference-edit.xhtml">
+					<ui:param name="idext" value="confedit" />
+				</ui:include>
+			</h:panelGroup>
+
+			<h:panelGroup rendered="#{wizard.step == 'ALL_SPEAKERS'}"
+				id="speakerOverviewPG">
+				<ui:include src="/WEB-INF/wizard/speaker-overview.xhtml">
+					<ui:param name="idext" value="speakerOverview" />
+				</ui:include>
 			</h:panelGroup>
 
 			<h:panelGroup
-				rendered="#{wizard.step == 'NEW_TALK' or wizard.step == 'EDIT_TALK' or wizard.step == 'SHOW_TALK'}">
-				<ui:include src="/WEB-INF/wizard/talk-edit.xhtml" />
+				rendered="#{wizard.step == 'NEW_SPEAKER' or wizard.step == 'EDIT_SPEAKER' or wizard.step == 'SHOW_SPEAKER'}"
+				id="speakerEditPG">
+				<ui:include src="/WEB-INF/wizard/speaker-edit.xhtml">
+					<ui:param name="idext" value="speakerEdit" />
+				</ui:include>
+			</h:panelGroup>
+
+
+
+			<h:panelGroup rendered="#{wizard.step == 'ALL_ROOMS'}"
+				id="roomOverviewPG">
+				<ui:include src="/WEB-INF/wizard/room-overview.xhtml">
+					<ui:param name="idext" value="roomOverview" />
+				</ui:include>
+			</h:panelGroup>
+			<h:panelGroup
+				rendered="#{wizard.step == 'NEW_ROOM' or wizard.step == 'EDIT_ROOM' or wizard.step == 'SHOW_ROOM'}"
+				id="roomEditPG">
+				<ui:include src="/WEB-INF/wizard/room-edit.xhtml">
+					<ui:param name="idext" value="roomEdit" />
+				</ui:include>
+			</h:panelGroup>
+
+			<h:panelGroup
+				rendered="#{wizard.step == 'NEW_TALK' or wizard.step == 'EDIT_TALK' or wizard.step == 'SHOW_TALK'}"
+				id="talkEditPG">
+				<ui:include src="/WEB-INF/wizard/talk-edit.xhtml">
+					<ui:param name="idext" value="talkEdit" />
+				</ui:include>
 			</h:panelGroup>
 
 
@@ -77,7 +97,7 @@
 				showDetail="true" showSummary="true" infoClass="valid"
 				warnClass="warning" globalOnly="true"></h:messages>
 
-		</a4j:outputPanel>
+		</h:form>
 
 
 

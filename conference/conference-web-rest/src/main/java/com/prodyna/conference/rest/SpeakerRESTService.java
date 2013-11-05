@@ -34,7 +34,7 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import com.prodyna.conference.core.interceptor.PerfomanceMeasuring;
+import com.prodyna.conference.service.business.BusinessService;
 import com.prodyna.conference.service.entity.SpeakerService;
 import com.prodyna.conference.service.model.Speaker;
 
@@ -55,6 +55,9 @@ public class SpeakerRESTService implements Serializable {
 	private SpeakerService service;
 	
 	@Inject
+	private BusinessService businessService;
+	
+	@Inject
 	private Logger log;
 
 
@@ -65,8 +68,8 @@ public class SpeakerRESTService implements Serializable {
 
 		Speaker entity = find(id);
 
-		service.delete(entity);
-
+		businessService.delete(entity);
+		
 	}
 
 	private Speaker find(long id) {

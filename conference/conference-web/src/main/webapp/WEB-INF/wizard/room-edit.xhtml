@@ -6,11 +6,11 @@
 	xmlns:a4j="http://richfaces.org/a4j"
 	xmlns:rich="http://richfaces.org/rich">
 
-	<h:form id="roomEditForm">
+
 		<h:panelGrid columns="3" columnClasses="titleCell">
-			<h:outputLabel for="name" value="Name:" styleClass="panelOutputLable" />
-			<h:inputText id="name" value="#{wizard.valueContainer.room.name}" disabled="#{!wizard.admin}" />
-			<h:message for="name" errorClass="invalid" />
+			<h:outputLabel for="#{idext}-name" value="Name:" styleClass="panelOutputLable" />
+			<h:inputText id="#{idext}-name" value="#{wizard.valueContainer.room.name}" disabled="#{!wizard.admin}" />
+			<h:message for="#{idext}-name" errorClass="invalid" />
 		</h:panelGrid>
 
 		<h:panelGrid columns="3" columnClasses="titleCell">
@@ -28,7 +28,6 @@
 			<ui:include src="/WEB-INF/wizard/talks-for-room.xhtml" />
 		</h:panelGroup>
 
-	</h:form>
 
 
 </ui:composition>

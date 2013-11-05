@@ -8,14 +8,13 @@
 
 
 
-    <h:form id="talkForRoom">
 
         <h:panelGroup
             rendered="#{wizard.talksForRoom.rowCount le 0}">
             <em>#{msg.no_talks}</em>
         </h:panelGroup>
 
-        <h:dataTable id="valueTable" var="_valueBean"
+        <h:dataTable id="#{idext}-valueTableTalksForRoom" var="_valueBean"
             value="#{wizard.talksForRoom}"
             rendered="#{wizard.talksForRoom.rowCount gt 0}"
             styleClass="simpletablestyle">
@@ -48,7 +47,6 @@
 
 
 
-    </h:form>
 
 </ui:composition>
 

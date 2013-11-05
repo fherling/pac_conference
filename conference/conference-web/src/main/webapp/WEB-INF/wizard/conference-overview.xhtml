@@ -8,14 +8,12 @@
 
 
 
-	<h:form id="showAllConferencesForm">
-
 		<h:panelGroup
 			rendered="#{wizard.valueContainer.conferenceDataModel.rowCount le 0}">
 			<em>#{msg.no_conferences}</em>
 		</h:panelGroup>
 
-		<h:dataTable id="valueTable" var="_valueBean"
+		<h:dataTable id="valueTableConference" var="_valueBean"
 			value="#{wizard.valueContainer.conferenceDataModel}"
 			rendered="#{wizard.valueContainer.conferenceDataModel.rowCount gt 0}"
 			styleClass="simpletablestyle">
@@ -72,7 +70,5 @@
 		</h:dataTable>
 
 
-
-	</h:form>
 
 </ui:composition>

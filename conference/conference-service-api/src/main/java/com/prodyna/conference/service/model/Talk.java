@@ -18,6 +18,9 @@ import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
+
 /**
  * @author fherling
  * 
@@ -34,10 +37,14 @@ public class Talk extends BaseEntity {
 	private Long id;
 
 	@NotNull
+	@NotEmpty
+	@NotBlank
 	@Column(name="name")
 	private String name;
 
 	@NotNull
+	@NotEmpty
+	@NotBlank
 	private String description;
 
 	@NotNull

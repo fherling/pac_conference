@@ -12,6 +12,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import com.prodyna.conference.service.model.validation.ValidConferenceDate;
@@ -31,10 +32,12 @@ public class Conference extends BaseEntity {
 
 	@NotNull
 	@NotEmpty
+	@NotBlank
 	private String name;
 
 	@NotNull
 	@NotEmpty
+	@NotBlank
 	private String description;
 
 	@NotNull

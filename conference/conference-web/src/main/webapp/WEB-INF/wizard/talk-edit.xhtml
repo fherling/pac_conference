@@ -6,66 +6,64 @@
 	xmlns:a4j="http://richfaces.org/a4j"
 	xmlns:rich="http://richfaces.org/rich">
 
-	<h:form id="talkEditForm">
 		<h:panelGrid columns="3" columnClasses="titleCell">
-			<h:outputLabel for="name" value="#{msg.name}:"
+			<h:outputLabel for="#{idext}-name" value="#{msg.name}:"
 				styleClass="panelOutputLable" />
-			<h:inputText id="name" value="#{wizard.valueContainer.talk.name}" disabled="#{!wizard.admin}"/>
-			<h:message for="name" errorClass="invalid" />
+			<h:inputText id="#{idext}-name" value="#{wizard.valueContainer.talk.name}" disabled="#{!wizard.admin}"/>
+			<h:message for="#{idext}-name" errorClass="invalid" />
 		</h:panelGrid>
 
 		<h:panelGrid columns="3" columnClasses="titleCell">
-			<h:outputLabel for="description" value="#{msg.description}:"
+			<h:outputLabel for="#{idext}-description" value="#{msg.description}:"
 				styleClass="panelOutputLable" />
-			<h:inputText id="description" disabled="#{!wizard.admin}"
+			<h:inputText id="#{idext}-description" disabled="#{!wizard.admin}"
 				value="#{wizard.valueContainer.talk.description}" />
-			<h:message for="description" errorClass="invalid" />
+			<h:message for="#{idext}-description" errorClass="invalid" />
 		</h:panelGrid>
 
 		<h:panelGrid columns="3" columnClasses="titleCell">
-            <h:outputLabel for="startTimeTalk" value="#{msg.start}:"
+            <h:outputLabel for="#{idext}-startTimeTalk" value="#{msg.start}:"
                 styleClass="panelOutputLable" />
-            <h:inputText id="startTimeTalk" disabled="#{!wizard.admin}"
+            <h:inputText id="#{idext}-startTimeTalk" disabled="#{!wizard.admin}"
                 value="#{wizard.valueContainer.talk.start}">
                 <f:convertDateTime type="both" pattern="dd-MM-yyyy HH:mm" />
             </h:inputText>
-            <h:message for="startTimeTalk" errorClass="invalid" />
+            <h:message for="#{idext}-startTimeTalk" errorClass="invalid" />
         </h:panelGrid>
 
 		<h:panelGrid columns="3" columnClasses="titleCell">
-			<h:outputLabel for="duration" value="#{msg.duration}:"
+			<h:outputLabel for="#{idext}-duration" value="#{msg.duration}:"
 				styleClass="panelOutputLable" />
-			<h:inputText id="duration" disabled="#{!wizard.admin}"
+			<h:inputText id="#{idext}-duration" disabled="#{!wizard.admin}"
 				value="#{wizard.valueContainer.talk.duration}">
 			</h:inputText>
-			<h:message for="duration" errorClass="invalid" />
+			<h:message for="#{idext}-duration" errorClass="invalid" />
 		</h:panelGrid>
 
 		<h:panelGrid columns="3" columnClasses="titleCell">
-			<h:outputLabel for="room" value="#{msg.room}:"
+			<h:outputLabel for="#{idext}-room" value="#{msg.room}:"
 				styleClass="panelOutputLable" />
-			<h:selectOneMenu id="room" value="#{wizard.valueContainer.room}" disabled="#{!wizard.admin}"
+			<h:selectOneMenu id="#{idext}-room" value="#{wizard.valueContainer.room}" disabled="#{!wizard.admin}"
 				required="true" converter="#{roomConverter}">
 				<f:selectItems value="#{wizard.valueContainer.roomsAsSelectItems}"
 					var="us" itemLabel="#{us.label}"
 					itemValue="#{us.value}" />
 			</h:selectOneMenu>
-			<h:message for="room" errorClass="invalid" />
+			<h:message for="#{idext}-room" errorClass="invalid" />
 		</h:panelGrid>
 
 		<h:panelGrid columns="3" columnClasses="titleCell">
-			<h:outputLabel for="speaker" value="#{msg.speaker}:"
+			<h:outputLabel for="#{idext}-speaker" value="#{msg.speaker}:"
 				styleClass="panelOutputLable" />
-			<h:selectManyListbox id="speaker" required="true" converter="#{speakerConverter}"
+			<h:selectManyListbox id="#{idext}-speaker" required="true" converter="#{speakerConverter}"
 				value="#{wizard.valueContainer.speakersSelected}" disabled="#{!wizard.admin}">
 				<f:selectItems value="#{wizard.valueContainer.speakers}" var="r"
 					itemLabel="#{r.name} , #{r.firstName}" itemValue="#{r}" />
 			</h:selectManyListbox>
 
-			<h:message for="speaker" errorClass="invalid" />
+			<h:message for="#{idext}-speaker" errorClass="invalid" />
 		</h:panelGrid>
 
-	</h:form>
 
 
 </ui:composition>

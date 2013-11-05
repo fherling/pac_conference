@@ -34,7 +34,6 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import com.prodyna.conference.core.interceptor.PerfomanceMeasuring;
 import com.prodyna.conference.service.entity.TalkService;
 import com.prodyna.conference.service.model.Room;
 import com.prodyna.conference.service.model.Speaker;
@@ -55,10 +54,9 @@ public class TalkRESTService implements Serializable {
 
 	@Inject
 	private TalkService service;
-	
+
 	@Inject
 	private Logger log;
-
 
 	@DELETE
 	@Path("/{id:[0-9][0-9]*}")

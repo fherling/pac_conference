@@ -6,40 +6,40 @@
 	xmlns:a4j="http://richfaces.org/a4j"
 	xmlns:rich="http://richfaces.org/rich">
 
-	<h:form id="conferenceEditForm">
+
 		<h:panelGrid columns="3" columnClasses="titleCell">
-			<h:outputLabel for="name" value="Name:" styleClass="panelOutputLable" />
-			<h:inputText id="name"
+			<h:outputLabel for="#{idext}-name" value="Name:" styleClass="panelOutputLable" />
+			<h:inputText id="#{idext}-name"
 				value="#{wizard.valueContainer.conference.name}" />
-			<h:message for="name" errorClass="invalid" />
+			<h:message for="#{idext}-name" errorClass="invalid" />
 		</h:panelGrid>
 
 		<h:panelGrid columns="3" columnClasses="titleCell">
-			<h:outputLabel for="description" value="Description:"
+			<h:outputLabel for="#{idext}-description" value="Description:"
 				styleClass="panelOutputLable" />
-			<h:inputText id="description"
+			<h:inputText id="#{idext}-description"
 				value="#{wizard.valueContainer.conference.description}" />
-			<h:message for="description" errorClass="invalid" />
+			<h:message for="#{idext}-description" errorClass="invalid" />
 		</h:panelGrid>
 
 		<h:panelGrid columns="3" columnClasses="titleCell">
-			<h:outputLabel for="startConference" value="Start:"
+			<h:outputLabel for="#{idext}-startConference" value="Start:"
 				styleClass="panelOutputLable" />
-			<h:inputText id="startConference"
+			<h:inputText id="#{idext}-startConference"
 				value="#{wizard.valueContainer.conference.start}">
 				<f:convertDateTime type="date" pattern="dd-MM-yyyy" />
 			</h:inputText>
-			<h:message for="startConference" errorClass="invalid" />
+			<h:message for="#{idext}-startConference" errorClass="invalid" />
 		</h:panelGrid>
 
 		<h:panelGrid columns="3" columnClasses="titleCell">
-			<h:outputLabel for="endConference" value="End:"
+			<h:outputLabel for="#{idext}-endConference" value="End:"
 				styleClass="panelOutputLable" />
-			<h:inputText id="endConference"
+			<h:inputText id="#{idext}-endConference"
 				value="#{wizard.valueContainer.conference.end}">
 				<f:convertDateTime type="date" pattern="dd-MM-yyyy" />
 			</h:inputText>
-			<h:message for="endConference" errorClass="invalid" />
+			<h:message for="#{idext}-endConference" errorClass="invalid" />
 		</h:panelGrid>
 
 		<div></div>
@@ -55,7 +55,6 @@
 		</h:panelGroup>
 
 
-	</h:form>
 
 
 </ui:composition>

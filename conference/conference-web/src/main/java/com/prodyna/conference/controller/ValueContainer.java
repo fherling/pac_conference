@@ -38,6 +38,10 @@ public class ValueContainer {
 	private List<Talk> talks = new ArrayList<Talk>();
 	private List<Conference> conferences = new ArrayList<Conference>();
 	private List<Speaker> speakers = new ArrayList<Speaker>();
+	
+	private List<Talk> talksForRoom = new ArrayList<Talk>();
+	private List<Talk> talksForSpeaker = new ArrayList<Talk>();
+	
 
 	private List<Speaker> speakersSelected = new ArrayList<Speaker>();
 
@@ -45,20 +49,29 @@ public class ValueContainer {
 	private ListDataModel<Talk> talkDataModel;
 	private ListDataModel<Room> roomDataModel;
 	private ListDataModel<Speaker> speakerDataModel;
+	
+	private ListDataModel<Talk> talksForRoomDataModel;
+	private ListDataModel<Talk> talksForSpeakerDataModel;
+	
 
 	public ValueContainer() {
 		setSpeakerDataModel(new ListDataModel<Speaker>(speakers));
 		setTalkDataModel(new ListDataModel<Talk>(talks));
 		setRoomDataModel(new ListDataModel<Room>(rooms));
 		setConferenceDataModel(new ListDataModel<Conference>(conferences));
+		
+		setTalksForRoomDataModel(new ListDataModel<Talk>(talksForRoom));
+		setTalksForSpeakerDataModel(new ListDataModel<Talk>(talksForSpeaker));
 	}
 
 	public void newRoom() {
 		room = new Room();
+		talksForRoom.clear();
 	}
 
 	public void newSpeaker() {
 		speaker = new Speaker();
+		talksForSpeaker.clear();
 	}
 
 	public void newTalk() {
@@ -205,6 +218,22 @@ public class ValueContainer {
 		Collections.sort(talks, new TalkComparator());
 
 	}
+	
+	public void loadTalksForRoom(List<Talk> result) {
+
+		talksForRoom.clear();
+		talksForRoom.addAll(result);
+		Collections.sort(talksForRoom, new TalkComparator());
+
+	}
+	
+	public void loadTalksForSpeaker(List<Talk> result) {
+
+		talksForSpeaker.clear();
+		talksForSpeaker.addAll(result);
+		Collections.sort(talksForSpeaker, new TalkComparator());
+
+	}
 
 	public void loadRooms(List<Room> result) {
 
@@ -280,5 +309,38 @@ public class ValueContainer {
 
 	public List<SelectItem> getRoomsAsSelectItems() {
 		return RoomConverter.toSelectItem(getRooms());
+	}
+
+	public List<Talk> getTalksForRoom() {
+		return talksForRoom;
+	}
+
+	public void setTalksForRoom(List<Talk> talksForRoom) {
+		this.talksForRoom = talksForRoom;
+	}
+
+	public List<Talk> getTalksForSpeaker() {
+		return talksForSpeaker;
+	}
+
+	public void setTalksForSpeaker(List<Talk> talksForSpeaker) {
+		this.talksForSpeaker = talksForSpeaker;
+	}
+
+	public ListDataModel<Talk> getTalksForRoomDataModel() {
+		return talksForRoomDataModel;
+	}
+
+	public void setTalksForRoomDataModel(ListDataModel<Talk> talksForRoomDataModel) {
+		this.talksForRoomDataModel = talksForRoomDataModel;
+	}
+
+	public ListDataModel<Talk> getTalksForSpeakerDataModel() {
+		return talksForSpeakerDataModel;
+	}
+
+	public void setTalksForSpeakerDataModel(
+			ListDataModel<Talk> talksForSpeakerDataModel) {
+		this.talksForSpeakerDataModel = talksForSpeakerDataModel;
 	}
 }

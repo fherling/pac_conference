@@ -10,6 +10,8 @@ import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * @author fherling
@@ -28,9 +30,13 @@ public class Speaker extends BaseEntity {
 	private Long id;
 
 	@NotNull
+	@NotEmpty
+	@NotBlank
 	private String name;
 
 	@NotNull
+	@NotEmpty
+	@NotBlank
 	private String firstName;
 
 	@NotNull

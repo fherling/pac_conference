@@ -8,14 +8,12 @@
 
 
 
-	<h:form id="roomoverview">
-
 		<h:panelGroup
 			rendered="#{wizard.valueContainer.roomDataModel.rowCount le 0}">
 			<em>#{msg.no_rooms}</em>
 		</h:panelGroup>
 
-		<h:dataTable id="valueTable" var="_valueBean"
+		<h:dataTable id="valueTableRoom" var="_valueBean"
 			value="#{wizard.valueContainer.roomDataModel}"
 			rendered="#{wizard.valueContainer.roomDataModel.rowCount gt 0}"
 			styleClass="simpletablestyle">
@@ -58,6 +56,5 @@
 
 
 
-	</h:form>
 
 </ui:composition>

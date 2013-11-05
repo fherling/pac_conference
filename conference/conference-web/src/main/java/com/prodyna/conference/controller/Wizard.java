@@ -23,6 +23,10 @@ import com.prodyna.conference.service.model.Room;
 import com.prodyna.conference.service.model.Speaker;
 import com.prodyna.conference.service.model.Talk;
 
+/**
+ * @author fherling
+ *
+ */
 @ManagedBean
 @SessionScoped
 public class Wizard extends AbstractViewController implements Serializable {
@@ -54,12 +58,11 @@ public class Wizard extends AbstractViewController implements Serializable {
 
 	@PostConstruct
 	public void init() {
-//		facesContext.getViewRoot().setLocale(Locale.ENGLISH);
+
 	}
 
 	public void create(ActionEvent event) {
 
-		log.info("create new entry");
 		switch (getStep()) {
 		case ALL_CONFERENCES:
 		case SHOW_CONFERENCE:
@@ -106,7 +109,6 @@ public class Wizard extends AbstractViewController implements Serializable {
 	}
 
 	public void editTalk(ActionEvent event) {
-		log.info("editTalk");
 		if (isAdmin()) {
 			step = WizardSteps.EDIT_TALK;
 		} else {
@@ -159,6 +161,9 @@ public class Wizard extends AbstractViewController implements Serializable {
 				step = WizardSteps.SHOW_SPEAKER;
 			}
 			valueContainer.editSpeaker();
+			talks = talkService.loadTalksForSpeaker(valueContainer
+					.getSpeaker());
+			valueContainer.loadTalksForSpeaker(talks);
 			break;
 		case ALL_ROOMS:
 		case SHOW_ROOM:
@@ -168,6 +173,9 @@ public class Wizard extends AbstractViewController implements Serializable {
 				step = WizardSteps.SHOW_ROOM;
 			}
 			valueContainer.editRoom();
+			talks = talkService.loadTalksForRoom(valueContainer
+					.getRoom());
+			valueContainer.loadTalksForRoom(talks);
 			break;
 
 		default:
@@ -177,7 +185,6 @@ public class Wizard extends AbstractViewController implements Serializable {
 	}
 
 	public void showConference(ActionEvent event) {
-		log.info("showConference");
 		step = WizardSteps.SHOW_CONFERENCE;
 	}
 
@@ -199,15 +206,19 @@ public class Wizard extends AbstractViewController implements Serializable {
 			switch (getStep()) {
 			case ALL_CONFERENCES:
 				valueContainer.editConference();
-				businessService.deleteCompleteConference(valueContainer.getConference());
+				businessService.deleteCompleteConference(valueContainer
+						.getConference());
 				valueContainer.deleteConference();
-				valueContainer.loadConferences(conferenceService.loadConferences());
+				valueContainer.loadConferences(conferenceService
+						.loadConferences());
 				break;
 			case EDIT_CONFERENCE:
 				valueContainer.editConference();
-				businessService.deleteCompleteConference(valueContainer.getConference());
+				businessService.deleteCompleteConference(valueContainer
+						.getConference());
 				valueContainer.deleteConference();
-				valueContainer.loadConferences(conferenceService.loadConferences());
+				valueContainer.loadConferences(conferenceService
+						.loadConferences());
 				step = WizardSteps.ALL_CONFERENCES;
 				break;
 			case ALL_ROOMS:
@@ -239,19 +250,22 @@ public class Wizard extends AbstractViewController implements Serializable {
 						|| getStep() == WizardSteps.NEW_TALK) {
 					step = WizardSteps.SHOW_CONFERENCE;
 				}
-				break;				
+				break;
 			default:
-				handleMessage("data_not_saved", null);
+				handleMessage("DELETE_NOT_POSSIBLE", null);
 				break;
 
 			}
 
 		} catch (Exception e) {
-			handleMessage("data_not_saved", e);
+			handleMessage("DELETE_NOT_POSSIBLE", e);
 		}
 
 	}
-
+	/**
+	 * Überprüfen ob Loeschen erlaubt ist.
+	 * @return
+	 */
 	private boolean isDeleteAllowed() {
 		if (!isAdmin()) {
 			handleMessage("DELETE_NOT_POSSIBLE", null);
@@ -321,7 +335,8 @@ public class Wizard extends AbstractViewController implements Serializable {
 						valueContainer.getSpeakersSelected(),
 						valueContainer.getRoom());
 				valueContainer.setTalk(talk);
-				valueContainer.loadTalks(conferenceService.loadTalksFor(valueContainer.getConference()));
+				valueContainer.loadTalks(conferenceService
+						.loadTalksFor(valueContainer.getConference()));
 				break;
 			case EDIT_TALK:
 				talk = businessService.saveAndAssignTalk(
@@ -330,7 +345,8 @@ public class Wizard extends AbstractViewController implements Serializable {
 						valueContainer.getSpeakersSelected(),
 						valueContainer.getRoom());
 				valueContainer.setTalk(talk);
-				valueContainer.loadTalks(conferenceService.loadTalksFor(valueContainer.getConference()));
+				valueContainer.loadTalks(conferenceService
+						.loadTalksFor(valueContainer.getConference()));
 				break;
 			default:
 				break;
@@ -341,7 +357,10 @@ public class Wizard extends AbstractViewController implements Serializable {
 			handleMessage("data_not_saved", null);
 		}
 	}
-
+	/**
+	 * Überprüfen ob SAVE Button angezeigt werden kann.
+	 * @return
+	 */
 	public boolean isSaveRendered() {
 
 		if (!isAdmin()) {
@@ -366,6 +385,10 @@ public class Wizard extends AbstractViewController implements Serializable {
 
 	}
 
+	/**
+	 * Überprüfen ob DELETE Button angezeigt werden kann.
+	 * @return
+	 */
 	public boolean isDeleteRendered() {
 		if (!isAdmin()) {
 			return false;
@@ -375,15 +398,17 @@ public class Wizard extends AbstractViewController implements Serializable {
 				|| getStep() == WizardSteps.EDIT_TALK
 				|| getStep() == WizardSteps.EDIT_SPEAKER
 				|| getStep() == WizardSteps.EDIT_ROOM
-		// || getStep() == WizardSteps.ALL_ROOMS
-		// || getStep() == WizardSteps.ALL_SPEAKERS
-		// || getStep() == WizardSteps.ALL_CONFERENCES
 		) {
 			return true;
 		}
 		return false;
 	}
 
+	
+	/**
+	 * Überprüfen ob NEW Button angezeigt werden kann.
+	 * @return
+	 */
 	public boolean isNewRendered() {
 		if (!isAdmin()) {
 			return false;
@@ -392,6 +417,10 @@ public class Wizard extends AbstractViewController implements Serializable {
 		return true;
 	}
 
+	/**
+	 * Überprüfen ob Edit Button angezeigt werden kann.
+	 * @return
+	 */
 	public boolean isEditRendered() {
 
 		if (!isAdmin()) {
@@ -408,7 +437,12 @@ public class Wizard extends AbstractViewController implements Serializable {
 		return false;
 	}
 
+	/**
+	 * Überprüfung ob User Adminrechte hat.
+	 * @return true = ADMIN
+	 */
 	public boolean isAdmin() {
+		//FIXME Hier noch die Überprüfung auf ADMIN RECHTE einbauen.
 		return true;
 
 	}
@@ -478,15 +512,11 @@ public class Wizard extends AbstractViewController implements Serializable {
 	}
 
 	public ListDataModel<Talk> getTalksForRoom() {
-		List<Talk> talks = talkService.loadTalksForRoom(valueContainer
-				.getRoom());
-		return new ListDataModel<Talk>(talks);
+		return valueContainer.getTalksForRoomDataModel();
 	}
 
 	public ListDataModel<Talk> getTalksForSpeaker() {
-		List<Talk> talks = talkService.loadTalksForSpeaker(valueContainer
-				.getSpeaker());
-		return new ListDataModel<Talk>(talks);
+		return valueContainer.getTalksForSpeakerDataModel();
 	}
 
 	private void handleMessage(String key, Exception e) {
@@ -494,7 +524,8 @@ public class Wizard extends AbstractViewController implements Serializable {
 		String detail = getRootErrorMessage(e);
 		FacesMessage m = new FacesMessage(
 				null == e ? FacesMessage.SEVERITY_ERROR
-						: FacesMessage.SEVERITY_INFO, summary, e != null ? detail : "");
+						: FacesMessage.SEVERITY_INFO, summary,
+				e != null ? detail : "");
 		facesContext.addMessage(null, m);
 	}
 }

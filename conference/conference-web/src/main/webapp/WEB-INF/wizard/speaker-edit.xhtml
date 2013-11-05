@@ -6,30 +6,30 @@
     xmlns:a4j="http://richfaces.org/a4j"
     xmlns:rich="http://richfaces.org/rich">
 
-    <h:form id="speakerEditForm">
+    
         <h:panelGrid columns="3" columnClasses="titleCell">
-            <h:outputLabel for="name" value="#{msg.name}:" styleClass="panelOutputLable" />
-            <h:inputText id="name" value="#{wizard.valueContainer.speaker.name}" disabled="#{!wizard.admin}" />
-            <h:message for="name" errorClass="invalid" />
+            <h:outputLabel for="#{idext}-name" value="#{msg.name}:" styleClass="panelOutputLable" />
+            <h:inputText id="#{idext}-name" value="#{wizard.valueContainer.speaker.name}" disabled="#{!wizard.admin}" />
+            <h:message for="#{idext}-name" errorClass="invalid" />
         </h:panelGrid>
         
          <h:panelGrid columns="3" columnClasses="titleCell">
-            <h:outputLabel for="firstname" value="#{msg.firstname}:" styleClass="panelOutputLable" />
-            <h:inputText id="firstname" value="#{wizard.valueContainer.speaker.firstName}" disabled="#{!wizard.admin}" />
-            <h:message for="firstname" errorClass="invalid" />
+            <h:outputLabel for="#{idext}-firstname" value="#{msg.firstname}:" styleClass="panelOutputLable" />
+            <h:inputText id="#{idext}-firstname" value="#{wizard.valueContainer.speaker.firstName}" disabled="#{!wizard.admin}" />
+            <h:message for="#{idext}-firstname" errorClass="invalid" />
         </h:panelGrid>
         
          <h:panelGrid columns="3" columnClasses="titleCell">
-            <h:outputLabel for="email" value="#{msg.email}:" styleClass="panelOutputLable" />
-            <h:inputText id="email" value="#{wizard.valueContainer.speaker.email}" disabled="#{!wizard.admin}" />
-            <h:message for="email" errorClass="invalid" />
+            <h:outputLabel for="#{idext}-email" value="#{msg.email}:" styleClass="panelOutputLable" />
+            <h:inputText id="#{idext}-email" value="#{wizard.valueContainer.speaker.email}" disabled="#{!wizard.admin}" />
+            <h:message for="#{idext}-email" errorClass="invalid" />
         </h:panelGrid>
         
         <h:panelGrid columns="3" columnClasses="titleCell">
-            <h:outputLabel for="description" value="#{msg.description}:"
+            <h:outputLabel for="#{idext}-description" value="#{msg.description}:"
                 styleClass="panelOutputLable" />
-            <h:inputText id="description" value="#{wizard.valueContainer.speaker.description}" disabled="#{!wizard.admin}" />
-            <h:message for="description" errorClass="invalid" />
+            <h:inputText id="#{idext}-description" value="#{wizard.valueContainer.speaker.description}" disabled="#{!wizard.admin}" />
+            <h:message for="#{idext}-description" errorClass="invalid" />
         </h:panelGrid>
         
         <h:panelGroup>
@@ -39,7 +39,6 @@
             <ui:include src="/WEB-INF/wizard/talks-for-speaker.xhtml" />
         </h:panelGroup>
         
-    </h:form>
-
+    
 
 </ui:composition>

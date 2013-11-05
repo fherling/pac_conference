@@ -25,17 +25,14 @@ public class NotificationServiceMsgBean implements MessageListener {
 	private Logger log;
 
 	public NotificationServiceMsgBean() {
-		System.err.println("NotificationServiceMsgBean gestartet");
 	}
 
 	@PostConstruct
 	public void postConstruct() {
-		log.info("POST_CONSTRUCT");
 	}
 
 	@PostActivate
 	public void postActivate() {
-		log.info("POST_ACTIVATE");
 	}
 
 	/**
