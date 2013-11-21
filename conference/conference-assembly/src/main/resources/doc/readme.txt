@@ -1,5 +1,5 @@
 
-Installation muss auf einem JBOSS > Version 7.1 erfolgen.
+Installation muss auf einem JBOSS Version 7.1.3 erfolgen.
 
 In einer MYSQL DB muss eine Datenbank/ein Schema conference angelegt werden. 
 Siehe hierzu im Verzeichniss sql. Hier findet man ein entsprechendes SQL
