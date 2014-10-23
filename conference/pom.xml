@@ -63,6 +63,9 @@
 		<!-- maven-compiler-plugin -->
 		<maven.compiler.target>1.7</maven.compiler.target>
 		<maven.compiler.source>1.7</maven.compiler.source>
+		
+		<build.number>SNAPSHOT</build.number>
+		
 	</properties>
 	<scm>
 		<connection>https://github.com/fherling/pac_conference.git</connection>
