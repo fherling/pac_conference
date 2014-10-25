@@ -15,7 +15,7 @@
 	<parent>
 		<artifactId>conference</artifactId>
 		<groupId>com.prodyna.conference</groupId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>0.9.1-RELEASE</version>
 	</parent>
 
 	<artifactId>conference-ear</artifactId>
@@ -38,31 +38,31 @@
 		<dependency>
 			<groupId>com.prodyna.conference</groupId>
 			<artifactId>conference-web</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>0.9.1-RELEASE</version>
 			<type>war</type>
 		</dependency>
 		<dependency>
 			<groupId>com.prodyna.conference</groupId>
 			<artifactId>conference-web-rest</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>0.9.1-RELEASE</version>
 			<type>war</type>
 		</dependency>
 		<dependency>
 			<groupId>com.prodyna.conference</groupId>
 			<artifactId>conference-core</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>0.9.1-RELEASE</version>
 			<type>jar</type>
 		</dependency>
 		<dependency>
 			<groupId>com.prodyna.conference</groupId>
 			<artifactId>conference-service-api</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>0.9.1-RELEASE</version>
 			<type>jar</type>
 		</dependency>
 		<dependency>
 			<groupId>com.prodyna.conference</groupId>
 			<artifactId>conference-service</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>0.9.1-RELEASE</version>
 			<type>ejb</type>
 		</dependency>
 
