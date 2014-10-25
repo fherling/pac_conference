@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.prodyna.conference</groupId>
 	<artifactId>conference</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.7.0-RELEASE</version>
 	<packaging>pom</packaging>
 
 	<url>http://www.prodyna.com</url>
@@ -70,7 +70,7 @@
 		<connection>scm:git:https://github.com/fherling/pac_conference.git</connection>
 		<url>https://github.com/fherling/pac_conference.git</url>
 		<developerConnection>scm:git:https://github.com/fherling/pac_conference.git</developerConnection>
-	  <tag>conference-0.0.2-RELEASE</tag>
+	  <tag>conference-0.7.0-RELEASE</tag>
   </scm>
 
 	<distributionManagement>
