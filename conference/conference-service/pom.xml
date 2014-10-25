@@ -15,7 +15,7 @@
 	<parent>
 		<artifactId>conference</artifactId>
 		<groupId>com.prodyna.conference</groupId>
-		<version>0.0.4-JENKINS</version>
+		<version>0.0.2-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>conference-service</artifactId>
@@ -50,14 +50,14 @@
 		<dependency>
 			<groupId>com.prodyna.conference</groupId>
 			<artifactId>conference-service-api</artifactId>
-			<version>0.0.4-JENKINS</version>
+			<version>0.0.2-SNAPSHOT</version>
 			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>com.prodyna.conference</groupId>
 			<artifactId>conference-core</artifactId>
-			<version>0.0.4-JENKINS</version>
+			<version>0.0.2-SNAPSHOT</version>
 			<scope>provided</scope>
 		</dependency>
 
