@@ -3,7 +3,7 @@
     <parent>
         <groupId>com.prodyna.conference</groupId>
         <artifactId>conference</artifactId>
-        <version>0.7.0-RELEASE</version>
+        <version>0.0.1-SNAPSHOT</version>
     </parent>
     <artifactId>conference-assembly</artifactId>
     <packaging>pom</packaging>
@@ -14,7 +14,7 @@
         <dependency>
             <groupId>com.prodyna.conference</groupId>
             <artifactId>conference-ear</artifactId>
-            <version>0.7.0-RELEASE</version>
+            <version>0.0.1-SNAPSHOT</version>
             <type>ear</type>
         </dependency>
     </dependencies>
