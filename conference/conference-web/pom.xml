@@ -5,7 +5,7 @@
 	<parent>
 		<artifactId>conference</artifactId>
 		<groupId>com.prodyna.conference</groupId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>0.0.3-JENKINS</version>
 	</parent>
 
 	<artifactId>conference-web</artifactId>
@@ -28,14 +28,14 @@
 		<dependency>
 			<groupId>com.prodyna.conference</groupId>
 			<artifactId>conference-service-api</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>0.0.3-JENKINS</version>
 			<type>jar</type>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.prodyna.conference</groupId>
 			<artifactId>conference-core</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>0.0.3-JENKINS</version>
 			<type>jar</type>
 			<scope>provided</scope>
 		</dependency>		
